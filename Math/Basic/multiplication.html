@@ -1,501 +1,405 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>multiplication.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
+<!DOCTYPE html><html><head>
+      <title>multiplication</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
  */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
 
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
 }
 
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
 }
 
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
+.token.comment,
+.token.blockquote {
+  color: #969896;
 }
 
-.emoji {
-	height: 1.4em;
+.token.cdata {
+  color: #183691;
 }
 
-code {
-	font-size: 14px;
-	line-height: 19px;
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
 }
 
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
 }
 
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
 }
 
-</style>
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
 
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-</head>
-<body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h1 id="1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</h1>
-<p>はじめに，基礎を学ぶ上で必要になる基礎の勉強，というか確認から始めます．高校以降は文系よりだった人や，高校でも数学はやってたけど受験のための暗記数学をやっていて，正直数学についてあまり考えたことがない人向けです．以降の章でやっていく内容を読んでいく上で最低限覚えておいてほしい内容です．</p>
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. &#x306F;&#x3058;&#x3081;&#x306B;</h1>
+
+<p>&#x306F;&#x3058;&#x3081;&#x306B;&#xFF0C;&#x57FA;&#x790E;&#x3092;&#x5B66;&#x3076;&#x4E0A;&#x3067;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308B;&#x57FA;&#x790E;&#x306E;&#x52C9;&#x5F37;&#xFF0C;&#x3068;&#x3044;&#x3046;&#x304B;&#x78BA;&#x8A8D;&#x304B;&#x3089;&#x59CB;&#x3081;&#x307E;&#x3059;&#xFF0E;&#x9AD8;&#x6821;&#x4EE5;&#x964D;&#x306F;&#x6587;&#x7CFB;&#x3088;&#x308A;&#x3060;&#x3063;&#x305F;&#x4EBA;&#x3084;&#xFF0C;&#x9AD8;&#x6821;&#x3067;&#x3082;&#x6570;&#x5B66;&#x306F;&#x3084;&#x3063;&#x3066;&#x305F;&#x3051;&#x3069;&#x53D7;&#x9A13;&#x306E;&#x305F;&#x3081;&#x306E;&#x6697;&#x8A18;&#x6570;&#x5B66;&#x3092;&#x3084;&#x3063;&#x3066;&#x3044;&#x3066;&#xFF0C;&#x6B63;&#x76F4;&#x6570;&#x5B66;&#x306B;&#x3064;&#x3044;&#x3066;&#x3042;&#x307E;&#x308A;&#x8003;&#x3048;&#x305F;&#x3053;&#x3068;&#x304C;&#x306A;&#x3044;&#x4EBA;&#x5411;&#x3051;&#x3067;&#x3059;&#xFF0E;&#x4EE5;&#x964D;&#x306E;&#x7AE0;&#x3067;&#x3084;&#x3063;&#x3066;&#x3044;&#x304F;&#x5185;&#x5BB9;&#x3092;&#x8AAD;&#x3093;&#x3067;&#x3044;&#x304F;&#x4E0A;&#x3067;&#x6700;&#x4F4E;&#x9650;&#x899A;&#x3048;&#x3066;&#x304A;&#x3044;&#x3066;&#x307B;&#x3057;&#x3044;&#x5185;&#x5BB9;&#x3067;&#x3059;&#xFF0E;</p>
 <ul>
-<li><a href="#1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></li>
-<li><a href="#2-%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B">2. 掛け算とは何か</a>
+<li><a href="#1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. &#x306F;&#x3058;&#x3081;&#x306B;</a></li>
+<li><a href="#2-%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B">2. &#x639B;&#x3051;&#x7B97;&#x3068;&#x306F;&#x4F55;&#x304B;</a>
 <ul>
-<li><a href="#21-%E6%95%B0%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%81%E3%81%AB">2.1. 数ってなぁに？</a></li>
-<li><a href="#22-%E5%8D%98%E4%B8%80%E3%81%AE%E6%95%B0%E3%82%B9%E3%82%AB%E3%83%A9%E3%83%BC">2.2. 単一の数スカラー</a></li>
-<li><a href="#23-%E8%A4%87%E6%95%B0%E3%81%AE%E6%95%B0%E3%81%8B%E3%82%89%E3%81%AA%E3%82%8B%E7%A9%8D">2.3. 複数の数からなる積</a></li>
-<li><a href="#24-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AE%E7%A9%8D">2.4. ベクトルの積</a></li>
-<li><a href="#25-%E5%86%85%E7%A9%8D%E3%81%AE%E6%84%8F%E5%91%B3">2.5. 内積の意味</a></li>
-<li><a href="#26-%E3%83%89%E3%83%83%E3%83%88%E7%A9%8D">2.6. ドット積</a></li>
-<li><a href="#27-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E7%A9%8D">2.7. 複素数の積</a></li>
-<li><a href="#28-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E9%80%86%E6%95%B0">2.8. 複素数の逆数</a></li>
-<li><a href="#29-%E8%A4%87%E7%B4%A0%E5%B9%B3%E9%9D%A2%E3%81%AE%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%AE%E6%84%8F%E5%91%B3">2.9. 複素平面の掛け算の意味</a></li>
-<li><a href="#210-%E5%A4%A7%E6%AD%A3%E7%BE%A9%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%E3%81%AE%E5%85%AC%E5%BC%8F">2.10. 大正義オイラーの公式</a></li>
+<li><a href="#21-%E6%95%B0%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%81%E3%81%AB">2.1. &#x6570;&#x3063;&#x3066;&#x306A;&#x3041;&#x306B;&#xFF1F;</a></li>
+<li><a href="#22-%E5%8D%98%E4%B8%80%E3%81%AE%E6%95%B0%E3%82%B9%E3%82%AB%E3%83%A9%E3%83%BC">2.2. &#x5358;&#x4E00;&#x306E;&#x6570;&#x30B9;&#x30AB;&#x30E9;&#x30FC;</a></li>
+<li><a href="#23-%E8%A4%87%E6%95%B0%E3%81%AE%E6%95%B0%E3%81%8B%E3%82%89%E3%81%AA%E3%82%8B%E7%A9%8D">2.3. &#x8907;&#x6570;&#x306E;&#x6570;&#x304B;&#x3089;&#x306A;&#x308B;&#x7A4D;</a></li>
+<li><a href="#24-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AE%E7%A9%8D">2.4. &#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x7A4D;</a></li>
+<li><a href="#25-%E5%86%85%E7%A9%8D%E3%81%AE%E6%84%8F%E5%91%B3">2.5. &#x5185;&#x7A4D;&#x306E;&#x610F;&#x5473;</a></li>
+<li><a href="#26-%E3%83%89%E3%83%83%E3%83%88%E7%A9%8D">2.6. &#x30C9;&#x30C3;&#x30C8;&#x7A4D;</a></li>
+<li><a href="#27-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E7%A9%8D">2.7. &#x8907;&#x7D20;&#x6570;&#x306E;&#x7A4D;</a></li>
+<li><a href="#28-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E9%80%86%E6%95%B0">2.8. &#x8907;&#x7D20;&#x6570;&#x306E;&#x9006;&#x6570;</a></li>
+<li><a href="#29-%E8%A4%87%E7%B4%A0%E5%B9%B3%E9%9D%A2%E3%81%AE%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%AE%E6%84%8F%E5%91%B3">2.9. &#x8907;&#x7D20;&#x5E73;&#x9762;&#x306E;&#x639B;&#x3051;&#x7B97;&#x306E;&#x610F;&#x5473;</a></li>
+<li><a href="#210-%E5%A4%A7%E6%AD%A3%E7%BE%A9%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%E3%81%AE%E5%85%AC%E5%BC%8F">2.10. &#x5927;&#x6B63;&#x7FA9;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x306E;&#x516C;&#x5F0F;</a></li>
 </ul>
 </li>
 </ul>
-<h1 id="2-%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B">2. 掛け算とは何か</h1>
-<p>信号処理や統計といった難しい数学をこれから皆さんはやっていくわけですが，こういった数学は結局のところどこまで行っても足し算と掛け算です．脳波の解析も統計も，複雑な「数」に対応した，複雑な「足し算，掛け算」をやってあーだこーだしていく処理にすぎません．なのでまずはここで，掛け算とは何かを考えていきましょう．足し算については比較的簡単であまり違いを意識しなくても良いので，ここでは掛け算のみ触れます．</p>
-<p>伝えたいメッセージは，世の中には色々な「数」があって，対応した色々な「掛け算」がある．という事です．まずはこの事をしっかり頭に入れておけば，解析とかの勉強もさして難しくないはずです．別に全て覚える必要はないので，とにかく色々あるんだなーとだけ感じてください．</p>
-<h2 id="21-%E6%95%B0%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%81%E3%81%AB">2.1. 数ってなぁに？</h2>
-<p>まず初めに，この書において扱う数はユークリッド空間のものに限ります．非ユークリッドを持ち出してねちねちと文句は言わないでください．だから嫌われるんですよ．あぁすみません，嫌われている自覚がなかったんですね．余計な事を言ってしまって申し訳ないです．さて，先程ユークリッド空間や非ユークリッド空間といった言葉が出てきましたが, 簡単にいうとこれらは全て別の「数」として考える必要があるため, 空間と名付けられています. そもそも，「数」ってなんだろう？最初はそんなところから考えてみましょう．</p>
-<p>まずは単一の数と複数の数に分けるところからいきます．</p>
-<h2 id="22-%E5%8D%98%E4%B8%80%E3%81%AE%E6%95%B0%E3%82%B9%E3%82%AB%E3%83%A9%E3%83%BC">2.2. 単一の数スカラー</h2>
-<p>単一の数, スカラー数です. 高校での数学を真面目に受けていた人間なら聞き覚えがえるでしょう. スカラー数とは最も簡単な数...すなわち僕達が昔から親しんできた「数」のことです！</p>
-<p>簡単ですね！以上です.</p>
-<p>スカラー数の掛け算は僕たちが直感的にやっている
-$$
-3 \times 5 = 15
-$$
-の事です.</p>
-<h2 id="23-%E8%A4%87%E6%95%B0%E3%81%AE%E6%95%B0%E3%81%8B%E3%82%89%E3%81%AA%E3%82%8B%E7%A9%8D">2.3. 複数の数からなる積</h2>
-<p>複数の数からなる数には色々あります.\</p>
-<ul>
-<li>ベクトル</li>
-<li>複素数</li>
-<li>行列</li>
-</ul>
-<p>等です. これらはスカラー数の掛け算とは全く違う世界になります. 心してかかりましょう. 高校以上の数学は非常に難しいもので, 僕も全く分からずに置いて行かれましたが, どうにか理解するための最初の第一歩は, 「世の中には(スカラー)数じゃない数があるらしい」と知る事です. 僕はこれを理解するまでに無駄に長い時間を費やしてしまいました.</p>
-<p>では, そもそも何故スカラー以外の数を考える必要があるのでしょうか？</p>
-<p>何故なら, 基本的にスカラー数とは直線(上の点)であるからです. スカラー数には限界があるのです.</p>
-<p>0があって1があり, その次に2が来るのは小学2年生の数直線ですが, 小学4年生頃には「どうやら0と1の間にも小数や分数があるらしい」と知ります. 次に中学になり, 0の向こう側には同じだけの数の負の数があり, 更には√がつく数などもある事を知ります. そして少し飛びますが高校では, 数直線の右と左に終わりはなく, 無限という領域に飛んでいる事を知りますね. ここまでがスカラーの学習順序ですが, いずれも1本の直線を細かく見たり, あるいはずっと先を見ているだけです.</p>
-<p>ただの直線であるスカラーでは記述できる情報が少ないため, 不都合があるから別の数を考える必要があったわけです. スカラーっぽいやつらを複数束ねてまとめた「数」を新しく定義してやれば表現できる情報量は各段に増え, 世界が広がります.</p>
-<p>記述する要素が増えれば情報が増えるのは考えれば納得ですね. イメージは中学数学の1次関数のグラフとかです．縦と横，軸が増えれば情報は増えますね？</p>
-<h2 id="24-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AE%E7%A9%8D">2.4. ベクトルの積</h2>
-<p>ベクトルとは, 二次元の場合は2つ, 三次元の場合は3つの数...を束ねたものです.</p>
-<p>数を複数束ねると, その間に比が生まれ，それらによって定義される長さを持った線(と基準線との角度)が生まれます.
-これが先述した, 増える情報量であり, スカラー数との決定的な違いです.
-ちなみに, この「比と角度(と長さ)」ですが, これは脳波においては位相や電位の強度といったものを考える時に必要になります. というかそのままです. よく確認しておいてください.</p>
-<center><img src="../figures/vector.png" width=50%></center>
-<p>ベクトル同士を掛け合わせるとき, どうするでしょうか？\</p>
-<p>一番素朴な形は下記の通りでしょう.</p>
-<p>$$
-(x_1 , x_2)(y_1 , y_2 ) = (x_1 y_1 + x_2 y_2)
-$$</p>
-<p>これをベクトルの内積と言います.</p>
-<p>そして, ベクトルの内積はもう一つの算出方法がありましたね. 2つのベクトルの絶対値の積に互いになす角の cos をかけたものです. 確認してみましょう.</p>
-<p>$$
-\mathbf{a}\cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|cos\theta
-$$</p>
-<p>まず，見方ですが，太字は数学ではベクトルを表します．なので$\mathbf{a, b}$はスカラーじゃないことに注意してください．</p>
-<p>さてここからが味噌ですが，普通は上の式を見ると絶対値の積に，$cos\theta$をかけていると思うでしょうがそうではありません．考え方としては，$|\mathbf{a}|$に$|\mathbf{b}|cos\theta$をかけているという方が分かりやすくなります．あ，もちろんaとbを逆にしても大丈夫です．</p>
-<p>では$|\mathbf{a}|$は良いとして，もう一つの方はなんだよという事が当然気になるわけですが，そこで出てくるのが射影という考え方です．</p>
-<center><img src="../figures/shadow.png" width=50%></center>
-<p>よくある説明は，ベクトルaに対して垂直な光によって照らされたベクトルbの影の長さ，というものです．まぁようはベクトルbの，ベクトルaの方向に対してもっている影響力とかなんかそんな感じの量です．これでベクトル同士の向きをそろえた上でかけているわけですね．</p>
-<p>ここからベクトルの内積というものが何を表しているのかが分かるのですが, いったん置いといて次へ進みます.</p>
-<h2 id="25-%E5%86%85%E7%A9%8D%E3%81%AE%E6%84%8F%E5%91%B3">2.5. 内積の意味</h2>
-<p>内積の定義を見てきましたが, 結局のところその意味は何でしょう？</p>
-<p>先程，内積が$\mathbf{a}$と射影した$\mathbf{b}$の積である事は確認できました．ここから場合わけして考えます．まず$\mathbf{a,b}$が同じような方向を向いていた場合，$\theta$の値は小さくなり，射影されて出来る $|\mathbf{b}|cos\theta$ の値はほぼ $| \mathbf{b}|$ から変わりません．そこから角度が大きくなるにつれ値は小さくなっていき，ちょうど2つのベクトルが直行する時($\theta = \frac{\pi}{2})$に内積は0になります($\because cos\frac{\pi}{2}=0)$．</p>
-<p>そしてそのまま角度を大きくしていくと，今度は射影ベクトルがベクトルaと全く重ならないようになってしまい，$cos\theta &lt; 0$となります．つまり，二つのベクトルが直角よりなお別の向きを向いている場合，内積は負の値をとります．</p>
-<p>この事をまとめると，以下のような関係が言えます．</p>
-<p><strong>内積の定義</strong></p>
-<p>$$ \mathbf{a}\cdot\mathbf{b} = a_1b_1 + a_2b_2$$
-$$|\mathbf{a}||\mathbf{b}|cos\theta $$</p>
-<p><strong>内積の取る値</strong>
-$$
-\mathbf{a}\cdot \mathbf{b} &gt; 0 \qquad \text{(ベクトルの向きが似てる時)}$$
-$$\mathbf{a}\cdot \mathbf{b}=0 \qquad \text{(ベクトルが直行している時)}$$
-$$\mathbf{a}\cdot \mathbf{b}&lt;0 \qquad \text{(ベクトルの向きが離れている時)}$$</p>
-<p>つまり内積とは，二つのベクトルの向きの関係性を示す指標として捉える事が出来，特に0になる場合にそれらのベクトルが直行している事を示せるものです．</p>
-<h2 id="26-%E3%83%89%E3%83%83%E3%83%88%E7%A9%8D">2.6. ドット積</h2>
-<p>ベクトルの掛け算のうち, ドット積だとか点乗積と呼ばれるものがあります．ドット積とは, 同じ長さの数列の各要素を掛け合わせ, その値を足し合わせて一つの値として出力したものです.</p>
-<p>$$ a = {a_1,a_2,a_3,a_4}$$
-$$b={b_1,b_2,b_3,b_4}$$
-$$a\cdot b = a_1b_1 + a_2b_2 + a_3b_3 + a_4b_4$$</p>
-<p>そう, つまり内積の事ですね．</p>
-<p>ドット積は実質(ユークリッド空間では)内積と同じ扱いをされます.</p>
-<p>こいつは代数学・幾何学において非常に大事になる上, 畳み込みの基礎となるものです！</p>
-<p>そしてそれはつまり, フーリエ変換やウェーブレット変換(参照: analysis)の基礎になる重要な掛け算です．ベクトルの掛け算を学ぶ意味は，そもそも我々がこの先扱う事になる脳波データなどの信号は全てベクトルであるからです．ベクトルを操作する方法をしっかりと学ぶ事が必要になります．そして内積はいずれ脳波の解析において最も基本となる処理，フーリエ変換を理解するために必要となります．</p>
-<p>勿論，ベクトルの掛け算なので他の数学にも多用されます．統計なんかでも使うごく当たり前の処理なので，ちゃんと覚えておきましょう．</p>
-<h2 id="27-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E7%A9%8D">2.7. 複素数の積</h2>
-<p>複素数ってなんだよーというような疑問はひとまずここでは置いてください．そのレベルからの質問は，後の章で詳しく複素数について解説しているのでそれを読んでからにして，まずここでは「なんかキモい数があるんだなぁ，変な掛け算の仕方だなあ」くらいを感じてもらえれば大丈夫です！</p>
-<p>上記ベクトルと同様, 複素平面上では $r(\cos x + i\sin x)$ というものを考えます.
-まずは一般的な積を考えてみましょう.</p>
-<p>$$
-r_1(\cos x + i\sin x)r_2(\cos y + i\sin y)$$
-$$= r_1 r_2(\cos x\cos y - \sin x\sin y + i\sin x \cos y + i\cos x\sin y)
-$$</p>
-<p>上記は加法定理より
-$$
-r_1 r_2(\cos ( x +  y) +  i\sin ( x +  y))
-$$</p>
-<p>となります.</p>
-<p>ベクトルの内積と似てはいますが, 決定的な違いがあります.
-掛け算をすると角度の足し算になっているのです！</p>
-<h2 id="28-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E9%80%86%E6%95%B0">2.8. 複素数の逆数</h2>
-<p>地味に複素数の偉大なところです.</p>
-<p>逆数...つまり$\frac{1}{x}$が出来れば割り算はできますよね？
-ベクトルや行列は複数の数を束ねただけなので逆数と言われてもこまりますが, 複素数は割り算が簡単にできます.</p>
-<p>何故なら複素数は見た目上スカラーっぽいですからね！
-逆数を取るという事は, 複素数の割り算は角度の引き算になりますね.</p>
-<h2 id="29-%E8%A4%87%E7%B4%A0%E5%B9%B3%E9%9D%A2%E3%81%AE%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%AE%E6%84%8F%E5%91%B3">2.9. 複素平面の掛け算の意味</h2>
-<p>複素平面で掛け算をすると角度の足し算になるようでした．つまり回転ですね. これの何がうれしいかって言うと, 計算が超楽になる事です．基本的に，数学では掛け算より足し算の方が扱いやすいので，掛け算を足し算に変換できる性質は重宝されがちです．</p>
-<p>対数なんかがそうでしたね．実際，統計をやる際とかに，掛け算はややこしいので足し算の形に表したいという理由で関数を対数関数に変換する作業なんかがよく出てきます．</p>
-<p>そしてこの性質が今後とても大事になるオイラーの公式というものに結びついているのです. しっかりと理解しておきましょう．</p>
-<h2 id="210-%E5%A4%A7%E6%AD%A3%E7%BE%A9%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%E3%81%AE%E5%85%AC%E5%BC%8F">2.10. 大正義オイラーの公式</h2>
-<p>証明は今の段階では難しいので紹介だけになりますが，オイラーの公式をここで確認しておきましょう．オイラーの公式は脳波解析の基本の基本，全てにおいて重要になる公式です．basic.pdfの主だった目的の一つが，この公式を証明する武器を備えてもらうことであるといっても過言じゃない程のものです．まずは確認してみましょう．</p>
-<p><strong>オイラーの公式(Euler's formula)</strong>
-$$
-\mathrm{e}^{ix} = \cos x +  i\sin x
-$$</p>
-<p>ふむふむ，三角関数の足し合わせが，指数関数っぽく表されてますね．あとは何やら虚数単位iもいますね．しかしこれは...綺麗ですね！</p>
-<p>更にこいつの特殊形がこうなります.
-$$
-\mathrm{e}^{i\pi} + 1 = 0
-$$</p>
-<p>美しすぎますね！！数学の基本である指数関数，虚数，三角関数などといったものが濃縮され，数も基本の１と０のみでまとめられています．</p>
-<p>この公式をもって, 我々は脳波と戦っていくことになります．Euler's formula を制するものは脳を制するのです.</p>
-<p>つまり内積同様, フーリエ変換の基本の一つになっています. ２章以降は統計以外の全てが，このオイラーの公式を証明するために必要な数学のおさらいになります．証明はAnalysisの方に記載しています．(とはいえ，脳波以外にも使う基本的な数学知識であるので脳波以外の人も読む価値は多少は...ある...んじゃないかなぁ？)</p>
+<h1 class="mume-header" id="2-%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B">2. &#x639B;&#x3051;&#x7B97;&#x3068;&#x306F;&#x4F55;&#x304B;</h1>
 
-</body>
-</html>
+<p>&#x4FE1;&#x53F7;&#x51E6;&#x7406;&#x3084;&#x7D71;&#x8A08;&#x3068;&#x3044;&#x3063;&#x305F;&#x96E3;&#x3057;&#x3044;&#x6570;&#x5B66;&#x3092;&#x3053;&#x308C;&#x304B;&#x3089;&#x7686;&#x3055;&#x3093;&#x306F;&#x3084;&#x3063;&#x3066;&#x3044;&#x304F;&#x308F;&#x3051;&#x3067;&#x3059;&#x304C;&#xFF0C;&#x3053;&#x3046;&#x3044;&#x3063;&#x305F;&#x6570;&#x5B66;&#x306F;&#x7D50;&#x5C40;&#x306E;&#x3068;&#x3053;&#x308D;&#x3069;&#x3053;&#x307E;&#x3067;&#x884C;&#x3063;&#x3066;&#x3082;&#x8DB3;&#x3057;&#x7B97;&#x3068;&#x639B;&#x3051;&#x7B97;&#x3067;&#x3059;&#xFF0E;&#x8133;&#x6CE2;&#x306E;&#x89E3;&#x6790;&#x3082;&#x7D71;&#x8A08;&#x3082;&#xFF0C;&#x8907;&#x96D1;&#x306A;&#x300C;&#x6570;&#x300D;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x305F;&#xFF0C;&#x8907;&#x96D1;&#x306A;&#x300C;&#x8DB3;&#x3057;&#x7B97;&#xFF0C;&#x639B;&#x3051;&#x7B97;&#x300D;&#x3092;&#x3084;&#x3063;&#x3066;&#x3042;&#x30FC;&#x3060;&#x3053;&#x30FC;&#x3060;&#x3057;&#x3066;&#x3044;&#x304F;&#x51E6;&#x7406;&#x306B;&#x3059;&#x304E;&#x307E;&#x305B;&#x3093;&#xFF0E;&#x306A;&#x306E;&#x3067;&#x307E;&#x305A;&#x306F;&#x3053;&#x3053;&#x3067;&#xFF0C;&#x639B;&#x3051;&#x7B97;&#x3068;&#x306F;&#x4F55;&#x304B;&#x3092;&#x8003;&#x3048;&#x3066;&#x3044;&#x304D;&#x307E;&#x3057;&#x3087;&#x3046;&#xFF0E;&#x8DB3;&#x3057;&#x7B97;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x6BD4;&#x8F03;&#x7684;&#x7C21;&#x5358;&#x3067;&#x3042;&#x307E;&#x308A;&#x9055;&#x3044;&#x3092;&#x610F;&#x8B58;&#x3057;&#x306A;&#x304F;&#x3066;&#x3082;&#x826F;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x3053;&#x3053;&#x3067;&#x306F;&#x639B;&#x3051;&#x7B97;&#x306E;&#x307F;&#x89E6;&#x308C;&#x307E;&#x3059;&#xFF0E;</p>
+<p>&#x4F1D;&#x3048;&#x305F;&#x3044;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x306F;&#xFF0C;&#x4E16;&#x306E;&#x4E2D;&#x306B;&#x306F;&#x8272;&#x3005;&#x306A;&#x300C;&#x6570;&#x300D;&#x304C;&#x3042;&#x3063;&#x3066;&#xFF0C;&#x5BFE;&#x5FDC;&#x3057;&#x305F;&#x8272;&#x3005;&#x306A;&#x300C;&#x639B;&#x3051;&#x7B97;&#x300D;&#x304C;&#x3042;&#x308B;&#xFF0E;&#x3068;&#x3044;&#x3046;&#x4E8B;&#x3067;&#x3059;&#xFF0E;&#x307E;&#x305A;&#x306F;&#x3053;&#x306E;&#x4E8B;&#x3092;&#x3057;&#x3063;&#x304B;&#x308A;&#x982D;&#x306B;&#x5165;&#x308C;&#x3066;&#x304A;&#x3051;&#x3070;&#xFF0C;&#x89E3;&#x6790;&#x3068;&#x304B;&#x306E;&#x52C9;&#x5F37;&#x3082;&#x3055;&#x3057;&#x3066;&#x96E3;&#x3057;&#x304F;&#x306A;&#x3044;&#x306F;&#x305A;&#x3067;&#x3059;&#xFF0E;&#x5225;&#x306B;&#x5168;&#x3066;&#x899A;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x306A;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x3068;&#x306B;&#x304B;&#x304F;&#x8272;&#x3005;&#x3042;&#x308B;&#x3093;&#x3060;&#x306A;&#x30FC;&#x3068;&#x3060;&#x3051;&#x611F;&#x3058;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;</p>
+<h2 class="mume-header" id="21-%E6%95%B0%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%81%E3%81%AB">2.1. &#x6570;&#x3063;&#x3066;&#x306A;&#x3041;&#x306B;&#xFF1F;</h2>
+
+<p>&#x307E;&#x305A;&#x521D;&#x3081;&#x306B;&#xFF0C;&#x3053;&#x306E;&#x66F8;&#x306B;&#x304A;&#x3044;&#x3066;&#x6271;&#x3046;&#x6570;&#x306F;&#x30E6;&#x30FC;&#x30AF;&#x30EA;&#x30C3;&#x30C9;&#x7A7A;&#x9593;&#x306E;&#x3082;&#x306E;&#x306B;&#x9650;&#x308A;&#x307E;&#x3059;&#xFF0E;&#x975E;&#x30E6;&#x30FC;&#x30AF;&#x30EA;&#x30C3;&#x30C9;&#x3092;&#x6301;&#x3061;&#x51FA;&#x3057;&#x3066;&#x306D;&#x3061;&#x306D;&#x3061;&#x3068;&#x6587;&#x53E5;&#x306F;&#x8A00;&#x308F;&#x306A;&#x3044;&#x3067;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&#x3060;&#x304B;&#x3089;&#x5ACC;&#x308F;&#x308C;&#x308B;&#x3093;&#x3067;&#x3059;&#x3088;&#xFF0E;&#x3042;&#x3041;&#x3059;&#x307F;&#x307E;&#x305B;&#x3093;&#xFF0C;&#x5ACC;&#x308F;&#x308C;&#x3066;&#x3044;&#x308B;&#x81EA;&#x899A;&#x304C;&#x306A;&#x304B;&#x3063;&#x305F;&#x3093;&#x3067;&#x3059;&#x306D;&#xFF0E;&#x4F59;&#x8A08;&#x306A;&#x4E8B;&#x3092;&#x8A00;&#x3063;&#x3066;&#x3057;&#x307E;&#x3063;&#x3066;&#x7533;&#x3057;&#x8A33;&#x306A;&#x3044;&#x3067;&#x3059;&#xFF0E;&#x3055;&#x3066;&#xFF0C;&#x5148;&#x7A0B;&#x30E6;&#x30FC;&#x30AF;&#x30EA;&#x30C3;&#x30C9;&#x7A7A;&#x9593;&#x3084;&#x975E;&#x30E6;&#x30FC;&#x30AF;&#x30EA;&#x30C3;&#x30C9;&#x7A7A;&#x9593;&#x3068;&#x3044;&#x3063;&#x305F;&#x8A00;&#x8449;&#x304C;&#x51FA;&#x3066;&#x304D;&#x307E;&#x3057;&#x305F;&#x304C;, &#x7C21;&#x5358;&#x306B;&#x3044;&#x3046;&#x3068;&#x3053;&#x308C;&#x3089;&#x306F;&#x5168;&#x3066;&#x5225;&#x306E;&#x300C;&#x6570;&#x300D;&#x3068;&#x3057;&#x3066;&#x8003;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;, &#x7A7A;&#x9593;&#x3068;&#x540D;&#x4ED8;&#x3051;&#x3089;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;. &#x305D;&#x3082;&#x305D;&#x3082;&#xFF0C;&#x300C;&#x6570;&#x300D;&#x3063;&#x3066;&#x306A;&#x3093;&#x3060;&#x308D;&#x3046;&#xFF1F;&#x6700;&#x521D;&#x306F;&#x305D;&#x3093;&#x306A;&#x3068;&#x3053;&#x308D;&#x304B;&#x3089;&#x8003;&#x3048;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;&#xFF0E;</p>
+<p>&#x307E;&#x305A;&#x306F;&#x5358;&#x4E00;&#x306E;&#x6570;&#x3068;&#x8907;&#x6570;&#x306E;&#x6570;&#x306B;&#x5206;&#x3051;&#x308B;&#x3068;&#x3053;&#x308D;&#x304B;&#x3089;&#x3044;&#x304D;&#x307E;&#x3059;&#xFF0E;</p>
+<h2 class="mume-header" id="22-%E5%8D%98%E4%B8%80%E3%81%AE%E6%95%B0%E3%82%B9%E3%82%AB%E3%83%A9%E3%83%BC">2.2. &#x5358;&#x4E00;&#x306E;&#x6570;&#x30B9;&#x30AB;&#x30E9;&#x30FC;</h2>
+
+<p>&#x5358;&#x4E00;&#x306E;&#x6570;, &#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x6570;&#x3067;&#x3059;. &#x9AD8;&#x6821;&#x3067;&#x306E;&#x6570;&#x5B66;&#x3092;&#x771F;&#x9762;&#x76EE;&#x306B;&#x53D7;&#x3051;&#x3066;&#x3044;&#x305F;&#x4EBA;&#x9593;&#x306A;&#x3089;&#x805E;&#x304D;&#x899A;&#x3048;&#x304C;&#x3048;&#x308B;&#x3067;&#x3057;&#x3087;&#x3046;. &#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x6570;&#x3068;&#x306F;&#x6700;&#x3082;&#x7C21;&#x5358;&#x306A;&#x6570;...&#x3059;&#x306A;&#x308F;&#x3061;&#x50D5;&#x9054;&#x304C;&#x6614;&#x304B;&#x3089;&#x89AA;&#x3057;&#x3093;&#x3067;&#x304D;&#x305F;&#x300C;&#x6570;&#x300D;&#x306E;&#x3053;&#x3068;&#x3067;&#x3059;&#xFF01;</p>
+<p>&#x7C21;&#x5358;&#x3067;&#x3059;&#x306D;&#xFF01;&#x4EE5;&#x4E0A;&#x3067;&#x3059;.</p>
+<p>&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x6570;&#x306E;&#x639B;&#x3051;&#x7B97;&#x306F;&#x50D5;&#x305F;&#x3061;&#x304C;&#x76F4;&#x611F;&#x7684;&#x306B;&#x3084;&#x3063;&#x3066;&#x3044;&#x308B;<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>3</mn><mo>&#xD7;</mo><mn>5</mn><mo>=</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">3 \times 5 = 15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">15</span></span></span></span></span><br>
+&#x306E;&#x4E8B;&#x3067;&#x3059;.</p>
+<h2 class="mume-header" id="23-%E8%A4%87%E6%95%B0%E3%81%AE%E6%95%B0%E3%81%8B%E3%82%89%E3%81%AA%E3%82%8B%E7%A9%8D">2.3. &#x8907;&#x6570;&#x306E;&#x6570;&#x304B;&#x3089;&#x306A;&#x308B;&#x7A4D;</h2>
+
+<p>&#x8907;&#x6570;&#x306E;&#x6570;&#x304B;&#x3089;&#x306A;&#x308B;&#x6570;&#x306B;&#x306F;&#x8272;&#x3005;&#x3042;&#x308A;&#x307E;&#x3059;.\</p>
+<ul>
+<li>&#x30D9;&#x30AF;&#x30C8;&#x30EB;</li>
+<li>&#x8907;&#x7D20;&#x6570;</li>
+<li>&#x884C;&#x5217;</li>
+</ul>
+<p>&#x7B49;&#x3067;&#x3059;. &#x3053;&#x308C;&#x3089;&#x306F;&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x6570;&#x306E;&#x639B;&#x3051;&#x7B97;&#x3068;&#x306F;&#x5168;&#x304F;&#x9055;&#x3046;&#x4E16;&#x754C;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;. &#x5FC3;&#x3057;&#x3066;&#x304B;&#x304B;&#x308A;&#x307E;&#x3057;&#x3087;&#x3046;. &#x9AD8;&#x6821;&#x4EE5;&#x4E0A;&#x306E;&#x6570;&#x5B66;&#x306F;&#x975E;&#x5E38;&#x306B;&#x96E3;&#x3057;&#x3044;&#x3082;&#x306E;&#x3067;, &#x50D5;&#x3082;&#x5168;&#x304F;&#x5206;&#x304B;&#x3089;&#x305A;&#x306B;&#x7F6E;&#x3044;&#x3066;&#x884C;&#x304B;&#x308C;&#x307E;&#x3057;&#x305F;&#x304C;, &#x3069;&#x3046;&#x306B;&#x304B;&#x7406;&#x89E3;&#x3059;&#x308B;&#x305F;&#x3081;&#x306E;&#x6700;&#x521D;&#x306E;&#x7B2C;&#x4E00;&#x6B69;&#x306F;, &#x300C;&#x4E16;&#x306E;&#x4E2D;&#x306B;&#x306F;(&#x30B9;&#x30AB;&#x30E9;&#x30FC;)&#x6570;&#x3058;&#x3083;&#x306A;&#x3044;&#x6570;&#x304C;&#x3042;&#x308B;&#x3089;&#x3057;&#x3044;&#x300D;&#x3068;&#x77E5;&#x308B;&#x4E8B;&#x3067;&#x3059;. &#x50D5;&#x306F;&#x3053;&#x308C;&#x3092;&#x7406;&#x89E3;&#x3059;&#x308B;&#x307E;&#x3067;&#x306B;&#x7121;&#x99C4;&#x306B;&#x9577;&#x3044;&#x6642;&#x9593;&#x3092;&#x8CBB;&#x3084;&#x3057;&#x3066;&#x3057;&#x307E;&#x3044;&#x307E;&#x3057;&#x305F;.</p>
+<p>&#x3067;&#x306F;, &#x305D;&#x3082;&#x305D;&#x3082;&#x4F55;&#x6545;&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x4EE5;&#x5916;&#x306E;&#x6570;&#x3092;&#x8003;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308B;&#x306E;&#x3067;&#x3057;&#x3087;&#x3046;&#x304B;&#xFF1F;</p>
+<p>&#x4F55;&#x6545;&#x306A;&#x3089;, &#x57FA;&#x672C;&#x7684;&#x306B;&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x6570;&#x3068;&#x306F;&#x76F4;&#x7DDA;(&#x4E0A;&#x306E;&#x70B9;)&#x3067;&#x3042;&#x308B;&#x304B;&#x3089;&#x3067;&#x3059;. &#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x6570;&#x306B;&#x306F;&#x9650;&#x754C;&#x304C;&#x3042;&#x308B;&#x306E;&#x3067;&#x3059;.</p>
+<p>0&#x304C;&#x3042;&#x3063;&#x3066;1&#x304C;&#x3042;&#x308A;, &#x305D;&#x306E;&#x6B21;&#x306B;2&#x304C;&#x6765;&#x308B;&#x306E;&#x306F;&#x5C0F;&#x5B66;2&#x5E74;&#x751F;&#x306E;&#x6570;&#x76F4;&#x7DDA;&#x3067;&#x3059;&#x304C;, &#x5C0F;&#x5B66;4&#x5E74;&#x751F;&#x9803;&#x306B;&#x306F;&#x300C;&#x3069;&#x3046;&#x3084;&#x3089;0&#x3068;1&#x306E;&#x9593;&#x306B;&#x3082;&#x5C0F;&#x6570;&#x3084;&#x5206;&#x6570;&#x304C;&#x3042;&#x308B;&#x3089;&#x3057;&#x3044;&#x300D;&#x3068;&#x77E5;&#x308A;&#x307E;&#x3059;. &#x6B21;&#x306B;&#x4E2D;&#x5B66;&#x306B;&#x306A;&#x308A;, 0&#x306E;&#x5411;&#x3053;&#x3046;&#x5074;&#x306B;&#x306F;&#x540C;&#x3058;&#x3060;&#x3051;&#x306E;&#x6570;&#x306E;&#x8CA0;&#x306E;&#x6570;&#x304C;&#x3042;&#x308A;, &#x66F4;&#x306B;&#x306F;&#x221A;&#x304C;&#x3064;&#x304F;&#x6570;&#x306A;&#x3069;&#x3082;&#x3042;&#x308B;&#x4E8B;&#x3092;&#x77E5;&#x308A;&#x307E;&#x3059;. &#x305D;&#x3057;&#x3066;&#x5C11;&#x3057;&#x98DB;&#x3073;&#x307E;&#x3059;&#x304C;&#x9AD8;&#x6821;&#x3067;&#x306F;, &#x6570;&#x76F4;&#x7DDA;&#x306E;&#x53F3;&#x3068;&#x5DE6;&#x306B;&#x7D42;&#x308F;&#x308A;&#x306F;&#x306A;&#x304F;, &#x7121;&#x9650;&#x3068;&#x3044;&#x3046;&#x9818;&#x57DF;&#x306B;&#x98DB;&#x3093;&#x3067;&#x3044;&#x308B;&#x4E8B;&#x3092;&#x77E5;&#x308A;&#x307E;&#x3059;&#x306D;. &#x3053;&#x3053;&#x307E;&#x3067;&#x304C;&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x306E;&#x5B66;&#x7FD2;&#x9806;&#x5E8F;&#x3067;&#x3059;&#x304C;, &#x3044;&#x305A;&#x308C;&#x3082;1&#x672C;&#x306E;&#x76F4;&#x7DDA;&#x3092;&#x7D30;&#x304B;&#x304F;&#x898B;&#x305F;&#x308A;, &#x3042;&#x308B;&#x3044;&#x306F;&#x305A;&#x3063;&#x3068;&#x5148;&#x3092;&#x898B;&#x3066;&#x3044;&#x308B;&#x3060;&#x3051;&#x3067;&#x3059;.</p>
+<p>&#x305F;&#x3060;&#x306E;&#x76F4;&#x7DDA;&#x3067;&#x3042;&#x308B;&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x3067;&#x306F;&#x8A18;&#x8FF0;&#x3067;&#x304D;&#x308B;&#x60C5;&#x5831;&#x304C;&#x5C11;&#x306A;&#x3044;&#x305F;&#x3081;, &#x4E0D;&#x90FD;&#x5408;&#x304C;&#x3042;&#x308B;&#x304B;&#x3089;&#x5225;&#x306E;&#x6570;&#x3092;&#x8003;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x3063;&#x305F;&#x308F;&#x3051;&#x3067;&#x3059;. &#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x3063;&#x307D;&#x3044;&#x3084;&#x3064;&#x3089;&#x3092;&#x8907;&#x6570;&#x675F;&#x306D;&#x3066;&#x307E;&#x3068;&#x3081;&#x305F;&#x300C;&#x6570;&#x300D;&#x3092;&#x65B0;&#x3057;&#x304F;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x3084;&#x308C;&#x3070;&#x8868;&#x73FE;&#x3067;&#x304D;&#x308B;&#x60C5;&#x5831;&#x91CF;&#x306F;&#x5404;&#x6BB5;&#x306B;&#x5897;&#x3048;, &#x4E16;&#x754C;&#x304C;&#x5E83;&#x304C;&#x308A;&#x307E;&#x3059;.</p>
+<p>&#x8A18;&#x8FF0;&#x3059;&#x308B;&#x8981;&#x7D20;&#x304C;&#x5897;&#x3048;&#x308C;&#x3070;&#x60C5;&#x5831;&#x304C;&#x5897;&#x3048;&#x308B;&#x306E;&#x306F;&#x8003;&#x3048;&#x308C;&#x3070;&#x7D0D;&#x5F97;&#x3067;&#x3059;&#x306D;. &#x30A4;&#x30E1;&#x30FC;&#x30B8;&#x306F;&#x4E2D;&#x5B66;&#x6570;&#x5B66;&#x306E;1&#x6B21;&#x95A2;&#x6570;&#x306E;&#x30B0;&#x30E9;&#x30D5;&#x3068;&#x304B;&#x3067;&#x3059;&#xFF0E;&#x7E26;&#x3068;&#x6A2A;&#xFF0C;&#x8EF8;&#x304C;&#x5897;&#x3048;&#x308C;&#x3070;&#x60C5;&#x5831;&#x306F;&#x5897;&#x3048;&#x307E;&#x3059;&#x306D;&#xFF1F;</p>
+<h2 class="mume-header" id="24-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AE%E7%A9%8D">2.4. &#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x7A4D;</h2>
+
+<p>&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x3068;&#x306F;, &#x4E8C;&#x6B21;&#x5143;&#x306E;&#x5834;&#x5408;&#x306F;2&#x3064;, &#x4E09;&#x6B21;&#x5143;&#x306E;&#x5834;&#x5408;&#x306F;3&#x3064;&#x306E;&#x6570;...&#x3092;&#x675F;&#x306D;&#x305F;&#x3082;&#x306E;&#x3067;&#x3059;.</p>
+<p>&#x6570;&#x3092;&#x8907;&#x6570;&#x675F;&#x306D;&#x308B;&#x3068;, &#x305D;&#x306E;&#x9593;&#x306B;&#x6BD4;&#x304C;&#x751F;&#x307E;&#x308C;&#xFF0C;&#x305D;&#x308C;&#x3089;&#x306B;&#x3088;&#x3063;&#x3066;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x308B;&#x9577;&#x3055;&#x3092;&#x6301;&#x3063;&#x305F;&#x7DDA;(&#x3068;&#x57FA;&#x6E96;&#x7DDA;&#x3068;&#x306E;&#x89D2;&#x5EA6;)&#x304C;&#x751F;&#x307E;&#x308C;&#x307E;&#x3059;.<br>
+&#x3053;&#x308C;&#x304C;&#x5148;&#x8FF0;&#x3057;&#x305F;, &#x5897;&#x3048;&#x308B;&#x60C5;&#x5831;&#x91CF;&#x3067;&#x3042;&#x308A;, &#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x6570;&#x3068;&#x306E;&#x6C7A;&#x5B9A;&#x7684;&#x306A;&#x9055;&#x3044;&#x3067;&#x3059;.<br>
+&#x3061;&#x306A;&#x307F;&#x306B;, &#x3053;&#x306E;&#x300C;&#x6BD4;&#x3068;&#x89D2;&#x5EA6;(&#x3068;&#x9577;&#x3055;)&#x300D;&#x3067;&#x3059;&#x304C;, &#x3053;&#x308C;&#x306F;&#x8133;&#x6CE2;&#x306B;&#x304A;&#x3044;&#x3066;&#x306F;&#x4F4D;&#x76F8;&#x3084;&#x96FB;&#x4F4D;&#x306E;&#x5F37;&#x5EA6;&#x3068;&#x3044;&#x3063;&#x305F;&#x3082;&#x306E;&#x3092;&#x8003;&#x3048;&#x308B;&#x6642;&#x306B;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;. &#x3068;&#x3044;&#x3046;&#x304B;&#x305D;&#x306E;&#x307E;&#x307E;&#x3067;&#x3059;. &#x3088;&#x304F;&#x78BA;&#x8A8D;&#x3057;&#x3066;&#x304A;&#x3044;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;.</p>
+<center><img src="../figures/vector.png" width="50%"></center>
+<p>&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x540C;&#x58EB;&#x3092;&#x639B;&#x3051;&#x5408;&#x308F;&#x305B;&#x308B;&#x3068;&#x304D;, &#x3069;&#x3046;&#x3059;&#x308B;&#x3067;&#x3057;&#x3087;&#x3046;&#x304B;&#xFF1F;\</p>
+<p>&#x4E00;&#x756A;&#x7D20;&#x6734;&#x306A;&#x5F62;&#x306F;&#x4E0B;&#x8A18;&#x306E;&#x901A;&#x308A;&#x3067;&#x3057;&#x3087;&#x3046;.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1 , x_2)(y_1 , y_2 ) = (x_1 y_1 + x_2 y_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>&#x3053;&#x308C;&#x3092;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5185;&#x7A4D;&#x3068;&#x8A00;&#x3044;&#x307E;&#x3059;.</p>
+<p>&#x305D;&#x3057;&#x3066;, &#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5185;&#x7A4D;&#x306F;&#x3082;&#x3046;&#x4E00;&#x3064;&#x306E;&#x7B97;&#x51FA;&#x65B9;&#x6CD5;&#x304C;&#x3042;&#x308A;&#x307E;&#x3057;&#x305F;&#x306D;. 2&#x3064;&#x306E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x7D76;&#x5BFE;&#x5024;&#x306E;&#x7A4D;&#x306B;&#x4E92;&#x3044;&#x306B;&#x306A;&#x3059;&#x89D2;&#x306E; cos &#x3092;&#x304B;&#x3051;&#x305F;&#x3082;&#x306E;&#x3067;&#x3059;. &#x78BA;&#x8A8D;&#x3057;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">a</mi><mo>&#x22C5;</mo><mi mathvariant="bold">b</mi><mo>=</mo><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">a</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">b</mi><mi mathvariant="normal">&#x2223;</mi><mi>c</mi><mi>o</mi><mi>s</mi><mi>&#x3B8;</mi></mrow><annotation encoding="application/x-tex">\mathbf{a}\cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|cos\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathbf">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathbf">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathbf">a</span><span class="mord">&#x2223;&#x2223;</span><span class="mord mathbf">b</span><span class="mord">&#x2223;</span><span class="mord mathnormal">cos</span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span></span></span></span></span></p>
+<p>&#x307E;&#x305A;&#xFF0C;&#x898B;&#x65B9;&#x3067;&#x3059;&#x304C;&#xFF0C;&#x592A;&#x5B57;&#x306F;&#x6570;&#x5B66;&#x3067;&#x306F;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x3092;&#x8868;&#x3057;&#x307E;&#x3059;&#xFF0E;&#x306A;&#x306E;&#x3067;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">a</mi><mo separator="true">,</mo><mi mathvariant="bold">b</mi></mrow><annotation encoding="application/x-tex">\mathbf{a, b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathbf">b</span></span></span></span></span>&#x306F;&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x3058;&#x3083;&#x306A;&#x3044;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;</p>
+<p>&#x3055;&#x3066;&#x3053;&#x3053;&#x304B;&#x3089;&#x304C;&#x5473;&#x564C;&#x3067;&#x3059;&#x304C;&#xFF0C;&#x666E;&#x901A;&#x306F;&#x4E0A;&#x306E;&#x5F0F;&#x3092;&#x898B;&#x308B;&#x3068;&#x7D76;&#x5BFE;&#x5024;&#x306E;&#x7A4D;&#x306B;&#xFF0C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>&#x3B8;</mi></mrow><annotation encoding="application/x-tex">cos\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">cos</span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span></span></span></span>&#x3092;&#x304B;&#x3051;&#x3066;&#x3044;&#x308B;&#x3068;&#x601D;&#x3046;&#x3067;&#x3057;&#x3087;&#x3046;&#x304C;&#x305D;&#x3046;&#x3067;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#xFF0E;&#x8003;&#x3048;&#x65B9;&#x3068;&#x3057;&#x3066;&#x306F;&#xFF0C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">a</mi><mi mathvariant="normal">&#x2223;</mi></mrow><annotation encoding="application/x-tex">|\mathbf{a}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathbf">a</span><span class="mord">&#x2223;</span></span></span></span>&#x306B;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">b</mi><mi mathvariant="normal">&#x2223;</mi><mi>c</mi><mi>o</mi><mi>s</mi><mi>&#x3B8;</mi></mrow><annotation encoding="application/x-tex">|\mathbf{b}|cos\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathbf">b</span><span class="mord">&#x2223;</span><span class="mord mathnormal">cos</span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span></span></span></span>&#x3092;&#x304B;&#x3051;&#x3066;&#x3044;&#x308B;&#x3068;&#x3044;&#x3046;&#x65B9;&#x304C;&#x5206;&#x304B;&#x308A;&#x3084;&#x3059;&#x304F;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;&#x3042;&#xFF0C;&#x3082;&#x3061;&#x308D;&#x3093;a&#x3068;b&#x3092;&#x9006;&#x306B;&#x3057;&#x3066;&#x3082;&#x5927;&#x4E08;&#x592B;&#x3067;&#x3059;&#xFF0E;</p>
+<p>&#x3067;&#x306F;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">a</mi><mi mathvariant="normal">&#x2223;</mi></mrow><annotation encoding="application/x-tex">|\mathbf{a}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathbf">a</span><span class="mord">&#x2223;</span></span></span></span>&#x306F;&#x826F;&#x3044;&#x3068;&#x3057;&#x3066;&#xFF0C;&#x3082;&#x3046;&#x4E00;&#x3064;&#x306E;&#x65B9;&#x306F;&#x306A;&#x3093;&#x3060;&#x3088;&#x3068;&#x3044;&#x3046;&#x4E8B;&#x304C;&#x5F53;&#x7136;&#x6C17;&#x306B;&#x306A;&#x308B;&#x308F;&#x3051;&#x3067;&#x3059;&#x304C;&#xFF0C;&#x305D;&#x3053;&#x3067;&#x51FA;&#x3066;&#x304F;&#x308B;&#x306E;&#x304C;&#x5C04;&#x5F71;&#x3068;&#x3044;&#x3046;&#x8003;&#x3048;&#x65B9;&#x3067;&#x3059;&#xFF0E;</p>
+<center><img src="../figures/shadow.png" width="50%"></center>
+<p>&#x3088;&#x304F;&#x3042;&#x308B;&#x8AAC;&#x660E;&#x306F;&#xFF0C;&#x30D9;&#x30AF;&#x30C8;&#x30EB;a&#x306B;&#x5BFE;&#x3057;&#x3066;&#x5782;&#x76F4;&#x306A;&#x5149;&#x306B;&#x3088;&#x3063;&#x3066;&#x7167;&#x3089;&#x3055;&#x308C;&#x305F;&#x30D9;&#x30AF;&#x30C8;&#x30EB;b&#x306E;&#x5F71;&#x306E;&#x9577;&#x3055;&#xFF0C;&#x3068;&#x3044;&#x3046;&#x3082;&#x306E;&#x3067;&#x3059;&#xFF0E;&#x307E;&#x3041;&#x3088;&#x3046;&#x306F;&#x30D9;&#x30AF;&#x30C8;&#x30EB;b&#x306E;&#xFF0C;&#x30D9;&#x30AF;&#x30C8;&#x30EB;a&#x306E;&#x65B9;&#x5411;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x3082;&#x3063;&#x3066;&#x3044;&#x308B;&#x5F71;&#x97FF;&#x529B;&#x3068;&#x304B;&#x306A;&#x3093;&#x304B;&#x305D;&#x3093;&#x306A;&#x611F;&#x3058;&#x306E;&#x91CF;&#x3067;&#x3059;&#xFF0E;&#x3053;&#x308C;&#x3067;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x540C;&#x58EB;&#x306E;&#x5411;&#x304D;&#x3092;&#x305D;&#x308D;&#x3048;&#x305F;&#x4E0A;&#x3067;&#x304B;&#x3051;&#x3066;&#x3044;&#x308B;&#x308F;&#x3051;&#x3067;&#x3059;&#x306D;&#xFF0E;</p>
+<p>&#x3053;&#x3053;&#x304B;&#x3089;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5185;&#x7A4D;&#x3068;&#x3044;&#x3046;&#x3082;&#x306E;&#x304C;&#x4F55;&#x3092;&#x8868;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x304B;&#x304C;&#x5206;&#x304B;&#x308B;&#x306E;&#x3067;&#x3059;&#x304C;, &#x3044;&#x3063;&#x305F;&#x3093;&#x7F6E;&#x3044;&#x3068;&#x3044;&#x3066;&#x6B21;&#x3078;&#x9032;&#x307F;&#x307E;&#x3059;.</p>
+<h2 class="mume-header" id="25-%E5%86%85%E7%A9%8D%E3%81%AE%E6%84%8F%E5%91%B3">2.5. &#x5185;&#x7A4D;&#x306E;&#x610F;&#x5473;</h2>
+
+<p>&#x5185;&#x7A4D;&#x306E;&#x5B9A;&#x7FA9;&#x3092;&#x898B;&#x3066;&#x304D;&#x307E;&#x3057;&#x305F;&#x304C;, &#x7D50;&#x5C40;&#x306E;&#x3068;&#x3053;&#x308D;&#x305D;&#x306E;&#x610F;&#x5473;&#x306F;&#x4F55;&#x3067;&#x3057;&#x3087;&#x3046;&#xFF1F;</p>
+<p>&#x5148;&#x7A0B;&#xFF0C;&#x5185;&#x7A4D;&#x304C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">a</mi></mrow><annotation encoding="application/x-tex">\mathbf{a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44444em;vertical-align:0em;"></span><span class="mord mathbf">a</span></span></span></span>&#x3068;&#x5C04;&#x5F71;&#x3057;&#x305F;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">b</mi></mrow><annotation encoding="application/x-tex">\mathbf{b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathbf">b</span></span></span></span>&#x306E;&#x7A4D;&#x3067;&#x3042;&#x308B;&#x4E8B;&#x306F;&#x78BA;&#x8A8D;&#x3067;&#x304D;&#x307E;&#x3057;&#x305F;&#xFF0E;&#x3053;&#x3053;&#x304B;&#x3089;&#x5834;&#x5408;&#x308F;&#x3051;&#x3057;&#x3066;&#x8003;&#x3048;&#x307E;&#x3059;&#xFF0E;&#x307E;&#x305A;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold">a</mi><mo separator="true">,</mo><mi mathvariant="bold">b</mi></mrow><annotation encoding="application/x-tex">\mathbf{a,b}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathbf">b</span></span></span></span></span>&#x304C;&#x540C;&#x3058;&#x3088;&#x3046;&#x306A;&#x65B9;&#x5411;&#x3092;&#x5411;&#x3044;&#x3066;&#x3044;&#x305F;&#x5834;&#x5408;&#xFF0C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B8;</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span></span></span></span>&#x306E;&#x5024;&#x306F;&#x5C0F;&#x3055;&#x304F;&#x306A;&#x308A;&#xFF0C;&#x5C04;&#x5F71;&#x3055;&#x308C;&#x3066;&#x51FA;&#x6765;&#x308B; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">b</mi><mi mathvariant="normal">&#x2223;</mi><mi>c</mi><mi>o</mi><mi>s</mi><mi>&#x3B8;</mi></mrow><annotation encoding="application/x-tex">|\mathbf{b}|cos\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathbf">b</span><span class="mord">&#x2223;</span><span class="mord mathnormal">cos</span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span></span></span></span> &#x306E;&#x5024;&#x306F;&#x307B;&#x307C; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">b</mi><mi mathvariant="normal">&#x2223;</mi></mrow><annotation encoding="application/x-tex">| \mathbf{b}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathbf">b</span><span class="mord">&#x2223;</span></span></span></span> &#x304B;&#x3089;&#x5909;&#x308F;&#x308A;&#x307E;&#x305B;&#x3093;&#xFF0E;&#x305D;&#x3053;&#x304B;&#x3089;&#x89D2;&#x5EA6;&#x304C;&#x5927;&#x304D;&#x304F;&#x306A;&#x308B;&#x306B;&#x3064;&#x308C;&#x5024;&#x306F;&#x5C0F;&#x3055;&#x304F;&#x306A;&#x3063;&#x3066;&#x3044;&#x304D;&#xFF0C;&#x3061;&#x3087;&#x3046;&#x3069;2&#x3064;&#x306E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x304C;&#x76F4;&#x884C;&#x3059;&#x308B;&#x6642;(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B8;</mi><mo>=</mo><mfrac><mi>&#x3C0;</mi><mn>2</mn></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta = \frac{\pi}{2})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.095em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span>&#x306B;&#x5185;&#x7A4D;&#x306F;0&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2235;</mo><mi>c</mi><mi>o</mi><mi>s</mi><mfrac><mi>&#x3C0;</mi><mn>2</mn></mfrac><mo>=</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\because cos\frac{\pi}{2}=0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69224em;vertical-align:0em;"></span><span class="mrel amsrm">&#x2235;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="mord mathnormal">cos</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>&#xFF0E;</p>
+<p>&#x305D;&#x3057;&#x3066;&#x305D;&#x306E;&#x307E;&#x307E;&#x89D2;&#x5EA6;&#x3092;&#x5927;&#x304D;&#x304F;&#x3057;&#x3066;&#x3044;&#x304F;&#x3068;&#xFF0C;&#x4ECA;&#x5EA6;&#x306F;&#x5C04;&#x5F71;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x304C;&#x30D9;&#x30AF;&#x30C8;&#x30EB;a&#x3068;&#x5168;&#x304F;&#x91CD;&#x306A;&#x3089;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3044;&#xFF0C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>o</mi><mi>s</mi><mi>&#x3B8;</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">cos\theta &lt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">cos</span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;&#x3064;&#x307E;&#x308A;&#xFF0C;&#x4E8C;&#x3064;&#x306E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x304C;&#x76F4;&#x89D2;&#x3088;&#x308A;&#x306A;&#x304A;&#x5225;&#x306E;&#x5411;&#x304D;&#x3092;&#x5411;&#x3044;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#xFF0C;&#x5185;&#x7A4D;&#x306F;&#x8CA0;&#x306E;&#x5024;&#x3092;&#x3068;&#x308A;&#x307E;&#x3059;&#xFF0E;</p>
+<p>&#x3053;&#x306E;&#x4E8B;&#x3092;&#x307E;&#x3068;&#x3081;&#x308B;&#x3068;&#xFF0C;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306A;&#x95A2;&#x4FC2;&#x304C;&#x8A00;&#x3048;&#x307E;&#x3059;&#xFF0E;</p>
+<p><strong>&#x5185;&#x7A4D;&#x306E;&#x5B9A;&#x7FA9;</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">a</mi><mo>&#x22C5;</mo><mi mathvariant="bold">b</mi><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\mathbf{a}\cdot\mathbf{b} = a_1b_1 + a_2b_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathbf">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathbf">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">a</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="bold">b</mi><mi mathvariant="normal">&#x2223;</mi><mi>c</mi><mi>o</mi><mi>s</mi><mi>&#x3B8;</mi></mrow><annotation encoding="application/x-tex">|\mathbf{a}||\mathbf{b}|cos\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;</span><span class="mord mathbf">a</span><span class="mord">&#x2223;&#x2223;</span><span class="mord mathbf">b</span><span class="mord">&#x2223;</span><span class="mord mathnormal">cos</span><span class="mord mathnormal" style="margin-right:0.02778em;">&#x3B8;</span></span></span></span></span></p>
+<p><strong>&#x5185;&#x7A4D;&#x306E;&#x53D6;&#x308B;&#x5024;</strong><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">a</mi><mo>&#x22C5;</mo><mi mathvariant="bold">b</mi><mo>&gt;</mo><mn>0</mn><mspace width="2em"></mspace><mtext>(&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5411;&#x304D;&#x304C;&#x4F3C;&#x3066;&#x308B;&#x6642;)</mtext></mrow><annotation encoding="application/x-tex">\mathbf{a}\cdot \mathbf{b} &gt; 0 \qquad \text{(&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5411;&#x304D;&#x304C;&#x4F3C;&#x3066;&#x308B;&#x6642;)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathbf">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathbf">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord">(</span><span class="mord cjk_fallback">&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5411;&#x304D;&#x304C;&#x4F3C;&#x3066;&#x308B;&#x6642;</span><span class="mord">)</span></span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">a</mi><mo>&#x22C5;</mo><mi mathvariant="bold">b</mi><mo>=</mo><mn>0</mn><mspace width="2em"></mspace><mtext>(&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x304C;&#x76F4;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x6642;)</mtext></mrow><annotation encoding="application/x-tex">\mathbf{a}\cdot \mathbf{b}=0 \qquad \text{(&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x304C;&#x76F4;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x6642;)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathbf">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathbf">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord">(</span><span class="mord cjk_fallback">&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x304C;&#x76F4;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x6642;</span><span class="mord">)</span></span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="bold">a</mi><mo>&#x22C5;</mo><mi mathvariant="bold">b</mi><mo>&lt;</mo><mn>0</mn><mspace width="2em"></mspace><mtext>(&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5411;&#x304D;&#x304C;&#x96E2;&#x308C;&#x3066;&#x3044;&#x308B;&#x6642;)</mtext></mrow><annotation encoding="application/x-tex">\mathbf{a}\cdot \mathbf{b}&lt;0 \qquad \text{(&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5411;&#x304D;&#x304C;&#x96E2;&#x308C;&#x3066;&#x3044;&#x308B;&#x6642;)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathbf">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathbf">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord">(</span><span class="mord cjk_fallback">&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5411;&#x304D;&#x304C;&#x96E2;&#x308C;&#x3066;&#x3044;&#x308B;&#x6642;</span><span class="mord">)</span></span></span></span></span></span></p>
+<p>&#x3064;&#x307E;&#x308A;&#x5185;&#x7A4D;&#x3068;&#x306F;&#xFF0C;&#x4E8C;&#x3064;&#x306E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5411;&#x304D;&#x306E;&#x95A2;&#x4FC2;&#x6027;&#x3092;&#x793A;&#x3059;&#x6307;&#x6A19;&#x3068;&#x3057;&#x3066;&#x6349;&#x3048;&#x308B;&#x4E8B;&#x304C;&#x51FA;&#x6765;&#xFF0C;&#x7279;&#x306B;0&#x306B;&#x306A;&#x308B;&#x5834;&#x5408;&#x306B;&#x305D;&#x308C;&#x3089;&#x306E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x304C;&#x76F4;&#x884C;&#x3057;&#x3066;&#x3044;&#x308B;&#x4E8B;&#x3092;&#x793A;&#x305B;&#x308B;&#x3082;&#x306E;&#x3067;&#x3059;&#xFF0E;</p>
+<h2 class="mume-header" id="26-%E3%83%89%E3%83%83%E3%83%88%E7%A9%8D">2.6. &#x30C9;&#x30C3;&#x30C8;&#x7A4D;</h2>
+
+<p>&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x639B;&#x3051;&#x7B97;&#x306E;&#x3046;&#x3061;, &#x30C9;&#x30C3;&#x30C8;&#x7A4D;&#x3060;&#x3068;&#x304B;&#x70B9;&#x4E57;&#x7A4D;&#x3068;&#x547C;&#x3070;&#x308C;&#x308B;&#x3082;&#x306E;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#xFF0E;&#x30C9;&#x30C3;&#x30C8;&#x7A4D;&#x3068;&#x306F;, &#x540C;&#x3058;&#x9577;&#x3055;&#x306E;&#x6570;&#x5217;&#x306E;&#x5404;&#x8981;&#x7D20;&#x3092;&#x639B;&#x3051;&#x5408;&#x308F;&#x305B;, &#x305D;&#x306E;&#x5024;&#x3092;&#x8DB3;&#x3057;&#x5408;&#x308F;&#x305B;&#x3066;&#x4E00;&#x3064;&#x306E;&#x5024;&#x3068;&#x3057;&#x3066;&#x51FA;&#x529B;&#x3057;&#x305F;&#x3082;&#x306E;&#x3067;&#x3059;.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>a</mi><mo>=</mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>3</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>4</mn></msub></mrow></mrow><annotation encoding="application/x-tex">a = {a_1,a_2,a_3,a_4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>b</mi><mo>=</mo><mrow><msub><mi>b</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>b</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>b</mi><mn>3</mn></msub><mo separator="true">,</mo><msub><mi>b</mi><mn>4</mn></msub></mrow></mrow><annotation encoding="application/x-tex">b={b_1,b_2,b_3,b_4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>a</mi><mo>&#x22C5;</mo><mi>b</mi><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>1</mn></msub><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub><mo>+</mo><msub><mi>a</mi><mn>3</mn></msub><msub><mi>b</mi><mn>3</mn></msub><mo>+</mo><msub><mi>a</mi><mn>4</mn></msub><msub><mi>b</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">a\cdot b = a_1b_1 + a_2b_2 + a_3b_3 + a_4b_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x22C5;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>&#x305D;&#x3046;, &#x3064;&#x307E;&#x308A;&#x5185;&#x7A4D;&#x306E;&#x4E8B;&#x3067;&#x3059;&#x306D;&#xFF0E;</p>
+<p>&#x30C9;&#x30C3;&#x30C8;&#x7A4D;&#x306F;&#x5B9F;&#x8CEA;(&#x30E6;&#x30FC;&#x30AF;&#x30EA;&#x30C3;&#x30C9;&#x7A7A;&#x9593;&#x3067;&#x306F;)&#x5185;&#x7A4D;&#x3068;&#x540C;&#x3058;&#x6271;&#x3044;&#x3092;&#x3055;&#x308C;&#x307E;&#x3059;.</p>
+<p>&#x3053;&#x3044;&#x3064;&#x306F;&#x4EE3;&#x6570;&#x5B66;&#x30FB;&#x5E7E;&#x4F55;&#x5B66;&#x306B;&#x304A;&#x3044;&#x3066;&#x975E;&#x5E38;&#x306B;&#x5927;&#x4E8B;&#x306B;&#x306A;&#x308B;&#x4E0A;, &#x7573;&#x307F;&#x8FBC;&#x307F;&#x306E;&#x57FA;&#x790E;&#x3068;&#x306A;&#x308B;&#x3082;&#x306E;&#x3067;&#x3059;&#xFF01;</p>
+<p>&#x305D;&#x3057;&#x3066;&#x305D;&#x308C;&#x306F;&#x3064;&#x307E;&#x308A;, &#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;&#x3084;&#x30A6;&#x30A7;&#x30FC;&#x30D6;&#x30EC;&#x30C3;&#x30C8;&#x5909;&#x63DB;(&#x53C2;&#x7167;: analysis)&#x306E;&#x57FA;&#x790E;&#x306B;&#x306A;&#x308B;&#x91CD;&#x8981;&#x306A;&#x639B;&#x3051;&#x7B97;&#x3067;&#x3059;&#xFF0E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x639B;&#x3051;&#x7B97;&#x3092;&#x5B66;&#x3076;&#x610F;&#x5473;&#x306F;&#xFF0C;&#x305D;&#x3082;&#x305D;&#x3082;&#x6211;&#x3005;&#x304C;&#x3053;&#x306E;&#x5148;&#x6271;&#x3046;&#x4E8B;&#x306B;&#x306A;&#x308B;&#x8133;&#x6CE2;&#x30C7;&#x30FC;&#x30BF;&#x306A;&#x3069;&#x306E;&#x4FE1;&#x53F7;&#x306F;&#x5168;&#x3066;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x3067;&#x3042;&#x308B;&#x304B;&#x3089;&#x3067;&#x3059;&#xFF0E;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x3092;&#x64CD;&#x4F5C;&#x3059;&#x308B;&#x65B9;&#x6CD5;&#x3092;&#x3057;&#x3063;&#x304B;&#x308A;&#x3068;&#x5B66;&#x3076;&#x4E8B;&#x304C;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;&#x305D;&#x3057;&#x3066;&#x5185;&#x7A4D;&#x306F;&#x3044;&#x305A;&#x308C;&#x8133;&#x6CE2;&#x306E;&#x89E3;&#x6790;&#x306B;&#x304A;&#x3044;&#x3066;&#x6700;&#x3082;&#x57FA;&#x672C;&#x3068;&#x306A;&#x308B;&#x51E6;&#x7406;&#xFF0C;&#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;&#x3092;&#x7406;&#x89E3;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;</p>
+<p>&#x52FF;&#x8AD6;&#xFF0C;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x639B;&#x3051;&#x7B97;&#x306A;&#x306E;&#x3067;&#x4ED6;&#x306E;&#x6570;&#x5B66;&#x306B;&#x3082;&#x591A;&#x7528;&#x3055;&#x308C;&#x307E;&#x3059;&#xFF0E;&#x7D71;&#x8A08;&#x306A;&#x3093;&#x304B;&#x3067;&#x3082;&#x4F7F;&#x3046;&#x3054;&#x304F;&#x5F53;&#x305F;&#x308A;&#x524D;&#x306E;&#x51E6;&#x7406;&#x306A;&#x306E;&#x3067;&#xFF0C;&#x3061;&#x3083;&#x3093;&#x3068;&#x899A;&#x3048;&#x3066;&#x304A;&#x304D;&#x307E;&#x3057;&#x3087;&#x3046;&#xFF0E;</p>
+<h2 class="mume-header" id="27-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E7%A9%8D">2.7. &#x8907;&#x7D20;&#x6570;&#x306E;&#x7A4D;</h2>
+
+<p>&#x8907;&#x7D20;&#x6570;&#x3063;&#x3066;&#x306A;&#x3093;&#x3060;&#x3088;&#x30FC;&#x3068;&#x3044;&#x3046;&#x3088;&#x3046;&#x306A;&#x7591;&#x554F;&#x306F;&#x3072;&#x3068;&#x307E;&#x305A;&#x3053;&#x3053;&#x3067;&#x306F;&#x7F6E;&#x3044;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#xFF0E;&#x305D;&#x306E;&#x30EC;&#x30D9;&#x30EB;&#x304B;&#x3089;&#x306E;&#x8CEA;&#x554F;&#x306F;&#xFF0C;&#x5F8C;&#x306E;&#x7AE0;&#x3067;&#x8A73;&#x3057;&#x304F;&#x8907;&#x7D20;&#x6570;&#x306B;&#x3064;&#x3044;&#x3066;&#x89E3;&#x8AAC;&#x3057;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x305D;&#x308C;&#x3092;&#x8AAD;&#x3093;&#x3067;&#x304B;&#x3089;&#x306B;&#x3057;&#x3066;&#xFF0C;&#x307E;&#x305A;&#x3053;&#x3053;&#x3067;&#x306F;&#x300C;&#x306A;&#x3093;&#x304B;&#x30AD;&#x30E2;&#x3044;&#x6570;&#x304C;&#x3042;&#x308B;&#x3093;&#x3060;&#x306A;&#x3041;&#xFF0C;&#x5909;&#x306A;&#x639B;&#x3051;&#x7B97;&#x306E;&#x4ED5;&#x65B9;&#x3060;&#x306A;&#x3042;&#x300D;&#x304F;&#x3089;&#x3044;&#x3092;&#x611F;&#x3058;&#x3066;&#x3082;&#x3089;&#x3048;&#x308C;&#x3070;&#x5927;&#x4E08;&#x592B;&#x3067;&#x3059;&#xFF01;</p>
+<p>&#x4E0A;&#x8A18;&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x3068;&#x540C;&#x69D8;, &#x8907;&#x7D20;&#x5E73;&#x9762;&#x4E0A;&#x3067;&#x306F; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo stretchy="false">(</mo><mi>cos</mi><mo>&#x2061;</mo><mi>x</mi><mo>+</mo><mi>i</mi><mi>sin</mi><mo>&#x2061;</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r(\cos x + i\sin x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> &#x3068;&#x3044;&#x3046;&#x3082;&#x306E;&#x3092;&#x8003;&#x3048;&#x307E;&#x3059;.<br>
+&#x307E;&#x305A;&#x306F;&#x4E00;&#x822C;&#x7684;&#x306A;&#x7A4D;&#x3092;&#x8003;&#x3048;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>cos</mi><mo>&#x2061;</mo><mi>x</mi><mo>+</mo><mi>i</mi><mi>sin</mi><mo>&#x2061;</mo><mi>x</mi><mo stretchy="false">)</mo><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>cos</mi><mo>&#x2061;</mo><mi>y</mi><mo>+</mo><mi>i</mi><mi>sin</mi><mo>&#x2061;</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_1(\cos x + i\sin x)r_2(\cos y + i\sin y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>=</mo><msub><mi>r</mi><mn>1</mn></msub><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>cos</mi><mo>&#x2061;</mo><mi>x</mi><mi>cos</mi><mo>&#x2061;</mo><mi>y</mi><mo>&#x2212;</mo><mi>sin</mi><mo>&#x2061;</mo><mi>x</mi><mi>sin</mi><mo>&#x2061;</mo><mi>y</mi><mo>+</mo><mi>i</mi><mi>sin</mi><mo>&#x2061;</mo><mi>x</mi><mi>cos</mi><mo>&#x2061;</mo><mi>y</mi><mo>+</mo><mi>i</mi><mi>cos</mi><mo>&#x2061;</mo><mi>x</mi><mi>sin</mi><mo>&#x2061;</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">= r_1 r_2(\cos x\cos y - \sin x\sin y + i\sin x \cos y + i\cos x\sin y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8623000000000001em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span></p>
+<p>&#x4E0A;&#x8A18;&#x306F;&#x52A0;&#x6CD5;&#x5B9A;&#x7406;&#x3088;&#x308A;<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>cos</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="false">)</mo><mo>+</mo><mi>i</mi><mi>sin</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">r_1 r_2(\cos ( x +  y) +  i\sin ( x +  y))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mop">cos</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">))</span></span></span></span></span></p>
+<p>&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;.</p>
+<p>&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x306E;&#x5185;&#x7A4D;&#x3068;&#x4F3C;&#x3066;&#x306F;&#x3044;&#x307E;&#x3059;&#x304C;, &#x6C7A;&#x5B9A;&#x7684;&#x306A;&#x9055;&#x3044;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;.<br>
+&#x639B;&#x3051;&#x7B97;&#x3092;&#x3059;&#x308B;&#x3068;&#x89D2;&#x5EA6;&#x306E;&#x8DB3;&#x3057;&#x7B97;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x3059;&#xFF01;</p>
+<h2 class="mume-header" id="28-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E9%80%86%E6%95%B0">2.8. &#x8907;&#x7D20;&#x6570;&#x306E;&#x9006;&#x6570;</h2>
+
+<p>&#x5730;&#x5473;&#x306B;&#x8907;&#x7D20;&#x6570;&#x306E;&#x5049;&#x5927;&#x306A;&#x3068;&#x3053;&#x308D;&#x3067;&#x3059;.</p>
+<p>&#x9006;&#x6570;...&#x3064;&#x307E;&#x308A;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>&#x304C;&#x51FA;&#x6765;&#x308C;&#x3070;&#x5272;&#x308A;&#x7B97;&#x306F;&#x3067;&#x304D;&#x307E;&#x3059;&#x3088;&#x306D;&#xFF1F;<br>
+&#x30D9;&#x30AF;&#x30C8;&#x30EB;&#x3084;&#x884C;&#x5217;&#x306F;&#x8907;&#x6570;&#x306E;&#x6570;&#x3092;&#x675F;&#x306D;&#x305F;&#x3060;&#x3051;&#x306A;&#x306E;&#x3067;&#x9006;&#x6570;&#x3068;&#x8A00;&#x308F;&#x308C;&#x3066;&#x3082;&#x3053;&#x307E;&#x308A;&#x307E;&#x3059;&#x304C;, &#x8907;&#x7D20;&#x6570;&#x306F;&#x5272;&#x308A;&#x7B97;&#x304C;&#x7C21;&#x5358;&#x306B;&#x3067;&#x304D;&#x307E;&#x3059;.</p>
+<p>&#x4F55;&#x6545;&#x306A;&#x3089;&#x8907;&#x7D20;&#x6570;&#x306F;&#x898B;&#x305F;&#x76EE;&#x4E0A;&#x30B9;&#x30AB;&#x30E9;&#x30FC;&#x3063;&#x307D;&#x3044;&#x3067;&#x3059;&#x304B;&#x3089;&#x306D;&#xFF01;<br>
+&#x9006;&#x6570;&#x3092;&#x53D6;&#x308B;&#x3068;&#x3044;&#x3046;&#x4E8B;&#x306F;, &#x8907;&#x7D20;&#x6570;&#x306E;&#x5272;&#x308A;&#x7B97;&#x306F;&#x89D2;&#x5EA6;&#x306E;&#x5F15;&#x304D;&#x7B97;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x306D;.</p>
+<h2 class="mume-header" id="29-%E8%A4%87%E7%B4%A0%E5%B9%B3%E9%9D%A2%E3%81%AE%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%AE%E6%84%8F%E5%91%B3">2.9. &#x8907;&#x7D20;&#x5E73;&#x9762;&#x306E;&#x639B;&#x3051;&#x7B97;&#x306E;&#x610F;&#x5473;</h2>
+
+<p>&#x8907;&#x7D20;&#x5E73;&#x9762;&#x3067;&#x639B;&#x3051;&#x7B97;&#x3092;&#x3059;&#x308B;&#x3068;&#x89D2;&#x5EA6;&#x306E;&#x8DB3;&#x3057;&#x7B97;&#x306B;&#x306A;&#x308B;&#x3088;&#x3046;&#x3067;&#x3057;&#x305F;&#xFF0E;&#x3064;&#x307E;&#x308A;&#x56DE;&#x8EE2;&#x3067;&#x3059;&#x306D;. &#x3053;&#x308C;&#x306E;&#x4F55;&#x304C;&#x3046;&#x308C;&#x3057;&#x3044;&#x304B;&#x3063;&#x3066;&#x8A00;&#x3046;&#x3068;, &#x8A08;&#x7B97;&#x304C;&#x8D85;&#x697D;&#x306B;&#x306A;&#x308B;&#x4E8B;&#x3067;&#x3059;&#xFF0E;&#x57FA;&#x672C;&#x7684;&#x306B;&#xFF0C;&#x6570;&#x5B66;&#x3067;&#x306F;&#x639B;&#x3051;&#x7B97;&#x3088;&#x308A;&#x8DB3;&#x3057;&#x7B97;&#x306E;&#x65B9;&#x304C;&#x6271;&#x3044;&#x3084;&#x3059;&#x3044;&#x306E;&#x3067;&#xFF0C;&#x639B;&#x3051;&#x7B97;&#x3092;&#x8DB3;&#x3057;&#x7B97;&#x306B;&#x5909;&#x63DB;&#x3067;&#x304D;&#x308B;&#x6027;&#x8CEA;&#x306F;&#x91CD;&#x5B9D;&#x3055;&#x308C;&#x304C;&#x3061;&#x3067;&#x3059;&#xFF0E;</p>
+<p>&#x5BFE;&#x6570;&#x306A;&#x3093;&#x304B;&#x304C;&#x305D;&#x3046;&#x3067;&#x3057;&#x305F;&#x306D;&#xFF0E;&#x5B9F;&#x969B;&#xFF0C;&#x7D71;&#x8A08;&#x3092;&#x3084;&#x308B;&#x969B;&#x3068;&#x304B;&#x306B;&#xFF0C;&#x639B;&#x3051;&#x7B97;&#x306F;&#x3084;&#x3084;&#x3053;&#x3057;&#x3044;&#x306E;&#x3067;&#x8DB3;&#x3057;&#x7B97;&#x306E;&#x5F62;&#x306B;&#x8868;&#x3057;&#x305F;&#x3044;&#x3068;&#x3044;&#x3046;&#x7406;&#x7531;&#x3067;&#x95A2;&#x6570;&#x3092;&#x5BFE;&#x6570;&#x95A2;&#x6570;&#x306B;&#x5909;&#x63DB;&#x3059;&#x308B;&#x4F5C;&#x696D;&#x306A;&#x3093;&#x304B;&#x304C;&#x3088;&#x304F;&#x51FA;&#x3066;&#x304D;&#x307E;&#x3059;&#xFF0E;</p>
+<p>&#x305D;&#x3057;&#x3066;&#x3053;&#x306E;&#x6027;&#x8CEA;&#x304C;&#x4ECA;&#x5F8C;&#x3068;&#x3066;&#x3082;&#x5927;&#x4E8B;&#x306B;&#x306A;&#x308B;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x306E;&#x516C;&#x5F0F;&#x3068;&#x3044;&#x3046;&#x3082;&#x306E;&#x306B;&#x7D50;&#x3073;&#x3064;&#x3044;&#x3066;&#x3044;&#x308B;&#x306E;&#x3067;&#x3059;. &#x3057;&#x3063;&#x304B;&#x308A;&#x3068;&#x7406;&#x89E3;&#x3057;&#x3066;&#x304A;&#x304D;&#x307E;&#x3057;&#x3087;&#x3046;&#xFF0E;</p>
+<h2 class="mume-header" id="210-%E5%A4%A7%E6%AD%A3%E7%BE%A9%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%E3%81%AE%E5%85%AC%E5%BC%8F">2.10. &#x5927;&#x6B63;&#x7FA9;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x306E;&#x516C;&#x5F0F;</h2>
+
+<p>&#x8A3C;&#x660E;&#x306F;&#x4ECA;&#x306E;&#x6BB5;&#x968E;&#x3067;&#x306F;&#x96E3;&#x3057;&#x3044;&#x306E;&#x3067;&#x7D39;&#x4ECB;&#x3060;&#x3051;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x304C;&#xFF0C;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x306E;&#x516C;&#x5F0F;&#x3092;&#x3053;&#x3053;&#x3067;&#x78BA;&#x8A8D;&#x3057;&#x3066;&#x304A;&#x304D;&#x307E;&#x3057;&#x3087;&#x3046;&#xFF0E;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x306E;&#x516C;&#x5F0F;&#x306F;&#x8133;&#x6CE2;&#x89E3;&#x6790;&#x306E;&#x57FA;&#x672C;&#x306E;&#x57FA;&#x672C;&#xFF0C;&#x5168;&#x3066;&#x306B;&#x304A;&#x3044;&#x3066;&#x91CD;&#x8981;&#x306B;&#x306A;&#x308B;&#x516C;&#x5F0F;&#x3067;&#x3059;&#xFF0E;basic.pdf&#x306E;&#x4E3B;&#x3060;&#x3063;&#x305F;&#x76EE;&#x7684;&#x306E;&#x4E00;&#x3064;&#x304C;&#xFF0C;&#x3053;&#x306E;&#x516C;&#x5F0F;&#x3092;&#x8A3C;&#x660E;&#x3059;&#x308B;&#x6B66;&#x5668;&#x3092;&#x5099;&#x3048;&#x3066;&#x3082;&#x3089;&#x3046;&#x3053;&#x3068;&#x3067;&#x3042;&#x308B;&#x3068;&#x3044;&#x3063;&#x3066;&#x3082;&#x904E;&#x8A00;&#x3058;&#x3083;&#x306A;&#x3044;&#x7A0B;&#x306E;&#x3082;&#x306E;&#x3067;&#x3059;&#xFF0E;&#x307E;&#x305A;&#x306F;&#x78BA;&#x8A8D;&#x3057;&#x3066;&#x307F;&#x307E;&#x3057;&#x3087;&#x3046;&#xFF0E;</p>
+<p><strong>&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x306E;&#x516C;&#x5F0F;(Euler&apos;s formula)</strong><br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi mathvariant="normal">e</mi><mrow><mi>i</mi><mi>x</mi></mrow></msup><mo>=</mo><mi>cos</mi><mo>&#x2061;</mo><mi>x</mi><mo>+</mo><mi>i</mi><mi>sin</mi><mo>&#x2061;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\mathrm{e}^{ix} = \cos x +  i\sin x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8746639999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8746639999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66786em;vertical-align:0em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span></span></span></span></span></p>
+<p>&#x3075;&#x3080;&#x3075;&#x3080;&#xFF0C;&#x4E09;&#x89D2;&#x95A2;&#x6570;&#x306E;&#x8DB3;&#x3057;&#x5408;&#x308F;&#x305B;&#x304C;&#xFF0C;&#x6307;&#x6570;&#x95A2;&#x6570;&#x3063;&#x307D;&#x304F;&#x8868;&#x3055;&#x308C;&#x3066;&#x307E;&#x3059;&#x306D;&#xFF0E;&#x3042;&#x3068;&#x306F;&#x4F55;&#x3084;&#x3089;&#x865A;&#x6570;&#x5358;&#x4F4D;i&#x3082;&#x3044;&#x307E;&#x3059;&#x306D;&#xFF0E;&#x3057;&#x304B;&#x3057;&#x3053;&#x308C;&#x306F;...&#x7DBA;&#x9E97;&#x3067;&#x3059;&#x306D;&#xFF01;</p>
+<p>&#x66F4;&#x306B;&#x3053;&#x3044;&#x3064;&#x306E;&#x7279;&#x6B8A;&#x5F62;&#x304C;&#x3053;&#x3046;&#x306A;&#x308A;&#x307E;&#x3059;.<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi mathvariant="normal">e</mi><mrow><mi>i</mi><mi>&#x3C0;</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathrm{e}^{i\pi} + 1 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9579939999999999em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathrm">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8746639999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">i&#x3C0;</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span></p>
+<p>&#x7F8E;&#x3057;&#x3059;&#x304E;&#x307E;&#x3059;&#x306D;&#xFF01;&#xFF01;&#x6570;&#x5B66;&#x306E;&#x57FA;&#x672C;&#x3067;&#x3042;&#x308B;&#x6307;&#x6570;&#x95A2;&#x6570;&#xFF0C;&#x865A;&#x6570;&#xFF0C;&#x4E09;&#x89D2;&#x95A2;&#x6570;&#x306A;&#x3069;&#x3068;&#x3044;&#x3063;&#x305F;&#x3082;&#x306E;&#x304C;&#x6FC3;&#x7E2E;&#x3055;&#x308C;&#xFF0C;&#x6570;&#x3082;&#x57FA;&#x672C;&#x306E;&#xFF11;&#x3068;&#xFF10;&#x306E;&#x307F;&#x3067;&#x307E;&#x3068;&#x3081;&#x3089;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#xFF0E;</p>
+<p>&#x3053;&#x306E;&#x516C;&#x5F0F;&#x3092;&#x3082;&#x3063;&#x3066;, &#x6211;&#x3005;&#x306F;&#x8133;&#x6CE2;&#x3068;&#x6226;&#x3063;&#x3066;&#x3044;&#x304F;&#x3053;&#x3068;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;Euler&apos;s formula &#x3092;&#x5236;&#x3059;&#x308B;&#x3082;&#x306E;&#x306F;&#x8133;&#x3092;&#x5236;&#x3059;&#x308B;&#x306E;&#x3067;&#x3059;.</p>
+<p>&#x3064;&#x307E;&#x308A;&#x5185;&#x7A4D;&#x540C;&#x69D8;, &#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;&#x306E;&#x57FA;&#x672C;&#x306E;&#x4E00;&#x3064;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x307E;&#x3059;. &#xFF12;&#x7AE0;&#x4EE5;&#x964D;&#x306F;&#x7D71;&#x8A08;&#x4EE5;&#x5916;&#x306E;&#x5168;&#x3066;&#x304C;&#xFF0C;&#x3053;&#x306E;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x306E;&#x516C;&#x5F0F;&#x3092;&#x8A3C;&#x660E;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x5FC5;&#x8981;&#x306A;&#x6570;&#x5B66;&#x306E;&#x304A;&#x3055;&#x3089;&#x3044;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;&#x8A3C;&#x660E;&#x306F;Analysis&#x306E;&#x65B9;&#x306B;&#x8A18;&#x8F09;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#xFF0E;(&#x3068;&#x306F;&#x3044;&#x3048;&#xFF0C;&#x8133;&#x6CE2;&#x4EE5;&#x5916;&#x306B;&#x3082;&#x4F7F;&#x3046;&#x57FA;&#x672C;&#x7684;&#x306A;&#x6570;&#x5B66;&#x77E5;&#x8B58;&#x3067;&#x3042;&#x308B;&#x306E;&#x3067;&#x8133;&#x6CE2;&#x4EE5;&#x5916;&#x306E;&#x4EBA;&#x3082;&#x8AAD;&#x3080;&#x4FA1;&#x5024;&#x306F;&#x591A;&#x5C11;&#x306F;...&#x3042;&#x308B;...&#x3093;&#x3058;&#x3083;&#x306A;&#x3044;&#x304B;&#x306A;&#x3041;&#xFF1F;)</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
