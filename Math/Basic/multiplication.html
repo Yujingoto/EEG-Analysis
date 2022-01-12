@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>multiplication.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</h1>
+<p>はじめに，基礎を学ぶ上で必要になる基礎の勉強，というか確認から始めます．高校以降は文系よりだった人や，高校でも数学はやってたけど受験のための暗記数学をやっていて，正直数学についてあまり考えたことがない人向けです．以降の章でやっていく内容を読んでいく上で最低限覚えておいてほしい内容です．</p>
+<ul>
+<li><a href="#1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</a></li>
+<li><a href="#2-%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B">2. 掛け算とは何か</a>
+<ul>
+<li><a href="#21-%E6%95%B0%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%81%E3%81%AB">2.1. 数ってなぁに？</a></li>
+<li><a href="#22-%E5%8D%98%E4%B8%80%E3%81%AE%E6%95%B0%E3%82%B9%E3%82%AB%E3%83%A9%E3%83%BC">2.2. 単一の数スカラー</a></li>
+<li><a href="#23-%E8%A4%87%E6%95%B0%E3%81%AE%E6%95%B0%E3%81%8B%E3%82%89%E3%81%AA%E3%82%8B%E7%A9%8D">2.3. 複数の数からなる積</a></li>
+<li><a href="#24-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AE%E7%A9%8D">2.4. ベクトルの積</a></li>
+<li><a href="#25-%E5%86%85%E7%A9%8D%E3%81%AE%E6%84%8F%E5%91%B3">2.5. 内積の意味</a></li>
+<li><a href="#26-%E3%83%89%E3%83%83%E3%83%88%E7%A9%8D">2.6. ドット積</a></li>
+<li><a href="#27-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E7%A9%8D">2.7. 複素数の積</a></li>
+<li><a href="#28-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E9%80%86%E6%95%B0">2.8. 複素数の逆数</a></li>
+<li><a href="#29-%E8%A4%87%E7%B4%A0%E5%B9%B3%E9%9D%A2%E3%81%AE%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%AE%E6%84%8F%E5%91%B3">2.9. 複素平面の掛け算の意味</a></li>
+<li><a href="#210-%E5%A4%A7%E6%AD%A3%E7%BE%A9%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%E3%81%AE%E5%85%AC%E5%BC%8F">2.10. 大正義オイラーの公式</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="2-%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B">2. 掛け算とは何か</h1>
+<p>信号処理や統計といった難しい数学をこれから皆さんはやっていくわけですが，こういった数学は結局のところどこまで行っても足し算と掛け算です．脳波の解析も統計も，複雑な「数」に対応した，複雑な「足し算，掛け算」をやってあーだこーだしていく処理にすぎません．なのでまずはここで，掛け算とは何かを考えていきましょう．足し算については比較的簡単であまり違いを意識しなくても良いので，ここでは掛け算のみ触れます．</p>
+<p>伝えたいメッセージは，世の中には色々な「数」があって，対応した色々な「掛け算」がある．という事です．まずはこの事をしっかり頭に入れておけば，解析とかの勉強もさして難しくないはずです．別に全て覚える必要はないので，とにかく色々あるんだなーとだけ感じてください．</p>
+<h2 id="21-%E6%95%B0%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%81%E3%81%AB">2.1. 数ってなぁに？</h2>
+<p>まず初めに，この書において扱う数はユークリッド空間のものに限ります．非ユークリッドを持ち出してねちねちと文句は言わないでください．だから嫌われるんですよ．あぁすみません，嫌われている自覚がなかったんですね．余計な事を言ってしまって申し訳ないです．さて，先程ユークリッド空間や非ユークリッド空間といった言葉が出てきましたが, 簡単にいうとこれらは全て別の「数」として考える必要があるため, 空間と名付けられています. そもそも，「数」ってなんだろう？最初はそんなところから考えてみましょう．</p>
+<p>まずは単一の数と複数の数に分けるところからいきます．</p>
+<h2 id="22-%E5%8D%98%E4%B8%80%E3%81%AE%E6%95%B0%E3%82%B9%E3%82%AB%E3%83%A9%E3%83%BC">2.2. 単一の数スカラー</h2>
+<p>単一の数, スカラー数です. 高校での数学を真面目に受けていた人間なら聞き覚えがえるでしょう. スカラー数とは最も簡単な数...すなわち僕達が昔から親しんできた「数」のことです！</p>
+<p>簡単ですね！以上です.</p>
+<p>スカラー数の掛け算は僕たちが直感的にやっている
+$$
+3 \times 5 = 15
+$$
+の事です.</p>
+<h2 id="23-%E8%A4%87%E6%95%B0%E3%81%AE%E6%95%B0%E3%81%8B%E3%82%89%E3%81%AA%E3%82%8B%E7%A9%8D">2.3. 複数の数からなる積</h2>
+<p>複数の数からなる数には色々あります.\</p>
+<ul>
+<li>ベクトル</li>
+<li>複素数</li>
+<li>行列</li>
+</ul>
+<p>等です. これらはスカラー数の掛け算とは全く違う世界になります. 心してかかりましょう. 高校以上の数学は非常に難しいもので, 僕も全く分からずに置いて行かれましたが, どうにか理解するための最初の第一歩は, 「世の中には(スカラー)数じゃない数があるらしい」と知る事です. 僕はこれを理解するまでに無駄に長い時間を費やしてしまいました.</p>
+<p>では, そもそも何故スカラー以外の数を考える必要があるのでしょうか？</p>
+<p>何故なら, 基本的にスカラー数とは直線(上の点)であるからです. スカラー数には限界があるのです.</p>
+<p>0があって1があり, その次に2が来るのは小学2年生の数直線ですが, 小学4年生頃には「どうやら0と1の間にも小数や分数があるらしい」と知ります. 次に中学になり, 0の向こう側には同じだけの数の負の数があり, 更には√がつく数などもある事を知ります. そして少し飛びますが高校では, 数直線の右と左に終わりはなく, 無限という領域に飛んでいる事を知りますね. ここまでがスカラーの学習順序ですが, いずれも1本の直線を細かく見たり, あるいはずっと先を見ているだけです.</p>
+<p>ただの直線であるスカラーでは記述できる情報が少ないため, 不都合があるから別の数を考える必要があったわけです. スカラーっぽいやつらを複数束ねてまとめた「数」を新しく定義してやれば表現できる情報量は各段に増え, 世界が広がります.</p>
+<p>記述する要素が増えれば情報が増えるのは考えれば納得ですね. イメージは中学数学の1次関数のグラフとかです．縦と横，軸が増えれば情報は増えますね？</p>
+<h2 id="24-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%AE%E7%A9%8D">2.4. ベクトルの積</h2>
+<p>ベクトルとは, 二次元の場合は2つ, 三次元の場合は3つの数...を束ねたものです.</p>
+<p>数を複数束ねると, その間に比が生まれ，それらによって定義される長さを持った線(と基準線との角度)が生まれます.
+これが先述した, 増える情報量であり, スカラー数との決定的な違いです.
+ちなみに, この「比と角度(と長さ)」ですが, これは脳波においては位相や電位の強度といったものを考える時に必要になります. というかそのままです. よく確認しておいてください.</p>
+<center><img src="../figures/vector.png" width=50%></center>
+<p>ベクトル同士を掛け合わせるとき, どうするでしょうか？\</p>
+<p>一番素朴な形は下記の通りでしょう.</p>
+<p>$$
+(x_1 , x_2)(y_1 , y_2 ) = (x_1 y_1 + x_2 y_2)
+$$</p>
+<p>これをベクトルの内積と言います.</p>
+<p>そして, ベクトルの内積はもう一つの算出方法がありましたね. 2つのベクトルの絶対値の積に互いになす角の cos をかけたものです. 確認してみましょう.</p>
+<p>$$
+\mathbf{a}\cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|cos\theta
+$$</p>
+<p>まず，見方ですが，太字は数学ではベクトルを表します．なので$\mathbf{a, b}$はスカラーじゃないことに注意してください．</p>
+<p>さてここからが味噌ですが，普通は上の式を見ると絶対値の積に，$cos\theta$をかけていると思うでしょうがそうではありません．考え方としては，$|\mathbf{a}|$に$|\mathbf{b}|cos\theta$をかけているという方が分かりやすくなります．あ，もちろんaとbを逆にしても大丈夫です．</p>
+<p>では$|\mathbf{a}|$は良いとして，もう一つの方はなんだよという事が当然気になるわけですが，そこで出てくるのが射影という考え方です．</p>
+<center><img src="../figures/shadow.png" width=50%></center>
+<p>よくある説明は，ベクトルaに対して垂直な光によって照らされたベクトルbの影の長さ，というものです．まぁようはベクトルbの，ベクトルaの方向に対してもっている影響力とかなんかそんな感じの量です．これでベクトル同士の向きをそろえた上でかけているわけですね．</p>
+<p>ここからベクトルの内積というものが何を表しているのかが分かるのですが, いったん置いといて次へ進みます.</p>
+<h2 id="25-%E5%86%85%E7%A9%8D%E3%81%AE%E6%84%8F%E5%91%B3">2.5. 内積の意味</h2>
+<p>内積の定義を見てきましたが, 結局のところその意味は何でしょう？</p>
+<p>先程，内積が$\mathbf{a}$と射影した$\mathbf{b}$の積である事は確認できました．ここから場合わけして考えます．まず$\mathbf{a,b}$が同じような方向を向いていた場合，$\theta$の値は小さくなり，射影されて出来る $|\mathbf{b}|cos\theta$ の値はほぼ $| \mathbf{b}|$ から変わりません．そこから角度が大きくなるにつれ値は小さくなっていき，ちょうど2つのベクトルが直行する時($\theta = \frac{\pi}{2})$に内積は0になります($\because cos\frac{\pi}{2}=0)$．</p>
+<p>そしてそのまま角度を大きくしていくと，今度は射影ベクトルがベクトルaと全く重ならないようになってしまい，$cos\theta &lt; 0$となります．つまり，二つのベクトルが直角よりなお別の向きを向いている場合，内積は負の値をとります．</p>
+<p>この事をまとめると，以下のような関係が言えます．</p>
+<p><strong>内積の定義</strong></p>
+<p>$$ \mathbf{a}\cdot\mathbf{b} = a_1b_1 + a_2b_2$$
+$$|\mathbf{a}||\mathbf{b}|cos\theta $$</p>
+<p><strong>内積の取る値</strong>
+$$
+\mathbf{a}\cdot \mathbf{b} &gt; 0 \qquad \text{(ベクトルの向きが似てる時)}$$
+$$\mathbf{a}\cdot \mathbf{b}=0 \qquad \text{(ベクトルが直行している時)}$$
+$$\mathbf{a}\cdot \mathbf{b}&lt;0 \qquad \text{(ベクトルの向きが離れている時)}$$</p>
+<p>つまり内積とは，二つのベクトルの向きの関係性を示す指標として捉える事が出来，特に0になる場合にそれらのベクトルが直行している事を示せるものです．</p>
+<h2 id="26-%E3%83%89%E3%83%83%E3%83%88%E7%A9%8D">2.6. ドット積</h2>
+<p>ベクトルの掛け算のうち, ドット積だとか点乗積と呼ばれるものがあります．ドット積とは, 同じ長さの数列の各要素を掛け合わせ, その値を足し合わせて一つの値として出力したものです.</p>
+<p>$$ a = {a_1,a_2,a_3,a_4}$$
+$$b={b_1,b_2,b_3,b_4}$$
+$$a\cdot b = a_1b_1 + a_2b_2 + a_3b_3 + a_4b_4$$</p>
+<p>そう, つまり内積の事ですね．</p>
+<p>ドット積は実質(ユークリッド空間では)内積と同じ扱いをされます.</p>
+<p>こいつは代数学・幾何学において非常に大事になる上, 畳み込みの基礎となるものです！</p>
+<p>そしてそれはつまり, フーリエ変換やウェーブレット変換(参照: analysis)の基礎になる重要な掛け算です．ベクトルの掛け算を学ぶ意味は，そもそも我々がこの先扱う事になる脳波データなどの信号は全てベクトルであるからです．ベクトルを操作する方法をしっかりと学ぶ事が必要になります．そして内積はいずれ脳波の解析において最も基本となる処理，フーリエ変換を理解するために必要となります．</p>
+<p>勿論，ベクトルの掛け算なので他の数学にも多用されます．統計なんかでも使うごく当たり前の処理なので，ちゃんと覚えておきましょう．</p>
+<h2 id="27-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E7%A9%8D">2.7. 複素数の積</h2>
+<p>複素数ってなんだよーというような疑問はひとまずここでは置いてください．そのレベルからの質問は，後の章で詳しく複素数について解説しているのでそれを読んでからにして，まずここでは「なんかキモい数があるんだなぁ，変な掛け算の仕方だなあ」くらいを感じてもらえれば大丈夫です！</p>
+<p>上記ベクトルと同様, 複素平面上では $r(\cos x + i\sin x)$ というものを考えます.
+まずは一般的な積を考えてみましょう.</p>
+<p>$$
+r_1(\cos x + i\sin x)r_2(\cos y + i\sin y)$$
+$$= r_1 r_2(\cos x\cos y - \sin x\sin y + i\sin x \cos y + i\cos x\sin y)
+$$</p>
+<p>上記は加法定理より
+$$
+r_1 r_2(\cos ( x +  y) +  i\sin ( x +  y))
+$$</p>
+<p>となります.</p>
+<p>ベクトルの内積と似てはいますが, 決定的な違いがあります.
+掛け算をすると角度の足し算になっているのです！</p>
+<h2 id="28-%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E9%80%86%E6%95%B0">2.8. 複素数の逆数</h2>
+<p>地味に複素数の偉大なところです.</p>
+<p>逆数...つまり$\frac{1}{x}$が出来れば割り算はできますよね？
+ベクトルや行列は複数の数を束ねただけなので逆数と言われてもこまりますが, 複素数は割り算が簡単にできます.</p>
+<p>何故なら複素数は見た目上スカラーっぽいですからね！
+逆数を取るという事は, 複素数の割り算は角度の引き算になりますね.</p>
+<h2 id="29-%E8%A4%87%E7%B4%A0%E5%B9%B3%E9%9D%A2%E3%81%AE%E6%8E%9B%E3%81%91%E7%AE%97%E3%81%AE%E6%84%8F%E5%91%B3">2.9. 複素平面の掛け算の意味</h2>
+<p>複素平面で掛け算をすると角度の足し算になるようでした．つまり回転ですね. これの何がうれしいかって言うと, 計算が超楽になる事です．基本的に，数学では掛け算より足し算の方が扱いやすいので，掛け算を足し算に変換できる性質は重宝されがちです．</p>
+<p>対数なんかがそうでしたね．実際，統計をやる際とかに，掛け算はややこしいので足し算の形に表したいという理由で関数を対数関数に変換する作業なんかがよく出てきます．</p>
+<p>そしてこの性質が今後とても大事になるオイラーの公式というものに結びついているのです. しっかりと理解しておきましょう．</p>
+<h2 id="210-%E5%A4%A7%E6%AD%A3%E7%BE%A9%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%E3%81%AE%E5%85%AC%E5%BC%8F">2.10. 大正義オイラーの公式</h2>
+<p>証明は今の段階では難しいので紹介だけになりますが，オイラーの公式をここで確認しておきましょう．オイラーの公式は脳波解析の基本の基本，全てにおいて重要になる公式です．basic.pdfの主だった目的の一つが，この公式を証明する武器を備えてもらうことであるといっても過言じゃない程のものです．まずは確認してみましょう．</p>
+<p><strong>オイラーの公式(Euler's formula)</strong>
+$$
+\mathrm{e}^{ix} = \cos x +  i\sin x
+$$</p>
+<p>ふむふむ，三角関数の足し合わせが，指数関数っぽく表されてますね．あとは何やら虚数単位iもいますね．しかしこれは...綺麗ですね！</p>
+<p>更にこいつの特殊形がこうなります.
+$$
+\mathrm{e}^{i\pi} + 1 = 0
+$$</p>
+<p>美しすぎますね！！数学の基本である指数関数，虚数，三角関数などといったものが濃縮され，数も基本の１と０のみでまとめられています．</p>
+<p>この公式をもって, 我々は脳波と戦っていくことになります．Euler's formula を制するものは脳を制するのです.</p>
+<p>つまり内積同様, フーリエ変換の基本の一つになっています. ２章以降は統計以外の全てが，このオイラーの公式を証明するために必要な数学のおさらいになります．証明はAnalysisの方に記載しています．(とはいえ，脳波以外にも使う基本的な数学知識であるので脳波以外の人も読む価値は多少は...ある...んじゃないかなぁ？)</p>
+
+</body>
+</html>
