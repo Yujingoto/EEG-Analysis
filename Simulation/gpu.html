@@ -322,26 +322,24 @@ summary {
       <h1><span>02</span>CuPy&#x3092;&#x4F7F;&#x3063;&#x305F;GPU&#x6F14;&#x7B97;</h1>
 <p>&#x30CB;&#x30E5;&#x30FC;&#x30E9;&#x30EB;&#x30CD;&#x30C3;&#x30C8;&#x3092;&#x5B9F;&#x88C5;&#x3057;&#xFF0C;&#x30C6;&#x30B9;&#x30C8;&#x3092;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#x83AB;&#x5927;&#x306A;&#x8A08;&#x7B97;&#x91CF;&#x304C;&#x5FC5;&#x8981;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;&#x3053;&#x306E;&#x5168;&#x3066;&#x3092;CPU&#x306B;&#x3084;&#x3089;&#x305B;&#x308B;&#x306E;&#x306F;&#x9AA8;&#x304C;&#x6298;&#x308C;&#x308B;&#x305F;&#x3081;&#xFF0C;GPU&#x3092;&#x4F7F;&#x3063;&#x305F;Python&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30DF;&#x30F3;&#x30B0;&#x306E;&#x305F;&#x3081;&#x306B;CuPy&#x306E;&#x52C9;&#x5F37;&#x3092;&#x3057;&#x3066;&#x3044;&#x304D;&#x307E;&#x3059;&#xFF0E;</p>
 <div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>&#x25B6;&#xFE0E;</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
-<li><a href="#jupyter-notebook%E3%81%AE%E5%B0%8E%E5%85%A5">Jupyter notebook&#x306E;&#x5C0E;&#x5165;</a>
+<li><a href="#gpu%E3%81%A8%E3%81%AF">GPU&#x3068;&#x306F;</a>
 <ul>
-<li><a href="#anaconda%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Anaconda&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</a></li>
-<li><a href="#anaconda%E3%81%AE%E8%B5%B7%E5%8B%95">Anaconda&#x306E;&#x8D77;&#x52D5;</a></li>
-<li><a href="#jupyter-notebook%E3%81%AE%E8%B5%B7%E5%8B%95">Jupyter Notebook&#x306E;&#x8D77;&#x52D5;</a></li>
-<li><a href="#%E5%8B%95%E4%BD%9C%E3%83%86%E3%82%B9%E3%83%88">&#x52D5;&#x4F5C;&#x30C6;&#x30B9;&#x30C8;</a></li>
-<li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E4%BE%BF%E5%88%A9%E6%A9%9F%E8%83%BD">&#x305D;&#x306E;&#x4ED6;&#x306E;&#x4FBF;&#x5229;&#x6A5F;&#x80FD;</a>
+<li><a href="#cpu%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">CPU&#x3068;&#x306E;&#x9055;&#x3044;</a>
 <ul>
-<li><a href="#markdown">Markdown</a></li>
-<li><a href="#py%E3%81%AE%E5%87%BA%E5%8A%9B">.py&#x306E;&#x51FA;&#x529B;</a></li>
-<li><a href="#%E4%BB%96%E8%80%85%E3%81%A8%E3%81%AE%E5%85%B1%E6%9C%89">&#x4ED6;&#x8005;&#x3068;&#x306E;&#x5171;&#x6709;</a></li>
+<li><a href="#%E5%BD%B9%E5%89%B2">&#x5F79;&#x5272;</a></li>
+<li><a href="#%E5%BE%97%E6%84%8F%E3%81%A8%E3%81%99%E3%82%8B%E6%BC%94%E7%AE%97%E5%87%A6%E7%90%86">&#x5F97;&#x610F;&#x3068;&#x3059;&#x308B;&#x6F14;&#x7B97;&#x51E6;&#x7406;</a></li>
+<li><a href="#%E3%82%B3%E3%82%A2%E6%95%B0">&#x30B3;&#x30A2;&#x6570;</a></li>
+<li><a href="#%E5%AE%9F%E8%A1%8C%E6%99%82%E9%96%93">&#x5B9F;&#x884C;&#x6642;&#x9593;</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#gpu%E3%81%AE%E4%BD%BF%E7%94%A8">GPU&#x306E;&#x4F7F;&#x7528;</a>
+<li><a href="#cuda">CUDA</a></li>
+<li><a href="#cupy">CuPy</a></li>
+<li><a href="#%E3%82%81%E3%82%82">&#x3081;&#x3082;</a>
 <ul>
-<li><a href="#gpu%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">GPU&#x30C9;&#x30E9;&#x30A4;&#x30D0;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</a></li>
-<li><a href="#cupy%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">CuPy&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30C8;&#x30FC;&#x30EB;</a></li>
-<li><a href="#cupy%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88">CuPy&#x306E;&#x30C6;&#x30B9;&#x30C8;</a></li>
+<li><a href="#%E7%A5%9E%E7%B5%8C%E7%B4%B0%E8%83%9E%E3%81%AE%E7%99%BA%E7%81%AB%E3%81%AEcuda%E5%AE%9F%E8%A3%85">&#x795E;&#x7D4C;&#x7D30;&#x80DE;&#x306E;&#x767A;&#x706B;&#xFF1F;&#x306E;CUDA&#x5B9F;&#x88C5;</a></li>
+<li><a href="#%E3%82%B7%E3%83%8A%E3%83%97%E3%82%B9%E5%8F%AF%E5%A1%91%E6%80%A7%E3%81%AEcuda%E5%AE%9F%E8%A3%85%E3%82%89%E3%81%97%E3%81%84">&#x30B7;&#x30CA;&#x30D7;&#x30B9;&#x53EF;&#x5851;&#x6027;&#xFF1F;&#x306E;CUDA&#x5B9F;&#x88C5;&#x3089;&#x3057;&#x3044;</a></li>
 </ul>
 </li>
 </ul>
