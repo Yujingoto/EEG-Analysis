@@ -333,6 +333,7 @@ summary {
 <li><a href="#vim%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%89">Vim&#x30AD;&#x30FC;&#x30D0;&#x30A4;&#x30F3;&#x30C9;</a>
 <ul>
 <li><a href="#jupyter-vim-binding">jupyter-vim-binding</a></li>
+<li><a href="#vim%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%89%E3%81%AE%E8%A8%AD%E5%AE%9A">Vim&#x30AD;&#x30FC;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x306E;&#x8A2D;&#x5B9A;</a></li>
 <li><a href="#%E8%89%B2%E3%81%AE%E4%BF%AE%E6%AD%A3">&#x8272;&#x306E;&#x4FEE;&#x6B63;</a></li>
 </ul>
 </li>
@@ -375,6 +376,38 @@ conda&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306A;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x
 <span class="token function">git</span> clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
 jupyter nbextension <span class="token builtin class-name">enable</span> vim_binding/vim_binding
 </pre><p>&#x3092;&#x7D9A;&#x3051;&#x3066;&#x5B9F;&#x884C;&#x3057;&#x307E;&#x3059;&#xFF0E;&#x3053;&#x308C;&#x3067;&#xFF0C;Jupyter&#x3067;vim&#x306E;key-bind&#x304C;&#x4F7F;&#x3048;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3057;&#x305F;&#xFF01;&#x4E07;&#x6B73;&#xFF0E;</p>
+<h3 class="mume-header" id="vim%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%89%E3%81%AE%E8%A8%AD%E5%AE%9A">Vim&#x30AD;&#x30FC;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x306E;&#x8A2D;&#x5B9A;</h3>
+
+<p>&#x3053;&#x306E;&#x307E;&#x307E;&#x3067;&#x3082;&#x7D50;&#x69CB;&#x4FBF;&#x5229;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x308B;&#xFF08;&#x305F;&#x3068;&#x3048;&#x3070;hjkl&#x3067;&#x306E;&#x79FB;&#x52D5;&#xFF09;&#x306E;&#x3067;&#x3059;&#x304C;&#xFF0C;&#x30E2;&#x30FC;&#x30C9;&#x5207;&#x308A;&#x66FF;&#x3048;&#x306E;&#x305F;&#x3081;&#x306B;Esc&#x3092;&#x62BC;&#x3055;&#x306A;&#x3044;&#x3068;&#x3044;&#x3051;&#x306A;&#x3044;&#x306E;&#x306F;&#x9762;&#x5012;&#x3067;&#x3059;&#xFF0E;&#x305B;&#x3081;&#x3066;&#x305D;&#x308C;&#x304F;&#x3089;&#x3044;&#x306F;&#x30AB;&#x30B9;&#x30BF;&#x30E0;&#x3057;&#x3066;&#x304A;&#x304D;&#x305F;&#x3044;&#xFF0E;&#x3068;&#x3044;&#x3046;&#x3053;&#x3068;&#x3067;&#xFF0C;</p>
+<blockquote>
+<p>~/.jupyter/custom/custom.js</p>
+</blockquote>
+<p>&#x3092;&#x7DE8;&#x96C6;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;</p>
+<p>&#x30B3;&#x30FC;&#x30C9;&#x306F;</p>
+<details><summary>&#x8A73;&#x7D30;</summary>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">// Configure CodeMirror Keymap</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token string">&apos;nbextensions/vim_binding/vim_binding&apos;</span><span class="token punctuation">,</span>   <span class="token comment">// depends your installation</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token maybe-class-name">CodeMirror</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Vim</span></span><span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token string">&quot;jj&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;Esc&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;insert&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// jj setting!</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Configure Jupyter Keymap</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token string">&apos;nbextensions/vim_binding/vim_binding&apos;</span><span class="token punctuation">,</span>
+  <span class="token string">&apos;base/js/namespace&apos;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token parameter">vim_binding<span class="token punctuation">,</span> ns</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Add post callback</span>
+  vim_binding<span class="token punctuation">.</span><span class="token property-access">on_ready_callbacks</span><span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span><span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword keyword-var">var</span> km <span class="token operator">=</span> ns<span class="token punctuation">.</span><span class="token property-access">keyboard_manager</span><span class="token punctuation">;</span>
+    <span class="token comment">// Allow Ctrl-2 to change the cell mode into Markdown in Vim normal mode</span>
+    km<span class="token punctuation">.</span><span class="token property-access">edit_shortcuts</span><span class="token punctuation">.</span><span class="token method function property-access">add_shortcut</span><span class="token punctuation">(</span><span class="token string">&apos;ctrl-2&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;vim-binding:change-cell-to-markdown&apos;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Update Help</span>
+    km<span class="token punctuation">.</span><span class="token property-access">edit_shortcuts</span><span class="token punctuation">.</span><span class="token property-access">events</span><span class="token punctuation">.</span><span class="token method function property-access">trigger</span><span class="token punctuation">(</span><span class="token string">&apos;rebuild.QuickHelp&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></details>
+<p>&#x306B;&#x307E;&#x3068;&#x3081;&#x307E;&#x3057;&#x305F;&#xFF0E;&#x3053;&#x308C;&#x306B;&#x3088;&#x3063;&#x3066;&#xFF0C;&#x3068;&#x308A;&#x3042;&#x3048;&#x305A;jj&#x3067;&#x306E;&#x633F;&#x5165;&#x30E2;&#x30FC;&#x30C9;&#x629C;&#x3051;&#x51FA;&#x3057;&#x3092;&#x53EF;&#x80FD;&#x3068;&#x3057;&#xFF0C;&#x3042;&#x3068;&#x306F;&#x30BB;&#x30EB;&#x306E;&#x30DE;&#x30FC;&#x30AF;&#x30C0;&#x30A6;&#x30F3;&#x3068;&#x30B3;&#x30FC;&#x30C9;&#x30E2;&#x30FC;&#x30C9;&#x5909;&#x66F4;&#x3092;Ctr-2&#x3067;&#x5909;&#x66F4;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3057;&#x305F;&#xFF0E;</p>
 <h3 class="mume-header" id="%E8%89%B2%E3%81%AE%E4%BF%AE%E6%AD%A3">&#x8272;&#x306E;&#x4FEE;&#x6B63;</h3>
 
 <p>&#x3057;&#x304B;&#x3057;&#xFF0C;vim&#x30AD;&#x30FC;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x6709;&#x52B9;&#x306B;&#x3057;&#x3066;&#x3057;&#x307E;&#x3046;&#x3068;&#xFF0C;&#x9078;&#x629E;&#x4E2D;&#x306E;&#x30BB;&#x30EB;&#x304C;&#x767D;&#x304F;&#x30CF;&#x30A4;&#x30E9;&#x30A4;&#x30C8;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x306B;&#x306A;&#x3063;&#x3066;&#x3057;&#x307E;&#x3044;&#xFF0C;&#x3068;&#x3066;&#x3082;&#x898B;&#x306B;&#x304F;&#x304F;&#x306A;&#x308A;&#x307E;&#x3059;&#xFF0E;</p>
