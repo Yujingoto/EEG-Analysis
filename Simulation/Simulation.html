@@ -259,6 +259,12 @@ pre[data-line] .line-highlight[data-end]:after {
 .md-sidebar-toc.md-sidebar-toc {
   padding-top: 40px;
 }
+.sidebar {
+  width: 96px;
+  background-color: moccasin;
+  box-sizing: border-box;
+  border: 8px solid chocolate;
+}
 #sidebar-toc-btn {
   bottom: unset;
   top: 8px;
@@ -314,6 +320,30 @@ p {
 summary {
   color: #6495ed;
 }
+ul.index {
+  color: #2d8fdd;
+  border-left: solid 2px #2d8fdd;
+  /*左側の線*/
+  background: #f1f8ff;
+  /*背景色*/
+  line-height: 2;
+  padding-right: 20px;
+  list-style-type: none!important;
+  /*ポチ消す*/
+  text-align: left;
+}
+/*子階層以降共通*/
+.gnav li li {
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  position: relative;
+}
+.gnav li:hover > ul > li {
+  height: 2rem;
+  z-index: 20;
+  overflow: visible;
+}
 
       </style>
     </head>
@@ -326,11 +356,11 @@ summary {
 <h2 class="mume-header" id="-%E7%9B%AE%E6%AC%A1-">&#x76EE;&#x6B21;</h2>
 
 <ul>
-<li><a href="environment">&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x306B;&#x3064;&#x3044;&#x3066;</a></li>
-<li><a href="neuralnet">Neural Network</a></li>
-<li><a href="gpu">Jupyter&#x3067;&#x306E;GPU</a></li>
-<li><a href="jupyter">Jupyter&#x306E;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30A4;&#x30BA;</a></li>
-<li><a href="julia">Julia&#x306E;&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a></li>
+<li><a href="./Setup/environment">&#x5B9F;&#x884C;&#x74B0;&#x5883;&#x306B;&#x3064;&#x3044;&#x3066;</a></li>
+<li><a href="./Setup/neuralnet">Neural Network</a></li>
+<li><a href="./Setup/gpu">Jupyter&#x3067;&#x306E;GPU</a></li>
+<li><a href="./Setup/jupyter">Jupyter&#x306E;&#x30AB;&#x30B9;&#x30BF;&#x30DE;&#x30A4;&#x30BA;</a></li>
+<li><a href="./Setup/julia">Julia&#x306E;&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a></li>
 </ul>
 
       </div>
