@@ -259,6 +259,12 @@ pre[data-line] .line-highlight[data-end]:after {
 .md-sidebar-toc.md-sidebar-toc {
   padding-top: 40px;
 }
+.sidebar {
+  width: 96px;
+  background-color: moccasin;
+  box-sizing: border-box;
+  border: 8px solid chocolate;
+}
 #sidebar-toc-btn {
   bottom: unset;
   top: 8px;
@@ -314,34 +320,57 @@ p {
 summary {
   color: #6495ed;
 }
+ul.index {
+  color: #2d8fdd;
+  border-left: solid 2px #2d8fdd;
+  /*左側の線*/
+  background: #f1f8ff;
+  /*背景色*/
+  line-height: 2;
+  padding-right: 20px;
+  list-style-type: none!important;
+  /*ポチ消す*/
+  text-align: left;
+}
+/*子階層以降共通*/
+.gnav li li {
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  position: relative;
+}
+.gnav li:hover > ul > li {
+  height: 2rem;
+  z-index: 20;
+  overflow: visible;
+}
 
       </style>
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <h1><span>02</span>&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;&#x3068;&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</h1>
+      <table>
+<thead>
+<tr>
+<th><details><summary> Math </summary><ul class="gnav"><li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x6570;&#x5B66;&#x7DE8;</a><ul class="index">     <li><a href="../Basic/calculus.html">&#x639B;&#x3051;&#x7B97;</a></li>             <li><a href="../Basic/trigonometric.html">&#x4E09;&#x89D2;&#x95A2;&#x6570;</a></li>      <li><a href="../Basic/complex.html">&#x8907;&#x7D20;&#x6570;</a></li>             <li><a href="../Basic/calculus.html">&#x5FAE;&#x5206;&#x30FB;&#x7A4D;&#x5206;</a></li>       <li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x7D71;&#x8A08;</a></li>        </ul> </li><li><a href="../Analysis/Analysis.html">&#x4FE1;&#x53F7;&#x51E6;&#x7406;&#x7DE8;</a><ul class="index"><li><a href="../Analysis/fourier.html">&#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;</a></li>                                                  <li><a href="../Analysis/wavelet.html">wavelet&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/hilbert.html">&#x30D2;&#x30EB;&#x30D9;&#x30EB;&#x30C8;&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/eeg.html">&#x57FA;&#x672C;&#x306E;&#x8133;&#x6CE2;&#x89E3;&#x6790;</a></li>       <li><a href="../Analysis/phase_analysis.html">&#x4F4D;&#x76F8;&#x540C;&#x671F;&#x89E3;&#x6790;</a></li>        </ul>                                            </li><li><a href="../Statistics/Statistics.html">&#x7D71;&#x8A08;&#x7DE8;</a><ul class="index"><li><a href="../Statistics/distribution.html">&#x78BA;&#x7387;&#x5206;&#x5E03;</a></li>                                                  <li><a href="../Statistics/central_limit_theorem.html">&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;&#x3068;&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</a></li>                                     <li><a href="../Statistics/statistic.html">&#x7D71;&#x8A08;&#x91CF;&#x3068;&#x6A19;&#x672C;&#x5206;&#x5E03;</a></li>                                                         <li><a href="../Statistics/test.html">&#x7D71;&#x8A08;&#x7684;&#x691C;&#x5B9A;</a></li>       <li><a href="../Statistics/anova.html">&#x5206;&#x6563;&#x5206;&#x6790;</a></li>        </ul></li></ul></details></th>
+<th><details><summary> Analysis </summary><ul class="gnav"><li><a href="../../Analysis/eeglab/eeglab.html">EEGLAB</a><ul class="index">                                             <li><a href="../../Analysis/eeglab/setup.html">&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a></li>                                                        <li><a href="../../Analysis/eeglab/import.html">&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</a></li>                                                   <li><a href="../../Analysis/eeglab/prepro1.html">&#x57FA;&#x672C;&#x7684;&#x306A;&#x4E0B;&#x51E6;&#x7406;</a></li>                                                     <li><a href="../../Analysis/eeglab/prepro2.html">&#x767A;&#x5C55;&#x7684;&#x306A;&#x4E0B;&#x51E6;&#x7406;</a></li>                                                         <li><a href="../../Analysis/eeglab/analysis1.html">&#x5358;&#x88AB;&#x9A13;&#x8005;&#x3067;&#x306E;&#x89E3;&#x6790;</a></li>                                                      <li><a href="../../Analysis/eeglab/analysis2.html">&#x88AB;&#x9A13;&#x8005;&#x7FA4;&#x3067;&#x306E;&#x89E3;&#x6790;</a></li>   </ul> </li></ul></details></th>
+<th><details><summary> Experiment </summary><ul class="gnav"><li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x6570;&#x5B66;&#x7DE8;</a><ul class="index">     <li><a href="../Basic/calculus.html">&#x639B;&#x3051;&#x7B97;</a></li>             <li><a href="../Basic/trigonometric.html">&#x4E09;&#x89D2;&#x95A2;&#x6570;</a></li>      <li><a href="../Basic/complex.html">&#x8907;&#x7D20;&#x6570;</a></li>             <li><a href="../Basic/calculus.html">&#x5FAE;&#x5206;&#x30FB;&#x7A4D;&#x5206;</a></li>       <li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x7D71;&#x8A08;</a></li>        </ul> </li><li><a href="../Analysis/Analysis.html">&#x4FE1;&#x53F7;&#x51E6;&#x7406;&#x7DE8;</a><ul class="index"><li><a href="../Analysis/fourier.html">&#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;</a></li>                                                  <li><a href="../Analysis/wavelet.html">wavelet&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/hilbert.html">&#x30D2;&#x30EB;&#x30D9;&#x30EB;&#x30C8;&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/eeg.html">&#x57FA;&#x672C;&#x306E;&#x8133;&#x6CE2;&#x89E3;&#x6790;</a></li>       <li><a href="../Analysis/phase_analysis.html">&#x4F4D;&#x76F8;&#x540C;&#x671F;&#x89E3;&#x6790;</a></li>        </ul> </li></ul></details></th>
+<th><details><summary> Simulations </summary><ul class="gnav"><li><a href="../../Simulation/Simulation.html">&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a><ul class="index">                                             <li><a href="../../Simulation/Setup/environment.html">Python&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a></li>                                                    <li><a href="../../Simulation/Setup/gpu.html">python&#x3067;&#x306E;GPU&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;</a></li>                                                     <li><a href="../../Simulation/Setup/jupyter.html">Jupyter&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;</a></li>                                                     <li><a href="../../Simulation/Setup/julia.html">Julia&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;</a></li></ul></li></ul></details></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h1><span>02</span>&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;&#x3068;&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</h1>
 <p>&#x3055;&#x3066;&#xFF0C;<a href="distribution">&#x69D8;&#x3005;&#x306A;&#x78BA;&#x7387;&#x5206;&#x5E03;&#x306E;&#x5F62;</a>&#x3092;&#x898B;&#x3066;&#x304D;&#x305F;&#x308F;&#x3051;&#x3067;&#x3059;&#x304C;&#xFF0C;&#x305D;&#x3082;&#x305D;&#x3082;&#x5168;&#x4F53;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x89B3;&#x6E2C;&#x3057;&#x3066;&#xFF0C;&#x305D;&#x3044;&#x3064;&#x3089;&#x306E;&#x5206;&#x5E03;&#x3092;&#x898B;&#x308B;&#x306A;&#x3089;&#x307E;&#x3060;&#x3057;&#x3082;&#x672A;&#x77E5;&#x306E;&#x96C6;&#x56E3;&#x306E;&#x4E2D;&#x304B;&#x3089;&#x4E00;&#x90E8;&#x3092;&#x629C;&#x304D;&#x51FA;&#x3057;&#x3066;&#x5206;&#x5E03;&#x3092;&#x898B;&#x305F;&#x3068;&#x3053;&#x308D;&#x3067;&#xFF0C;&#x305D;&#x3044;&#x3064;&#x306E;&#x6027;&#x8CEA;(&#x5E73;&#x5747;&#x3068;&#x304B;)&#x3092;&#x3069;&#x308C;&#x3060;&#x3051;&#x4FE1;&#x3058;&#x3066;&#x826F;&#x3044;&#x3082;&#x306E;&#x3067;&#x3057;&#x3087;&#x3046;&#x304B;&#xFF0E;</p>
 <div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>&#x25B6;&#xFE0E;</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
 <li><a href="#%E5%A4%A7%E6%95%B0%E3%81%AE%E6%B3%95%E5%89%87">&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;</a>
 <ul>
-<li><a href="#%E3%83%9E%E3%83%AB%E3%82%B3%E3%83%95%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F">&#x30DE;&#x30EB;&#x30B3;&#x30D5;&#x306E;&#x4E0D;&#x7B49;&#x5F0F;</a>
-<ul>
-<li><a href="#%E3%83%9E%E3%83%AB%E3%82%B3%E3%83%95%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F-1">&#x30DE;&#x30EB;&#x30B3;&#x30D5;&#x306E;&#x4E0D;&#x7B49;&#x5F0F;</a></li>
-<li><a href="#"></a></li>
-</ul>
-</li>
-<li><a href="#%E3%83%81%E3%82%A7%E3%83%93%E3%82%B7%E3%82%A7%E3%83%95%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F">&#x30C1;&#x30A7;&#x30D3;&#x30B7;&#x30A7;&#x30D5;&#x306E;&#x4E0D;&#x7B49;&#x5F0F;</a>
-<ul>
-<li><a href="#%E3%83%81%E3%82%A7%E3%83%93%E3%82%B7%E3%82%A7%E3%83%95%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F-1">&#x30C1;&#x30A7;&#x30D3;&#x30B7;&#x30A7;&#x30D5;&#x306E;&#x4E0D;&#x7B49;&#x5F0F;</a></li>
-<li><a href="#-1"></a></li>
-</ul>
-</li>
+<li><a href="#%E3%83%9E%E3%83%AB%E3%82%B3%E3%83%95%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F">&#x30DE;&#x30EB;&#x30B3;&#x30D5;&#x306E;&#x4E0D;&#x7B49;&#x5F0F;</a></li>
+<li><a href="#%E3%83%81%E3%82%A7%E3%83%93%E3%82%B7%E3%82%A7%E3%83%95%E3%81%AE%E4%B8%8D%E7%AD%89%E5%BC%8F">&#x30C1;&#x30A7;&#x30D3;&#x30B7;&#x30A7;&#x30D5;&#x306E;&#x4E0D;&#x7B49;&#x5F0F;</a></li>
 <li><a href="#%E5%A4%A7%E6%95%B0%E3%81%AE%E6%B3%95%E5%89%87-1">&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%AD%E5%BF%83%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86">&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</a><br>
-- <a href="#%E4%B8%AD%E5%BF%83%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86-1">&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</a><br>
-- <a href="#-2"></a></li>
+<li><a href="#%E4%B8%AD%E5%BF%83%E6%A5%B5%E9%99%90%E5%AE%9A%E7%90%86">&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</a></li>
 </ul>
 <h2 class="mume-header" id="-%E5%A4%A7%E6%95%B0%E3%81%AE%E6%B3%95%E5%89%87-">&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;</h2>
 
@@ -496,6 +525,18 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">&#
 <div style="text-align: center;">
 <p>&#x3010;<a href="statistic">&#x6B21;&#x3078;</a>&#x3011;</p>
 </div>
+<table>
+<thead>
+<tr>
+<th><details><summary> Math </summary><ul class="gnav"><li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x6570;&#x5B66;&#x7DE8;</a><ul class="index">     <li><a href="../Basic/calculus.html">&#x639B;&#x3051;&#x7B97;</a></li>             <li><a href="../Basic/trigonometric.html">&#x4E09;&#x89D2;&#x95A2;&#x6570;</a></li>      <li><a href="../Basic/complex.html">&#x8907;&#x7D20;&#x6570;</a></li>             <li><a href="../Basic/calculus.html">&#x5FAE;&#x5206;&#x30FB;&#x7A4D;&#x5206;</a></li>       <li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x7D71;&#x8A08;</a></li>        </ul> </li><li><a href="../Analysis/Analysis.html">&#x4FE1;&#x53F7;&#x51E6;&#x7406;&#x7DE8;</a><ul class="index"><li><a href="../Analysis/fourier.html">&#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;</a></li>                                                  <li><a href="../Analysis/wavelet.html">wavelet&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/hilbert.html">&#x30D2;&#x30EB;&#x30D9;&#x30EB;&#x30C8;&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/eeg.html">&#x57FA;&#x672C;&#x306E;&#x8133;&#x6CE2;&#x89E3;&#x6790;</a></li>       <li><a href="../Analysis/phase_analysis.html">&#x4F4D;&#x76F8;&#x540C;&#x671F;&#x89E3;&#x6790;</a></li>        </ul>                                            </li><li><a href="../Statistics/Statistics.html">&#x7D71;&#x8A08;&#x7DE8;</a><ul class="index"><li><a href="../Statistics/distribution.html">&#x78BA;&#x7387;&#x5206;&#x5E03;</a></li>                                                  <li><a href="../Statistics/central_limit_theorem.html">&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;&#x3068;&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</a></li>                                     <li><a href="../Statistics/statistic.html">&#x7D71;&#x8A08;&#x91CF;&#x3068;&#x6A19;&#x672C;&#x5206;&#x5E03;</a></li>                                                         <li><a href="../Statistics/test.html">&#x7D71;&#x8A08;&#x7684;&#x691C;&#x5B9A;</a></li>       <li><a href="../Statistics/anova.html">&#x5206;&#x6563;&#x5206;&#x6790;</a></li>        </ul></li></ul></details></th>
+<th><details><summary> Analysis </summary><ul class="gnav"><li><a href="../../Analysis/eeglab/eeglab.html">EEGLAB</a><ul class="index">                                             <li><a href="../../Analysis/eeglab/setup.html">&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a></li>                                                        <li><a href="../../Analysis/eeglab/import.html">&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;</a></li>                                                   <li><a href="../../Analysis/eeglab/prepro1.html">&#x57FA;&#x672C;&#x7684;&#x306A;&#x4E0B;&#x51E6;&#x7406;</a></li>                                                     <li><a href="../../Analysis/eeglab/prepro2.html">&#x767A;&#x5C55;&#x7684;&#x306A;&#x4E0B;&#x51E6;&#x7406;</a></li>                                                         <li><a href="../../Analysis/eeglab/analysis1.html">&#x5358;&#x88AB;&#x9A13;&#x8005;&#x3067;&#x306E;&#x89E3;&#x6790;</a></li>                                                      <li><a href="../../Analysis/eeglab/analysis2.html">&#x88AB;&#x9A13;&#x8005;&#x7FA4;&#x3067;&#x306E;&#x89E3;&#x6790;</a></li>   </ul> </li></ul></details></th>
+<th><details><summary> Experiment </summary><ul class="gnav"><li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x6570;&#x5B66;&#x7DE8;</a><ul class="index">     <li><a href="../Basic/calculus.html">&#x639B;&#x3051;&#x7B97;</a></li>             <li><a href="../Basic/trigonometric.html">&#x4E09;&#x89D2;&#x95A2;&#x6570;</a></li>      <li><a href="../Basic/complex.html">&#x8907;&#x7D20;&#x6570;</a></li>             <li><a href="../Basic/calculus.html">&#x5FAE;&#x5206;&#x30FB;&#x7A4D;&#x5206;</a></li>       <li><a href="../Basic/basic.html">&#x57FA;&#x790E;&#x7D71;&#x8A08;</a></li>        </ul> </li><li><a href="../Analysis/Analysis.html">&#x4FE1;&#x53F7;&#x51E6;&#x7406;&#x7DE8;</a><ul class="index"><li><a href="../Analysis/fourier.html">&#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;</a></li>                                                  <li><a href="../Analysis/wavelet.html">wavelet&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/hilbert.html">&#x30D2;&#x30EB;&#x30D9;&#x30EB;&#x30C8;&#x5909;&#x63DB;</a></li>   <li><a href="../Analysis/eeg.html">&#x57FA;&#x672C;&#x306E;&#x8133;&#x6CE2;&#x89E3;&#x6790;</a></li>       <li><a href="../Analysis/phase_analysis.html">&#x4F4D;&#x76F8;&#x540C;&#x671F;&#x89E3;&#x6790;</a></li>        </ul> </li></ul></details></th>
+<th><details><summary> Simulations </summary><ul class="gnav"><li><a href="../../Simulation/Simulation.html">&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a><ul class="index">                                             <li><a href="../../Simulation/Setup/environment.html">Python&#x74B0;&#x5883;&#x69CB;&#x7BC9;</a></li>                                                    <li><a href="../../Simulation/Setup/gpu.html">python&#x3067;&#x306E;GPU&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;</a></li>                                                     <li><a href="../../Simulation/Setup/jupyter.html">Jupyter&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;</a></li>                                                     <li><a href="../../Simulation/Setup/julia.html">Julia&#x30BB;&#x30C3;&#x30C8;&#x30A2;&#x30C3;&#x30D7;</a></li></ul></li></ul></details></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
       </div>
       
       
