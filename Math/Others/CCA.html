@@ -337,22 +337,34 @@ ul.index {
   /*ポチ消す*/
   text-align: left;
 }
-.fixed-table {
-  background: #0000793a;
-  top: 0;
-  position: relative;
-  overflow-y: auto;
-  /* 表が長い場合、スクロールできるようにする */
-  max-height: 100vh;
-  /* 画面の高さを超えないようにする */
-}
 .header {
   position: fixed;
-  width: 95%;
+  width: 100%;
+  min-width: 980px;
+  left: 0;
   top: 0px;
   font-size: 15pt;
   background: #fff;
   z-index: 1000 ;
+}
+.fixed-table {
+  background: #0000793a;
+  top: 0;
+  width: 100%;
+  border-collapse: collapse;
+  overflow-y: auto;
+  /* 表が長い場合、スクロールできるようにする */
+  max-height: 40vh;
+  /* 画面の高さを超えないようにする */
+}
+.fixed-table th {
+  background-color: #eee;
+}
+.fieldset th,
+.fixed-table td {
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  display: block;
 }
 /*子階層以降共通*/
 .gnav li li {
@@ -372,7 +384,7 @@ ul.index {
     <body for="html-export">
       <div class="mume markdown-preview  ">
       <div class="header">
-<table class="fixed-table">
+<table class="fixed-table" stype="width:100%;">
     <thead>
       <tr>
         <th><details><summary> Math </summary><ul class="gnav"><li><a href="../../Math/Basic/basic.html">&#x57FA;&#x790E;&#x6570;&#x5B66;&#x7DE8;</a><ul class="index">     <li><a href="../../Math/Basic/calculus.html">&#x639B;&#x3051;&#x7B97;</a></li>             <li><a href="../../Math/Basic/trigonometric.html">&#x4E09;&#x89D2;&#x95A2;&#x6570;</a></li>      <li><a href="../../Basic/complex.html">&#x8907;&#x7D20;&#x6570;</a></li>             <li><a href="../../Math/Basic/calculus.html">&#x5FAE;&#x5206;&#x30FB;&#x7A4D;&#x5206;</a></li>       <li><a href="../../Math/Basic/basic.html">&#x57FA;&#x790E;&#x7D71;&#x8A08;</a></li>        </ul> </li><li><a href="../../Math/Analysis/Analysis.html">&#x4FE1;&#x53F7;&#x51E6;&#x7406;&#x7DE8;</a><ul class="index"><li><a href="../../Math/Analysis/fourier.html">&#x30D5;&#x30FC;&#x30EA;&#x30A8;&#x5909;&#x63DB;</a></li>                                                  <li><a href="../../Math/Analysis/wavelet.html">wavelet&#x5909;&#x63DB;</a></li>   <li><a href="../../Math/Analysis/hilbert.html">&#x30D2;&#x30EB;&#x30D9;&#x30EB;&#x30C8;&#x5909;&#x63DB;</a></li>   <li><a href="../../Math/Analysis/eeg.html">&#x57FA;&#x672C;&#x306E;&#x8133;&#x6CE2;&#x89E3;&#x6790;</a></li>       <li><a href="../../Math/Analysis/phase_analysis.html">&#x4F4D;&#x76F8;&#x540C;&#x671F;&#x89E3;&#x6790;</a></li>        </ul>                                            </li><li><a href="../../Math/Statistics/Statistics.html">&#x7D71;&#x8A08;&#x7DE8;</a><ul class="index"><li><a href="../../Math/Statistics/distribution.html">&#x78BA;&#x7387;&#x5206;&#x5E03;</a></li>                                                  <li><a href="../../Math/Statistics/central_limit_theorem.html">&#x5927;&#x6570;&#x306E;&#x6CD5;&#x5247;&#x3068;&#x4E2D;&#x5FC3;&#x6975;&#x9650;&#x5B9A;&#x7406;</a></li>                                     <li><a href="../../Math/Statistics/statistic.html">&#x7D71;&#x8A08;&#x91CF;&#x3068;&#x6A19;&#x672C;&#x5206;&#x5E03;</a></li>                                                         <li><a href="../../Math/Statistics/test.html">&#x7D71;&#x8A08;&#x7684;&#x691C;&#x5B9A;</a></li>       <li><a href="../../Math/Statistics/anova.html">&#x5206;&#x6563;&#x5206;&#x6790;</a></li>        </ul></li></ul></details></th>
