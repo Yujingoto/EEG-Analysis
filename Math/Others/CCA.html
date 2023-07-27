@@ -349,19 +349,23 @@ ul.index {
 .fixed-table {
   background: #0000793a;
   top: 0;
-  width: 100%;
   margin: auto;
+  table-layout: fixed;
+  width: 100%;
   overflow-y: auto;
   /* 表が長い場合、スクロールできるようにする */
   max-height: 40vh;
   /* 画面の高さを超えないようにする */
 }
-.fixed-table th {
+th {
   background-color: #eee;
   width: 20%;
 }
-.fixed-table .mokuji {
-  width: 5px;
+.gnav {
+  padding: 0%;
+  margin: 0;
+  list-style-type: none!important;
+  /*ポチ消す*/
 }
 /*子階層以降共通*/
 .gnav li li {
@@ -369,10 +373,12 @@ ul.index {
   overflow: hidden;
   transition: 0.5s;
   position: relative;
+  width: 100%;
 }
 .gnav li:hover > ul > li {
   height: 2rem;
   z-index: 20;
+  font-size: 10pt;
   overflow: visible;
 }
 
