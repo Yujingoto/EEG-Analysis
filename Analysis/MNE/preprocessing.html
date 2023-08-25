@@ -461,12 +461,23 @@ footer {
 <h1><span></span>&#x524D;&#x51E6;&#x7406;</h1>
 <p>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30ED;&#x30FC;&#x30C9;&#x304C;&#x5206;&#x304B;&#x3063;&#x305F;&#x3068;&#x3053;&#x308D;&#x3067;&#xFF0C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x524D;&#x51E6;&#x7406;&#x306E;&#x4ED5;&#x65B9;&#x3092;&#x78BA;&#x8A8D;&#x3057;&#x3066;&#x3044;&#x304D;&#x307E;&#x3059;&#xFF0E;<a href="https://mne.tools/stable/auto_tutorials/preprocessing/index.html">&#x516C;&#x5F0F;&#x306E;&#x30C1;&#x30E5;&#x30FC;&#x30C8;&#x30EA;&#x30A2;&#x30EB;</a> &#x3092;&#x53C2;&#x8003;&#x306B;&#x9032;&#x3081;&#x307E;&#x3059;&#xFF0E;</p>
 <div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>&#x25B6;&#xFE0E;</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
-<li><a href="#%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC">&#x30A8;&#x30F3;&#x30C8;&#x30ED;&#x30D4;&#x30FC;</a></li>
-<li><a href="#kl%E8%B7%9D%E9%9B%A2">KL&#x8DDD;&#x96E2;</a></li>
-<li><a href="#%E4%BB%96%E3%81%AE%E5%88%86%E5%B8%83%E9%96%93%E8%B7%9D%E9%9B%A2">&#x4ED6;&#x306E;&#x5206;&#x5E03;&#x9593;&#x8DDD;&#x96E2;</a></li>
-<li><a href="#%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC">&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30A8;&#x30F3;&#x30C8;&#x30ED;&#x30D4;&#x30FC;</a></li>
-<li><a href="#%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F">&#x76F8;&#x4E92;&#x60C5;&#x5831;&#x91CF;</a></li>
-<li><a href="#transfer-entropy">Transfer Entropy</a></li>
+<li><a href="#%E3%81%BE%E3%81%9A%E3%81%AF%E3%83%AD%E3%83%BC%E3%83%89">&#x307E;&#x305A;&#x306F;&#x30ED;&#x30FC;&#x30C9;</a></li>
+<li><a href="#%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">&#x30CE;&#x30A4;&#x30BA;&#x306B;&#x3064;&#x3044;&#x3066;</a>
+<ul>
+<li><a href="#%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%AE%E7%A8%AE%E9%A1%9E">&#x30CE;&#x30A4;&#x30BA;&#x306E;&#x7A2E;&#x985E;</a></li>
+<li><a href="#%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%A8%E3%81%AE%E5%90%91%E3%81%8D%E5%90%88%E3%81%84%E6%96%B9">&#x30CE;&#x30A4;&#x30BA;&#x3068;&#x306E;&#x5411;&#x304D;&#x5408;&#x3044;&#x65B9;</a></li>
+</ul>
+</li>
+<li><a href="#%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%81%AE%E7%A2%BA%E8%AA%8D">&#x30A2;&#x30FC;&#x30C6;&#x30A3;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x306E;&#x78BA;&#x8A8D;</a>
+<ul>
+<li><a href="#%E4%BD%8E%E5%91%A8%E6%B3%A2%E3%83%89%E3%83%AA%E3%83%95%E3%83%88">&#x4F4E;&#x5468;&#x6CE2;&#x30C9;&#x30EA;&#x30D5;&#x30C8;</a></li>
+<li><a href="#%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%8E%E3%82%A4%E3%82%BA">&#x30E9;&#x30A4;&#x30F3;&#x30CE;&#x30A4;&#x30BA;</a></li>
+<li><a href="#%E5%BF%83%E6%8B%8D-ecg">&#x5FC3;&#x62CD; (ECG)</a></li>
+<li><a href="#%E7%9C%BC%E7%90%83%E9%81%8B%E5%8B%95-eog">&#x773C;&#x7403;&#x904B;&#x52D5; (EOG)</a></li>
+<li><a href="#%E3%81%BE%E3%81%A8%E3%82%81">&#x307E;&#x3068;&#x3081;</a></li>
+</ul>
+</li>
+<li><a href="#%E3%83%90%E3%83%83%E3%83%89%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%AE%E9%99%A4%E5%8E%BB">&#x30D0;&#x30C3;&#x30C9;&#x30C1;&#x30E3;&#x30F3;&#x30CD;&#x30EB;&#x306E;&#x9664;&#x53BB;</a></li>
 </ul>
 <h2 class="mume-header" id="%E3%81%BE%E3%81%9A%E3%81%AF%E3%83%AD%E3%83%BC%E3%83%89">&#x307E;&#x305A;&#x306F;&#x30ED;&#x30FC;&#x30C9;</h2>
 
