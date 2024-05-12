@@ -3,253 +3,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
       
       
       
       
       
       <style>
-      /**
- * prism.js Github theme based on GitHub's theme.
- * @author Sam Clarke
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #333;
-  background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.4;
-
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-  tab-size: 8;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-  padding: .8em;
-  overflow: auto;
-  /* border: 1px solid #ddd; */
-  border-radius: 3px;
-  /* background: #fff; */
-  background: #f5f5f5;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-  background: #f5f5f5;
-}
-
-.token.comment,
-.token.blockquote {
-  color: #969896;
-}
-
-.token.cdata {
-  color: #183691;
-}
-
-.token.doctype,
-.token.punctuation,
-.token.variable,
-.token.macro.property {
-  color: #333;
-}
-
-.token.operator,
-.token.important,
-.token.keyword,
-.token.rule,
-.token.builtin {
-  color: #a71d5d;
-}
-
-.token.string,
-.token.url,
-.token.regex,
-.token.attr-value {
-  color: #183691;
-}
-
-.token.property,
-.token.number,
-.token.boolean,
-.token.entity,
-.token.atrule,
-.token.constant,
-.token.symbol,
-.token.command,
-.token.code {
-  color: #0086b3;
-}
-
-.token.tag,
-.token.selector,
-.token.prolog {
-  color: #63a35c;
-}
-
-.token.function,
-.token.namespace,
-.token.pseudo-element,
-.token.class,
-.token.class-name,
-.token.pseudo-class,
-.token.id,
-.token.url-reference .token.variable,
-.token.attr-name {
-  color: #795da3;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-.token.title,
-.token.title .token.punctuation {
-  font-weight: bold;
-  color: #1d3e81;
-}
-
-.token.list {
-  color: #ed6a43;
-}
-
-.token.inserted {
-  background-color: #eaffea;
-  color: #55a532;
-}
-
-.token.deleted {
-  background-color: #ffecec;
-  color: #bd2c00;
-}
-
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-
-/* JSON */
-.language-json .token.property {
-  color: #183691;
-}
-
-.language-markup .token.tag .token.punctuation {
-  color: #333;
-}
-
-/* CSS */
-code.language-css,
-.language-css .token.function {
-  color: #0086b3;
-}
-
-/* YAML */
-.language-yaml .token.atrule {
-  color: #63a35c;
-}
-
-code.language-yaml {
-  color: #183691;
-}
-
-/* Ruby */
-.language-ruby .token.function {
-  color: #333;
-}
-
-/* Markdown */
-.language-markdown .token.url {
-  color: #795da3;
-}
-
-/* Makefile */
-.language-makefile .token.symbol {
-  color: #795da3;
-}
-
-.language-makefile .token.variable {
-  color: #183691;
-}
-
-.language-makefile .token.builtin {
-  color: #0086b3;
-}
-
-/* Bash */
-.language-bash .token.keyword {
-  color: #0086b3;
-}
-
-/* highlight */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-}
-
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: hsla(24, 20%, 50%,.08);
-  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-
-pre[data-line] .line-highlight:before, 
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: hsla(24, 20%, 50%,.4);
-  color: hsl(24, 20%, 95%);
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 .markdown-preview {
@@ -374,11 +135,12 @@ th {
   position: relative;
   width: 100%;
 }
-.gnav li:hover > ul > li {
+.gnav li > ul > li {
   height: 2rem;
+  overflow: hidden;
   z-index: 20;
   font-size: 10pt;
-  overflow: visible;
+  position: relative;
   width: 100%;
 }
 footer {
@@ -389,70 +151,92 @@ footer {
 }
 
       </style>
-    </head>
-    <body for="html-export">
-      <div class="mume markdown-preview  ">
-      <div class="header">
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<div class="header">
   <table class="fixed-table">
     <thead>
       <tr>
         <th class="mokuji">目次</th>
-        <th><details><summary> Math </summary><ul class="gnav"><li><a href="../../Math/Basic/basic.html">基礎数学編</a>
+        <th><details><summary> Math </summary><ul class="gnav"><details><summary>基礎数学編</summary>
         <ul class="index">
+        <li><a href="../../Math/Basic/basic.html">ホーム</a></li> 
         <li><a href="../../Math/Basic/multiplication.html">掛け算</a></li>     
         <li><a href="../../Math/Basic/trigonometric.html">三角関数</a></li>
         <li><a href="../../Math/Basic/complex.html">複素数</a></li>
         <li><a href="../../Math/Basic/calculus.html">微分・積分</a></li>
         <li><a href="../../Math/Basic/linear_algebra.html">線形代数</a></li>
         <li><a href="../../Math/Basic/statistics.html">基礎統計</a></li>
-        </ul>
-        </li><li><a href="../../Math/Analysis/Analysis.html">信号処理編</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>信号処理編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Analysis/Analysis.html">ホーム</a></li> 
         <li><a href="../../Math/Analysis/fourier.html">フーリエ変換</a></li>
         <li><a href="../../Math/Analysis/wavelet.html">wavelet変換</a></li>
         <li><a href="../../Math/Analysis/hilbert.html">ヒルベルト変換</a></li>
         <li><a href="../../Math/Analysis/eeg.html">基本の脳波解析</a></li> <li><a href="../../Math/Analysis/phase_analysis.html">位相同期解析</a></li>
-        </ul>
-        </li><li><a href="../../Math/Statistics/Statistics.html">統計編</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>統計編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Statistics/Statistic.html">ホーム</a></li> 
         <li><a href="../../Math/Statistics/distribution.html">確率分布</a></li>
         <li><a href="../../Math/Statistics/central_limit_theorem.html">大数の法則と中心極限定理</a></li>
         <li><a href="../../Math/Statistics/statistic.html">統計量と標本分布</a></li>                                                         <li><a href="../../Math/Statistics/test.html">統計的検定</a></li>
-        <li><a href="../../Math/Statistics/anova.html">分散分析</a></li>  
-        </ul>
-        </li><li><a href="../../Math/Others/Others.html">その他</a><ul class="index">
+        <li><a href="../../Math/Statistics/anova.html">分散分析</a></li>
+        <li><a href="../../Math/Statistics/logistic_regression.html">ロジスティック回帰</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>その他</summary>
+        <ul class="index">
+        <li><a href="../../Math/Others/Others.html">ホーム</a></li> 
         <li><a href="../../Math/Others/ICA.html">独立成分分析</a></li> 
         <li><a href="../../Math/Others/CCA.html">正準相関分析</a></li>
         <li><a href="../../Math/Others/lagrange.html">ラグランジュの未定乗数法</a></li>
         <li><a href="../../Math/Others/Entropy.html">エントロピーと分布間距離</a></li>
         <li><a href="../../Math/Others/signal_detection.html">信号検出理論</a></li>
-        </ul>
-        </li></ul></details></th>
-        <th><details><summary> Analysis </summary><ul class="gnav"><li><a href="../../Analysis/eeglab/eeglab.html">EEGLAB</a>
-        <ul class="index">                                             <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>
+        </ul></details>
+        </ul></ul></ul></ul></details></th>
+        <th><details><summary> Analysis </summary>
+        <ul class="gnav"><details><summary>EEGLAB</summary>
+        <ul class="index">       
+        <li><a href="../../Analysis/eeglab/eeglab.html">ホーム</a></li>                           <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>
         <li><a href="../../Analysis/eeglab/import.html">データのインポート</a></li>
         <li><a href="../../Analysis/eeglab/prepro1.html">基本的な下処理</a></li>
         <li><a href="../../Analysis/eeglab/prepro2.html">発展的な下処理</a></li>
         <li><a href="../../Analysis/eeglab/analysis1.html">単被験者での解析</a></li>
         <li><a href="../../Analysis/eeglab/analysis2.html">被験者群での解析</a></li>
-        </ul>
-        </li><li><a href="../../Analysis/MNE/MNE.html">MNE-python</a>
+        </ul></details>
+        <ul class="gnav"><details><summary>MNE-python</summary>
         <ul class="index">
+        <li><a href="../../Analysis/MNE/MNE.html">ホーム</a></li>
         <li><a href="../../Analysis/MNE/import.html">データのロード</a></li>
         <li><a href="../../Analysis/MNE/preprocessing.html">前処理</a></li>
-        </ul> </li></ul></details></th>
-        <th><details><summary> Experiment </summary><ul class="gnav">       </ul> </details></th>
-        <th><details><summary> Simulations </summary><ul class="gnav">
-        <li><a href="../../Simulation/Simulation.html">環境構築</a><ul class="index">
+        </ul> </details></ul></ul></details></th>
+        <th><details><summary> Experiment </summary>
+        <ul class="gnav">       </ul> </details></th>
+        <th><details><summary> Simulations </summary>
+        <ul class="gnav"><details><summary>環境構築</summary>
+        <ul class="index">
+         <li><a href="../../Simulation/Setup/Setup.html">ホーム</a></li>
         <li><a href="../../Simulation/Setup/environment.html">Python環境構築</a></li>
         <li><a href="../../Simulation/Setup/gpu.html">pythonでのGPUセットアップ</a></li>
         <li><a href="../../Simulation/Setup/jupyter.html">Jupyterセットアップ</a></li>
         <li><a href="../../Simulation/Setup/julia.html">Juliaセットアップ</a></li>
-        </ul>
-        </li><li><a href="../../Simulation/NonlinearDynamics/Nonlinear-dynamics.html">非線形力学</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>非線形力学</summary>
+        <ul class="index">
+        <li><a href="../../Simulation/NonlinearDynamics/Nonlinear-dynamics.html">ホーム</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/dynamics.html">力学系とは</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/stability.html">線形安定性解析</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/stability_nonlinear.html">非線形系の安定性解析</a></li>
-        </ul>
-        </li></ul></details></th>
+        </ul></details>
+        </ul></ul></details></th>
       </tr>
     </thead>
   </table>
@@ -460,7 +244,7 @@ footer {
 <h1><span>01</span>実行環境について</h1>
 <p>本編でシミュレーションやデモを構築，実行していく環境，およびその構築方法についてまとめておきます．基本的に，言語はPythonを使用していきます．<br>
 （Juliaも使ってみることがあるので，<a href="./julia.html">別のページ</a>で環境構築をしておきます．)</p>
-<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
+<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="code-chunk-btn-group"><div class="run-btn btn btn-xs btn-primary"><span>▶︎</span></div><div class="run-all-btn btn btn-xs btn-primary">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
 <li><a href="#jupyter-notebook%E3%81%AE%E5%B0%8E%E5%85%A5">Jupyter notebookの導入</a>
 <ul>
 <li><a href="#anaconda%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Anacondaのインストール</a></li>
@@ -478,8 +262,7 @@ footer {
 </ul>
 </li>
 </ul>
-<h2 class="mume-header" id="jupyter-notebook%E3%81%AE%E5%B0%8E%E5%85%A5">Jupyter notebookの導入</h2>
-
+<h2 id="jupyter-notebookの導入">Jupyter notebookの導入 </h2>
 <p>Jupyter Notebookとは，ブラウザ上で対話形式にプログラムを実行できる環境です．データ分析によく使うツールの1つです．<br>
 <img src="../figures/jupyter-logo.png" width="30%"></p>
 <center><img src="../figures/jupyter.png" width="80%"></center>
@@ -487,8 +270,7 @@ footer {
 <center><img src="../figures/demo.png" width="80%"></center>
 <p>このため，初心者に優しく，また開発中やデバッグ中のお試し計算量(時間)も落とすことが出来ます．</p>
 <p>今回は，そんなJupyter Notebookを使ってPythonのプログラムを開発する環境を整えていきます．プログラミング言語としてPythonを採択する理由は，まず第一に無料であること，ニューラルネットに関係するライブラリや資料がありふれていること，ユーザ数が多いことなどです．</p>
-<h3 class="mume-header" id="anaconda%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Anacondaのインストール</h3>
-
+<h3 id="anacondaのインストール">Anacondaのインストール </h3>
 <p>はじめに，Jupyter NotebookをいれるためにAnacondaと呼ばれる，データサイエンスに特化したPythonおよびRの無料のディストリビューションを入れていきます．</p>
 <img src="../figures/anaconda-logo.png" width="30%">
 <p>AnacondaはOSに制限なく，いれるだけでデータサイエンスに使うパッケージはだいたい一緒にインストールされ，また開発環境の整備などの面で強力なサポートを持つという優れモノです．</p>
@@ -499,15 +281,13 @@ footer {
 <p>自身のOSにあったバージョンを選択し，Download，Installしてください．<code>Next</code>,<code>I agree</code>などを押してデフォルトのまま進めます．</p>
 <p>Anacondaのインストール先を選択する際，基本的にはデフォルトのままで良いのですが，日本語のフォルダが含まれているとエラーを吐くらしいので，その場合は適宜インストール先を変更してください．</p>
 <p>途中でてくるpathのAdvanced optionはやらなくて良いので，そのままInstall.</p>
-<h3 class="mume-header" id="anaconda%E3%81%AE%E8%B5%B7%E5%8B%95">Anacondaの起動</h3>
-
+<h3 id="anacondaの起動">Anacondaの起動 </h3>
 <p>Installが上手くいっていれば，WindowsやMacの検索で<code>Anaconda</code>と打つと<code>Anaconda Navigator</code>がいるはずです．起動します．</p>
 <center><img src="../figures/anaconda-navigater.png" width="80%"></center>
 <p>いろんなアプリが表示されているはずです．ここから，更に使いたいものを<code>Install</code>することで，使用できる<code>Launch</code>の表示に切り替わります．</p>
 <p>簡単な説明に書いてある通り，それぞれPythonやR(特にVScodeなんかは他にも使える)の統合開発環境ですので，便利です．今回の本命であるJupyter Notebook以外にも，VScode, RStudioあたりは使っている人がかなり多いですね．</p>
 <p>多分，Jupyter Notebookは初期の段階でInstall済みになっているはずです．なっていなければInstallしてください．これでPythonの開発環境が(ひとまず)整いました．</p>
-<h3 class="mume-header" id="jupyter-notebook%E3%81%AE%E8%B5%B7%E5%8B%95">Jupyter Notebookの起動</h3>
-
+<h3 id="jupyter-notebookの起動">Jupyter Notebookの起動 </h3>
 <p>では早速，Jupyter Notebookを起動します．<code>Launch</code>を押してください．あるいは，OSの検索画面から直接起動しても構いません．自分は普段そうしています．</p>
 <center><img src="../figures/search-jupyter.png" width="50%"></center>
 <p>どちらでもOKです．</p>
@@ -521,8 +301,7 @@ footer {
 <p>開いたらまず，名前をつけましょう．最初は<code>Untitle</code>になっている左上のファイル名をクリックし，任意の名前に変えます．</p>
 <center><img src="../figures/name-jupyter.png" width="100%"></center>
 <p>これで準備完了です．</p>
-<h3 class="mume-header" id="%E5%8B%95%E4%BD%9C%E3%83%86%E3%82%B9%E3%83%88">動作テスト</h3>
-
+<h3 id="動作テスト">動作テスト </h3>
 <p>いよいよ，Jupyterを使ったPythonプログラムの開発です．Jupyter Notebookでは，セルと呼ばれる単位ごとにプログラムを実行させていきます．Inの[]の中には，そのセルが実行された順番が表示されています．</p>
 <p>これを使って，セルをあえて1個飛ばして実行するというようなことも可能です．</p>
 <ul>
@@ -538,32 +317,26 @@ footer {
 <center><img src="../figures/help-jupyter.png" width="80%"></center>
 <p>コマンドを使ったその他の操作については，Shortcutsを参照してください．</p>
 <p>とりあえず，この一連の操作が出来たら基本的な使い方は問題ありません．</p>
-<h3 class="mume-header" id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E4%BE%BF%E5%88%A9%E6%A9%9F%E8%83%BD">その他の便利機能</h3>
-
-<h5 class="mume-header" id="markdown">Markdown</h5>
-
+<h3 id="その他の便利機能">その他の便利機能 </h3>
+<h5 id="markdown">Markdown </h5>
 <p>Jupyter Notebookにはこれ以外にも，様々な便利機能があります．たとえば，Markdown記法．</p>
 <center><img src="../figures/markdown-jupyter.png" width="80%"></center>
 <p>セルの設定を<code>code</code>から<code>markdown</code>に変更することで，Notebook内にMarkdownのメモを入れ込むことが出来ます．他の環境では頑張ってコメントアウトしていても，箇条書きだとかハイライトだとか，分かりやすい記法が出来ないせいでイマイチ伝わらない...そんなことありますよね．</p>
 <center><img src="../figures/markdown2-jupyter.png" width="80%"></center>
 <p>Markdownセルを実行すると，こんな感じになります．便利ですね．</p>
-<h5 class="mume-header" id="py%E3%81%AE%E5%87%BA%E5%8A%9B">.pyの出力</h5>
-
+<h5 id="pyの出力">.pyの出力 </h5>
 <p>Jupyter Notebookを使ってpythonのプログラム開発を行うと，ファイルの拡張子は<code>.ipynb</code>という特殊なものになります．これはNotebookでしか実行できないファイルなので，シンプルなpythonプログラムとして実行したかったり，作成したプログラムをモジュール化して別のプログラムにimportしたくなった時には<code>.py</code>として保存する必要があります．</p>
 <center><img src="../figures/save-jupyter.png" width="80%"></center>
 <p>そんな時には，<code>File</code>メニューから<code>.py</code>としてダウンロードすることが可能です．</p>
 <p>他にも，様々な拡張子でのダウンロード，というより変換が可能です．Print Previewからでも良いですが，たとえばpdfに変換することで，Notebookの内容をそのまま，つまりコードも書かれた状態で共有することが出来ます．markdownの説明なんかも挟んでいれば，ミーティングとかに使うには便利ですね．</p>
-<h5 class="mume-header" id="%E4%BB%96%E8%80%85%E3%81%A8%E3%81%AE%E5%85%B1%E6%9C%89">他者との共有</h5>
-
+<h5 id="他者との共有">他者との共有 </h5>
 <p>Notebookは他者と共有して使うことも可能です．が，今回は自分がぼっちであまり良さを魅せられないので割愛します．仲間がいる人は調べてみてください．</p>
-<h2 class="mume-header" id="gpu%E3%81%AE%E4%BD%BF%E7%94%A8">GPUの使用</h2>
-
+<h2 id="gpuの使用">GPUの使用 </h2>
 <p>マストではありません．</p>
 <p>GPUとは何か，といった話は割愛します．分からない人のために，語弊を招きつつもメリットだけ説明すると，ここでは(特定の条件下では)計算が超早くなる方法を説明していきます．</p>
 <p>とはいえ，普通に使っている分には問題ありません．大規模な計算を回すようになり，高速化を求めるようになった場合に検討する事項です．</p>
 <p>さて，早速GPUを使ってJupyter notebook, というよりpythonのプログラミングをしていく準備を整えます．かなり面倒です．</p>
-<h3 class="mume-header" id="gpu%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">GPUドライバのインストール</h3>
-
+<h3 id="gpuドライバのインストール">GPUドライバのインストール </h3>
 <p>まずはGPUのドライバをインストールします．いや，その前にGPUが入っているか確認しましょう．Windowsならデバイスマネージャーを起動し，<code>ディスプレイアダプター</code>を確認します．</p>
 <center><img src="../figures/display-adapter.png" width="80%"></center>
 <p>ここに，NVIDIAと頭についたものがあればOKです．無ければ以降の設定は出来ません．頑張ってお金を稼ぎましょう．</p>
@@ -581,8 +354,7 @@ footer {
 <p>さて，どちらも無事に終わっていれば，<code>NVIDIA Control Panel</code>が開けるはずです．</p>
 <center><img src="../figures/nvidia-control.png" width="80%"></center>
 <p>起動したら，こんな画面が表示されれば成功です．GPUを利用することが出来る状態になりました．</p>
-<h3 class="mume-header" id="cupy%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">CuPyのインストール</h3>
-
+<h3 id="cupyのインストール">CuPyのインストール </h3>
 <p>次に，PythonでGPUを使うために必要になる，CuPyというライブラリをインストールします．これが色々とConflictを起こしがちなのですが，Anacondaベースの皆さんには怖くないはずです．蛇さんが勝手にやってくれます．</p>
 <img src="../figures/cupy.png" width="30%">
 <p>CuPyは，Pythonの数値計算時によく使うNumPyと呼ばれるライブラリの関数を基本的にトレースした互換性の高いライブラリで，NumPyで提供されている関数をNVIDIAのGPUで実行するようにしたものです．NVIDIAのGPUがないと無理といったのは，このCuPyが使えないことに起因します．</p>
@@ -595,14 +367,13 @@ footer {
 <p><code>conda install -c conda-forge cupy cudatoolkit=xxx</code></p>
 <p>などと指定することも可能です．xxxにバージョンを入れてください．</p>
 <p>しばし待つと，問題なければインストールが完了します．</p>
-<h3 class="mume-header" id="cupy%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88">CuPyのテスト</h3>
-
+<h3 id="cupyのテスト">CuPyのテスト </h3>
 <p>インストールが終わったら，動作テストを行います．Notebookを開き，</p>
-<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
 <span class="token keyword keyword-import">import</span> cupy <span class="token keyword keyword-as">as</span> cp
-</pre><p>を実行してみてください．エラーを吐かなければインストールは無事成功しています．</p>
+</code></pre><p>を実行してみてください．エラーを吐かなければインストールは無事成功しています．</p>
 <p>では，CPUで計算するNumPyとGPUで計算するCuPyの性能比較をしてみましょう．基本的な使い方は一緒です．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
 <span class="token keyword keyword-import">import</span> cupy <span class="token keyword keyword-as">as</span> cp
 
 <span class="token keyword keyword-from">from</span> skimage <span class="token keyword keyword-import">import</span> data<span class="token punctuation">,</span>transform<span class="token punctuation">,</span>color<span class="token punctuation">,</span>io
@@ -615,11 +386,11 @@ np_img <span class="token operator">=</span> np_img<span class="token punctuatio
 io<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>np_img<span class="token punctuation">)</span><span class="token comment">#画像の表示</span>
 
 cp_img <span class="token operator">=</span> cp<span class="token punctuation">.</span>asarray<span class="token punctuation">(</span>np_img<span class="token punctuation">)</span><span class="token comment">#numpy配列をcupy配列に変換</span>
-</pre><p>をセルにいれ，実行しましょう．すると</p>
+</code></pre><p>をセルにいれ，実行しましょう．すると</p>
 <center><img src="../figures/astro.png" width="80%"></center>
 <p>のように画像が表示できるはずです．skimageがない場合はインストールしてきてください．</p>
 <p>これをNumPy, CuPyでそれぞれ無駄に疲れるフーリエ変換させてみます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token operator">%</span><span class="token operator">%</span>time 
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token operator">%</span><span class="token operator">%</span>time 
 <span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># numpy 500セット(フーリエ変換⇒シフト⇒シフト⇒フーリエ逆変換-&gt;フーリエ逆変換-&gt;フーリエ変換)計算時間</span>
     np_img <span class="token operator">=</span> np<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>ifft<span class="token punctuation">(</span>np<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>fft<span class="token punctuation">(</span>np_img<span class="token punctuation">)</span><span class="token punctuation">)</span>
     np_fimg <span class="token operator">=</span> np<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>fft<span class="token punctuation">(</span>np<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>ifft<span class="token punctuation">(</span>np<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>fft<span class="token punctuation">(</span>np_fimg<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -628,11 +399,12 @@ cp_img <span class="token operator">=</span> cp<span class="token punctuation">.
 <span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># cupy 500セット(フーリエ変換-&gt;フーリエ逆変換-&gt;フーリエ変換-&gt;フーリエ逆変換-&gt;フーリエ変換)計算時間</span>
     cp_img <span class="token operator">=</span> cp<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>ifft<span class="token punctuation">(</span>cp<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>fft<span class="token punctuation">(</span>cp_img<span class="token punctuation">)</span><span class="token punctuation">)</span>
     cp_fimg <span class="token operator">=</span> cp<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>fft<span class="token punctuation">(</span>cp<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>ifft<span class="token punctuation">(</span>cp<span class="token punctuation">.</span>fft<span class="token punctuation">.</span>fft<span class="token punctuation">(</span>cp_fimg<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</pre><center><img src="../figures/sainokawara.png" width="100%"></center>
+</code></pre><center><img src="../figures/sainokawara.png" width="100%"></center>
 <p>それぞれ実行してみると，CPUが6秒超えなのに対し，GPUは85msでした．かなり高速です．この差は実行する環境次第で変わりますが，問題によってはGPUの方が早いことが確認できました．</p>
 <div style="text-align: center;">
 <p>【<a href="./gpu.html">GPU</a>】【<a href="./simulation.html">シミュレーション</a>】</p>
 </div>
+
       </div>
       
       

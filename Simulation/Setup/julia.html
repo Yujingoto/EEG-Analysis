@@ -3,253 +3,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
       
       
       
       
       
       <style>
-      /**
- * prism.js Github theme based on GitHub's theme.
- * @author Sam Clarke
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #333;
-  background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.4;
-
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-  tab-size: 8;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-  padding: .8em;
-  overflow: auto;
-  /* border: 1px solid #ddd; */
-  border-radius: 3px;
-  /* background: #fff; */
-  background: #f5f5f5;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-  background: #f5f5f5;
-}
-
-.token.comment,
-.token.blockquote {
-  color: #969896;
-}
-
-.token.cdata {
-  color: #183691;
-}
-
-.token.doctype,
-.token.punctuation,
-.token.variable,
-.token.macro.property {
-  color: #333;
-}
-
-.token.operator,
-.token.important,
-.token.keyword,
-.token.rule,
-.token.builtin {
-  color: #a71d5d;
-}
-
-.token.string,
-.token.url,
-.token.regex,
-.token.attr-value {
-  color: #183691;
-}
-
-.token.property,
-.token.number,
-.token.boolean,
-.token.entity,
-.token.atrule,
-.token.constant,
-.token.symbol,
-.token.command,
-.token.code {
-  color: #0086b3;
-}
-
-.token.tag,
-.token.selector,
-.token.prolog {
-  color: #63a35c;
-}
-
-.token.function,
-.token.namespace,
-.token.pseudo-element,
-.token.class,
-.token.class-name,
-.token.pseudo-class,
-.token.id,
-.token.url-reference .token.variable,
-.token.attr-name {
-  color: #795da3;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-.token.title,
-.token.title .token.punctuation {
-  font-weight: bold;
-  color: #1d3e81;
-}
-
-.token.list {
-  color: #ed6a43;
-}
-
-.token.inserted {
-  background-color: #eaffea;
-  color: #55a532;
-}
-
-.token.deleted {
-  background-color: #ffecec;
-  color: #bd2c00;
-}
-
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-
-/* JSON */
-.language-json .token.property {
-  color: #183691;
-}
-
-.language-markup .token.tag .token.punctuation {
-  color: #333;
-}
-
-/* CSS */
-code.language-css,
-.language-css .token.function {
-  color: #0086b3;
-}
-
-/* YAML */
-.language-yaml .token.atrule {
-  color: #63a35c;
-}
-
-code.language-yaml {
-  color: #183691;
-}
-
-/* Ruby */
-.language-ruby .token.function {
-  color: #333;
-}
-
-/* Markdown */
-.language-markdown .token.url {
-  color: #795da3;
-}
-
-/* Makefile */
-.language-makefile .token.symbol {
-  color: #795da3;
-}
-
-.language-makefile .token.variable {
-  color: #183691;
-}
-
-.language-makefile .token.builtin {
-  color: #0086b3;
-}
-
-/* Bash */
-.language-bash .token.keyword {
-  color: #0086b3;
-}
-
-/* highlight */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-}
-
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: hsla(24, 20%, 50%,.08);
-  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-
-pre[data-line] .line-highlight:before, 
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: hsla(24, 20%, 50%,.4);
-  color: hsl(24, 20%, 95%);
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 .markdown-preview {
@@ -374,11 +135,12 @@ th {
   position: relative;
   width: 100%;
 }
-.gnav li:hover > ul > li {
+.gnav li > ul > li {
   height: 2rem;
+  overflow: hidden;
   z-index: 20;
   font-size: 10pt;
-  overflow: visible;
+  position: relative;
   width: 100%;
 }
 footer {
@@ -389,78 +151,99 @@ footer {
 }
 
       </style>
-    </head>
-    <body for="html-export">
-      <div class="mume markdown-preview  ">
-      <div class="header">
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<div class="header">
   <table class="fixed-table">
     <thead>
       <tr>
         <th class="mokuji">目次</th>
-        <th><details><summary> Math </summary><ul class="gnav"><li><a href="../../Math/Basic/basic.html">基礎数学編</a>
+        <th><details><summary> Math </summary><ul class="gnav"><details><summary>基礎数学編</summary>
         <ul class="index">
+        <li><a href="../../Math/Basic/basic.html">ホーム</a></li> 
         <li><a href="../../Math/Basic/multiplication.html">掛け算</a></li>     
         <li><a href="../../Math/Basic/trigonometric.html">三角関数</a></li>
         <li><a href="../../Math/Basic/complex.html">複素数</a></li>
         <li><a href="../../Math/Basic/calculus.html">微分・積分</a></li>
         <li><a href="../../Math/Basic/linear_algebra.html">線形代数</a></li>
         <li><a href="../../Math/Basic/statistics.html">基礎統計</a></li>
-        </ul>
-        </li><li><a href="../../Math/Analysis/Analysis.html">信号処理編</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>信号処理編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Analysis/Analysis.html">ホーム</a></li> 
         <li><a href="../../Math/Analysis/fourier.html">フーリエ変換</a></li>
         <li><a href="../../Math/Analysis/wavelet.html">wavelet変換</a></li>
         <li><a href="../../Math/Analysis/hilbert.html">ヒルベルト変換</a></li>
         <li><a href="../../Math/Analysis/eeg.html">基本の脳波解析</a></li> <li><a href="../../Math/Analysis/phase_analysis.html">位相同期解析</a></li>
-        </ul>
-        </li><li><a href="../../Math/Statistics/Statistics.html">統計編</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>統計編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Statistics/Statistic.html">ホーム</a></li> 
         <li><a href="../../Math/Statistics/distribution.html">確率分布</a></li>
         <li><a href="../../Math/Statistics/central_limit_theorem.html">大数の法則と中心極限定理</a></li>
         <li><a href="../../Math/Statistics/statistic.html">統計量と標本分布</a></li>                                                         <li><a href="../../Math/Statistics/test.html">統計的検定</a></li>
-        <li><a href="../../Math/Statistics/anova.html">分散分析</a></li>  
-        </ul>
-        </li><li><a href="../../Math/Others/Others.html">その他</a><ul class="index">
+        <li><a href="../../Math/Statistics/anova.html">分散分析</a></li>
+        <li><a href="../../Math/Statistics/logistic_regression.html">ロジスティック回帰</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>その他</summary>
+        <ul class="index">
+        <li><a href="../../Math/Others/Others.html">ホーム</a></li> 
         <li><a href="../../Math/Others/ICA.html">独立成分分析</a></li> 
         <li><a href="../../Math/Others/CCA.html">正準相関分析</a></li>
         <li><a href="../../Math/Others/lagrange.html">ラグランジュの未定乗数法</a></li>
         <li><a href="../../Math/Others/Entropy.html">エントロピーと分布間距離</a></li>
         <li><a href="../../Math/Others/signal_detection.html">信号検出理論</a></li>
-        </ul>
-        </li></ul></details></th>
-        <th><details><summary> Analysis </summary><ul class="gnav"><li><a href="../../Analysis/eeglab/eeglab.html">EEGLAB</a>
-        <ul class="index">                                             <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>
+        </ul></details>
+        </ul></ul></ul></ul></details></th>
+        <th><details><summary> Analysis </summary>
+        <ul class="gnav"><details><summary>EEGLAB</summary>
+        <ul class="index">       
+        <li><a href="../../Analysis/eeglab/eeglab.html">ホーム</a></li>                           <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>
         <li><a href="../../Analysis/eeglab/import.html">データのインポート</a></li>
         <li><a href="../../Analysis/eeglab/prepro1.html">基本的な下処理</a></li>
         <li><a href="../../Analysis/eeglab/prepro2.html">発展的な下処理</a></li>
         <li><a href="../../Analysis/eeglab/analysis1.html">単被験者での解析</a></li>
         <li><a href="../../Analysis/eeglab/analysis2.html">被験者群での解析</a></li>
-        </ul>
-        </li><li><a href="../../Analysis/MNE/MNE.html">MNE-python</a>
+        </ul></details>
+        <ul class="gnav"><details><summary>MNE-python</summary>
         <ul class="index">
+        <li><a href="../../Analysis/MNE/MNE.html">ホーム</a></li>
         <li><a href="../../Analysis/MNE/import.html">データのロード</a></li>
         <li><a href="../../Analysis/MNE/preprocessing.html">前処理</a></li>
-        </ul> </li></ul></details></th>
-        <th><details><summary> Experiment </summary><ul class="gnav">       </ul> </details></th>
-        <th><details><summary> Simulations </summary><ul class="gnav">
-        <li><a href="../../Simulation/Simulation.html">環境構築</a><ul class="index">
+        </ul> </details></ul></ul></details></th>
+        <th><details><summary> Experiment </summary>
+        <ul class="gnav">       </ul> </details></th>
+        <th><details><summary> Simulations </summary>
+        <ul class="gnav"><details><summary>環境構築</summary>
+        <ul class="index">
+         <li><a href="../../Simulation/Setup/Setup.html">ホーム</a></li>
         <li><a href="../../Simulation/Setup/environment.html">Python環境構築</a></li>
         <li><a href="../../Simulation/Setup/gpu.html">pythonでのGPUセットアップ</a></li>
         <li><a href="../../Simulation/Setup/jupyter.html">Jupyterセットアップ</a></li>
         <li><a href="../../Simulation/Setup/julia.html">Juliaセットアップ</a></li>
-        </ul>
-        </li><li><a href="../../Simulation/NonlinearDynamics/Nonlinear-dynamics.html">非線形力学</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>非線形力学</summary>
+        <ul class="index">
+        <li><a href="../../Simulation/NonlinearDynamics/Nonlinear-dynamics.html">ホーム</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/dynamics.html">力学系とは</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/stability.html">線形安定性解析</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/stability_nonlinear.html">非線形系の安定性解析</a></li>
-        </ul>
-        </li></ul></details></th>
+        </ul></details>
+        </ul></ul></details></th>
       </tr>
     </thead>
   </table>
 </div>
 <h1><span>00</span>Julia on Jupyter notebook</h1>
 <p>JuliaをJupyter notebookで使えるようにする方法</p>
-<h2 class="mume-header" id="julia%E3%81%A8%E3%81%AF">Juliaとは</h2>
-
+<h2 id="juliaとは">Juliaとは </h2>
 <p>Juliaは2012年と比較的最近開発されたプログラミング言語で，機械学習や数値計算と相性が良い言語として近年のデータサイエンス界隈で評価されています．<br>
 なんかできたかも</p>
 <center><img src="../../Simulation/figures/julia.png" ,="" width="50%"></center>
@@ -475,36 +258,30 @@ footer {
 <p>難点は，<strong>ともかく教材が少ない</strong>ことです．プログラミングにある程度精通していないと，困った時に参考にできる記事も少ないし，ハードルが高いです（特に日本語の資料は本当に少ない）．これは即ち，ライブラリが少なく様々な機能を自分で実装する必要があるということでもあります．</p>
 <p>あと，Pythonと違って汎用性が低いので，上記のような用途以外で使おうと思うとPythonに劣ります．</p>
 <p>が，それでも得意分野でPythonと比べたら<strong>処理速度30倍</strong>なんてうたわれている言語ですので，今回は導入してみます．だいたいCと同等以上の処理速度ですね．動的なのにそれはすごいです．</p>
-<h2 class="mume-header" id="julia%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89">Juliaのダウンロード</h2>
-
-<h3 class="mume-header" id="download">Download</h3>
-
+<h2 id="juliaのダウンロード">Juliaのダウンロード </h2>
+<h3 id="download">Download </h3>
 <p>まずは<a href="https://julialang.org/downloads/">公式のダウンロードページ</a>から自分のバージョンにあったものをダウンロードします．</p>
 <center><img src="../../Simulation/figures/julia_install0.png" ,="" width="80%"></center>
 <p>筆者はwindowsなので，囲った部分です．Macの人はMacを選びます．</p>
-<h3 class="mume-header" id="install">Install</h3>
-
+<h3 id="install">Install </h3>
 <p>インストーラーのダウンロードが終わったらクリックして実行．デフォルト設定のままでOKなのでInstall.</p>
 <center><img src="../../Simulation/figures/julia_install1.png" ,="" width="70%"></center>
 <p>起動を簡単にするため，PATHの設定はチェックしておくことをおすすめします．</p>
 <center><img src="../../Simulation/figures/julia_install2.png" ,="" width="70%"></center>
 <p>完了したら，<code>Run Julia</code>にチェックをつけ，Finishします．</p>
 <center><img src="../../Simulation/figures/julia_install3.png" ,="" width="70%"></center>
-<h2 class="mume-header" id="julia%E3%82%92jupyter-notebook%E3%81%AB%E8%BF%BD%E5%8A%A0">JuliaをJupyter Notebookに追加</h2>
-
+<h2 id="juliaをjupyter-notebookに追加">JuliaをJupyter Notebookに追加 </h2>
 <p>以上の内容が出来ていれば，とりあえずJuliaを利用することは出来るようになったはずです．しかし筆者はJupyterを開発環境として使いたいので，その連携を進めていきます．</p>
 <p>Jupyter Notebookがない場合には先に<a href="./environment.html">こちら</a>から環境構築をしてください．<br>
 筆者みたいにおしゃれにするのは<a href="./jupyter.html">こちら</a>.</p>
-<h3 class="mume-header" id="%E8%B5%B7%E5%8B%95%E3%81%A8ijulia%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">起動とIJuliaのインストール</h3>
-
+<h3 id="起動とijuliaのインストール">起動とIJuliaのインストール </h3>
 <p>インストールが終わったら，juliaを起動します．<br>
 前項で<code>Run Julia</code>にチェックがついていれば勝手につくと思いますが，そうしていなかった場合は普通に検索して起動してください．</p>
 <center><img src="../../Simulation/figures/julia_act.png"></center>
 <p>こんな感じの画面が表示されれば，juliaのインストールは正常に出来ています．</p>
 <center><img src="../../Simulation/figures/julia_act2.png"></center>
 <p>可愛いですね．\が文字コードの関係で￥になっているのはご愛敬ということで．ちょっと使ってみた感じ，なかなか独特な使用方法になっている気がします．そこらへんは後々紹介しますが，とりあえず環境構築を進めちゃいます．</p>
-<h3 class="mume-header" id="ijulia%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">IJuliaパッケージのインストール</h3>
-
+<h3 id="ijuliaパッケージのインストール">IJuliaパッケージのインストール </h3>
 <p>JuliaをJupyter Notebookで使うためにはIJuliaをいうパッケージが必要らしいです．インストールしましょう．</p>
 <p>Juliaでのパッケージインストールには<code>]</code>を使います．これを打つとプロンプトの表示が<code>julia</code>から<code>(@v1.x) pkg</code>に変わるはずです．数字の部分はバージョンによって異なります．自分の場合は</p>
 <center><img src="../../Simulation/figures/julia_act3.png"></center>
@@ -516,21 +293,19 @@ footer {
 <p>進行中...</p>
 <center><img src="../../Simulation/figures/progress.png"></center>
 <p>完了したらバックスペースを押して，通常の画面にもどります．</p>
-<h3 class="mume-header" id="jupyter-notebook%E3%81%A8%E3%81%AE%E6%8E%A5%E7%B6%9A">Jupyter notebookとの接続</h3>
-
+<h3 id="jupyter-notebookとの接続">Jupyter notebookとの接続 </h3>
 <p>IJuliaのインストールが完了したら，Jupyter NotebookでJuliaを呼び出せるはずです，Jupyter Notebookを起動してください．</p>
 <center><img src="../../Simulation/figures/Julia_on_jupyter.png"></center>
 <p>Newファイルの作成画面に，PythonだけでなくJuliaが表示されるようになっているはずです．これで，Jupyter Notebookを使ってJuliaが書けるようになりました．</p>
 <center><img src="../../Simulation/figures/julia2.png"></center>
-<h2 class="mume-header" id="%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3pkg%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">パッケージマネージャ(Pkg)について</h2>
-
+<h2 id="パッケージマネージャpkgについて">パッケージマネージャ(Pkg)について </h2>
 <p>Juliaを使っていると，拡張でパッケージをいれたくなることがあります．Juliaでは，それらの拡張パッケージのインストール，更新，削除などはJulia組み込みのPkgを通して行うことになります．</p>
 <p>Pkgを利用する方法は2種類です．一つは先程も行ったように<code>]</code>をtypeすることでPkgモード?に切り替える方法で，これをするとプロンプトの表示が</p>
 <center><img src="../../Simulation/figures/julia_act3.png"></center>
 <p>のように，pkgに切り替わります．この状態ではJuliaの関数は効かず，pkgの関数のみがworkする状態になります．脱出するにはバックスペースです．</p>
 <p>あるいは，もう一つのやり方はJuliaのプロンプトのまま，</p>
-<pre data-role="codeBlock" data-info="Julia" class="language-julia"><span class="token keyword keyword-using">using</span> Pkg<span class="token punctuation">;</span> Pkg<span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token string">"IJulia"</span><span class="token punctuation">)</span>
-</pre><p>のように記述することです．意味するところは一緒ですが，このやり方だと記述が面倒な分，モードの切り替えはなしですみます．</p>
+<pre data-role="codeBlock" data-info="Julia" class="language-julia Julia"><code><span class="token keyword keyword-using">using</span> Pkg<span class="token punctuation">;</span> Pkg<span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token string">"IJulia"</span><span class="token punctuation">)</span>
+</code></pre><p>のように記述することです．意味するところは一緒ですが，このやり方だと記述が面倒な分，モードの切り替えはなしですみます．</p>
 <p>add以外にも代表的なコマンドを以下にまとめます．</p>
 <ul>
 <li>add **  ... (**パッケージの追加)</li>
@@ -538,18 +313,16 @@ footer {
 <li>update ... (全てのパッケージの更新)</li>
 <li>rm ** ... (**パッケージの削除)</li>
 </ul>
-<h3 class="mume-header" id="add%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9">addの注意点</h3>
-
+<h3 id="addの注意点">addの注意点 </h3>
 <p>PyCallというパッケージを入れていた時に生じた問題です．このパッケージは，JuliaからPythonを呼び出す時に使われるものなのですが，その時どのPythonを呼び出すねんってところで怒られた，というか不具合が生じました．</p>
 <p>筆者はよくある汚い環境を使ってしまっているため，普通にPython3と，Anaconda環境のPython3とPython2が混在しています．こういった場合，PyCallが呼び出すPythonのディレクトリを明示的に与えてあげる必要があったりするようです．</p>
 <p>やり方は</p>
-<pre data-role="codeBlock" data-info="Julia" class="language-julia"><span class="token keyword keyword-using">using</span> Pkg
+<pre data-role="codeBlock" data-info="Julia" class="language-julia Julia"><code><span class="token keyword keyword-using">using</span> Pkg
 ENV<span class="token punctuation">[</span><span class="token string">"PYTHON"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"C:\\Users\\...\\python.exe"</span>
 
 Pkg<span class="token punctuation">.</span>build<span class="token punctuation">(</span><span class="token string">"PyCall"</span><span class="token punctuation">)</span>
-</pre><p>のようにすることです．これで，呼び出すpythonのバージョンを指定した上でPyCallを入れることが出来ました．</p>
-<h3 class="mume-header" id="julia%E3%81%AE%E3%81%99%E3%81%94%E3%81%84%E3%81%A8%E3%81%93%E3%82%8D">Juliaのすごいところ</h3>
-
+</code></pre><p>のようにすることです．これで，呼び出すpythonのバージョンを指定した上でPyCallを入れることが出来ました．</p>
+<h3 id="juliaのすごいところ">Juliaのすごいところ </h3>
 <p>と，ここまではPythonの<code>pip install</code>などと何も変わらなそうです．しかしJuliaのPkgとそれらの大きな違い，Juliaのすごいところは，環境ごとにこれらのパッケージの依存関係を管理できることです．</p>
 <p>今，Pkgを使っている際のプロンプトは<code>(v1.x)</code>のような表示になっていると思います．これは最初，Juliaのバージョンであると説明しました．つまりローカル環境の大元の環境となります．</p>
 <p>しかしこのプロンプトが表示している真の意味は，<strong>今現在のアクティブ環境</strong>となります．つまり，Pkgによって改変される環境のことです．</p>
@@ -569,24 +342,21 @@ Pkg<span class="token punctuation">.</span>build<span class="token punctuation">
 <p>このように，環境，つまりプロジェクトごとにパッケージを指定できるのがメリットです．さらに，この際いれていたパッケージの依存関係は<code>Project.toml</code>に保存されています．</p>
 <p>このファイルごとプロジェクトを共有することで，<strong>「他者がダウンロードして自分の環境で実行しようとした時にバージョンの関係で動かない...」なんて自体を回避する</strong>ことが出来ます．</p>
 <p>たとえば，<a href="https://github.com/JuliaDynamics/NonlinearDynamicsTextbook">Nonlinear Dynamics (George Datseris, Ulrich Parlitz, 2022)</a>の公開しているプロジェクトを自分のローカルに展開して試したい場合，彼らのREADMEにもあるように，ダウンロードしたプロジェクトに対して</p>
-<pre data-role="codeBlock" data-info="Julia" class="language-julia">Pkg<span class="token punctuation">.</span>activate<span class="token punctuation">(</span><span class="token string">"path/to/the/downloaded/project/folder"</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="Julia" class="language-julia Julia"><code>Pkg<span class="token punctuation">.</span>activate<span class="token punctuation">(</span><span class="token string">"path/to/the/downloaded/project/folder"</span><span class="token punctuation">)</span>
 Pkg<span class="token punctuation">.</span>instantiate<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><p>をしてあげれば，このプロジェクトで使用されているパッケージが全て (しかもバージョンを合わせて) インストールされ，すぐに実行可能になるわけです！！</p>
+</code></pre><p>をしてあげれば，このプロジェクトで使用されているパッケージが全て (しかもバージョンを合わせて) インストールされ，すぐに実行可能になるわけです！！</p>
 <center><img src="../../Simulation/figures/julia_active.png"></center>
 <p>上の画像はちょっと失敗しているのもあるっぽいけど，まあそれでも便利です．</p>
-<h3 class="mume-header" id="%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%97%E3%81%9F%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E5%AE%9F%E8%A1%8C">ダウンロードしたプログラムの実行</h3>
-
+<h3 id="ダウンロードしたプログラムの実行">ダウンロードしたプログラムの実行 </h3>
 <p>ということで，さっそく<a href="https://github.com/JuliaDynamics/NonlinearDynamicsTextbook">Nonlinear Dynamics (George Datseris, Ulrich Parlitz, 2022)</a>の1-1の図を出力してみます．</p>
 <center><img src="../../Simulation/figures/julia_1-1.png"></center>
 <p>まずはPkgを使ってアクティブ環境を切り替えて，必要なパッケージの読み込みをさせます．その後はコピペで進めます．おまじないらしきものたちの実行．</p>
 <p>問題なく動いたので，図の出力部分を実行してみました．無事に下の図が得られましたので，動作チェック終了です．</p>
 <center><img src="../../Simulation/figures/1-1.png"></center>
 <p>Julia，というかそれを使った非線形物理学の勉強楽しみ．</p>
-<h2 class="mume-header" id="%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D">動作確認</h2>
-
+<h2 id="動作確認">動作確認 </h2>
 <p>ということで，環境構築は無事終了です．しかしせっかくなので，ちょっとだけ自分でコードして動かしてみたいと思います．</p>
-<h3 class="mume-header" id="%E5%AE%9F%E9%9A%9B%E3%81%AB%E5%8A%9B%E5%AD%A6%E7%B3%BB%E3%81%AE%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%82%92%E3%82%84%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8F">実際に力学系のプロットをやっていく．</h3>
-
+<h3 id="実際に力学系のプロットをやっていく">実際に力学系のプロットをやっていく． </h3>
 <p>とりあえずLorenz系の視覚化を目指します．</p>
 <p>ローレンツ方程式には，1963年のLorenz63モデルと96年の96モデルがありますが, ここでは次元数が低い63モデルの方をプロットしてみます．</p>
 <p>モデルは以下の通りです．<br>
@@ -601,13 +371,13 @@ Pkg<span class="token punctuation">.</span>instantiate<span class="token punctua
 <li>呼び出したPythonのmatplotlibを使って視覚表示</li>
 </ol>
 <p>をさせてみます．</p>
-<pre data-role="codeBlock" data-info="Julia" class="language-julia"><span class="token keyword keyword-using">using</span> DynamicalSystems
+<pre data-role="codeBlock" data-info="Julia" class="language-julia Julia"><code><span class="token keyword keyword-using">using</span> DynamicalSystems
 <span class="token keyword keyword-using">using</span> PyCall
 <span class="token comment">#@pyimport matplotlib.pyplot as plt</span>
 <span class="token comment">#@pyimport mpl_toolkits.mplot3d as mpl3</span>
-</pre><p>まずは必要なパッケージの読み込み．下二つはPythonのmatplotlibを呼び出すためのものなんですけど，いまいち毎回必要なのか初回onlyなのか分からなかったです．とりあえずおまじない．</p>
+</code></pre><p>まずは必要なパッケージの読み込み．下二つはPythonのmatplotlibを呼び出すためのものなんですけど，いまいち毎回必要なのか初回onlyなのか分からなかったです．とりあえずおまじない．</p>
 <p>次にローレンツ系の方程式を与えます．</p>
-<pre data-role="codeBlock" data-info="Julia" class="language-julia"><span class="token keyword keyword-function">function</span> lorenz_rule<span class="token punctuation">(</span>u<span class="token punctuation">,</span>p<span class="token punctuation">,</span>t<span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="Julia" class="language-julia Julia"><code><span class="token keyword keyword-function">function</span> lorenz_rule<span class="token punctuation">(</span>u<span class="token punctuation">,</span>p<span class="token punctuation">,</span>t<span class="token punctuation">)</span>
     σ<span class="token punctuation">,</span> ρ<span class="token punctuation">,</span> β <span class="token operator">=</span> p
     x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z <span class="token operator">=</span> u
     dx <span class="token operator">=</span> σ<span class="token operator">*</span><span class="token punctuation">(</span>y <span class="token operator">-</span> x<span class="token punctuation">)</span>
@@ -615,10 +385,10 @@ Pkg<span class="token punctuation">.</span>instantiate<span class="token punctua
     dz <span class="token operator">=</span> x<span class="token operator">*</span>y <span class="token operator">-</span> β<span class="token operator">*</span>z
     <span class="token keyword keyword-return">return</span> SVector<span class="token punctuation">(</span>dx<span class="token punctuation">,</span> dy<span class="token punctuation">,</span> dz<span class="token punctuation">)</span>
 <span class="token keyword keyword-end">end</span>
-</pre><p>ここで面白いのが，（他の言語でもあるのかもしれないけど知らなかった)，JuliaはTeX形式で特殊記号を直接扱えることです．</p>
+</code></pre><p>ここで面白いのが，（他の言語でもあるのかもしれないけど知らなかった)，JuliaはTeX形式で特殊記号を直接扱えることです．</p>
 <p><code>\sigma</code></p>
 <p>とタイプしてTabを押すことで，プログラム内で記号<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span>を使えます．面白い．</p>
-<pre data-role="codeBlock" data-info="Julia" class="language-julia">p <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10.0</span><span class="token punctuation">,</span> <span class="token number">28.0</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">]</span>
+<pre data-role="codeBlock" data-info="Julia" class="language-julia Julia"><code>p <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10.0</span><span class="token punctuation">,</span> <span class="token number">28.0</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">]</span>
 u_theta <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">10.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">]</span>
 
 lorenz <span class="token operator">=</span> ContinuousDynamicalSystem<span class="token punctuation">(</span>lorenz_rule<span class="token punctuation">,</span> u_theta<span class="token punctuation">,</span> p<span class="token punctuation">)</span>
@@ -626,20 +396,19 @@ lorenz <span class="token operator">=</span> ContinuousDynamicalSystem<span clas
 T <span class="token operator">=</span> <span class="token number">100.0</span>
 deltat <span class="token operator">=</span> <span class="token number">0.01</span>
 A <span class="token operator">=</span> trajectory<span class="token punctuation">(</span>lorenz<span class="token punctuation">,</span> T<span class="token punctuation">;</span> deltat<span class="token punctuation">)</span>
-</pre><p>初期値などなどの設定．ここで素晴らしいのは，<code>trajectory</code>だけで勝手に軌道を計算してくれることですね．とても便利です．</p>
-<pre data-role="codeBlock" data-info="Julia" class="language-julia">fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>初期値などなどの設定．ここで素晴らしいのは，<code>trajectory</code>だけで勝手に軌道を計算してくれることですね．とても便利です．</p>
+<pre data-role="codeBlock" data-info="Julia" class="language-julia Julia"><code>fig <span class="token operator">=</span> plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span><span class="token punctuation">)</span>
 fig<span class="token punctuation">.</span>add_subplot<span class="token punctuation">(</span>projection<span class="token operator">=</span><span class="token string">"3d"</span><span class="token punctuation">)</span>
 
 plot<span class="token punctuation">(</span>A<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> A<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-"</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">"r"</span><span class="token punctuation">,</span> lw<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
 title<span class="token punctuation">(</span><span class="token string">"Lorenz63"</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><p>結果はpythonのmatplotlibで表示．なんか浮気しているみたいでソワソワしますが，こんな簡単に呼び出せるのは重宝しますね．記法も一緒です．</p>
+</code></pre><p>結果はpythonのmatplotlibで表示．なんか浮気しているみたいでソワソワしますが，こんな簡単に呼び出せるのは重宝しますね．記法も一緒です．</p>
 <p>あ，あと注意点は，Juliaのindexは1始まりです．気持ち悪いですが，ここは慣れる必要がありますね．Pythonの記法なので間違えそうです．</p>
 <p>実際にこれで表示されたのが</p>
 <center><img src="../../Simulation/figures/lorenz.png"></center>
 <p>です！！できた！！</p>
-<h3 class="mume-header" id="%E3%83%98%E3%83%AB%E3%83%97%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%8A%E3%82%88%E3%81%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AE%E8%A6%8B%E6%96%B9">ヘルプの使い方およびソースコードの見方</h3>
-
+<h3 id="ヘルプの使い方およびソースコードの見方">ヘルプの使い方およびソースコードの見方 </h3>
 <p>また，Juliaのfunctionについては</p>
 <p><code>?trajectory</code></p>
 <p>のようにタイプすることで詳細をみることが出来ます．</p>

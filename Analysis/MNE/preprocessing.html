@@ -3,253 +3,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
       
       
       
       
       
       <style>
-      /**
- * prism.js Github theme based on GitHub's theme.
- * @author Sam Clarke
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #333;
-  background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.4;
-
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-  tab-size: 8;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-  padding: .8em;
-  overflow: auto;
-  /* border: 1px solid #ddd; */
-  border-radius: 3px;
-  /* background: #fff; */
-  background: #f5f5f5;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-  background: #f5f5f5;
-}
-
-.token.comment,
-.token.blockquote {
-  color: #969896;
-}
-
-.token.cdata {
-  color: #183691;
-}
-
-.token.doctype,
-.token.punctuation,
-.token.variable,
-.token.macro.property {
-  color: #333;
-}
-
-.token.operator,
-.token.important,
-.token.keyword,
-.token.rule,
-.token.builtin {
-  color: #a71d5d;
-}
-
-.token.string,
-.token.url,
-.token.regex,
-.token.attr-value {
-  color: #183691;
-}
-
-.token.property,
-.token.number,
-.token.boolean,
-.token.entity,
-.token.atrule,
-.token.constant,
-.token.symbol,
-.token.command,
-.token.code {
-  color: #0086b3;
-}
-
-.token.tag,
-.token.selector,
-.token.prolog {
-  color: #63a35c;
-}
-
-.token.function,
-.token.namespace,
-.token.pseudo-element,
-.token.class,
-.token.class-name,
-.token.pseudo-class,
-.token.id,
-.token.url-reference .token.variable,
-.token.attr-name {
-  color: #795da3;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-.token.title,
-.token.title .token.punctuation {
-  font-weight: bold;
-  color: #1d3e81;
-}
-
-.token.list {
-  color: #ed6a43;
-}
-
-.token.inserted {
-  background-color: #eaffea;
-  color: #55a532;
-}
-
-.token.deleted {
-  background-color: #ffecec;
-  color: #bd2c00;
-}
-
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-
-/* JSON */
-.language-json .token.property {
-  color: #183691;
-}
-
-.language-markup .token.tag .token.punctuation {
-  color: #333;
-}
-
-/* CSS */
-code.language-css,
-.language-css .token.function {
-  color: #0086b3;
-}
-
-/* YAML */
-.language-yaml .token.atrule {
-  color: #63a35c;
-}
-
-code.language-yaml {
-  color: #183691;
-}
-
-/* Ruby */
-.language-ruby .token.function {
-  color: #333;
-}
-
-/* Markdown */
-.language-markdown .token.url {
-  color: #795da3;
-}
-
-/* Makefile */
-.language-makefile .token.symbol {
-  color: #795da3;
-}
-
-.language-makefile .token.variable {
-  color: #183691;
-}
-
-.language-makefile .token.builtin {
-  color: #0086b3;
-}
-
-/* Bash */
-.language-bash .token.keyword {
-  color: #0086b3;
-}
-
-/* highlight */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-}
-
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: hsla(24, 20%, 50%,.08);
-  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-
-pre[data-line] .line-highlight:before, 
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: hsla(24, 20%, 50%,.4);
-  color: hsl(24, 20%, 95%);
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 .markdown-preview {
@@ -374,11 +135,12 @@ th {
   position: relative;
   width: 100%;
 }
-.gnav li:hover > ul > li {
+.gnav li > ul > li {
   height: 2rem;
+  overflow: hidden;
   z-index: 20;
   font-size: 10pt;
-  overflow: visible;
+  position: relative;
   width: 100%;
 }
 footer {
@@ -389,70 +151,92 @@ footer {
 }
 
       </style>
-    </head>
-    <body for="html-export">
-      <div class="mume markdown-preview  ">
-      <div class="header">
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<div class="header">
   <table class="fixed-table">
     <thead>
       <tr>
         <th class="mokuji">目次</th>
-        <th><details><summary> Math </summary><ul class="gnav"><li><a href="../../Math/Basic/basic.html">基礎数学編</a>
+        <th><details><summary> Math </summary><ul class="gnav"><details><summary>基礎数学編</summary>
         <ul class="index">
+        <li><a href="../../Math/Basic/basic.html">ホーム</a></li> 
         <li><a href="../../Math/Basic/multiplication.html">掛け算</a></li>     
         <li><a href="../../Math/Basic/trigonometric.html">三角関数</a></li>
         <li><a href="../../Math/Basic/complex.html">複素数</a></li>
         <li><a href="../../Math/Basic/calculus.html">微分・積分</a></li>
         <li><a href="../../Math/Basic/linear_algebra.html">線形代数</a></li>
         <li><a href="../../Math/Basic/statistics.html">基礎統計</a></li>
-        </ul>
-        </li><li><a href="../../Math/Analysis/Analysis.html">信号処理編</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>信号処理編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Analysis/Analysis.html">ホーム</a></li> 
         <li><a href="../../Math/Analysis/fourier.html">フーリエ変換</a></li>
         <li><a href="../../Math/Analysis/wavelet.html">wavelet変換</a></li>
         <li><a href="../../Math/Analysis/hilbert.html">ヒルベルト変換</a></li>
         <li><a href="../../Math/Analysis/eeg.html">基本の脳波解析</a></li> <li><a href="../../Math/Analysis/phase_analysis.html">位相同期解析</a></li>
-        </ul>
-        </li><li><a href="../../Math/Statistics/Statistics.html">統計編</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>統計編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Statistics/Statistic.html">ホーム</a></li> 
         <li><a href="../../Math/Statistics/distribution.html">確率分布</a></li>
         <li><a href="../../Math/Statistics/central_limit_theorem.html">大数の法則と中心極限定理</a></li>
         <li><a href="../../Math/Statistics/statistic.html">統計量と標本分布</a></li>                                                         <li><a href="../../Math/Statistics/test.html">統計的検定</a></li>
-        <li><a href="../../Math/Statistics/anova.html">分散分析</a></li>  
-        </ul>
-        </li><li><a href="../../Math/Others/Others.html">その他</a><ul class="index">
+        <li><a href="../../Math/Statistics/anova.html">分散分析</a></li>
+        <li><a href="../../Math/Statistics/logistic_regression.html">ロジスティック回帰</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>その他</summary>
+        <ul class="index">
+        <li><a href="../../Math/Others/Others.html">ホーム</a></li> 
         <li><a href="../../Math/Others/ICA.html">独立成分分析</a></li> 
         <li><a href="../../Math/Others/CCA.html">正準相関分析</a></li>
         <li><a href="../../Math/Others/lagrange.html">ラグランジュの未定乗数法</a></li>
         <li><a href="../../Math/Others/Entropy.html">エントロピーと分布間距離</a></li>
         <li><a href="../../Math/Others/signal_detection.html">信号検出理論</a></li>
-        </ul>
-        </li></ul></details></th>
-        <th><details><summary> Analysis </summary><ul class="gnav"><li><a href="../../Analysis/eeglab/eeglab.html">EEGLAB</a>
-        <ul class="index">                                             <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>
+        </ul></details>
+        </ul></ul></ul></ul></details></th>
+        <th><details><summary> Analysis </summary>
+        <ul class="gnav"><details><summary>EEGLAB</summary>
+        <ul class="index">       
+        <li><a href="../../Analysis/eeglab/eeglab.html">ホーム</a></li>                           <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>
         <li><a href="../../Analysis/eeglab/import.html">データのインポート</a></li>
         <li><a href="../../Analysis/eeglab/prepro1.html">基本的な下処理</a></li>
         <li><a href="../../Analysis/eeglab/prepro2.html">発展的な下処理</a></li>
         <li><a href="../../Analysis/eeglab/analysis1.html">単被験者での解析</a></li>
         <li><a href="../../Analysis/eeglab/analysis2.html">被験者群での解析</a></li>
-        </ul>
-        </li><li><a href="../../Analysis/MNE/MNE.html">MNE-python</a>
+        </ul></details>
+        <ul class="gnav"><details><summary>MNE-python</summary>
         <ul class="index">
+        <li><a href="../../Analysis/MNE/MNE.html">ホーム</a></li>
         <li><a href="../../Analysis/MNE/import.html">データのロード</a></li>
         <li><a href="../../Analysis/MNE/preprocessing.html">前処理</a></li>
-        </ul> </li></ul></details></th>
-        <th><details><summary> Experiment </summary><ul class="gnav">       </ul> </details></th>
-        <th><details><summary> Simulations </summary><ul class="gnav">
-        <li><a href="../../Simulation/Simulation.html">環境構築</a><ul class="index">
+        </ul> </details></ul></ul></details></th>
+        <th><details><summary> Experiment </summary>
+        <ul class="gnav">       </ul> </details></th>
+        <th><details><summary> Simulations </summary>
+        <ul class="gnav"><details><summary>環境構築</summary>
+        <ul class="index">
+         <li><a href="../../Simulation/Setup/Setup.html">ホーム</a></li>
         <li><a href="../../Simulation/Setup/environment.html">Python環境構築</a></li>
         <li><a href="../../Simulation/Setup/gpu.html">pythonでのGPUセットアップ</a></li>
         <li><a href="../../Simulation/Setup/jupyter.html">Jupyterセットアップ</a></li>
         <li><a href="../../Simulation/Setup/julia.html">Juliaセットアップ</a></li>
-        </ul>
-        </li><li><a href="../../Simulation/NonlinearDynamics/Nonlinear-dynamics.html">非線形力学</a><ul class="index">
+        </ul></details>
+        <ul class="gnav"><details><summary>非線形力学</summary>
+        <ul class="index">
+        <li><a href="../../Simulation/NonlinearDynamics/Nonlinear-dynamics.html">ホーム</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/dynamics.html">力学系とは</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/stability.html">線形安定性解析</a></li>
         <li><a href="../../Simulation/NonlinearDynamics/stability_nonlinear.html">非線形系の安定性解析</a></li>
-        </ul>
-        </li></ul></details></th>
+        </ul></details>
+        </ul></ul></details></th>
       </tr>
     </thead>
   </table>
@@ -460,7 +244,7 @@ footer {
 <h1><span></span>前処理</h1>
 <p>データのロードが分かったところで，データの前処理の仕方を確認していきます．<a href="https://mne.tools/stable/auto_tutorials/preprocessing/index.html">公式のチュートリアル</a> を参考に進めます．</p>
 <p>今回のコードは<a href="./MNE-newbie.ipynb">こちら</a>．</p>
-<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>▶︎</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
+<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="code-chunk-btn-group"><div class="run-btn btn btn-xs btn-primary"><span>▶︎</span></div><div class="run-all-btn btn btn-xs btn-primary">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
 <li><a href="#%E3%81%BE%E3%81%9A%E3%81%AF%E3%83%AD%E3%83%BC%E3%83%89">まずはロード</a>
 <ul>
 <li><a href="#%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">位置情報の読み込み</a></li>
@@ -512,37 +296,32 @@ footer {
 <li><a href="#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E6%A4%9C%E5%87%BA">イベント検出</a></li>
 <li><a href="#%E3%82%A8%E3%83%9D%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0">エポッキング</a></li>
 </ul>
-<h2 class="mume-header" id="%E3%81%BE%E3%81%9A%E3%81%AF%E3%83%AD%E3%83%BC%E3%83%89">まずはロード</h2>
-
+<h2 id="まずはロード">まずはロード </h2>
 <p>まずは，何も前処理が行われていないデータを読み込んできます．データのロードでやった内容通りにすゝめます．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">sample_data_folder <span class="token operator">=</span> mne<span class="token punctuation">.</span>datasets<span class="token punctuation">.</span>sample<span class="token punctuation">.</span>data_path<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>sample_data_folder <span class="token operator">=</span> mne<span class="token punctuation">.</span>datasets<span class="token punctuation">.</span>sample<span class="token punctuation">.</span>data_path<span class="token punctuation">(</span><span class="token punctuation">)</span>
 sample_data_raw_file <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>
     sample_data_folder<span class="token punctuation">,</span> <span class="token string">"MEG"</span><span class="token punctuation">,</span> <span class="token string">"sample"</span><span class="token punctuation">,</span> <span class="token string">"sample_audvis_raw.fif"</span><span class="token punctuation">)</span>
 raw <span class="token operator">=</span> mne<span class="token punctuation">.</span>io<span class="token punctuation">.</span>read_raw_fif<span class="token punctuation">(</span>sample_data_raw_file<span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>crop<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">.</span>load_data<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># just use a fraction of data for speed here</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></pre><p>最後の5行目，<a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.crop">raw.crop()</a> では，計算を速くするために0~60秒のデータだけを抜き出しています．実際にはいらないです．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></pre><p>最後の5行目，<a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.crop">raw.crop()</a> では，計算を速くするために0~60秒のデータだけを抜き出しています．実際にはいらないです．</p>
 <center><img src="../figures/mne_pre0.png"></center>
 <p>読み込むとこんな画面がでます．</p>
-<h3 class="mume-header" id="%E4%BD%8D%E7%BD%AE%E6%83%85%E5%A0%B1%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">位置情報の読み込み</h3>
-
+<h3 id="位置情報の読み込み">位置情報の読み込み </h3>
 <p>読み込む脳波ファイルの形式によっては，位置情報が入っていないことがあります．位置情報というのは，</p>
 <center><img src="../figures/mne-loc0.png"></center>
 <p>Digitized points に格納される情報のようです．今，上に表示しているファイルは筆者が計測したbrainvisionの脳波で，<code>eeg, vhdr, vmrk</code>の3ファイルで脳波やその他情報をまとめている形式です．これを読み込むと，位置情報がない <code>Not available</code> となっています．</p>
 <p>この状態だと，MNE　の位置情報を使った関数は使えません．なので位置情報を読み込む必要があります．</p>
 <p>まずは，どんな位置情報が使えるか (テンプレートとして用意されているファイル) を確認してみます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">mne<span class="token punctuation">.</span>channels<span class="token punctuation">.</span>get_builtin_montages<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><p>とすると，色々なモンタージュが表示されます．今回はこのうち，<code>standard_1020</code> を使っていたのでそれを読み込みます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">raw<span class="token punctuation">.</span>set_montage<span class="token punctuation">(</span>mne<span class="token punctuation">.</span>channels<span class="token punctuation">.</span>make_standard_montage<span class="token punctuation">(</span><span class="token string">'standard_1020'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</pre><p>これで電極の位置情報が読み込めました．</p>
-<h2 class="mume-header" id="re-reference">Re-reference</h2>
-
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>mne<span class="token punctuation">.</span>channels<span class="token punctuation">.</span>get_builtin_montages<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>とすると，色々なモンタージュが表示されます．今回はこのうち，<code>standard_1020</code> を使っていたのでそれを読み込みます．</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>raw<span class="token punctuation">.</span>set_montage<span class="token punctuation">(</span>mne<span class="token punctuation">.</span>channels<span class="token punctuation">.</span>make_standard_montage<span class="token punctuation">(</span><span class="token string">'standard_1020'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><p>これで電極の位置情報が読み込めました．</p>
+<h2 id="re-reference">Re-reference </h2>
 <p><a href="https://mne.tools/stable/auto_examples/preprocessing/contralateral_referencing.html">https://mne.tools/stable/auto_examples/preprocessing/contralateral_referencing.html</a></p>
 <p>多分ここ</p>
-<h2 class="mume-header" id="%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">ノイズについて</h2>
-
+<h2 id="ノイズについて">ノイズについて </h2>
 <p>一応，説明してみます．他のページと内容が重複している部分も多分にあると思いますが...</p>
-<h3 class="mume-header" id="%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%AE%E7%A8%AE%E9%A1%9E">ノイズの種類</h3>
-
+<h3 id="ノイズの種類">ノイズの種類 </h3>
 <p>まず，計測された脳波や脳磁には，脳活動 (だと我々が信じている) 成分以外にも様々な成分由来の信号が含まれています．</p>
 <p>たとえば，</p>
 <ul>
@@ -557,8 +336,7 @@ raw<span class="token punctuation">.</span>crop<span class="token punctuation">(
 </ul>
 <p>などと様々です．環境由来のものから，計測機器によるもの，被験者が生きているが故に出てしまうもの，被験者が気合でどうにかできるもの，色々あります．</p>
 <p>生体信号解析においては，これらノイズをいかに排除するかがカギになります．</p>
-<h3 class="mume-header" id="%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%A8%E3%81%AE%E5%90%91%E3%81%8D%E5%90%88%E3%81%84%E6%96%B9">ノイズとの向き合い方</h3>
-
+<h3 id="ノイズとの向き合い方">ノイズとの向き合い方 </h3>
 <p>ノイズとの向き合い方は大きく3つです．即ち</p>
 <ul>
 <li>無視する</li>
@@ -569,38 +347,34 @@ raw<span class="token punctuation">.</span>crop<span class="token punctuation">(
 <p>ノイズが含まれる部分を消すのは，初心者がやる最初のノイズ除去ステップです．ただし問題は，これによって多くのデータが排除された結果，まともに解析に使えるデータが少なくなってしまう事態が生じることです．</p>
 <p>よって，一般には3つ目，ノイズだけを除去してcleanな信号に"修正する"作業が求められます．ここに職人技を見るわけです．</p>
 <p>オーソドックスな方法として，各種フィルター，独立成分分析などがあります．が，そういったなかば自動化された方法に移る前に，まずは明らかな部分を消してあげるのも大事です．</p>
-<h2 class="mume-header" id="%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%81%AE%E7%A2%BA%E8%AA%8D">アーティファクトの確認</h2>
-
+<h2 id="アーティファクトの確認">アーティファクトの確認 </h2>
 <p>さて，早速アーティファクトの検出に移りたいところですが，その前にサンプルデータに対しておまじない的なことをしておきます．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">ssp_projectors <span class="token operator">=</span> raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"projs"</span><span class="token punctuation">]</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>ssp_projectors <span class="token operator">=</span> raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"projs"</span><span class="token punctuation">]</span>
 raw<span class="token punctuation">.</span>del_proj<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></pre><p>このサンプルは事前に <code>SSP projectors</code> なるものが適用されているのですが，これはいらないので消す作業をするわけです．<code>SSP projectors</code> はまたいずれ触ってみます．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></pre><p>このサンプルは事前に <code>SSP projectors</code> なるものが適用されているのですが，これはいらないので消す作業をするわけです．<code>SSP projectors</code> はまたいずれ触ってみます．</p>
 <center><img src="../figures/mne-pre1.png"></center>
 <p>分かりにくいですが，先程まであった<code>Projectors</code>項目が消えています．これで生の状態です．</p>
 <p>さて，いよいよ色々なノイズ，アーティファクト達を確認していきます．ここでは，特に除去することはせず，眺めるだけです．</p>
-<h3 class="mume-header" id="%E4%BD%8E%E5%91%A8%E6%B3%A2%E3%83%89%E3%83%AA%E3%83%95%E3%83%88">低周波ドリフト</h3>
-
+<h3 id="低周波ドリフト">低周波ドリフト </h3>
 <p>まずは低周波のドリフト成分です．いくつかの理由で起こり得ます．抵抗値の変化などです．これは一番視覚的にも分かりやすくて，<a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.plot">raw.plot()</a> で表示してみると</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">mag_channels <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token string">"mag"</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>mag_channels <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token string">"mag"</span><span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>duration<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">,</span> order<span class="token operator">=</span>mag_channels<span class="token punctuation">,</span> n_channels<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>mag_channels<span class="token punctuation">)</span><span class="token punctuation">,</span> remove_dc<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
-</pre><center><img src="../figures/mne-pre2.png"></center>
+</code></pre><center><img src="../figures/mne-pre2.png"></center>
 <p>このうねうねしている部分がそうです．(背景黒，見にくいなぁ...設定でいじれそうだけど)</p>
 <p>だいたいは，High-passフィルタをかけることで消えます．かなりゆっくりめの動きなので，0.1Hzとかでも消されるはずです．</p>
-<h3 class="mume-header" id="%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%8E%E3%82%A4%E3%82%BA">ラインノイズ</h3>
-
+<h3 id="ラインノイズ">ラインノイズ </h3>
 <p>電源由来のノイズ成分です．<br>
 これは <a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.plot_psd">plot_psd()</a> で確認してみます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">fig <span class="token operator">=</span> raw<span class="token punctuation">.</span>plot_psd<span class="token punctuation">(</span>tmax<span class="token operator">=</span>np<span class="token punctuation">.</span>inf<span class="token punctuation">,</span> fmax<span class="token operator">=</span><span class="token number">250</span><span class="token punctuation">,</span> average<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> picks<span class="token operator">=</span><span class="token string">"data"</span><span class="token punctuation">,</span> exclude<span class="token operator">=</span><span class="token string">"bads"</span><span class="token punctuation">)</span>
-</pre><center><img src="../figures/mne-pre3.png"></center>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>fig <span class="token operator">=</span> raw<span class="token punctuation">.</span>plot_psd<span class="token punctuation">(</span>tmax<span class="token operator">=</span>np<span class="token punctuation">.</span>inf<span class="token punctuation">,</span> fmax<span class="token operator">=</span><span class="token number">250</span><span class="token punctuation">,</span> average<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> picks<span class="token operator">=</span><span class="token string">"data"</span><span class="token punctuation">,</span> exclude<span class="token operator">=</span><span class="token string">"bads"</span><span class="token punctuation">)</span>
+</code></pre><center><img src="../figures/mne-pre3.png"></center>
 <p>これらは周波数スペクトルです．60の倍数成分に謎のピークが立っていることが分かると思います．アメリカの電源周波数ですね．脳波には乗ってなさそう．なんでなんですかね？</p>
 <p>ともかく，こうした成分を抜かずに解析した結果，「このタスクには60Hzの倍数成分が重要なんです！」なんて恥ずかしい主張をしないためにも消す必要があります．</p>
 <p>では，Magnetometersの結果の20~30Hzのピークはなんでしょうか．おそらく，心拍由来の成分です．これも消したい．</p>
-<h3 class="mume-header" id="%E5%BF%83%E6%8B%8D-ecg">心拍 (ECG)</h3>
-
+<h3 id="心拍-ecg">心拍 (ECG) </h3>
 <p>MNE-pythonはMEGにも使える，というかそっちがメイン？なので，特に心拍に気を使うようです．MEGはECGの影響が乗りやすい．<a href="https://mne.tools/stable/generated/mne.preprocessing.create_ecg_epochs.html#mne.preprocessing.create_ecg_epochs">create_ecg_epochs()</a> 関数は，<a href="https://mne.tools/stable/generated/mne.preprocessing.find_ecg_events.html#mne.preprocessing.find_ecg_events">find_ecg_events()</a> 関数を呼び出して，引数として与えられたデータに対して自動的に心拍成分を抜き出してきて，さらにそのタイミングに合わせこんで加算平均したECGエポックを作成してくれる関数のようです．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ecg_epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>create_ecg_epochs<span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ecg_epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>create_ecg_epochs<span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
 ecg_epochs<span class="token punctuation">.</span>plot_image<span class="token punctuation">(</span>combine<span class="token operator">=</span><span class="token string">"mean"</span><span class="token punctuation">)</span>
-</pre><p>まず，<code>ecg_epochs</code>にエポック化されたECGデータが格納されます．この時点では</p>
+</code></pre><p>まず，<code>ecg_epochs</code>にエポック化されたECGデータが格納されます．この時点では</p>
 <center><img src="../figures/mne-ecg4.png" ,="" width="60%"></center>
 <p>なんか色々表示されますが，59個の心拍成分が見つかったようですね．<code>ecg_epochs</code> のサイズを見ると</p>
 <center><img src="../figures/mne-ecg5.png" ,="" width="60%"></center>
@@ -613,33 +387,32 @@ ecg_epochs<span class="token punctuation">.</span>plot_image<span class="token p
 </div>
 <p>これでみると，EEGはあまり影響受けてないことが分かりますね．良かった．ともかく，これも排除する対象になります．また，Magnetoの結果から，やはりECGの影響もかなりの低周波で (水平の線として表れている) ，先程の低周波ノイズと重なっていた理由が分かります．</p>
 <p>分かりにくいので，低周波ノイズを消して適用しましょう．低周波ノイズを消すには，フィルタ以外にもベースライン補正という方法もあります．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ecg_epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>create_ecg_epochs<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> baseline<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ecg_epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>create_ecg_epochs<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> baseline<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 fig <span class="token operator">=</span> ecg_epochs<span class="token punctuation">.</span>plot_image<span class="token punctuation">(</span>combine<span class="token operator">=</span><span class="token string">"mean"</span><span class="token punctuation">)</span>
-</pre><div style="display: flex; gap:5px;">
+</code></pre><div style="display: flex; gap:5px;">
 	<img src="../figures/mne-ecg11.png" ,="" width="33%," height="33%">
 	<img src="../figures/mne-ecg21.png" ,="" width="33%," height="33%">
 	<img src="../figures/mne-ecg31.png" ,="" width="33%," height="33%">
 </div>
 <p>横縞がなくなり，綺麗なピークが見れるようになりました．</p>
 <p>さらに，<a href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs.average">average()</a> をとることでECGエポックを平均化して，<a href="https://mne.tools/stable/generated/mne.Evoked.html#mne.Evoked.plot_topomap">plot_topomap()</a> によってトポマップに表示することも</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">avg_ecg_epochs <span class="token operator">=</span> ecg_epochs<span class="token punctuation">.</span>average<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>avg_ecg_epochs <span class="token operator">=</span> ecg_epochs<span class="token punctuation">.</span>average<span class="token punctuation">(</span><span class="token punctuation">)</span>
 fig <span class="token operator">=</span> avg_ecg_epochs<span class="token punctuation">.</span>plot_topomap<span class="token punctuation">(</span>times<span class="token operator">=</span>np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</pre><p>可能です．-0.05秒から0.05秒までの間を11分割してトポマップに表示します．</p>
+</code></pre><p>可能です．-0.05秒から0.05秒までの間を11分割してトポマップに表示します．</p>
 <center><img src="../figures/mne-ecg6.png"></center>
 <p>あるいは，チャンネル方向に加算平均したERPやERFの形に取り出すと</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">fig <span class="token operator">=</span> avg_ecg_epochs<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><center><img src="../figures/mne-ecg7.png"></center>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>fig <span class="token operator">=</span> avg_ecg_epochs<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><center><img src="../figures/mne-ecg7.png"></center>
 <p>さらにさらに．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">fig <span class="token operator">=</span> avg_ecg_epochs<span class="token punctuation">.</span>plot_joint<span class="token punctuation">(</span>times<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.025</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.025</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</pre><p>などと，<a href="https://mne.tools/stable/generated/mne.Evoked.html#mne.Evoked.plot_joint">plot_joint()</a> を使うことで Topomap と併せた表示もできます．これはERP研究なんかでもよく使われるfigの形ですね．今回は，時間を指定していますが特に<code>times</code>を指定しない場合には自動で選ばれたピーク部分になるようです．</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>fig <span class="token operator">=</span> avg_ecg_epochs<span class="token punctuation">.</span>plot_joint<span class="token punctuation">(</span>times<span class="token operator">=</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">0.25</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.025</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.025</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre><p>などと，<a href="https://mne.tools/stable/generated/mne.Evoked.html#mne.Evoked.plot_joint">plot_joint()</a> を使うことで Topomap と併せた表示もできます．これはERP研究なんかでもよく使われるfigの形ですね．今回は，時間を指定していますが特に<code>times</code>を指定しない場合には自動で選ばれたピーク部分になるようです．</p>
 <center><img src="../figures/mne-ecg12.png"></center>
-<h3 class="mume-header" id="%E7%9C%BC%E7%90%83%E9%81%8B%E5%8B%95-eog">眼球運動 (EOG)</h3>
-
+<h3 id="眼球運動-eog">眼球運動 (EOG) </h3>
 <p>最後に，眼球運動および瞬きについてです．こちらも心拍と同様に<a href="https://mne.tools/stable/generated/mne.preprocessing.create_eog_epochs.html#mne.preprocessing.create_eog_epochs">create_eog_epochs()</a> が用意されています．心拍とは異なり，EEGは眼電由来成分がめちゃくちゃのります．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">eog_epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>create_eog_epochs<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> baseline<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>eog_epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>create_eog_epochs<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> baseline<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 eog_epochs<span class="token punctuation">.</span>plot_image<span class="token punctuation">(</span>combine<span class="token operator">=</span><span class="token string">"mean"</span><span class="token punctuation">)</span>
 eog_epochs<span class="token punctuation">.</span>average<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>plot_joint<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><div style="display: flex; gap:5px;">
+</code></pre><div style="display: flex; gap:5px;">
 	<img src="../figures/mne-ecg13.png" ,="" width="33%," height="33%">
 	<img src="../figures/mne-ecg23.png" ,="" width="33%," height="33%">
 	<img src="../figures/mne-ecg33.png" ,="" width="33%," height="33%">
@@ -650,63 +423,58 @@ eog_epochs<span class="token punctuation">.</span>average<span class="token punc
 	<img src="../figures/mne-ecg34.png" ,="" width="33%," height="33%">
 </div>
 <p>たしかにEEGがすんごい．</p>
-<h3 class="mume-header" id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h3>
-
+<h3 id="まとめ">まとめ </h3>
 <p>このように，いろんな理由で乗る様々なノイズがあります．計測の種類や課題の種類によって，どのノイズが特に強いかなどは異なるため，紋切り型のアプローチではなく，まずはこうやって色々と見てみて，何がアーティファクトかを見分ける目を養うことが重要です．</p>
 <p>次は，いよいよ除去に入ります．</p>
-<h2 class="mume-header" id="%E3%83%90%E3%83%83%E3%83%89%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%AE%E9%99%A4%E5%8E%BB">バッドチャンネルの除去</h2>
-
-<h3 class="mume-header" id="%E6%A6%82%E8%A6%81">概要</h3>
-
+<h2 id="バッドチャンネルの除去">バッドチャンネルの除去 </h2>
+<h3 id="概要">概要 </h3>
 <p>まずは，明らかにノイジーなチャンネルを "bad channel" として手動でマーキングする方法と，そのデータを周囲のまともなチャンネルのデータから再構成する方法を確認します．</p>
 <p>まず，MNE-pythonでは "bad channel" は無視するわけでも消すわけでもなく，解析時に抜いて扱う，ということが出来るようです．引数で調整します．"bad channel" とはいえ，解析結果に影響しないようならあまり無暗に消したくないところですので，これは便利です．</p>
 <p>まず，"bad channel" リストを確認します．サンプルだとこれデフォルトで入っていますが，自動で算出されてるのか，何か調整されているのか，ちょっとわかりませんでした．今後の課題です．</p>
 <center><img src="../figures/mne-bc.png"></center>
 <p>ともかく，いまのところ "bad" に入っているのは2つのチャンネルのようです．実際に目視してみます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_channels_regexp<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>ch_names<span class="token punctuation">,</span> regexp<span class="token operator">=</span><span class="token string">"EEG 05."</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_channels_regexp<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>ch_names<span class="token punctuation">,</span> regexp<span class="token operator">=</span><span class="token string">"EEG 05."</span><span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>order<span class="token operator">=</span>picks<span class="token punctuation">,</span> n_channels<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>picks<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</pre><pre data-role="codeBlock" data-info="python" class="language-python">picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_channels_regexp<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>ch_names<span class="token punctuation">,</span> regexp<span class="token operator">=</span><span class="token string">"MEG 2..3"</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="python" class="language-python python"><code>picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_channels_regexp<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>ch_names<span class="token punctuation">,</span> regexp<span class="token operator">=</span><span class="token string">"MEG 2..3"</span><span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>order<span class="token operator">=</span>picks<span class="token punctuation">,</span> n_channels<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>picks<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</pre><div style="display: flex; gap:5px;">
+</code></pre><div style="display: flex; gap:5px;">
 	<img src="../figures/mne-bc2.png" ,="" width="50%," height="50%">
 	<img src="../figures/mne-bc3.png" ,="" width="50%," height="50%">
 </div>
 <p>なるほど，どちらも明らかに他のチャンネルと異なって死んだデータになっています．</p>
 <p>ここから，直接いじりたい時には先程もどこかでやったように，クリックして選ぶか，あるいは以下のように普通にpythonのリストとして扱っていじることが可能です．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">original_bads <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"bads"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>original_bads <span class="token operator">=</span> deepcopy<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"bads"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"bads"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"EEG 050"</span><span class="token punctuation">)</span>  <span class="token comment"># add a single channel</span>
 raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"bads"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"EEG 051"</span><span class="token punctuation">,</span> <span class="token string">"EEG 052"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># add a list of channels</span>
 bad_chan <span class="token operator">=</span> raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"bads"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># remove the last entry in the list</span>
 raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"bads"</span><span class="token punctuation">]</span> <span class="token operator">=</span> original_bads  <span class="token comment"># change the whole list at once</span>
-</pre><p>通常，MNE-pythonのあらゆる関数はこうしてマークされた"bad"リストを除外して解析を行うようですが，引数で <code>exclude=[]</code> としてあげれば含めることができるようです．たとえば</p>
-<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># default is exclude='bads':</span>
+</code></pre><p>通常，MNE-pythonのあらゆる関数はこうしてマークされた"bad"リストを除外して解析を行うようですが，引数で <code>exclude=[]</code> としてあげれば含めることができるようです．たとえば</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># default is exclude='bads':</span>
 good_eeg <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> eeg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 all_eeg <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> eeg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> exclude<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>setdiff1d<span class="token punctuation">(</span>all_eeg<span class="token punctuation">,</span> good_eeg<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>ch_names<span class="token punctuation">)</span><span class="token punctuation">[</span>np<span class="token punctuation">.</span>setdiff1d<span class="token punctuation">(</span>all_eeg<span class="token punctuation">,</span> good_eeg<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</pre><p>として，<code>exclude</code> を入れたリストといれてないリストを作成して差分を見てみると，ちゃんとbadチャンネルであるEEG053がいることが確認できます．なお，<a href="https://mne.tools/stable/generated/mne.pick_types.html#mne.pick_types">pick_types()</a> ではrawの中から，InfoがEEGになっているものだけを取り出しています．</p>
+</code></pre><p>として，<code>exclude</code> を入れたリストといれてないリストを作成して差分を見てみると，ちゃんとbadチャンネルであるEEG053がいることが確認できます．なお，<a href="https://mne.tools/stable/generated/mne.pick_types.html#mne.pick_types">pick_types()</a> ではrawの中から，InfoがEEGになっているものだけを取り出しています．</p>
 <center><img src="../figures/mne-bc4.png"></center>
-<h3 class="mume-header" id="%E3%81%84%E3%81%A4%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B%E3%81%8B">いつ見つけるか</h3>
-
+<h3 id="いつ見つけるか">いつ見つけるか </h3>
 <p>ではこの処理を適用するタイミングがいつなのかです．まず大前提としてですが，ノイジーなチャンネルは何も解析段階に行かずとも分かることが多いです．</p>
 <p>実験での計測中，しっかりとモニタリングしていれば暴れているチャンネルが分かります．それらを先に実験ノートにメモしておき，データ処理を始める段階で"bad"リストにぶちこんでやりましょう．</p>
 <p>また，それでも抜けがあることを考慮して，ICAなどをかける前の段階でplot関数を使って生波形を目視して調べるのも重要です．そうした作業をおこたり，ノイジーなチャンネルを除外できていない場合にERP/ERFを計算すると以下のようになるようです．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">raw2 <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>raw2 <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
 raw2<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"bads"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 events <span class="token operator">=</span> mne<span class="token punctuation">.</span>find_events<span class="token punctuation">(</span>raw2<span class="token punctuation">,</span> stim_channel<span class="token operator">=</span><span class="token string">"STI 014"</span><span class="token punctuation">)</span>
 epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>Epochs<span class="token punctuation">(</span>raw2<span class="token punctuation">,</span> events<span class="token operator">=</span>events<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"2"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>average<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>plot_joint<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><p><a href="https://mne.tools/stable/generated/mne.find_events.html#mne.find_events">find_events()</a> は，<code>stim_channel</code>として指定した"STI 014" の信号を元にトリガー検出し，event情報を抜き出す関数です．</p>
+</code></pre><p><a href="https://mne.tools/stable/generated/mne.find_events.html#mne.find_events">find_events()</a> は，<code>stim_channel</code>として指定した"STI 014" の信号を元にトリガー検出し，event情報を抜き出す関数です．</p>
 <center><img src="../figures/mne-bc11.png"></center>
 <p>このうち，EEGは分かりにくいのですが，Gradiometersは分かりやすいです．明らかに一本だけ変なやつがいますね．こうした事態を避けるために，ノイジーなデータは除去すべきです．</p>
 <p>いずれにせよ，解析結果がこうなってからでは (ERPなら分かりやすいですが) 解釈も難しく，かつノイズのせいであることにも気付きにくくなってしまいます．出来るだけ早い段階で消す野を心掛けるのが重要そうです．</p>
-<h3 class="mume-header" id="interpolation">Interpolation</h3>
-
+<h3 id="interpolation">Interpolation </h3>
 <p>日本語知らない．これは，"bad" チャンネルを除去するだけでなく補完する作業です．研究でデータを扱うことを現実的に考えた時，それぞれの被験者から思い思いに悪いチャンネルのデータを消すのは望ましくありません．何故なら，たとえば「Fp1の電極が重要そう」な時，被験者番号1,5,17の3人はそもそも"bad"だったので消していてデータがありません...といったことになるからです．</p>
 <p>また，行列処理的にも1要素 (つまり被験者) でも次元が落ちているのであれば，全体の次元はそこに引きずり込まれます．よって，他の重要なデータも数多く失うことになり，それはとても悲しいことです．</p>
 <p>なので，ただ消すのではなく補完する作業をします．</p>
 <p>スプライン補完という手法を使います．数学的な背景はまた別にいつか．まあ簡単に言ってしまえば，周辺の電極から再構成する方法です．</p>
 <p>早速やってみます．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">raw<span class="token punctuation">.</span>crop<span class="token punctuation">(</span>tmin<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> tmax<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>load_data<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>raw<span class="token punctuation">.</span>crop<span class="token punctuation">(</span>tmin<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> tmax<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>load_data<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 eeg_data <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>meg<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> eeg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> exclude<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 eeg_data_interp <span class="token operator">=</span> eeg_data<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>interpolate_bads<span class="token punctuation">(</span>reset_bads<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
@@ -716,7 +484,7 @@ eeg_data_interp <span class="token operator">=</span> eeg_data<span class="token
         fig <span class="token operator">=</span> data<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>butterfly<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> color<span class="token operator">=</span><span class="token string">"#00000022"</span><span class="token punctuation">,</span> bad_color<span class="token operator">=</span><span class="token string">"r"</span><span class="token punctuation">)</span>
     fig<span class="token punctuation">.</span>subplots_adjust<span class="token punctuation">(</span>top<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
     fig<span class="token punctuation">.</span>suptitle<span class="token punctuation">(</span>title<span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token string">"xx-large"</span><span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token string">"bold"</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>まず見やすいように，<a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.crop">raw.crop()</a> で時間幅を切ってきます．その後，2行目でサンプルからEEGデータだけを <a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.pick_types">pick_types()</a> で抜き出し，3行目ではそれをinterpolateしています．ここでは <a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.interpolate_bads">interpolate_bads()</a> 関数を使用しています．これは<code>bads</code>リストに入っているセンサーの情報をスプライン補完で埋めてあげ，ついでに<code>bads</code>リストを空にします．つまり「もう<code>bads</code>なんてない」状態にするものです．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>まず見やすいように，<a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.crop">raw.crop()</a> で時間幅を切ってきます．その後，2行目でサンプルからEEGデータだけを <a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.pick_types">pick_types()</a> で抜き出し，3行目ではそれをinterpolateしています．ここでは <a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.interpolate_bads">interpolate_bads()</a> 関数を使用しています．これは<code>bads</code>リストに入っているセンサーの情報をスプライン補完で埋めてあげ，ついでに<code>bads</code>リストを空にします．つまり「もう<code>bads</code>なんてない」状態にするものです．</p>
 <p>尚，Epockingした後のデータの場合には別の関数で <a href="https://mne.tools/dev/generated/mne.Epochs.html#mne.Epochs.interpolate_bads">mne.Epochs.interpolate_bads()</a> を使うようです．MNEのRaw, Epochsなどのオブジェクトの扱いはまだよく見てないので今度．</p>
 <p>結果を分けてplotしてみると，</p>
 <div style="display: flex; gap:5px;">
@@ -725,48 +493,45 @@ eeg_data_interp <span class="token operator">=</span> eeg_data<span class="token
 </div>
 <p>となっています．赤でハイライトされているのが，badチャンネルとされていたものですね．比較すると，たしかにInterpolationによってノイジーではなくなっていることが分かります．</p>
 <p>どこまで正確にちゃんとした脳活動を再現できるのかと言われると怪しいのですが，それでもただ排除するよりはデータのランクを落とさないので嬉しいメソッドです．</p>
-<h2 class="mume-header" id="%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC">フィルター</h2>
-
-<h3 class="mume-header" id="%E3%83%90%E3%83%B3%E3%83%89%E3%83%91%E3%82%B9%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF">バンドパスフィルタ</h3>
-
+<h2 id="フィルター">フィルター </h2>
+<h3 id="バンドパスフィルタ">バンドパスフィルタ </h3>
 <p>次に，フィルターの適用をします．ラインノイズやドリフトなどを消すため，少なくとも低周波を消す High-pass filter は適用する必要があります．逆に，高周波を消す Low-pass filter の方は，適用しない場合もあります．脳波なんかだとどうせ高周波は見れないとされているので， だいたい40Hzとか60Hzくらいで切ってしまうことが多いですが，MEGだとその限りでもないようです．</p>
 <p>でもとりあえず，ここではHigh-passとLow-passが出来るBand-pass filterを適用していきます．</p>
 <p>テストのため，</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">raw3 <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>raw3 <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
 raw3<span class="token punctuation">.</span>crop<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>meg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> eeg<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> stim<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">.</span>load_data<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><p>まずはデータを短く切って，MEGだけ抜き出してきました．MEGの方がドリフトが分かりやすかったからです．</p>
+</code></pre><p>まずはデータを短く切って，MEGだけ抜き出してきました．MEGの方がドリフトが分かりやすかったからです．</p>
 <p>plot() すると，</p>
 <center><img src="../figures/mne-filt0.png"></center>
 <p>このように明らかなドリフトが見られます．これを消しましょう．眺めると，だいたい10秒程で山が出来てる，つまり1周期で20秒程の超低周波成分であることが分かります．</p>
 <p>こいつらを消したいので，</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">raw_highpass <span class="token operator">=</span> raw3<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>l_freq<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> h_freq<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>raw_highpass <span class="token operator">=</span> raw3<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>l_freq<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> h_freq<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-with">with</span> mne<span class="token punctuation">.</span>viz<span class="token punctuation">.</span>use_browser_backend<span class="token punctuation">(</span><span class="token string">"matplotlib"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     fig <span class="token operator">=</span> raw_highpass<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>duration<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">,</span> proj<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> n_channels<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>raw3<span class="token punctuation">.</span>ch_names<span class="token punctuation">)</span><span class="token punctuation">,</span> remove_dc<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 fig<span class="token punctuation">.</span>suptitle<span class="token punctuation">(</span><span class="token string">"High-pass filtered at 0.2 Hz"</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token string">"xx-large"</span><span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token string">"bold"</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></pre><p>と，1行目のfilter()関数を使ってフィルタをかけてみると，</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></pre><p>と，1行目のfilter()関数を使ってフィルタをかけてみると，</p>
 <center><img src="../figures/mne-filt1.png"></center>
 <p>と，先程まであった妙なドリフトが消えていることが確認できます．0.2Hzとしたのは，先程1周期で20秒程の成分が乗っていると確認したからです．</p>
 <p>ここで使ったフィルタは</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">filter_params <span class="token operator">=</span> mne<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">.</span>create_filter<span class="token punctuation">(</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>filter_params <span class="token operator">=</span> mne<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">.</span>create_filter<span class="token punctuation">(</span>
     raw3<span class="token punctuation">.</span>get_data<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> raw3<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"sfreq"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> l_freq<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> h_freq<span class="token operator">=</span><span class="token boolean">None</span>
 <span class="token punctuation">)</span>
 fig <span class="token operator">=</span> mne<span class="token punctuation">.</span>viz<span class="token punctuation">.</span>plot_filter<span class="token punctuation">(</span>filter_params<span class="token punctuation">,</span> raw3<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"sfreq"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> flim<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</pre><p>と，少し面倒ですが同じパラメータを mne.filter.create_filter() 関数に投げて，その結果を mne.vis.plot_filter() にいれることで表示できます．</p>
+</code></pre><p>と，少し面倒ですが同じパラメータを mne.filter.create_filter() 関数に投げて，その結果を mne.vis.plot_filter() にいれることで表示できます．</p>
 <center><img src="../figures/mne-filt2.png"></center>
 <p>では，High-pass だけでなくBand-passにしてみます．</p>
 <center><img src="../figures/mne-filt4.png"></center>
 <p>適用するフィルタはこんな感じです．<code>h_freq=40</code>としました．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">raw_highpass <span class="token operator">=</span> raw3<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>l_freq<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> h_freq<span class="token operator">=</span><span class="token number">40</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>raw_highpass <span class="token operator">=</span> raw3<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>l_freq<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> h_freq<span class="token operator">=</span><span class="token number">40</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-with">with</span> mne<span class="token punctuation">.</span>viz<span class="token punctuation">.</span>use_browser_backend<span class="token punctuation">(</span><span class="token string">"matplotlib"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     fig <span class="token operator">=</span> raw_highpass<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>duration<span class="token operator">=</span><span class="token number">60</span><span class="token punctuation">,</span> proj<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> n_channels<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>raw3<span class="token punctuation">.</span>ch_names<span class="token punctuation">)</span><span class="token punctuation">,</span> remove_dc<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 fig<span class="token punctuation">.</span>subplots_adjust<span class="token punctuation">(</span>top<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
 fig<span class="token punctuation">.</span>suptitle<span class="token punctuation">(</span><span class="token string">"Band-pass filtered 0.2 - 40 Hz"</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token string">"xx-large"</span><span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token string">"bold"</span><span class="token punctuation">)</span>
-</pre><center><img src="../figures/mne-filt5.png"></center>
+</code></pre><center><img src="../figures/mne-filt5.png"></center>
 <p>High-passだけの場合に比べて，少しだけジャギジャギ感がなくなったでしょうか．しかしこれで，筋電の影響などもある程度抜くことができます．</p>
-<h3 class="mume-header" id="%E3%83%8E%E3%83%83%E3%83%81%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF">ノッチフィルタ</h3>
-
+<h3 id="ノッチフィルタ">ノッチフィルタ </h3>
 <p>次に，ノッチフィルタです．EEGは MEGに比べそこまで影響されませんが，電源ノイズの影響を消すためのものです．<a href="https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.notch_filter">notch_filter()</a> 関数を使います．周波数はリストにして明示的に渡す必要があるようです．また，適用する信号も選択できるようで，ここではMEGにのみかけています．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">meg_picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>meg_picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 freqs <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">)</span>
 raw_notch <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>notch_filter<span class="token punctuation">(</span>freqs<span class="token operator">=</span>freqs<span class="token punctuation">,</span> picks<span class="token operator">=</span>meg_picks<span class="token punctuation">)</span>
 <span class="token keyword keyword-for">for</span> title<span class="token punctuation">,</span> data <span class="token keyword keyword-in">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"Un"</span><span class="token punctuation">,</span> <span class="token string">"Notch "</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>raw<span class="token punctuation">,</span> raw_notch<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -774,27 +539,25 @@ raw_notch <span class="token operator">=</span> raw<span class="token punctuatio
     fig<span class="token punctuation">.</span>subplots_adjust<span class="token punctuation">(</span>top<span class="token operator">=</span><span class="token number">0.85</span><span class="token punctuation">)</span>
     fig<span class="token punctuation">.</span>suptitle<span class="token punctuation">(</span><span class="token string">"{}filtered"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">,</span> size<span class="token operator">=</span><span class="token string">"xx-large"</span><span class="token punctuation">,</span> weight<span class="token operator">=</span><span class="token string">"bold"</span><span class="token punctuation">)</span>
     add_arrows<span class="token punctuation">(</span>fig<span class="token punctuation">.</span>axes<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>実際にノッチフィルタしているのは3行目までです．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>実際にノッチフィルタしているのは3行目までです．</p>
 <div style="display: flex; gap:5px;">
 	<img src="../figures/mne-filt3Un.png" ,="" width="50%," height="50%">
 	<img src="../figures/mne-filt3Notch .png" ,="" width="50%," height="50%">
 </div>
 <p>60Hzの倍数成分をsuppressionすることで抑えています．</p>
-<h2 class="mume-header" id="bad%E3%82%B9%E3%83%91%E3%83%B3%E3%81%AE%E3%83%A9%E3%83%99%E3%83%AB%E4%BB%98%E3%81%91-%E5%AE%9F%E9%9A%9B%E3%81%AB%E3%81%AFica%E5%BE%8C%E3%81%8C%E8%89%AF%E3%81%84%E3%81%8B%E3%82%82">Badスパンのラベル付け (※実際にはICA後が良いかも)</h2>
-
+<h2 id="badスパンのラベル付け-実際にはica後が良いかも">Badスパンのラベル付け (※実際にはICA後が良いかも) </h2>
 <p>(タイミングについて悩み中．誰か教えてほしいです．EOGやECGライクな成分はICA使う場合には大分さっぴかれるので，この時点で除外しちゃうよりICA後にもdetectされちゃうようなら，とした方が良い気がする)</p>
 <p>実験中，たとえばくしゃみや，じっとしていることに耐えられなくなった謎の発狂などのせいである一時期だけデータが頗る悪くなることがあります．</p>
 <p>そういった部分も，やはり解析からは除外すべきです．</p>
 <p>まずはrawデータのまま，目視で確認する方法．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">fig <span class="token operator">=</span> raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>fig <span class="token operator">=</span> raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span>
 fig<span class="token punctuation">.</span>fake_keypress<span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span>  <span class="token comment"># Simulates user pressing 'a' on the keyboard.</span>
-</pre><p>例のごとく <a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.plot">raw.plot()</a> で波形を見る画面を開いたら，キーボードの<code>a</code>キーを押すとAnnotationモード，ノイジーな期間の設定，編集モードになります．そこで <code>Add Description</code> して，任意の名前をつけてあげると期間を選べるようになり，注釈がつけられます．</p>
+</code></pre><p>例のごとく <a href="https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.plot">raw.plot()</a> で波形を見る画面を開いたら，キーボードの<code>a</code>キーを押すとAnnotationモード，ノイジーな期間の設定，編集モードになります．そこで <code>Add Description</code> して，任意の名前をつけてあげると期間を選べるようになり，注釈がつけられます．</p>
 <center><img src="../figures/mne-anno.png"></center>
 <p>このとき，"Bad" や "bad" で始まる名前をつけた期間は，MNEの様々な関数で自動的に除外されます．引数は<code>refect_by_annotation=True or False</code>です．たとえば，<a href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs">mne.Epochs()</a> 関数は今後エポッキングのさいに使う関数ですが，この時に"Bad"が含まれてる期間はエポッキングの対象から外すようです．</p>
-<h3 class="mume-header" id="%E8%87%AA%E5%8B%95">自動</h3>
-
+<h3 id="自動">自動 </h3>
 <p>さて，手動でやるのは面倒なので，自動化です．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">eog_events <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>find_eog_events<span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>eog_events <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>find_eog_events<span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
 onsets <span class="token operator">=</span> eog_events<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span> raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"sfreq"</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">0.25</span>
 durations <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>eog_events<span class="token punctuation">)</span>
 descriptions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"bad blink"</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>eog_events<span class="token punctuation">)</span>
@@ -805,34 +568,31 @@ raw<span class="token punctuation">.</span>set_annotations<span class="token pun
 
 eeg_picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> eeg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>events<span class="token operator">=</span>eog_events<span class="token punctuation">,</span> order<span class="token operator">=</span>eeg_picks<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>1行目で，<a href="https://mne.tools/stable/generated/mne.preprocessing.find_eog_events.html#mne.preprocessing.find_eog_events">mne.preprocessing.find_eog_events()</a> を使ってEOGイベントをrawから探してきます．そういう関数．2行目から3行目は，Annotationを付ける範囲を指定するためのコードですね．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>1行目で，<a href="https://mne.tools/stable/generated/mne.preprocessing.find_eog_events.html#mne.preprocessing.find_eog_events">mne.preprocessing.find_eog_events()</a> を使ってEOGイベントをrawから探してきます．そういう関数．2行目から3行目は，Annotationを付ける範囲を指定するためのコードですね．</p>
 <p>4行目で，瞬きなので"Bad blink"の名前を設定し，5行目以降で実際に<a href="https://mne.tools/stable/generated/mne.Annotations.html#mne.Annotations">Annotation</a> をつけています．10,11は確認で次の図を出すためのもの．</p>
 <center><img src="../figures/mne-anno3.png"></center>
 <p>ちゃんと瞬きぽいところがマークされています．あとは，この状態でEpochなどの関数を走らせれば除外されるというわけですね．</p>
 <p>ちなみに，フィルタかけるまえにやってしまうと</p>
 <center><img src="../figures/mne-anno2.png"></center>
 <p>のようにジャギジャギしちゃうので，順番はちゃんと意識しましょう．</p>
-<h2 class="mume-header" id="%E7%8B%AC%E7%AB%8B%E6%88%90%E5%88%86%E5%88%86%E6%9E%90">独立成分分析</h2>
-
+<h2 id="独立成分分析">独立成分分析 </h2>
 <p>さて，大雑把に可能な部分はあらかた取り除いたので，あとは独立成分分析 (<a href="../../Math/Others/ICA.html">ICA</a>) に投げます．簡単に言えば，計測された多チャンネルの信号を独立した信号の集団に分解して，その中で怪しいやつら (眼電や筋電ぽいものなど) を排除していきます．</p>
-<h3 class="mume-header" id="ica%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC">ICAのためのフィルター</h3>
-
+<h3 id="icaのためのフィルター">ICAのためのフィルター </h3>
 <p>まずは ICA にかける前に，ハイパスフィルタにかけます．「え？さっきかけたじゃないか」と思われると思いますが，これには意味があります．とりあえず，現状を確認してみます．</p>
 <center><img src="../figures/mne-ica0.png"></center>
 <p>0.2-40Hzのバンドパスにかかっています．しかし<a href="https://mne.tools/stable/auto_tutorials/preprocessing/40_artifact_correction_ica.html">MNEの公式</a> なんかを見ると，ICAにかける前に1Hzくらいでハイパスをかけておきたいようです．</p>
 <p>理由としては，心電とか眼球運動とか，これから除きたいノイズ達全てに等しく影響してしまうため，単純に求める信号の独立性が損なわれてしまうからです．</p>
 <p>MNEはフィルタをかけたものに対してICAを計算し，そのComponent達をフィルタ前のデータから抜く，といったことが出来るらしいです．なんかよく分からないけどそうらしいです．線形だからということでしょうか．参照は<a href="https://doi.org/10.1109/EMBC.2015.7319296">こちら</a>．</p>
 <p>と，いうことでrawのコピーを作って，そいつに1Hzのハイパスフィルタを適用します．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">filt_raw <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>l_freq<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span> h_freq<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
-</pre><center><img src="../figures/mne-ica1.png"></center>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>filt_raw <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>l_freq<span class="token operator">=</span><span class="token number">1.0</span><span class="token punctuation">,</span> h_freq<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+</code></pre><center><img src="../figures/mne-ica1.png"></center>
 <p>はい．フィルタかかりました．</p>
-<h3 class="mume-header" id="ica">ICA</h3>
-
+<h3 id="ica">ICA </h3>
 <p>準備ができたので，icaをかけていきます．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">ica <span class="token operator">=</span> ICA<span class="token punctuation">(</span>n_components<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">,</span> max_iter<span class="token operator">=</span><span class="token string">"auto"</span><span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">'fastica'</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">97</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>ica <span class="token operator">=</span> ICA<span class="token punctuation">(</span>n_components<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">,</span> max_iter<span class="token operator">=</span><span class="token string">"auto"</span><span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">'fastica'</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">97</span><span class="token punctuation">)</span>
 ica<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>filt_raw<span class="token punctuation">)</span>
 ica
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></pre><p><a href="https://mne.tools/stable/generated/mne.preprocessing.ICA.html#mne.preprocessing.ICA">ICA()</a> は MNE-python の ICA 関数です．引数としては，</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></pre><p><a href="https://mne.tools/stable/generated/mne.preprocessing.ICA.html#mne.preprocessing.ICA">ICA()</a> は MNE-python の ICA 関数です．引数としては，</p>
 <ul>
 <li>n_components ... PCAのcomponentをどれくらい使うか</li>
 <li>method ... fastica, infomax, picardのどれを使うか</li>
@@ -844,61 +604,59 @@ ica
 <center><img src="../figures/mne-ica3.png"></center>
 <p>fasticaを使って，30のcomponent を出し，説明できたデータの分散は79.5%だそうです．まあまぁですね．この component の数の指定は難しいですね．脳波だけとかだったら電極数の max でもいいのかも．EEGLAB はそうですよね．Available PCA components の数までなら増やせます．</p>
 <p>ともあれ，これだけだと見にくいので</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ica<span class="token punctuation">.</span>plot_sources<span class="token punctuation">(</span>filt_raw<span class="token punctuation">)</span>
-</pre><p>して</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ica<span class="token punctuation">.</span>plot_sources<span class="token punctuation">(</span>filt_raw<span class="token punctuation">)</span>
+</code></pre><p>して</p>
 <center><img src="../figures/mne-ica2.png"></center>
 <p>波形を見てみました．脳波用に<code>bad blink</code>しかいれてなかったですが，ICA000 が Eye blink を綺麗に取れているのが分かるかと思います．</p>
 <p>あとはICA001やICA013なんかは心電図っぽいですね． <code>bad ecg</code> を取っていればそれも見えると思います．</p>
 <p>さらに，チャンネル名のところを右クリックするとトポマップが見れます．左クリックはrejectのための選択になるので注意してください．</p>
 <center><img src="../figures/mne-ica4.png"></center>
 <p>ためしに，ICA000を開いてみました．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ica<span class="token punctuation">.</span>plot_properties<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> picks<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</pre><p>などと直接指定しても開けます．<br>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ica<span class="token punctuation">.</span>plot_properties<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> picks<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre><p>などと直接指定しても開けます．<br>
 トポマップで見ても，前頭の左右に触れた電位図なので，典型的な眼電です．左下のPSDを見ても，おかしいことが分かります．<a href="https://labeling.ucsd.edu/tutorial/labels">脳波の典型的な PSD</a> とかけ離れているので，眼電と分かります．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ica<span class="token punctuation">.</span>plot_components<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><p>コンポーネントの一覧をtopomapで見るには上のコードで，そうすると</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ica<span class="token punctuation">.</span>plot_components<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>コンポーネントの一覧をtopomapで見るには上のコードで，そうすると</p>
 <center><img src="../figures/mne-ica5.png"></center>
 <p>と，見ることもできます．</p>
-<h3 class="mume-header" id="component%E3%81%AE%E9%99%A4%E5%A4%96">Componentの除外</h3>
-
+<h3 id="componentの除外">Componentの除外 </h3>
 <p>いよいよ除外作業に入っていきます．<br>
 まずは，そのコンポーネントを消すことによってどんなことが起こるかを簡単に見る方法を紹介します．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token comment"># blinks</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># blinks</span>
 ica<span class="token punctuation">.</span>plot_overlay<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> exclude<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> picks<span class="token operator">=</span><span class="token string">"eeg"</span><span class="token punctuation">)</span>
-</pre><p>それがこれ．眼電と思われるICA000を抜いた場合，eegがどんな風に変わるかをplotします．</p>
+</code></pre><p>それがこれ．眼電と思われるICA000を抜いた場合，eegがどんな風に変わるかをplotします．</p>
 <center><img src="../figures/mne-ica6.png"></center>
 <p>赤線が抜く前，黒線が抜いた後です．上の図はrawデータを全チャンネル重ね書きしたもの．下はその平均です．こう見ると，明らかに変な成分がなくなって嬉しいことが起きたのが分かります．</p>
 <p>さて，そんな感じで，怪しいcomponentのリストを作ってきたら</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">ica<span class="token punctuation">.</span>exclude <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">]</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>ica<span class="token punctuation">.</span>exclude <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">]</span>
 reconst_raw <span class="token operator">=</span> raw<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
 ica<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>reconst_raw<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></pre><p>として，いらないコンポーネントを殺します．1行目は消すコンポーネントのリストです．今回は，明らか眼電，心電の0,1の他，心電と思われる11,13も消しました．他にも怪しいのはいますが，とりあえずこれくらいで許してあげます．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></pre><p>として，いらないコンポーネントを殺します．1行目は消すコンポーネントのリストです．今回は，明らか眼電，心電の0,1の他，心電と思われる11,13も消しました．他にも怪しいのはいますが，とりあえずこれくらいで許してあげます．</p>
 <p>2行目では，raw のコピーを作成しています．というのも，<a href="https://mne.tools/stable/generated/mne.preprocessing.ICA.html#mne.preprocessing.ICA.apply">ica.apply()</a> 関数は元々のrawを上書きしてしまうからです．まだいじりたいので一応．</p>
 <p>3行目で実際にICAのRejectを適用させます．適用の引数は<code>reconst_raw = raw</code> です．<code>filt_raw</code> ではないので注意．これはさっき確認したように，MNE-python のICAはフィルタ前のものにかけれるからです．そうすると，1Hz以上のハイパスで計算された正確な ICA の結果を，0.2Hz以上のハイパスにかけていた元々の raw ファイルに適用できるわけです．</p>
 <p>結果，</p>
 <center><img src="../figures/mne-ica7.png"></center>
 <p>のようになりました．結果を図で見てみます．</p>
 <p>適用前と後を左右に並べます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">regexp <span class="token operator">=</span> <span class="token string">r"(MEG [12][45][123]1|EEG 00.)"</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>regexp <span class="token operator">=</span> <span class="token string">r"(MEG [12][45][123]1|EEG 00.)"</span>
 artifact_picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_channels_regexp<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>ch_names<span class="token punctuation">,</span> regexp<span class="token operator">=</span>regexp<span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>order<span class="token operator">=</span>artifact_picks<span class="token punctuation">,</span> n_channels<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>artifact_picks<span class="token punctuation">)</span><span class="token punctuation">,</span> show_scrollbars<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 reconst_raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>
     order<span class="token operator">=</span>artifact_picks<span class="token punctuation">,</span> n_channels<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>artifact_picks<span class="token punctuation">)</span><span class="token punctuation">,</span> show_scrollbars<span class="token operator">=</span><span class="token boolean">False</span>
 <span class="token punctuation">)</span>
-</pre><p>すると，</p>
+</code></pre><p>すると，</p>
 <div style="display: flex; gap:5px;">
 	<img src="../figures/mne-ica8.png" ,="" width="50%," height="50%">
 	<img src="../figures/mne-ica9.png" ,="" width="50%," height="50%">
 </div>
 <p>のように，わりと綺麗に撮れているのが分かります．嬉しいですね．心電をいっぱい取ったから，MEG の方が綺麗になっているかも．</p>
-<h3 class="mume-header" id="%E8%87%AA%E5%8B%95%E5%8C%96">自動化</h3>
-
+<h3 id="自動化">自動化 </h3>
 <p>さて，こんなことを全て手作業でやるのも面倒です．自動化する手段を探します．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">ica<span class="token punctuation">.</span>exclude <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>ica<span class="token punctuation">.</span>exclude <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 eog_indices <span class="token punctuation">,</span> eog_scores <span class="token operator">=</span> ica<span class="token punctuation">.</span>find_bads_eog<span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
 ica<span class="token punctuation">.</span>plot_scores<span class="token punctuation">(</span>eog_scores<span class="token punctuation">)</span>
 ica<span class="token punctuation">.</span>plot_properties<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> picks<span class="token operator">=</span>eog_indices<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></pre><p>いったん，<code>ica.exclude</code>を空にしてやり直します．MNEには，眼電の情報から眼電らしきコンポーネントを特定してくる関数があります．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></pre><p>いったん，<code>ica.exclude</code>を空にしてやり直します．MNEには，眼電の情報から眼電らしきコンポーネントを特定してくる関数があります．</p>
 <p><a href="https://mne.tools/stable/generated/mne.preprocessing.ICA.html#mne.preprocessing.ICA.find_bads_eog">find_bads_eog()</a> は，電極情報としてEOGに登録されている信号をもってきて，それとpearson相関が高いコンポーネントを眼電コンポーネントとしてリストアップしてくれます．</p>
 <p>2行目では，それを使って <code>eog_indices</code>, <code>eog_scores</code> を出しています．それぞれ，コンポーネントのリストとその寄与の強さです．</p>
 <p>結果を見てみます．</p>
@@ -906,22 +664,21 @@ ica<span class="token punctuation">.</span>plot_properties<span class="token pun
 <center><img src="../figures/mne-ica11.png"></center>
 <p>ICA000だけが明らかで，実際選ばれたのもICA000オンリーのようです．</p>
 <p>同じく，ECGや筋電についても，<a href="https://mne.tools/stable/generated/mne.preprocessing.ICA.html#mne.preprocessing.ICA.find_bads_ecg">find_bads_ecg</a>, <a href="https://mne.tools/stable/generated/mne.preprocessing.ICA.html#mne.preprocessing.ICA.find_bads_muscle">find_bads_muscle</a>で行えます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ecg_indices<span class="token punctuation">,</span> ecg_scores <span class="token operator">=</span> ica<span class="token punctuation">.</span>find_bads_ecg<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">"correlation"</span><span class="token punctuation">,</span> threshold<span class="token operator">=</span><span class="token string">"auto"</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ecg_indices<span class="token punctuation">,</span> ecg_scores <span class="token operator">=</span> ica<span class="token punctuation">.</span>find_bads_ecg<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> method<span class="token operator">=</span><span class="token string">"correlation"</span><span class="token punctuation">,</span> threshold<span class="token operator">=</span><span class="token string">"auto"</span><span class="token punctuation">)</span>
 muscle_indices<span class="token punctuation">,</span> muscle_scores <span class="token operator">=</span> ica<span class="token punctuation">.</span>find_bads_muscle<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> threshold<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">,</span> sphere<span class="token operator">=</span><span class="token string">'eeglab'</span><span class="token punctuation">)</span>
-</pre><p>ということで，これらで選ばれたものをまとめて<code>exclude</code>にいれます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ica<span class="token punctuation">.</span>exclude <span class="token operator">=</span> eog_indices <span class="token operator">+</span> ecg_indices <span class="token operator">+</span> muscle_indices
+</code></pre><p>ということで，これらで選ばれたものをまとめて<code>exclude</code>にいれます．</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ica<span class="token punctuation">.</span>exclude <span class="token operator">=</span> eog_indices <span class="token operator">+</span> ecg_indices <span class="token operator">+</span> muscle_indices
 ica<span class="token punctuation">.</span>plot_sources<span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
-</pre><center><img src="../figures/mne-ica12.png"></center>
+</code></pre><center><img src="../figures/mne-ica12.png"></center>
 <p>結果，ICAの000,001,013なんかがひかれました．さっき自分で手作業で抜いたものとちょうど一致しています(11は許されましたが)．</p>
 <p>あまり恣意的なrejectがしたくない人は，この方法が良いかも知れません．今回はこっちを使って進みます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">ica<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
-</pre><p>v</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>ica<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
+</code></pre><p>v</p>
 <p>こんな感じになりました．まぁまぁですかね．心電は取れたけど眼電がまだ甘い．まぁMEGの方が圧倒的にセンサーが多い状態でかけているので当たり前です．脳波だけでやればもっとましなはず．</p>
-<h2 class="mume-header" id="csd-current-source-density">CSD (Current source density)</h2>
-
+<h2 id="csd-current-source-density">CSD (Current source density) </h2>
 <p>Volume conductionを低減し，EEGの空間分解能をちょっとあげるために行う球面ラプラシアンを使った下処理です．球面での勾配を微分を使って計算し，点の広がりを抑えるのが目的です．</p>
 <p>今回は，別データになりますが筆者の実験で取っていたデータを用いて説明します．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers"><span class="token keyword keyword-import">import</span> mne
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code><span class="token keyword keyword-import">import</span> mne
 <span class="token keyword keyword-import">import</span> numpy <span class="token keyword keyword-as">as</span> np
 <span class="token keyword keyword-import">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword keyword-as">as</span> plt
 <span class="token keyword keyword-import">import</span> os
@@ -942,23 +699,22 @@ s2_raw_csd<span class="token punctuation">.</span>plot<span class="token punctua
 
 s2_raw<span class="token punctuation">.</span>compute_psd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>plot_topomap<span class="token punctuation">(</span><span class="token punctuation">)</span>
 s2_raw_csd<span class="token punctuation">.</span>compute_psd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>plot_topomap<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>まず，11行目までで被験者の脳波データ (.eeg) を読み込みます．形式はbrainvisionのものです．その後，14行目でlocationファイルを読み込みます．<code>.vhdr</code>の読み込みでは，位置情報が読めないためです．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>まず，11行目までで被験者の脳波データ (.eeg) を読み込みます．形式はbrainvisionのものです．その後，14行目でlocationファイルを読み込みます．<code>.vhdr</code>の読み込みでは，位置情報が読めないためです．</p>
 <p>csdの計算自体は17行目の1行だけ, <a href="https://mne.tools/stable/generated/mne.preprocessing.compute_current_source_density.html#mne.preprocessing.compute_current_source_density">preprocessing.compute_current_source_density()</a> で済みます．パラメータは調整できますが，とりあえずデフォルトで良いと思います．</p>
 <p>結果をplotしてみると...</p>
 <center><img src="../figures/mne-csd1.png"></center>
 <center><img src="../figures/mne-csd2.png"></center>
 <p>上の適用前に比べ，下の適用後の方が綺麗に信号源を見れていそうなことが分かるでしょうか．Deltaの眼電なんかは顕著です．</p>
 <p>今回はデモ用に，下処理前のデータにかけているので眼電しか見れてない感じもしますが，ここまでにやってきた色々の下処理後に適用すると，よりありがたみが分かるかと思います．練習がてらトライしてみてください．</p>
-<h2 class="mume-header" id="%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E6%A4%9C%E5%87%BA">イベント検出</h2>
-
+<h2 id="イベント検出">イベント検出 </h2>
 <p>いよいよ，イベント情報の検出に移ります．ここはちょっとややこしいようです．というのも，計測環境次第でどんな風にデータが格納されているかが変わるためです．</p>
 <p>たとえば，用意されているサンプルデータだと "STIM" channelがあるようで，これらを読み込めばトリガー情報が検出できるらしいです．とりあえず使ってみます．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">events <span class="token operator">=</span> mne<span class="token punctuation">.</span>find_events<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> stim_channel<span class="token operator">=</span><span class="token string">"STI 014"</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>events <span class="token operator">=</span> mne<span class="token punctuation">.</span>find_events<span class="token punctuation">(</span>raw<span class="token punctuation">,</span> stim_channel<span class="token operator">=</span><span class="token string">"STI 014"</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>events<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># show the first 5</span>
-</pre><p><a href="https://mne.tools/stable/generated/mne.find_events.html#mne.find_events">find_events()</a> を使って探すようです．</p>
+</code></pre><p><a href="https://mne.tools/stable/generated/mne.find_events.html#mne.find_events">find_events()</a> を使って探すようです．</p>
 <center><img src="../figures/mne-trig1.png"></center>
 <p>こんなのが出てきました．それぞれの数字は，</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">event_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>event_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">"auditory/left"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
     <span class="token string">"auditory/right"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
     <span class="token string">"visual/left"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
@@ -966,18 +722,17 @@ s2_raw_csd<span class="token punctuation">.</span>compute_psd<span class="token 
     <span class="token string">"smiley"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
     <span class="token string">"buttonpress"</span><span class="token punctuation">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
-</pre><p>という刺激について発されているようです．なお，<code>event_dict</code>の中の <code>/</code> は，部分的な条件を連結するために使えるようです．つまり，あとでevent=auditory　みたいに探したときにはIDの1,2が参照される，といった具合です．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">fig <span class="token operator">=</span> mne<span class="token punctuation">.</span>viz<span class="token punctuation">.</span>plot_events<span class="token punctuation">(</span>
+</code></pre><p>という刺激について発されているようです．なお，<code>event_dict</code>の中の <code>/</code> は，部分的な条件を連結するために使えるようです．つまり，あとでevent=auditory　みたいに探したときにはIDの1,2が参照される，といった具合です．</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>fig <span class="token operator">=</span> mne<span class="token punctuation">.</span>viz<span class="token punctuation">.</span>plot_events<span class="token punctuation">(</span>
     events<span class="token punctuation">,</span> event_id<span class="token operator">=</span>event_dict<span class="token punctuation">,</span> sfreq<span class="token operator">=</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"sfreq"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> first_samp<span class="token operator">=</span>raw<span class="token punctuation">.</span>first_samp
 <span class="token punctuation">)</span>
-</pre><p><a href="https://mne.tools/stable/generated/mne.viz.plot_events.html#mne.viz.plot_events">plot_event()</a> は，以下のようにeventの分布を見るために使えます．これで，正しくevent検出が出来ているかを確認できます．</p>
+</code></pre><p><a href="https://mne.tools/stable/generated/mne.viz.plot_events.html#mne.viz.plot_events">plot_event()</a> は，以下のようにeventの分布を見るために使えます．これで，正しくevent検出が出来ているかを確認できます．</p>
 <center><img src="../figures/mne-trig2.png"></center>
-<h2 class="mume-header" id="%E3%82%A8%E3%83%9D%E3%83%83%E3%82%AD%E3%83%B3%E3%82%B0">エポッキング</h2>
-
+<h2 id="エポッキング">エポッキング </h2>
 <p>さて，いろんなノイズを除去し，イベント情報も取得できたところで，エポッキングに入ります．</p>
 <p>イベント情報を使ってデータを区切っていく作業です．</p>
 <p>エポッキングでは，値ベースでそれぞれの電極，それぞれの時間でのRejectの閾値を決めることができます．つまり，あまりにも大きすぎる値を取っていたり，逆にあまりにも常に小さすぎる値を取っている場合には除外するというものです．</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">reject_criteria <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>reject_criteria <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>
     mag<span class="token operator">=</span><span class="token number">3000e-15</span><span class="token punctuation">,</span>  <span class="token comment"># 3000 fT</span>
     grad<span class="token operator">=</span><span class="token number">3000e-13</span><span class="token punctuation">,</span>  <span class="token comment"># 3000 fT/cm</span>
     eeg<span class="token operator">=</span><span class="token number">100e-6</span><span class="token punctuation">,</span>  <span class="token comment"># 100 µV</span>
@@ -985,8 +740,8 @@ s2_raw_csd<span class="token punctuation">.</span>compute_psd<span class="token 
 <span class="token punctuation">)</span>  <span class="token comment"># 200 µV</span>
 
 flat_criteria <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>mag<span class="token operator">=</span><span class="token number">1e-15</span><span class="token punctuation">,</span> grad<span class="token operator">=</span><span class="token number">1e-13</span><span class="token punctuation">,</span> eeg<span class="token operator">=</span><span class="token number">1e-6</span><span class="token punctuation">)</span>  <span class="token comment"># 1 fT  # 1 fT/cm  # 1 µV</span>
-</pre><p>それぞれ見たまんま，閾値を設定しています．これらを使って</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>Epochs<span class="token punctuation">(</span>
+</code></pre><p>それぞれ見たまんま，閾値を設定しています．これらを使って</p>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>epochs <span class="token operator">=</span> mne<span class="token punctuation">.</span>Epochs<span class="token punctuation">(</span>
     raw<span class="token punctuation">,</span>
     events<span class="token punctuation">,</span>
     tmin<span class="token operator">=</span><span class="token operator">-</span><span class="token number">0.2</span><span class="token punctuation">,</span>
@@ -999,7 +754,7 @@ flat_criteria <span class="token operator">=</span> <span class="token builtin">
     preload<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span>
 epochs<span class="token punctuation">.</span>plot_drop_log<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>と，<a href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs">mne.Epochs</a> 関数を使ってEpocking をします．eventsはそのまんま，イベント情報を読み込んできて，<code>tmin, tmax</code> でエポックの時間幅を指定します．<code>refect_tmin, reject_tmax</code> は先程指定した<code>reject_criteria</code> を適用する時間幅です．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>と，<a href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs">mne.Epochs</a> 関数を使ってEpocking をします．eventsはそのまんま，イベント情報を読み込んできて，<code>tmin, tmax</code> でエポックの時間幅を指定します．<code>refect_tmin, reject_tmax</code> は先程指定した<code>reject_criteria</code> を適用する時間幅です．</p>
 <p><code>reject, flat</code> で先程指定した閾値を適用し，<code>reject_by_annotation</code> も行います．今はいったんFalse．何故かは次の段落．<code>preload</code> はメモリー節約のためのものぽいです．でもTrueが良いと思う．</p>
 <center><img src="../figures/mne-epoch3.png"></center>
 <p>さて，本当はこの図は，排除されたエポックはそれぞれどのチャンネルからか，みたいなものを出すんですけど今回はなんとEOGチャンネルからしか抜かれませんでした．すごい．綺麗に処理できている，ということですね．そもそも，今回は一応eogの除外基準も設けていましたが，なんならいらないと思います．なんでチュートリアルでは入れているのかよく分かりません．</p>
@@ -1008,7 +763,7 @@ epochs<span class="token punctuation">.</span>plot_drop_log<span class="token pu
 <p>と，そんなことは良いとして ...<strong>ここで，問題なのがAnnotation</strong>です．このシリーズでは，AnnotationをICAの前に行っていました．しかし，Annotationでラベル付けされた<code>Bad eye blink</code>はICAによって大分消されたのは確認した通りです．</p>
 <p>せっかくノイズ除去できたのに，その部分を解析から消されるのでは意味がありません．よって，この段階でAnnotationをリセットする，というか実用上はこの時初めてやるので良いと思います．</p>
 <p>ということで，各種Badイベントの検出とAnnotationを行います．</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers"><span class="token comment"># eog</span>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code><span class="token comment"># eog</span>
 eog_events <span class="token operator">=</span> mne<span class="token punctuation">.</span>preprocessing<span class="token punctuation">.</span>find_eog_events<span class="token punctuation">(</span>raw<span class="token punctuation">)</span>
 onsets <span class="token operator">=</span> eog_events<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span> raw<span class="token punctuation">.</span>info<span class="token punctuation">[</span><span class="token string">"sfreq"</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">0.25</span>
 durations <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0.5</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>eog_events<span class="token punctuation">)</span>
@@ -1031,7 +786,7 @@ muscle_annot<span class="token punctuation">,</span> scores_muscle <span class="
 raw<span class="token punctuation">.</span>set_annotations<span class="token punctuation">(</span>blink_annot <span class="token operator">+</span> muscle_annot<span class="token punctuation">)</span>
 eeg_picks <span class="token operator">=</span> mne<span class="token punctuation">.</span>pick_types<span class="token punctuation">(</span>raw<span class="token punctuation">.</span>info<span class="token punctuation">,</span> meg<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> eeg<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 raw<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>order<span class="token operator">=</span>eeg_picks<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>1から8行目で眼電ぽい区間の検出，10~19で筋電ぽい区間の検出をしています．他にも体動を見たりとかあるようなのですが，MEGがベースのようで脳波に使えるか微妙なものが多かったです．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>1から8行目で眼電ぽい区間の検出，10~19で筋電ぽい区間の検出をしています．他にも体動を見たりとかあるようなのですが，MEGがベースのようで脳波に使えるか微妙なものが多かったです．</p>
 <center><img src="../figures/mne-epoch1.png"></center>
 <p>あわせて，こんな感じになりました．筋電がもう少し優しくても良かったかも．z-scoreベースで決めるのですが，10でもこれです．</p>
 <center><img src="../figures/mne-epoch2.png"></center>
@@ -1041,7 +796,7 @@ raw<span class="token punctuation">.</span>plot<span class="token punctuation">(
 <p>となりました．全体のうち21%抜かれていますね．</p>
 <p>また，抜かれたものの10%以上は"bad blink"でマークしていたものですね．ちょっと抜かれすぎな気もしますが，チュートリアルで設定されている今回の除外基準はかなり厳しめなので，もう少し緩くすれば結果は変わります．</p>
 <p>逆に，もう少し厳しめにしておけば良かった...となった際には</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">stronger_reject_criteria <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>stronger_reject_criteria <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>
     mag<span class="token operator">=</span><span class="token number">2000e-15</span><span class="token punctuation">,</span>  <span class="token comment"># 2000 fT</span>
     grad<span class="token operator">=</span><span class="token number">2000e-13</span><span class="token punctuation">,</span>  <span class="token comment"># 2000 fT/cm</span>
     eeg<span class="token operator">=</span><span class="token number">100e-6</span><span class="token punctuation">,</span>  <span class="token comment"># 100 µV</span>
@@ -1049,14 +804,14 @@ raw<span class="token punctuation">.</span>plot<span class="token punctuation">(
 <span class="token punctuation">)</span>  <span class="token comment"># 100 µV</span>
 
 epochs<span class="token punctuation">.</span>drop_bad<span class="token punctuation">(</span>reject<span class="token operator">=</span>stronger_reject_criteria<span class="token punctuation">)</span>
-</pre><p>などと，<a href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs.drop_bad">epochs.drop_bad()</a> を使って追加で適用することも可能です.</p>
+</code></pre><p>などと，<a href="https://mne.tools/stable/generated/mne.Epochs.html#mne.Epochs.drop_bad">epochs.drop_bad()</a> を使って追加で適用することも可能です.</p>
 <p>次で最後です．<br>
 これで，イベント情報に基づいてエポッキングが出来たので，いよいよ解析に入る...ために条件ごとのプールを作って終わりです．</p>
 <p><code>epochs</code>の中身を見ると...</p>
 <center><img src="../figures/mne-epoch5.png"></center>
 <p>あらシンプル．<br>
 ここで，このサンプルデータの実験条件が</p>
-<pre data-role="codeBlock" data-info="python" class="language-python">event_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>event_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">"auditory/left"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
     <span class="token string">"auditory/right"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
     <span class="token string">"visual/left"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
@@ -1064,18 +819,19 @@ epochs<span class="token punctuation">.</span>drop_bad<span class="token punctua
     <span class="token string">"smiley"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
     <span class="token string">"buttonpress"</span><span class="token punctuation">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
-</pre><p>だったことを思い出します．これらを取り出すには，</p>
-<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python line-numbers">conds_we_care_about <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"auditory/left"</span><span class="token punctuation">,</span> <span class="token string">"auditory/right"</span><span class="token punctuation">,</span> <span class="token string">"visual/left"</span><span class="token punctuation">,</span> <span class="token string">"visual/right"</span><span class="token punctuation">]</span>
+</code></pre><p>だったことを思い出します．これらを取り出すには，</p>
+<pre data-role="codeBlock" data-info="python {.line-numbers}" class="language-python python line-numbers"><code>conds_we_care_about <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"auditory/left"</span><span class="token punctuation">,</span> <span class="token string">"auditory/right"</span><span class="token punctuation">,</span> <span class="token string">"visual/left"</span><span class="token punctuation">,</span> <span class="token string">"visual/right"</span><span class="token punctuation">]</span>
 epochs<span class="token punctuation">.</span>equalize_event_counts<span class="token punctuation">(</span>conds_we_care_about<span class="token punctuation">)</span>  <span class="token comment"># this operates in-place</span>
 aud_epochs <span class="token operator">=</span> epochs<span class="token punctuation">[</span><span class="token string">"auditory"</span><span class="token punctuation">]</span>
 vis_epochs <span class="token operator">=</span> epochs<span class="token punctuation">[</span><span class="token string">"visual"</span><span class="token punctuation">]</span>
 <span class="token keyword keyword-del">del</span> raw<span class="token punctuation">,</span> epochs  <span class="token comment"># free up memory</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></pre><p>のようにします．1行目，欲しいトリガー情報を持ってきます．2では，条件ごとにエポック数が異なることにならないよう (エポックの除外のせいでありえる) に，一番少ないエポック数の条件にあわせて他の条件もランダムにエポックを落としています．3,4行目で新しい<code>epochs</code>オブジェクトを作って，終了です．</p>
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></pre><p>のようにします．1行目，欲しいトリガー情報を持ってきます．2では，条件ごとにエポック数が異なることにならないよう (エポックの除外のせいでありえる) に，一番少ないエポック数の条件にあわせて他の条件もランダムにエポックを落としています．3,4行目で新しい<code>epochs</code>オブジェクトを作って，終了です．</p>
 <p>あとはこれらに対して解析を行っていくことになります．</p>
 <p>必要なければ<code>raw</code>とかは消しておきましょう．</p>
 <footer>
 <p>【<a href=".././../index.html">ホーム</a>】</p>
 </footer>
+
       </div>
       
       
