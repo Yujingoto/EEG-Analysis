@@ -1,34 +1,56 @@
+{%- comment -%}
+  自動サイトマップ（大分類→小分類→ページ）
+  ・categories: [Top, Sub] を前提
+  ・nav_order で並び替え（未指定は 9999）
+  ・hide_in_nav: true で非表示
+  ・title/nav_title が無いものやシステムページは除外
+{%- endcomment -%}
+
 <div class="header">
   <table class="fixed-table">
     <thead>
       <tr>
         <th class="mokuji">目次</th>
 
-        {%- assign pages_all = site.pages | where_exp: "p", "p.title" -%}
-        {%- comment -%}
-        categories[0] を大分類、categories[1] を小分類としてグループ化
-        {%- endcomment -%}
-        {%- assign top_groups = pages_all | group_by_exp: "p", "p.categories and p.categories.size > 0 ? p.categories[0] : 'その他'" -%}
-        {%- assign top_groups = top_groups | sort: "name" -%}
+        {%- assign pages_all = site.html_pages
+          | where_exp: "p", "p.title"
+          | where_exp: "p", "p.url"
+          | where_exp: "p", "p.path contains '.md' or p.path contains '.html'"
+          | where_exp: "p", "p.name != '404.html'"
+          | where_exp: "p", "p.hide_in_nav != true"
+        -%}
+
+        {%- assign top_groups = pages_all
+          | where_exp: "p", "p.categories and p.categories.size > 0"
+          | group_by_exp: "p", "p.categories[0] | default: 'その他'"
+          | sort: "name"
+        -%}
 
         {%- for g in top_groups -%}
           <th>
             <details>
               <summary>{{ g.name }}</summary>
 
-              {%- assign sub_groups = g.items | group_by_exp: "p", "p.categories and p.categories.size > 1 ? p.categories[1] : 'ホーム'" -%}
-              {%- assign sub_groups = sub_groups | sort: "name" -%}
+              {%- assign sub_groups = g.items
+                | group_by_exp: "p", "p.categories.size > 1 ? p.categories[1] : 'ホーム'"
+                | sort: "name"
+              -%}
 
               {%- for sg in sub_groups -%}
                 <ul class="gnav">
                   <details>
                     <summary>{{ sg.name }}</summary>
                     <ul class="index">
-                      {%- assign pages_sorted = sg.items | sort: "nav_order" -%}
+                      {%- assign pages_sorted = sg.items
+                        | sort: "nav_order"
+                      -%}
                       {%- for page in pages_sorted -%}
-                        {%- unless page.hide_in_nav -%}
-                          <li><a href="{{ page.url | relative_url }}">{{ page.nav_title | default: page.title }}</a></li>
-                        {%- endunless -%}
+                        {%- assign order = page.nav_order | default: 9999 -%}
+                        <li>
+                          <a href="{{ page.url | relative_url }}">
+                            {{ page.nav_title | default: page.title }}
+                          </a>
+                        </li>
                       {%- endfor -%}
                     </ul>
                   </details>
@@ -37,7 +59,15 @@
             </details>
           </th>
         {%- endfor -%}
+
       </tr>
     </thead>
   </table>
 </div>
+
+<style>
+.fixed-table { width:100%; table-layout:fixed; border-collapse: collapse; }
+.fixed-table th { vertical-align: top; text-align: left; padding: .25rem .5rem; }
+.gnav, .index { list-style: none; margin: 0; padding-left: .75rem; }
+.header details summary { cursor: pointer; }
+</style>
