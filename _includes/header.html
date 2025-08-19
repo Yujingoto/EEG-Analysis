@@ -1,49 +1,85 @@
-{%- comment -%} 自動サイトマップ：categories: [Top, Sub] を前提 {%- endcomment -%}
+{%- comment -%}
+  自動サイトマップ（Liquid 3 互換・安全版）
+  前提:
+    - 各ページの front matter に categories: [Top, Sub]
+    - nav_order で並び順（未指定は末尾）
+    - hide_in_nav: true で非表示
+{%- endcomment -%}
+
 <div class="header">
   <table class="fixed-table">
     <thead>
       <tr>
         <th class="mokuji">目次</th>
 
+        {%- comment -%} 対象ページを絞る {%- endcomment -%}
         {%- assign pages_all = site.pages
           | where_exp:"p","p.title"
           | where_exp:"p","p.url"
           | where_exp:"p","p.hide_in_nav != true"
-          | where_exp:"p","p.name != '404.html'"
         -%}
 
-        {%- assign top_groups = pages_all
-          | where_exp:"p","p.categories and p.categories.size > 0"
-          | group_by_exp:"p","p.categories[0]"
-          | sort:"name"
-        -%}
+        {%- comment -%} Topカテゴリ一覧を収集 → uniq → sort {%- endcomment -%}
+        {%- assign topcats_raw = "" -%}
+        {%- for p in pages_all -%}
+          {%- if p.categories and p.categories.size > 0 -%}
+            {%- assign top = p.categories[0] -%}
+            {%- if top -%}
+              {%- capture topcats_raw -%}{{ topcats_raw }}|||{{ top }}{%- endcapture -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- assign topcats = topcats_raw | split:"|||" | uniq | sort -%}
 
-        {%- for g in top_groups -%}
+        {%- for topcat in topcats -%}
+          {%- if topcat != "" -%}
           <th>
             <details>
-              <summary>{{ g.name }}</summary>
+              <summary>{{ topcat }}</summary>
 
-              {%- assign sub_groups = g.items
-                | where_exp:"p","p.categories.size > 1"
-                | group_by_exp:"p","p.categories[1]"
-                | sort:"name"
-              -%}
+              {%- comment -%} この Top の配下ページ {%- endcomment -%}
+              {%- assign top_items = pages_all | where_exp:"p","p.categories and p.categories[0] == topcat" -%}
 
-              {%- for sg in sub_groups -%}
+              {%- comment -%} Subカテゴリ一覧を収集 → uniq → sort {%- endcomment -%}
+              {%- assign subcats_raw = "" -%}
+              {%- for p in top_items -%}
+                {%- assign sub = "" -%}
+                {%- if p.categories and p.categories.size > 1 -%}
+                  {%- assign sub = p.categories[1] -%}
+                {%- else -%}
+                  {%- assign sub = "ホーム" -%}
+                {%- endif -%}
+                {%- capture subcats_raw -%}{{ subcats_raw }}|||{{ sub }}{%- endcapture -%}
+              {%- endfor -%}
+              {%- assign subcats = subcats_raw | split:"|||" | uniq | sort -%}
+
+              {%- for subcat in subcats -%}
+                {%- if subcat != "" -%}
                 <ul class="gnav">
                   <details>
-                    <summary>{{ sg.name }}</summary>
+                    <summary>{{ subcat }}</summary>
                     <ul class="index">
-                      {%- assign pages_sorted = sg.items | sort:"nav_order" -%}
-                      {%- for page in pages_sorted -%}
-                        <li><a href="{{ page.url | relative_url }}">{{ page.nav_title | default: page.title }}</a></li>
+                      {%- assign sub_items = top_items | where_exp:"p","p.categories and p.categories.size > 1 and p.categories[1] == subcat" -%}
+                      {%- if sub_items == empty -%}
+                        {%- assign sub_items = top_items | where_exp:"p","!(p.categories and p.categories.size > 1)" -%}
+                      {%- endif -%}
+
+                      {%- assign sorted = sub_items | sort:"nav_order" -%}
+                      {%- for page in sorted -%}
+                        {%- assign title = page.nav_title | default: page.title -%}
+                        {%- if title -%}
+                          <li><a href="{{ page.url | relative_url }}">{{ title }}</a></li>
+                        {%- endif -%}
                       {%- endfor -%}
                     </ul>
                   </details>
                 </ul>
+                {%- endif -%}
               {%- endfor -%}
+
             </details>
           </th>
+          {%- endif -%}
         {%- endfor -%}
 
       </tr>
