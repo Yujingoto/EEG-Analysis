@@ -1,0 +1,43 @@
+<div class="header">
+  <table class="fixed-table">
+    <thead>
+      <tr>
+        <th class="mokuji">目次</th>
+
+        {%- assign pages_all = site.pages | where_exp: "p", "p.title" -%}
+        {%- comment -%}
+        categories[0] を大分類、categories[1] を小分類としてグループ化
+        {%- endcomment -%}
+        {%- assign top_groups = pages_all | group_by_exp: "p", "p.categories and p.categories.size > 0 ? p.categories[0] : 'その他'" -%}
+        {%- assign top_groups = top_groups | sort: "name" -%}
+
+        {%- for g in top_groups -%}
+          <th>
+            <details>
+              <summary>{{ g.name }}</summary>
+
+              {%- assign sub_groups = g.items | group_by_exp: "p", "p.categories and p.categories.size > 1 ? p.categories[1] : 'ホーム'" -%}
+              {%- assign sub_groups = sub_groups | sort: "name" -%}
+
+              {%- for sg in sub_groups -%}
+                <ul class="gnav">
+                  <details>
+                    <summary>{{ sg.name }}</summary>
+                    <ul class="index">
+                      {%- assign pages_sorted = sg.items | sort: "nav_order" -%}
+                      {%- for page in pages_sorted -%}
+                        {%- unless page.hide_in_nav -%}
+                          <li><a href="{{ page.url | relative_url }}">{{ page.nav_title | default: page.title }}</a></li>
+                        {%- endunless -%}
+                      {%- endfor -%}
+                    </ul>
+                  </details>
+                </ul>
+              {%- endfor -%}
+            </details>
+          </th>
+        {%- endfor -%}
+      </tr>
+    </thead>
+  </table>
+</div>

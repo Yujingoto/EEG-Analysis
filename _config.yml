@@ -1,2 +1,9 @@
 plugins:
   - jekyll-sitemap
+permalink: pretty
+theme: minima
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
