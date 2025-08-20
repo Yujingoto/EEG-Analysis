@@ -232,7 +232,8 @@ data2 = np.vstack([sig + noise2,  sig - noise2, noise5]).T
 
 さて，こんな状況で CCA さんはどういう結果を返してくれるでしょうか．
 
-<details><summary>CCAのプログラム (clickで展開)</summary>
+<details markdown="1">
+<summary>CCAのプログラム (clickで展開)</summary>
 
 ```Python
 
