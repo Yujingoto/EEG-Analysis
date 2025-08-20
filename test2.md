@@ -23,7 +23,7 @@ $$
 x = a + \sin \theta
 $$
 
-<div>
+</div>
 
 > <span class="title">定義</span>
 > 集合 $G$ と二項演算 $\cdot$ について… <span class="em-red">ペア $(G,\cdot)$ を群という。</span>
