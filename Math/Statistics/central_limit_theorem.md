@@ -1,0 +1,304 @@
+---
+html:
+  embed_local_images: false
+  embed_svg: true
+  offline: false
+  toc: true
+
+print_background: false
+
+export_on_save:
+  html: true
+---
+<div class="header">
+  <table class="fixed-table">
+    <thead>
+      <tr>
+        <th class="mokuji">目次</th>
+        <th><details><summary> Math </summary><ul class="gnav"><details><summary>基礎数学編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Basic/basic.html">ホーム</a></li> 
+        <li><a href="../../Math/Basic/multiplication.html">掛け算</a></li>     
+        <li><a href="../../Math/Basic/trigonometric.html">三角関数</a></li>
+        <li><a href="../../Math/Basic/complex.html">複素数</a></li>
+        <li><a href="../../Math/Basic/calculus.html">微分・積分</a></li>
+        <li><a href="../../Math/Basic/linear_algebra.html">線形代数</a></li>
+        <li><a href="../../Math/Basic/statistics.html">基礎統計</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>信号処理編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Analysis/Analysis.html">ホーム</a></li> 
+        <li><a href="../../Math/Analysis/fourier.html">フーリエ変換</a></li>
+        <li><a href="../../Math/Analysis/wavelet.html">wavelet変換</a></li>
+        <li><a href="../../Math/Analysis/hilbert.html">ヒルベルト変換</a></li>
+        <li><a href="../../Math/Analysis/eeg.html">基本の脳波解析</a></li> <li><a href="../../Math/Analysis/phase_analysis.html">位相同期解析</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>統計編</summary>
+        <ul class="index">
+        <li><a href="../../Math/Statistics/Statistic.html">ホーム</a></li> 
+        <li><a href="../../Math/Statistics/distribution.html">確率分布</a></li>
+        <li><a href="../../Math/Statistics/central_limit_theorem.html">大数の法則と中心極限定理</a></li>
+        <li><a href="../../Math/Statistics/statistic.html">統計量と標本分布</a></li>                                                         <li><a href="../../Math/Statistics/test.html">統計的検定</a></li>
+        <li><a href="../../Math/Statistics/anova.html">分散分析</a></li>
+        <li><a href="../../Math/Statistics/logistic_regression.html">ロジスティック回帰</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>その他</summary>
+        <ul class="index">
+        <li><a href="../../Math/Others/Others.html">ホーム</a></li> 
+        <li><a href="../../Math/Others/ICA.html">独立成分分析</a></li> 
+        <li><a href="../../Math/Others/CCA.html">正準相関分析</a></li>
+        <li><a href="../../Math/Others/lagrange.html">ラグランジュの未定乗数法</a></li>
+        <li><a href="../../Math/Others/Entropy.html">エントロピーと分布間距離</a></li>
+        <li><a href="../../Math/Others/signal_detection.html">信号検出理論</a></li>
+        </ul></details>
+        </details></th>
+        <th><details><summary> Analysis </summary>
+        <ul class="gnav"><details><summary>EEGLAB</summary>
+        <ul class="index">       
+        <li><a href="../../Analysis/eeglab/eeglab.html">ホーム</a></li>                           <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>
+        <li><a href="../../Analysis/eeglab/import.html">データのインポート</a></li>
+        <li><a href="../../Analysis/eeglab/prepro1.html">基本的な下処理</a></li>
+        <li><a href="../../Analysis/eeglab/prepro2.html">発展的な下処理</a></li>
+        <li><a href="../../Analysis/eeglab/analysis1.html">単被験者での解析</a></li>
+        <li><a href="../../Analysis/eeglab/analysis2.html">被験者群での解析</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>MNE-python</summary>
+        <ul class="index">
+        <li><a href="../../Analysis/MNE/MNE.html">ホーム</a></li>
+        <li><a href="../../Analysis/MNE/import.html">データのロード</a></li>
+        <li><a href="../../Analysis/MNE/preprocessing.html">前処理</a></li>
+        </ul> </details></details></th>
+        <th><details><summary> Experiment </summary>
+        <ul class="gnav">       </ul> </details></th>
+        <th><details><summary> Simulations </summary>
+        <ul class="gnav"><details><summary>環境構築</summary>
+        <ul class="index">
+         <li><a href="../../Simulation/Setup/Setup.html">ホーム</a></li>
+        <li><a href="../../Simulation/Setup/environment.html">Python環境構築</a></li>
+        <li><a href="../../Simulation/Setup/gpu.html">pythonでのGPUセットアップ</a></li>
+        <li><a href="../../Simulation/Setup/jupyter.html">Jupyterセットアップ</a></li>
+        <li><a href="../../Simulation/Setup/julia.html">Juliaセットアップ</a></li>
+        </ul></details>
+        <ul class="gnav"><details><summary>非線形力学</summary>
+        <ul class="index">
+        <li><a href="../../Simulation/NonlinearDynamics/Nonlinear-dynamics.html">ホーム</a></li>
+        <li><a href="../../Simulation/NonlinearDynamics/dynamics.html">力学系とは</a></li>
+        <li><a href="../../Simulation/NonlinearDynamics/stability.html">線形安定性解析</a></li>
+        <li><a href="../../Simulation/NonlinearDynamics/stability_nonlinear.html">非線形系の安定性解析</a></li>
+        </ul></details>
+        </details></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<h1><span>02</span>大数の法則と中心極限定理</h1>
+
+さて，[様々な確率分布の形](distribution)を見てきたわけですが，そもそも全体のデータを観測して，そいつらの分布を見るならまだしも未知の集団の中から一部を抜き出して分布を見たところで，そいつの性質(平均とか)をどれだけ信じて良いものでしょうか．
+
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=4 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [大数の法則](#大数の法則)
+  - [マルコフの不等式](#マルコフの不等式)
+  - [チェビシェフの不等式](#チェビシェフの不等式)
+  - [大数の法則](#大数の法則-1)
+- [中心極限定理](#中心極限定理)
+
+<!-- /code_chunk_output -->
+
+
+
+## 大数の法則
+
+よくある問題が，政党支持率を街頭インタビューやてきとうな電話で100人や1000人に聞いたデータを元に算出しているのはどれだけ信用できるのか問題とかですよね．「あんなたった100人に聞いただけじゃ信用できん！印象操作だ！」みたいな話になりかねません．そこで出てくるのが，大数の法則です．
+
+今，コインをn回投げて，その表が出る確率がちゃんと1/2なのかを確かめる作業を考えます．i回目の試行で表が出た場合1，裏の場合0を取る確率変数$x_i$を考えると，n回投げた時の表が出た回数は
+
+$$
+  r = \sum_i^n x_i
+$$
+
+この量を頻度と呼び，更にこれを試行数nで割ったr/nを相対頻度と言います．rは確率変数なので，二項分布
+
+$$
+  f(x) = {}_n C_x (p)^n
+$$
+
+
+に従います．こいつらの期待値と分散は二項分布のとこで確認したように
+
+$$
+  E(r) = np\\
+  V(r) = np(1-p)
+$$
+
+である事が分かります．相対頻度の期待値と分散は
+
+$$
+  E(r/n) = np/n = p\\
+  V(r/n) = p(1-p)/n
+$$
+
+となる事も分かると思います．で，こいつの試行数nの値を変えた時，E(r/n)の値がどう変化していくのかを見てみましょう．直観的，というか常識的に，n=3とかみたいに極端に試行数が少ないと信用できない事が分かるかと思います．逆に，n=1000000とかといった膨大なデータがあれば，そいつらがちゃんと分布の真の期待値であるpに収束する事が分かるでしょう．で，もしここでn=100とかで見ても全然収束してないのであれば，街頭インタビューで100人のデータを用いて結論付けられた発表は信じるに値しなさそうですね．
+
+では，コイン投げをしていきます．表が出る確率はちゃんと1/2としておきます．ここで，試行回数を変化させていった時それぞれに対応する，r/nの0.5付近(±0.1)の値を見ていきます．つまり，ちゃんと真の期待値に迫れているかという事を評価します．
+
+$$
+  P(0.4 \leq r/10 \leq 0.6) = 0.656\\
+  P(0.4 \leq r/20 \leq 0.6) = 0.737\\
+  P(0.4 \leq r/50 \leq 0.6) = 0.881\\
+  P(0.4 \leq r/100 \leq 0.6) = 0.968
+$$
+
+はい，という事で，nが増えるにつれて確率が上がっていき，真の確率(表が出る確率)に迫っている事が分かります．実際，もう100回もやれば十分ですね．というのが感覚的な説明でしたが，これを数式で表現すると以下のようになります．
+
+$$
+  P(|r/n -0.5| > 0.1) \longrightarrow 0\qquad(n\rightarrow\infty)
+$$
+
+相対頻度が真の値である0.5から0.1以上離れている確率が0に収束していく過程，ですね．これこそが大数の法則(の一例)です．
+
+では，より一般に大数の法則を導いて行きましょう．そのためには，チェビシェフの不等式というものが必要で，さらにそいつはマルコフの不等式をベースに考える必要があります．ということでまずはマルコフの不等式から行きましょう．
+
+### マルコフの不等式
+
+##### マルコフの不等式
+任意の確率変数$X$と$a>0$に対して
+$$
+    P(|X| \geq a) \leq \frac{E[|X|]}{a}
+$$
+
+#####
+
+これがマルコフの不等式です．よく分からんと思うのでまずは証明しましょう．確率変数Xに対して，ある範囲としてaがでてきてるのでXの期待値$E[|X|]$は以下のように書けます．
+
+$$
+  E[X] = \int_0^\infty xf(x)dx \nonumber \\
+   = \int_0^a xf(x)dx + \int_a^\infty x f(x)dx
+$$
+
+式(\ref{eq:mark})のうち，第一項を意図的に消した場合，下のように変形されますね．Xは絶対値を取られるやつなので，第一項は必ず正の値を取っていることに注意です．
+
+$$
+  E[X] \geq \int_a^\infty x f(x)dx
+$$
+
+ここで，xが取りうる範囲はaから$\infty$までとなっているので，この中で最小のaですべてのxを置き換えてみます．すると
+
+$$
+  E[X] \geq a\int_a^\infty f(x)dx\\
+  \therefore E[X] \geq aP[X\geq a]
+$$
+
+となります．何をやってるのかちょっと分からなくなってくるかもしれませんが，まずaから$\infty$でf(x)を積分してるんだからa以上の値をとる確率密度関数ですよね．で，こいつのa倍をしているものなので，$aP[X\geq a]$で書き換えられるわけです．したらこの式を移項して生理してあげればマルコフの定理，即ち
+
+$$
+  P[|X|\geq a] \leq \frac{E[|X|]}{a}
+$$
+
+がでてきます．証明終わり．
+
+
+では肝心の，この不等式が何を指しているのかですが，まあ実際数字を入れてみれ考えれば分かると思います．さいころで考えてみます．出る値は1~6なので，期待値は3.5です．この時，aをたとえば1にした時，1より大きい値を取る可能性は当然高く，それは右辺が1で割られている事からも明らかです．が，3とかになると割った結果がほぼ1になりますね．3.5/3だから．雲行きが怪しくなってきました．さて，ここに5なんかを入れると，もはや分母の方が大きいので，値は1よりも小さくなります．一方の左辺も，aの値が大きくなるにつれて取れる値の範囲が狭くなっていくので，それらの値を取る確率もやはり下がっていきます．
+
+
+この関係を表すのがマルコフの不等式でした．
+
+### チェビシェフの不等式
+ふう．マルコフの不等式が分かれば，チェビシェフの不等式なんてワンパンです，ワンパン．秒で沈めてやりましょう！
+
+##### チェビシェフの不等式
+期待値$E[Y] = \mu$, 分散$V[Y] = \sigma^2$とするとき，任意の実数 $k>0$ に対して
+$$
+    P[|Y-\mu| \geq k\sigma] \leq \frac{1}{k^2}
+$$
+が成り立つ．
+#####
+
+めちゃくちゃ見覚えありますね．そう，これはマルコフの不等式の特別な場合を考えればすぐ証明できます．
+
+まずマルコフの不等式において，$X=(Y-\mu)^2, a = k^2\sigma^2$とすると
+
+$$
+  P[(Y-\mu)^2 \geq k^2\sigma^2] \leq \frac{E[(Y-\mu)^2]}{k^2\sigma^2}\\
+  \therefore P[|Y-\mu| \geq k\sigma] \leq \frac{1}{k^2}
+$$
+
+となります．ただしここで，$E[(Y-\mu)^2]=\sigma^2$を使っています．
+
+さて，こいつの何がすごいのかを考えてみます．結論からすると，チェビシェフの不等式がそのまま大数の法則を示すものになっています．というのも，まず式(\ref{eq:cheb})を見てみると「得られたデータが，$k\sigma$以上離れた位置，正規分布とかで考えるならめっちゃ裾の方ですね，を取る確率」である左辺は，$k^2$の逆数以下になるよって話ですね．
+
+たとえば，あとで出てきますが正規分布の時によく使う$3\sigma$以上の値を取る確率は0.3\%程度なのですが，実際この値($1/k^2$)は1/9なので0.3以下になりますね．
+
+
+すごいのは，得られたデータがどんな分布に従っていたのかという母集団の情報が全くなくても，こいつの収まる範囲が分かる事です．どんな分布でも絶対，$1/k^2$以下になるってわけですね．正規分布の時実際そうなるのは上で確認した通り．めっちゃすごいっすねこれ．分布知らなくても言えるわけですからね！！
+
+### 大数の法則
+で，肝心の大数の法則です．証明していきます．
+チェビシェフの不等式の証明において，k=$a^2$としてみると，
+$$
+  P[|X-\mu| \geq a] \leq \frac{\sigma^2}{a^2}
+$$
+
+となります．これも計算自体は全く同じなので，チェビシェフの不等式と呼ばれます．ここで標本平均$\bar{X}$を考えると，$E[\bar{X}] = \mu, V[\bar{X}] = \frac{\sigma^2}{n}$となります．これを式(\ref{eq:cheb2})に代入すると
+
+$$
+  P[|\bar{X}-\mu|\geq a] \leq \frac{\sigma^2}{a^2n}　\xrightarrow{n\rightarrow\infty}0
+$$
+
+となると思います．良いでしょうか．nの値が大きくなるにつれ，右辺の分母が大きくなるので値は0に収束していくわけですね．そう，これが大数の法則です！！
+
+nの値，つまり得られた標本の数($\bar{X}は\sum X_i/n$)が多くなるほど，真の値との誤差は0に向かって小さくなっていくことを指しています．
+
+その主張することは何かというと，こうです．\\
+
+**「大標本では，観測された標本平均を母集団の真の平均とみなしてよい」**
+
+これがあるからこそ，我々はある程度のサイズのデータを使って一般化した議論が出来るわけですね．しっかり確認しておきましょう．
+
+
+## 中心極限定理
+大数の法則同様，統計学においてとても重要な定理としてもう一つ，中心極限定理があります．というかこちらの方がどちらかと言えば大事かも．定理は以下です．
+
+##### 中心極限定理
+  期待値$\mu$，標準偏差$\sigma$の分布に従う確率変数列$X_1,X_2...X_n$に対し，$S_n := \sum_{k=1}^n X_k$とすると
+$$
+    P(a \leq \frac{S_n -n\mu}{\sqrt{n}\sigma} \leq b) \xrightarrow{n\rightarrow\infty} \int_a^b \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx
+$$
+  が成り立つ．
+#####
+
+はい，なんも分からんと思います．
+
+ここで言いたいのは，与えられたデータから求めたそれぞれの標本平均$X$の総和である$S_n$を標準化(左辺の真ん中のごちゃごちゃしたやつ．平均を引いて標準偏差で割ってる)したやつはnが十分に大きいと，つまり得られるデータが多いと，期待値0，分散1の正規分布に収束するということです．
+
+正規分布の確率密度関数は以下でしたね．
+
+$$
+  f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+
+ここで$\mu$を0，$\sigma$は1を代入した形が中心極限定理の右辺に来ています．こいつをaからbの範囲で積分したものが，標準化変数である左辺の項がaからbに収まる確率と同等になるという事を表していますね．
+
+即ち，nが十分に大きいなら部分和である$S_n$は平均が$n\mu$，分散が$n\sigma^2$の正規分布に従う事になり，よって標本平均である$\bar{X_n}=(X_1+...+X_n)/n$も平均$\mu$，標準偏差$\sigma/\sqrt{n}$に従う事になります．
+
+大事なのは，今回定理のところでそもそも，母集団の分布を何も仮定していないところです．大数の法則同様，母集団の分布に関わらず従う法則なわけですね．
+
+**母集団がどんな形であれ，nが大きい時にはそこから得られた標本平均は正規分布に従う**という性質を意味します．
+
+
+ゆえに，正規分布は数ある確率分布の中でも最も重要な分布と言われるわけですね．今後学んでいく様々な検定や推定なども，正規分布を仮定する事が多いのはこれが理由になっています．
+
+(証明...モーメント関数とか必要で自分がちゃんと整理しきれてないのと，どこにその説明いれるべきなんや...てか必要かな...と悩んでしまっているのでとりあえず保留！ごめんなさい！！)
+
+<div style="text-align: center;">
+
+【[次へ](statistic)】
+
+</div>
+
+| <details><summary> Math </summary><ul class="gnav"><li><a href="../Basic/basic.html">基礎数学編</a><ul class="index">     <li><a href="../Basic/calculus.html">掛け算</a></li>             <li><a href="../Basic/trigonometric.html">三角関数</a></li>      <li><a href="../Basic/complex.html">複素数</a></li>             <li><a href="../Basic/calculus.html">微分・積分</a></li>       <li><a href="../Basic/basic.html">基礎統計</a></li>        </ul> <li><a href="../Analysis/Analysis.html">信号処理編</a><ul class="index"><li><a href="../Analysis/fourier.html">フーリエ変換</a></li>                                                  <li><a href="../Analysis/wavelet.html">wavelet変換</a></li>   <li><a href="../Analysis/hilbert.html">ヒルベルト変換</a></li>   <li><a href="../Analysis/eeg.html">基本の脳波解析</a></li>       <li><a href="../Analysis/phase_analysis.html">位相同期解析</a></li>        </ul>                                            <li><a href="../Statistics/Statistics.html">統計編</a><ul class="index"><li><a href="../Statistics/distribution.html">確率分布</a></li>                                                  <li><a href="../Statistics/central_limit_theorem.html">大数の法則と中心極限定理</a></li>                                     <li><a href="../Statistics/statistic.html">統計量と標本分布</a></li>                                                         <li><a href="../Statistics/test.html">統計的検定</a></li>       <li><a href="../Statistics/anova.html">分散分析</a></li>        </ul></details>  |                                    <details><summary> Analysis </summary><ul class="gnav"><li><a href="../../Analysis/eeglab/eeglab.html">EEGLAB</a><ul class="index">                                             <li><a href="../../Analysis/eeglab/setup.html">環境構築</a></li>                                                        <li><a href="../../Analysis/eeglab/import.html">データのインポート</a></li>                                                   <li><a href="../../Analysis/eeglab/prepro1.html">基本的な下処理</a></li>                                                     <li><a href="../../Analysis/eeglab/prepro2.html">発展的な下処理</a></li>                                                         <li><a href="../../Analysis/eeglab/analysis1.html">単被験者での解析</a></li>                                                      <li><a href="../../Analysis/eeglab/analysis2.html">被験者群での解析</a></li>   </ul> </details>   |                                    <details><summary> Experiment </summary><ul class="gnav"><li><a href="../Basic/basic.html">基礎数学編</a><ul class="index">     <li><a href="../Basic/calculus.html">掛け算</a></li>             <li><a href="../Basic/trigonometric.html">三角関数</a></li>      <li><a href="../Basic/complex.html">複素数</a></li>             <li><a href="../Basic/calculus.html">微分・積分</a></li>       <li><a href="../Basic/basic.html">基礎統計</a></li>        </ul> <li><a href="../Analysis/Analysis.html">信号処理編</a><ul class="index"><li><a href="../Analysis/fourier.html">フーリエ変換</a></li>                                                  <li><a href="../Analysis/wavelet.html">wavelet変換</a></li>   <li><a href="../Analysis/hilbert.html">ヒルベルト変換</a></li>   <li><a href="../Analysis/eeg.html">基本の脳波解析</a></li>       <li><a href="../Analysis/phase_analysis.html">位相同期解析</a></li>        </ul> </details> |                                      <details><summary> Simulations </summary><ul class="gnav"><li><a href="../../Simulation/Simulation.html">環境構築</a><ul class="index">                                             <li><a href="../../Simulation/Setup/environment.html">Python環境構築</a></li>                                                    <li><a href="../../Simulation/Setup/gpu.html">pythonでのGPUセットアップ</a></li>                                                     <li><a href="../../Simulation/Setup/jupyter.html">Jupyterセットアップ</a></li>                                                     <li><a href="../../Simulation/Setup/julia.html">Juliaセットアップ</a></li></details> |                                     
+| ----| ---- | ----|----|
