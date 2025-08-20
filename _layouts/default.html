@@ -15,9 +15,10 @@
       displayMath: [['$$','$$'], ['\\[','\\]']],
       processEscapes: true,
       packages: { '[+]': ['ams'] },
-      macros: { bm: ['\\boldsymbol{#1}', 1] },
-      argmax: '\\operatorname*{arg\\,max}',
-      argmin: '\\operatorname*{arg\\,min}'
+      macros: { bm: ['\\boldsymbol{#1}', 1],
+        argmax: '\\operatorname*{arg\\,max}',
+        argmin: '\\operatorname*{arg\\,min}'
+      },
     },
     chtml: { linebreaks: { automatic: false } },
     options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
