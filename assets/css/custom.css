@@ -168,3 +168,13 @@ mjx-container:not([display="true"]){max-width:100%;}
 details summary{ cursor:pointer; }
 details[open]{ padding-bottom:.25rem; }
 details pre{ margin:.5rem 0; }
+
+
+.article-head{ position:relative; }
+.last-updated{
+  position:absolute; right:0; top:0;
+  font-size:.85rem; color:#6b7280;
+}
+@media (max-width:768px){
+  .last-updated{ position:static; display:block; text-align:right; margin-top:.25rem; }
+}

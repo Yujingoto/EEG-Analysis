@@ -7,41 +7,68 @@
   <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
   {% seo %}
 
-
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true,
-      packages: { '[+]': ['ams'] },
-      macros: { bm: ['\\boldsymbol{#1}', 1],
-        argmax: '\\operatorname*{arg\\,max}',
-        argmin: '\\operatorname*{arg\\,min}'
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        packages: { '[+]': ['ams'] },
+        macros: {
+          bm: ['\\boldsymbol{#1}', 1],
+          argmax: '\\operatorname*{arg\\,max}',
+          argmin: '\\operatorname*{arg\\,min}'
+        }
       },
-    },
-    chtml: { linebreaks: { automatic: false } },
-    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
-  };
-</script>
-
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      chtml: { linebreaks: { automatic: false } },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
+
 <body>
   {% include header.html %}
 
   <div id="layout">
-  <div class="page-wrap">
-    <main class="content">
-      {{ content }}
-    </main>
-    <aside id="toc-side" class="toc-side" aria-label="ページ内リンク"></aside>
-  </div>
-</div>
+    <div class="page-wrap">
+      <main class="content">
+        <!-- 記事右上の最終更新（GitHub APIで取得） -->
+        <div class="last-updated" data-path="{{ page.path | escape }}"></div>
 
+        {{ content }}
+      </main>
+
+      <aside id="toc-side" class="toc-side" aria-label="ページ内リンク"></aside>
+    </div>
+  </div>
+
+  <!-- 最終更新日時を取得して表示 -->
+  <script>
+    (function () {
+      const el = document.querySelector('.last-updated');
+      if (!el) return;
+      const owner = 'Yujingoto';            // ← リポジトリ所有者
+      const repo  = 'EEG-Analysis';         // ← リポジトリ名
+      const path  = el.dataset.path || '';
+      if (!path) return;
+
+      const url = `https://api.github.com/repos/${owner}/${repo}/commits?path=${encodeURIComponent(path)}&per_page=1`;
+      fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } })
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          if (!data || !data[0]) return;
+          const d = new Date(data[0].commit.committer.date);
+          const txt = d.toLocaleDateString('ja-JP', { year:'numeric', month:'2-digit', day:'2-digit' });
+          el.textContent = `最終更新：${txt}`;
+          el.style.display = 'inline';
+        })
+        .catch(() => { el.style.display = 'none'; });
+    })();
+  </script>
 
   <script src="{{ "/assets/js/toc.js" | relative_url }}" defer></script>
   <script src="{{ "/assets/js/mathwrap.js" | relative_url }}" defer></script>
 </body>
-
 </html>
