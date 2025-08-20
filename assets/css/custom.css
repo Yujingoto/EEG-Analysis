@@ -41,7 +41,7 @@ h1{
 }
 /* 左の濃紺バッジと斜めカットは現状のまま使う */
 h1::before{
-  content:counter(h1, decimal-leading-zero);
+  content: "";                        /* ← ここを空にする */
   position:absolute; left:.7rem; top:.5rem; bottom:.5rem;
   width:6.2rem; display:flex; align-items:center; justify-content:center;
   background:var(--brand); color:#fff; font-weight:800; font-size:2.2rem;
@@ -126,12 +126,39 @@ pre{ max-width:100%; overflow:auto; }
 .header th{ border-right:1px solid #e5e7eb; }
 .header th:last-child{ border-right:none; }
 
-/* 「記事一覧（目次）」ラベルにアイコン */
-.header .mokuji{ position:relative; padding-left:2rem; font-weight:800; }
-.header .mokuji::before{
-  content:"📚"; position:absolute; left:.5rem; top:50%; transform:translateY(-50%);
-  font-size:1.1rem; opacity:.9;
+/* 最上位（th直下）の summary はボタン風 */
+.header th > details > summary{
+  display:inline-block;
+  padding:.4rem .75rem; margin:.25rem .35rem;
+  border:1px solid #d9dde5; border-radius:.45rem;
+  background:#fff; color:#204db3; cursor:pointer;
 }
+.header th > details[open] > summary{
+  background:#eaf0ff; border-color:#c4d2f7; color:#0b157a;
+}
+
+/* 下位（ul.gnav 直下）の summary はプルダウン風 ▶ */
+.header ul.gnav > details > summary{
+  display:flex; align-items:center; gap:.4rem;
+  padding:.2rem 0; margin:.15rem 0;
+  border:none; background:transparent; color:#333; font-weight:700; cursor:pointer;
+}
+.header ul.gnav > details > summary::before{
+  content:"▸"; color:#0b157a; transition: transform .2s ease;
+}
+.header ul.gnav > details[open] > summary::before{
+  transform: rotate(90deg);
+}
+
+/* サイトマップのリンク色も控えめに */
+.header .index a{
+  color:#204db3; text-decoration:none; border-bottom:1px dotted rgba(32,77,179,.4);
+}
+.header .index a:hover{ border-bottom-color:#204db3; }
+
+
+/* 「記事一覧（目次）」ラベル */
+.header .mokuji{ position:relative; padding-left:2rem; font-weight:800; }
 
 /* トップレベル summary を “タブっぽく” */
 .header details > summary{
