@@ -50,8 +50,5 @@
     title.textContent = "目次";
     side.appendChild(title);
     side.appendChild(buildToc("toc-list"));
-    if (window.matchMedia("(min-width: 1200px)").matches) {
-      side.classList.add("fixed");  // ← これ
-    }
   }
 })();
