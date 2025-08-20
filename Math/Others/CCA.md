@@ -8,7 +8,7 @@ nav_order: 20
 # 正準相関分析 (Canonical Correlation Analysis, CCA)
 
 CCAは[PCA](./PCA.html)とかの仲間です．与えられたデータ群に含まれる共通成分を抜き出す目的で用いられます．
-
+a
 
 ## 定義と用法
 正準相関分析 (Canonical Correlation Analysis: CCA) は，二つのデータ集合の間に含まれる共通成分を抜き出します．三つ以上の場合はちょっと難しくなりますが例のごとく一般 CCA みたいなものがあるそうですがここでは置いておきます．
