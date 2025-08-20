@@ -12,43 +12,35 @@
         .replace(/-+/g, "-");
     }
   });
-
-  function buildToc(ulClass) {
-    var ul = document.createElement("ul");
-    ul.className = ulClass || "";
-    var curUl = ul;
-    var lastLevel = 2; // h2から開始
-
+  function buildToc() {
+    var ul = document.createElement("ul"); ul.className = "toc-list";
+    var cur = ul, last = 2;
     headings.forEach(function (h) {
-      var level = Number(h.tagName.substring(1)); // 2 or 3
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = "#" + h.id;
-      a.textContent = h.textContent;
-      li.appendChild(a);
-
-      if (level > lastLevel) {
-        var nested = document.createElement("ul");
-        curUl.lastElementChild && curUl.lastElementChild.appendChild(nested);
-        curUl = nested;
-      } else if (level < lastLevel) {
-        // h3 -> h2 に戻る
-        curUl = curUl.parentElement.closest("ul") || ul;
-      }
-      curUl.appendChild(li);
-      lastLevel = level;
+      var lvl = Number(h.tagName.slice(1)); var li = document.createElement("li");
+      var a = document.createElement("a"); a.href = "#" + h.id; a.textContent = h.textContent; li.appendChild(a);
+      if (lvl > last) { var nested = document.createElement("ul"); cur.lastElementChild && cur.lastElementChild.appendChild(nested); cur = nested; }
+      else if (lvl < last) { cur = cur.parentElement.closest("ul") || ul; }
+      cur.appendChild(li); last = lvl;
     });
     return ul;
   }
 
+  // 上部ボックス目次（常に出す）
   var top = document.getElementById("toc-top");
+  if (top) top.appendChild(buildToc());
+
+  // 右サイドは PC のみ
+  var mq = window.matchMedia("(min-width: 1100px)");
   var side = document.getElementById("toc-side");
-  if (top) top.appendChild(buildToc("toc-list"));
-    if (side) {
-    var title = document.createElement("div");
-    title.className = "toc-side-title";
-    title.textContent = "目次";
-    side.appendChild(title);
-    side.appendChild(buildToc("toc-list"));
+
+  function mountSide() {
+    if (!side) return;
+    side.innerHTML = "";
+    if (mq.matches) {
+      var title = document.createElement("div"); title.className = "toc-side-title"; title.textContent = "目次";
+      side.appendChild(title); side.appendChild(buildToc());
+    }
   }
+  mountSide();
+  mq.addEventListener ? mq.addEventListener("change", mountSide) : mq.addListener(mountSide);
 })();

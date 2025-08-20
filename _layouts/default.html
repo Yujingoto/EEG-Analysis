@@ -4,41 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} | {{ site.title }}</title>
-
-  <!-- 任意のCSS -->
   <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
-
-  <!-- MathJax v3 設定：$...$ / $$...$$ / \(...\) / \[...\] を有効化 -->
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true,
-      packages: {'[+]': ['ams']}
-    },
-    // 画面幅に合わせて数式を自動で改行
-    chtml: { linebreaks: { automatic: true, width: "container" } },
-    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
-  };
-</script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
+  {% seo %}
+  <script>
+    window.MathJax = {
+      tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,packages:{'[+]':['ams']}},
+      chtml:{linebreaks:{automatic:true,width:"container"}},
+      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
   {% include header.html %}
 
-  <!-- ページ全体の2カラム（PC） -->
-  <div class="page-wrap">
-  <main class="content">
-    <nav id="toc-top" class="toc-box" aria-label="目次"></nav>
-    {{ content }}
-  </main>
-  <aside id="toc-side" class="toc-side" aria-label="ページ内リンク"></aside>
-</div>
+  <div id="layout">
+    <div class="page-wrap">
+      <main class="content">
+        <nav id="toc-top" class="toc-box" aria-label="目次"></nav>
+        {{ content }}
+      </main>
+      <aside id="toc-side" class="toc-side" aria-label="ページ内リンク"></aside>
+    </div>
+  </div>
 
-  <!-- 目次生成 -->
   <script src="{{ "/assets/js/toc.js" | relative_url }}" defer></script>
 </body>
 </html>
