@@ -5,6 +5,7 @@
   --ink:#111;
   --bg:#fff;
   --accent:#2bb5a1;
+  --sm-line:1.6rem;         /* サイトマップ行高 */
 }
 
 /* 本文 */
@@ -12,37 +13,87 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 
 /* ---------- グローバルヘッダー（sticky） ---------- */
 .header{
-  position: sticky; top: 0; z-index: 50; background:#fff;
+  position: sticky; top: 0; z-index: 60; background:#fff;
   border-bottom:2px solid var(--brand); box-shadow:0 2px 6px rgba(0,0,0,.06);
 }
-.fixed-table{width:100%;table-layout:fixed;border-collapse:collapse}
-.fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem}
-.header details{margin:.25rem 0;}
-.header details summary{cursor:pointer;font-weight:700}
-.header .gnav,.header .index{list-style:none;margin:.25rem 0 0;padding-left:1rem}
-.header .index li{margin:.15rem 0}
+.fixed-table{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0}
+.fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem;border-right:1px solid #e5e7eb}
+.fixed-table th:last-child{border-right:none}
+.header thead tr{background:#f5f6f8;border-bottom:1px solid #e5e7eb}
+.header details{margin:.25rem 0; position:relative;}
 .header a{text-decoration:none;border-bottom:1px dotted rgba(0,0,0,.25);}
 .header a:hover{border-bottom-color:var(--brand);}
 
+/* トップレベル summary = ボタン風 */
+.header th > details > summary{
+  display:inline-block; cursor:pointer;
+  padding:.4rem .75rem; margin:.25rem .35rem;
+  border:1px solid #d9dde5; border-radius:.45rem;
+  background:#fff; color:#204db3; font-weight:700;
+}
+.header th > details[open] > summary{
+  background:#eaf0ff; border-color:#c4d2f7; color:#0b157a;
+}
+
+/* 下位 summary = ▶ プルダウン風 */
+.header ul.gnav, .header .index{list-style:none;margin:.25rem 0 0;padding-left:1rem}
+.header ul.gnav > details > summary{
+  display:flex; align-items:center; gap:.4rem;
+  padding:.2rem 0; margin:.15rem 0; cursor:pointer;
+  border:0; background:transparent; color:#333; font-weight:700;
+}
+.header ul.gnav > details > summary::before{
+  content:"▸"; color:#0b157a; transition:transform .2s ease;
+}
+.header ul.gnav > details[open] > summary::before{ transform:rotate(90deg); }
+
+/* サイトマップのプルダウン: 10行で打ち止め＋中だけスクロール */
+.header details > ul,
+.header details > .index,
+.header details > .gnav{
+  max-height: calc(var(--sm-line) * 10);
+  overflow:auto; -webkit-overflow-scrolling:touch;
+  background:#fff; border:1px solid #e5e7eb; border-radius:.5rem;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  padding:.5rem .75rem; margin-top:.35rem;
+}
+.header ul.gnav > details > ul,
+.header ul.gnav > details > .index{
+  max-height: calc(var(--sm-line) * 10);
+  overflow:auto; -webkit-overflow-scrolling:touch;
+  background:#fff; border:1px solid #e5e7eb; border-radius:.4rem;
+  padding:.4rem .6rem; margin:.35rem 0 .25rem .25rem;
+}
+@media (max-width:768px){
+  .header details > ul,
+  .header details > .index,
+  .header ul.gnav > details > ul,
+  .header ul.gnav > details > .index{
+    max-height:min(60vh, calc(var(--sm-line) * 10));
+  }
+}
+/* スクロールバー控えめ */
+.header details ul::-webkit-scrollbar{width:8px}
+.header details ul::-webkit-scrollbar-thumb{background:#c8d0e6;border-radius:8px}
+.header details ul{scrollbar-width:thin;scrollbar-color:#c8d0e6 transparent}
+
+/* 「目次」ラベル（右サイド） */
+.toc-side-title{position:relative;padding-left:1.75rem;font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
+.toc-side-title::before{content:"🧭";position:absolute;left:.25rem;top:50%;transform:translateY(-50%);font-size:1.1rem;opacity:.9}
+
 /* ---------- H1 / H2 ---------- */
-main{ counter-reset:h1; }
-main h1{ counter-increment:h1; counter-reset:h2; }
+main{counter-reset:h1;}
+main h1{counter-increment:h1;counter-reset:h2;}
 
 h1{
-  position:relative;
-  margin:1.25rem 0 .75rem;
-  padding:1.1rem 1rem 1.1rem 8.5rem;   /* バッジ分の余白は維持 */
-  border:0;                            /* ← 外枠なし */
-  border-top:3px solid var(--brand);   /* 上だけ濃青 */
-  border-right:3px solid var(--brand); /* 右だけ濃青 */
-  border-bottom:2px solid #e5e7eb;     /* 下は薄グレー */
-  font-size:clamp(1.6rem,2.2vw,2.2rem);
-  font-weight:800;
+  position:relative; margin:1.25rem 0 .75rem;
+  padding:1.1rem 1rem 1.1rem 8.5rem;
+  border:0; border-top:3px solid var(--brand); border-right:3px solid var(--brand); border-bottom:2px solid #e5e7eb;
+  font-size:clamp(1.6rem,2.2vw,2.2rem); font-weight:800;
 }
-/* 左の濃紺バッジと斜めカットは現状のまま使う */
+/* 数字は消すがバッジは残す */
 h1::before{
-  content: "";                        /* ← ここを空にする */
-  position:absolute; left:.7rem; top:.5rem; bottom:.5rem;
+  content:""; position:absolute; left:.7rem; top:.5rem; bottom:.5rem;
   width:6.2rem; display:flex; align-items:center; justify-content:center;
   background:var(--brand); color:#fff; font-weight:800; font-size:2.2rem;
 }
@@ -50,10 +101,6 @@ h1::after{
   content:""; position:absolute; left:6.9rem; top:.5rem; bottom:.5rem; width:2rem;
   background:linear-gradient(75deg, var(--brand) 0 50%, transparent 50% 100%);
 }
-
-/* H1の番号バッジを全消しする場合 */
-h1{ padding-left:1rem; }
-h1::before, h1::after{ display:none !important; }
 
 h2{
   position:relative; margin:1.2rem 0 .6rem; padding:.6rem 1rem;
@@ -67,7 +114,7 @@ h2{
   background:#f7fbff; border:2px solid #87d1e5; border-radius:10px;
   box-shadow:0 1px 0 rgba(0,0,0,.03) inset;
 }
-.box .title{font-weight:800;color:#d53535;margin-bottom:.25rem;}
+.box .title{font-weight:800;color:#d53535;display:block;margin-bottom:.5rem;}
 .box.note{background:#fffdf7;border-color:#f2cf66;}
 .box.tip{ background:#f4fffb;border-color:#7ad9c2;}
 .em-red{color:#d53535;font-weight:700;}
@@ -87,30 +134,23 @@ main ul,main ol{margin:.5rem 0 .8rem 1.4rem}
 }
 
 /* コンテンツ列：横はみ出しは列の中で止める（右TOCは影響なし） */
-#layout .content{
-  min-width:0; max-width:100%;
-  overflow-x:hidden;   /* ← ページ全体じゃなく“左列だけ”横はみ出しを抑止 */
-  position:relative;
-}
+#layout .content{min-width:0;max-width:100%;overflow-x:hidden;position:relative;}
 
-/* 画像/表/コードは自分だけ横スクロール。画像はブロック化で版面を壊さない */
+/* 画像/表/コードは個別で横スクロール許可 */
 img, video { max-width:100%; height:auto; display:block; }
 table{ display:block; max-width:100%; overflow-x:auto; }
 pre{ max-width:100%; overflow:auto; }
 
 /* 右サイド TOC（PCのみ表示、sticky） */
 .toc-side{
-  display:none;
-  background:#fff; border:1px solid #e5e7eb; border-radius:10px;
-  box-shadow:0 2px 6px rgba(0,0,0,.04);
-  padding:.75rem .75rem 1rem; overflow:auto;
+  display:none; background:#fff; border:1px solid #e5e7eb; border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.04); padding:.75rem .75rem 1rem; overflow:auto;
 }
 @media (min-width:1100px){
   .toc-side{ display:block; position:sticky; top:72px; height:calc(100vh - 88px); }
 }
 
-/* 目次（共通見た目） */
-.toc-side-title{font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
+/* 目次リスト */
 .toc-box{margin:.75rem 0 1rem;padding:.75rem 1rem;border:1px solid #e5e7eb;border-radius:10px;background:#fafcff;}
 .toc-list{list-style:none;padding-left:.25rem;margin:0;}
 .toc-list>li{margin:.35rem 0;}
@@ -118,100 +158,9 @@ pre{ max-width:100%; overflow:auto; }
 .toc-list a:hover{border-bottom-color:#0b157a;}
 .toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
 
-
-/* サイトマップ行を淡いグレー背景＋枠 */
-.header{ background:#fff; }
-.header table.fixed-table{ border-collapse:separate; border-spacing:0; }
-.header thead tr{ background:#f5f6f8; border-bottom:1px solid #e5e7eb; }
-.header th{ border-right:1px solid #e5e7eb; }
-.header th:last-child{ border-right:none; }
-
-/* 最上位（th直下）の summary はボタン風 */
-.header th > details > summary{
-  display:inline-block;
-  padding:.4rem .75rem; margin:.25rem .35rem;
-  border:1px solid #d9dde5; border-radius:.45rem;
-  background:#fff; color:#204db3; cursor:pointer;
-}
-.header th > details[open] > summary{
-  background:#eaf0ff; border-color:#c4d2f7; color:#0b157a;
-}
-
-/* 下位（ul.gnav 直下）の summary はプルダウン風 ▶ */
-.header ul.gnav > details > summary{
-  display:flex; align-items:center; gap:.4rem;
-  padding:.2rem 0; margin:.15rem 0;
-  border:none; background:transparent; color:#333; font-weight:700; cursor:pointer;
-}
-.header ul.gnav > details > summary::before{
-  content:"▸"; color:#0b157a; transition: transform .2s ease;
-}
-.header ul.gnav > details[open] > summary::before{
-  transform: rotate(90deg);
-}
-
-/* サイトマップのリンク色も控えめに */
-.header .index a{
-  color:#204db3; text-decoration:none; border-bottom:1px dotted rgba(32,77,179,.4);
-}
-.header .index a:hover{ border-bottom-color:#204db3; }
-
-
-/* 「記事一覧（目次）」ラベル */
-.header .mokuji{ position:relative; padding-left:2rem; font-weight:800; }
-
-/* トップレベル summary を “タブっぽく” */
-.header details > summary{
-  display:inline-block;
-  padding:.4rem .75rem;
-  margin:.25rem .35rem;
-  border:1px solid #d9dde5;
-  border-radius:.45rem;
-  background:#fff;
-  color:#204db3;            /* 青すぎたらここを変える */
-  cursor:pointer;
-}
-.header details[open] > summary{
-  background:#eaf0ff;
-  border-color:#c4d2f7;
-  color:#0b157a;
-}
-.header .index a{
-  color:#204db3; text-decoration:none; border-bottom:1px dotted rgba(32,77,179,.4);
-}
-.header .index a:hover{ border-bottom-color:#204db3; }
-
-/* 右サイドの「目次」にアイコン */
-.toc-side-title{
-  position:relative; padding-left:1.75rem;
-}
-.toc-side-title::before{
-  content:"🧭"; position:absolute; left:.25rem; top:50%; transform:translateY(-50%);
-  font-size:1.1rem; opacity:.9;
-}
-
-
-
 /* ===================== MathJax：数式だけ横スクロール ===================== */
-/* ラッパー .math-scroll の箱の中だけ横スクロールを許可（PC/スマホ共通） */
-.math-scroll{
-  display:block;
-  max-width:100%;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  will-change:scroll-position;
-}
-
-/* 中のブロック数式は“自分の幅のまま”。列ははみ出さず、箱がスクロールを受け持つ */
-.math-scroll mjx-container[display="true"]{
-  display:inline-block;
-  max-width:none;
-  padding:.25rem 0;
-}
-.math-scroll mjx-container[display="true"] mjx-math{
-  white-space:nowrap;
-}
-
-/* デフォの MathJax は幅制限のみ（インラインは触らない） */
-mjx-container{ max-width:100%; }
-mjx-container:not([display="true"]){ max-width:100%; }
+.math-scroll{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;will-change:scroll-position;}
+.math-scroll mjx-container[display="true"]{display:inline-block;max-width:none;padding:.25rem 0;}
+.math-scroll mjx-container[display="true"] mjx-math{white-space:nowrap;}
+mjx-container{max-width:100%;}
+mjx-container:not([display="true"]){max-width:100%;}
