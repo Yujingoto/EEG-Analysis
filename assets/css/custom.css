@@ -1,7 +1,10 @@
 /* ---------- brand ---------- */
 :root{
-  --brand:#0b157a; --brand-weak:#cfd0e6;
-  --ink:#111; --bg:#fff; --accent:#2bb5a1;
+  --brand:#0b157a;          /* 濃い青 */
+  --brand-weak:#cfd0e6;     /* 薄い青灰 */
+  --ink:#111;
+  --bg:#fff;
+  --accent:#2bb5a1;
 }
 
 /* 本文 */
@@ -73,10 +76,14 @@ main ul,main ol{margin:.5rem 0 .8rem 1.4rem}
   #layout .page-wrap{ grid-template-columns:minmax(0,1fr) 300px; }
 }
 
-/* 本文はみ出し抑制：親ツリーには overflow を掛けない（sticky保全） */
-#layout .content{ min-width:0; max-width:100%; }
+/* コンテンツ列：横はみ出しは列の中で止める（右TOCは影響なし） */
+#layout .content{
+  min-width:0; max-width:100%;
+  overflow-x:hidden;   /* ← ページ全体じゃなく“左列だけ”横はみ出しを抑止 */
+  position:relative;
+}
 
-/* 画像/表/コードは自分だけ横スクロール可。画像はブロック化で版面を壊さない */
+/* 画像/表/コードは自分だけ横スクロール。画像はブロック化で版面を壊さない */
 img, video { max-width:100%; height:auto; display:block; }
 table{ display:block; max-width:100%; overflow-x:auto; }
 pre{ max-width:100%; overflow:auto; }
@@ -102,22 +109,25 @@ pre{ max-width:100%; overflow:auto; }
 .toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
 
 /* ===================== MathJax：数式だけ横スクロール ===================== */
-/* ラッパー .math-scroll を横スクロールの箱にする（iOSでも動く定番） */
+/* ラッパー .math-scroll の箱の中だけ横スクロールを許可（PC/スマホ共通） */
 .math-scroll{
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  max-width: 100%;
-}
-/* 中のブロック数式は“自分の幅のまま”で配置する */
-.math-scroll mjx-container[display="true"]{
-  display: inline-block;
-  min-width: max-content;   /* 中身の幅に合わせる → 箱の方が小さくて横スクロールが出る */
-  padding: .25rem 0;
+  display:block;
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  will-change:scroll-position;
 }
 
-/* デフォの MathJax は幅制限のみ。インラインは触らない */
+/* 中のブロック数式は“自分の幅のまま”。列ははみ出さず、箱がスクロールを受け持つ */
+.math-scroll mjx-container[display="true"]{
+  display:inline-block;
+  max-width:none;
+  padding:.25rem 0;
+}
+.math-scroll mjx-container[display="true"] mjx-math{
+  white-space:nowrap;
+}
+
+/* デフォの MathJax は幅制限のみ（インラインは触らない） */
 mjx-container{ max-width:100%; }
 mjx-container:not([display="true"]){ max-width:100%; }
-
-/* PCだけ折り返したい長尺式があれば、wrap-math で任意に切替可 */
-.wrap-math mjx-container[display="true"] mjx-math{ white-space:normal; }
