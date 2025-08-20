@@ -2,7 +2,6 @@ title: EEG解析入門
 theme: minima   # とりあえず見た目はこれでOK
 plugins:
   - jekyll-sitemap
-permalink: pretty
 
 # これで GFM 記法維持しつつ kramdown で処理
 markdown: kramdown
