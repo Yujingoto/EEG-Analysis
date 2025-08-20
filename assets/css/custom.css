@@ -10,12 +10,12 @@
 /* 本文 */
 body{color:var(--ink);background:var(--bg);line-height:1.85;}
 
-/* ---------- sticky 目次（グローバルヘッダー） ---------- */
+/* ---------- グローバルヘッダー（sticky） ---------- */
 .header{
   position: sticky; top: 0; z-index: 50;
-  background: #fff;
-  border-bottom: 2px solid var(--brand);
-  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  background:#fff;
+  border-bottom:2px solid var(--brand);
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
 }
 .fixed-table{width:100%;table-layout:fixed;border-collapse:collapse}
 .fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem}
@@ -85,13 +85,13 @@ main ul,main ol{margin:.5rem 0 .8rem 1.4rem}
   #layout .page-wrap{ grid-template-columns:minmax(0,1fr) 300px; }
 }
 
-/* 本文側の横はみ出しをここで吸収（stickyの親には overflow を掛けない） */
+/* 本文側で横あふれを吸収（stickyの祖先に overflow は付けない） */
 #layout .content{ min-width:0; max-width:100%; overflow-x: clip; }
 
-/* 画像/表/コードは自分だけスクロール */
-img,video{max-width:100%;height:auto;}
-table{display:block;max-width:100%;overflow-x:auto;}
-pre{max-width:100%;overflow:auto;}
+/* 画像/表/コードは自分だけ横スクロール可。画像はブロック化で版面を壊さない */
+img, video { max-width:100%; height:auto; display:block; }
+table{ display:block; max-width:100%; overflow-x:auto; }
+pre{ max-width:100%; overflow:auto; }
 
 /* 右サイド TOC（PCのみ表示、sticky） */
 .toc-side{
@@ -104,7 +104,7 @@ pre{max-width:100%;overflow:auto;}
   .toc-side{ display:block; position:sticky; top:72px; height:calc(100vh - 88px); }
 }
 
-/* 目次見た目 */
+/* 目次（共通見た目） */
 .toc-side-title{font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
 .toc-box{margin:.75rem 0 1rem;padding:.75rem 1rem;border:1px solid #e5e7eb;border-radius:10px;background:#fafcff;}
 .toc-list{list-style:none;padding-left:.25rem;margin:0;}
@@ -114,15 +114,18 @@ pre{max-width:100%;overflow:auto;}
 .toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
 
 /* ===================== MathJax（数式だけ横スクロール） ===================== */
-mjx-container{
-  max-width:100%;
-  -webkit-overflow-scrolling:touch;
+/* まずデフォは幅制限のみ（はみ出しを防ぐ） */
+mjx-container{ max-width:100%; -webkit-overflow-scrolling:touch; }
+
+/* ブロック数式をラッパーで包んだときだけ横スクロールを許可 */
+.math-scroll{
+  overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;
 }
-mjx-container[display="true"]{
-  display:block;
-  overflow-x:auto; overflow-y:hidden;
-  padding:.25rem 0;
-}
-/* 自動改行は許可。どうしても1行にしたい式だけ .nowrap ラッパーを使う */
-mjx-container[display="true"] mjx-math{ min-width:0; white-space:normal; }
+.math-scroll mjx-container[display="true"]{ display:block; max-width:none; padding:.25rem 0; }
+.math-scroll mjx-container[display="true"] mjx-math{ display:block; width:max-content; min-width:0; }
+
+/* インラインは従来通り。保険で幅制限のみ */
+mjx-container:not([display="true"]){ max-width:100%; }
+
+/* “この式だけ1行キープ”したい場合は .nowrap をラッパーの外側に */
 .nowrap mjx-container[display="true"] mjx-math{ white-space:nowrap; }
