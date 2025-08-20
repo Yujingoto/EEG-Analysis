@@ -1,3 +1,4 @@
+title: EEG解析入門
 plugins:
   - jekyll-sitemap
 permalink: pretty
@@ -7,3 +8,10 @@ defaults:
       path: ""
     values:
       layout: default
+
+
+# これで GFM 記法維持しつつ kramdown で処理
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax

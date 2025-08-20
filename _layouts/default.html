@@ -4,7 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} | {{ site.title }}</title>
+
+  <!-- 任意のCSS -->
   <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
+
+  <!-- MathJax v3 設定：$...$ / $$...$$ / \(...\) / \[...\] を有効化 -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      packages: {'[+]': ['ams']}   // ← AMS系の環境を使えるように追加
+    },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+  };
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 </head>
 <body>
   {% include header.html %}
