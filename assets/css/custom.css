@@ -10,7 +10,7 @@
 /* 本文 */
 body{color:var(--ink);background:var(--bg);line-height:1.85;}
 
-/* ---------- sticky 目次（あなたの header.html を固定） ---------- */
+/* ---------- sticky 目次（グローバルヘッダー） ---------- */
 .header{
   position: sticky; top: 0; z-index: 50;
   background: #fff;
@@ -19,125 +19,92 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 }
 .fixed-table{width:100%;table-layout:fixed;border-collapse:collapse}
 .fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem}
-
-/* 目次の見た目を整理 */
-.header details{margin: .25rem 0;}
+.header details{margin:.25rem 0;}
 .header details summary{cursor:pointer;font-weight:700}
-.header .gnav, .header .index{list-style:none;margin:.25rem 0 0;padding-left:1rem}
+.header .gnav,.header .index{list-style:none;margin:.25rem 0 0;padding-left:1rem}
 .header .index li{margin:.15rem 0}
-.header a{ text-decoration: none; border-bottom: 1px dotted rgba(0,0,0,.25); }
-.header a:hover{ border-bottom-color: var(--brand); }
+.header a{text-decoration:none;border-bottom:1px dotted rgba(0,0,0,.25);}
+.header a:hover{border-bottom-color:var(--brand);}
 
-/* ---------- H1 / H2 を指定の見た目に ---------- */
-/* 章番号を自動付番（01, 02...） */
-main{ counter-reset: h1; }
-main h1{ counter-increment: h1; counter-reset: h2; }
+/* ---------- H1 / H2 ---------- */
+main{ counter-reset:h1; }
+main h1{ counter-increment:h1; counter-reset:h2; }
 
-/* H1: 画像1のスタイル */
 h1{
-  position: relative;
-  margin: 1.25rem 0 .75rem;
-  padding: 1.1rem 1rem 1.1rem 8.5rem;   /* 左にバッジの余白 */
-  border: 3px solid var(--brand);
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-  font-weight: 800;
+  position:relative;
+  margin:1.25rem 0 .75rem;
+  padding:1.1rem 1rem 1.1rem 8.5rem;
+  border:3px solid var(--brand);
+  font-size:clamp(1.6rem,2.2vw,2.2rem);
+  font-weight:800;
 }
 h1::before{
-  /* 左の濃紺バッジ */
-  content: counter(h1, decimal-leading-zero);
-  position:absolute; left: .7rem; top: .5rem; bottom:.5rem;
+  content:counter(h1, decimal-leading-zero);
+  position:absolute; left:.7rem; top:.5rem; bottom:.5rem;
   width:6.2rem; display:flex; align-items:center; justify-content:center;
-  background: var(--brand); color:#fff; font-weight:800; font-size:2.2rem;
+  background:var(--brand); color:#fff; font-weight:800; font-size:2.2rem;
 }
 h1::after{
-  /* 斜めカット */
-  content:""; position:absolute; left:6.9rem; top:.5rem; bottom:.5rem; width:2.0rem;
-  background: linear-gradient(75deg, var(--brand) 0 50%, transparent 50% 100%);
+  content:""; position:absolute; left:6.9rem; top:.5rem; bottom:.5rem; width:2rem;
+  background:linear-gradient(75deg, var(--brand) 0 50%, transparent 50% 100%);
 }
 
-/* H2: 画像2のスタイル */
 h2{
   position:relative;
-  margin: 1.2rem 0 .6rem;
-  padding: .6rem 1rem;
-  background: #cfd0e6;
-  border-left: 8px solid var(--brand);
-  border-bottom: 3px solid var(--brand);
-  font-size: clamp(1.25rem, 1.6vw, 1.6rem);
-  font-weight: 800;
+  margin:1.2rem 0 .6rem;
+  padding:.6rem 1rem;
+  background:#cfd0e6;
+  border-left:8px solid var(--brand);
+  border-bottom:3px solid var(--brand);
+  font-size:clamp(1.25rem,1.6vw,1.6rem);
+  font-weight:800;
 }
 
-/* ---------- 情報ボックス（画像3っぽい） ---------- */
+/* ---------- 情報ボックス ---------- */
 .box{
-  margin: 1rem 0;
-  padding: 1rem 1.1rem;
-  background: #f7fbff;
-  border: 2px solid #87d1e5;
-  border-radius: 10px;
-  box-shadow: 0 1px 0 rgba(0,0,0,.03) inset;
+  margin:1rem 0; padding:1rem 1.1rem;
+  background:#f7fbff; border:2px solid #87d1e5; border-radius:10px;
+  box-shadow:0 1px 0 rgba(0,0,0,.03) inset;
 }
-.box .title{
-  font-weight: 800; color:#d53535; margin-bottom:.25rem;
-}
-.box.note{ background:#fffdf7; border-color:#f2cf66; }
-.box.tip{  background:#f4fffb; border-color:#7ad9c2; }
-.em-red{ color:#d53535; font-weight:700; }
+.box .title{font-weight:800;color:#d53535;margin-bottom:.25rem;}
+.box.note{background:#fffdf7;border-color:#f2cf66;}
+.box.tip{ background:#f4fffb;border-color:#7ad9c2;}
+.em-red{color:#d53535;font-weight:700;}
 
-/* ---------- 本文の細かい調整 ---------- */
-main.content{max-width: 1024px; margin: 0 auto; padding: 1rem;}
-main p{margin: .6rem 0;}
-main ul, main ol{margin:.5rem 0 .8rem 1.4rem}
+/* ---------- 本文幅/余白 ---------- */
+main.content{max-width:1024px;margin:0 auto;padding:1rem;}
+main p{margin:.6rem 0;}
+main ul,main ol{margin:.5rem 0 .8rem 1.4rem}
 
-/* 数式のはみ出し対策 */
-mjx-container{ overflow-x:auto; overflow-y:hidden; }
-
-/* MathJax: モバイルでの横スクロール許可 + 余白調整 */
-mjx-container{
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  max-width: 100%;
-}
-mjx-container[display="true"]{
-  display:block;
-  padding:.25rem 0;
-}
-
-/* 自動改行で崩れる場合は“スクロール優先”に切替えたい式だけに .nowrap を付ける */
-.nowrap mjx-container[display="true"] mjx-math{ white-space: nowrap; }
-
-/* ===== レイアウト（ヘッダーは既存のまま） ===== */
+/* ===================== レイアウト（本文 + 右TOC） ===================== */
 #layout .page-wrap{
   max-width:1200px; margin:0 auto; padding:0 1rem;
-  display:grid; grid-template-columns: 1fr; gap:1.25rem;
+  display:grid; grid-template-columns:1fr; gap:1.25rem;
 }
 @media (min-width:1100px){
-  #layout .page-wrap{ grid-template-columns: minmax(0,1fr) 300px; }
+  #layout .page-wrap{ grid-template-columns:minmax(0,1fr) 300px; }
 }
 
-/* 本文はみ出し抑制 */
-#layout .content{ min-width:0; }
-img, video{ max-width:100%; height:auto; }
-table{ display:block; overflow-x:auto; max-width:100%; }
-pre{ overflow:auto; max-width:100%; }
+/* 本文側の横はみ出しをここで吸収（stickyの親には overflow を掛けない） */
+#layout .content{ min-width:0; max-width:100%; overflow-x: clip; }
 
-/* ===== 右サイド TOC ===== */
+/* 画像/表/コードは自分だけスクロール */
+img,video{max-width:100%;height:auto;}
+table{display:block;max-width:100%;overflow-x:auto;}
+pre{max-width:100%;overflow:auto;}
+
+/* 右サイド TOC（PCのみ表示、sticky） */
 .toc-side{
-  display:none;            /* モバイルは出さない */
+  display:none;
   background:#fff; border:1px solid #e5e7eb; border-radius:10px;
   box-shadow:0 2px 6px rgba(0,0,0,.04);
   padding:.75rem .75rem 1rem; overflow:auto;
 }
 @media (min-width:1100px){
-  .toc-side{
-    display:block;         /* PCで表示 */
-    position: sticky;      /* 固定はstickyで */
-    top: 72px;             /* ヘッダー分は調整 */
-    height: calc(100vh - 88px);
-  }
+  .toc-side{ display:block; position:sticky; top:72px; height:calc(100vh - 88px); }
 }
 
-/* ===== 目次の見た目（共通） ===== */
+/* 目次見た目 */
 .toc-side-title{font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
 .toc-box{margin:.75rem 0 1rem;padding:.75rem 1rem;border:1px solid #e5e7eb;border-radius:10px;background:#fafcff;}
 .toc-list{list-style:none;padding-left:.25rem;margin:0;}
@@ -146,39 +113,16 @@ pre{ overflow:auto; max-width:100%; }
 .toc-list a:hover{border-bottom-color:#0b157a;}
 .toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
 
-/* ===== 既存の見出し/ボックスやMathJax（前回のやつ）と共存OK ===== */
-mjx-container{ overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; max-width:100%; }
-
-/* ==== ページ全体の横スクロール禁止（数式などは個別で許可） ==== */
-html, body { overflow-x: hidden; }
-
-/* ==== MathJax: ブロック数式は“自分だけ”横スクロール ==== */
+/* ===================== MathJax（数式だけ横スクロール） ===================== */
+mjx-container{
+  max-width:100%;
+  -webkit-overflow-scrolling:touch;
+}
 mjx-container[display="true"]{
   display:block;
-  max-width:100%;
-  overflow-x:auto;
-  overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;
-  padding: .25rem 0;
+  overflow-x:auto; overflow-y:hidden;
+  padding:.25rem 0;
 }
-
-/* Safari 対策：内側の要素が勝手に幅を押し広げないように */
-mjx-container[display="true"] mjx-math {
-  min-width: 0;
-  white-space: normal;   /* 自動改行を許す（MathJaxのlinebreaksと併用） */
-}
-
-/* インライン数式は行内のまま。はみ出しを抑える保険 */
-mjx-container:not([display="true"]) {
-  max-width:100%;
-}
-
-/* “この式だけ横スクロール優先”にしたい時は .nowrap を使う（任意） */
-.nowrap mjx-container[display="true"] mjx-math { white-space: nowrap; }
-
-/* 画像・表・コードで横はみ出しを作らない */
-img, video { max-width:100%; height:auto; }
-table { display:block; max-width:100%; overflow-x:auto; }
-pre   { max-width:100%; overflow:auto; }
-.content { min-width:0; }
-
+/* 自動改行は許可。どうしても1行にしたい式だけ .nowrap ラッパーを使う */
+mjx-container[display="true"] mjx-math{ min-width:0; white-space:normal; }
+.nowrap mjx-container[display="true"] mjx-math{ white-space:nowrap; }
