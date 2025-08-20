@@ -7,15 +7,14 @@
   <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
   {% seo %}
 
-\def\bm#1{{\boldsymbol #1}}
 
 <script>
   window.MathJax = {
     tex:{
+      packages:{ '[+]': ['ams','bm'] },
       inlineMath:[['$','$'],['\\(','\\)']],
       displayMath:[['$$','$$'],['\\[','\\]']],
-      processEscapes:true,
-      packages:{ '[+]': ['ams','bm'] }
+      processEscapes:true
     },
     chtml:{ linebreaks:{ automatic:false } },
     options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] },
