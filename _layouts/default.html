@@ -15,8 +15,10 @@
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$','$$'], ['\\[','\\]']],
       processEscapes: true,
-      packages: {'[+]': ['ams']}   // ← AMS系の環境を使えるように追加
+      packages: {'[+]': ['ams']}
     },
+    // 画面幅に合わせて数式を自動で改行
+    chtml: { linebreaks: { automatic: true, width: "container" } },
     options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
   };
 </script>
