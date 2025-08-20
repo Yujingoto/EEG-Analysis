@@ -22,7 +22,6 @@ a
 $$
 x = a + \sin \theta
 $$
-
 </div>
 
 > <span class="title">定義</span>
