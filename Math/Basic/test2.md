@@ -9,6 +9,12 @@ nav_order: 20
 
 ## オイラーの公式
 
+なるほど，この > がついた範囲はボックスに入るようになっているって感じかな．
+なんかいい感じっぽい気がする
+
+
+<center><img src="../figures/psi.png"></center>
+
 > ここに本文。$\mathrm{e}^{i\pi}+1=0$ など。
 {: .box}
 
@@ -22,3 +28,9 @@ nav_order: 20
 
 > ヒントボックス
 {: .box.tip}
+
+### hoge
+
+$$
+  PSI(t) = |\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}|
+$$
