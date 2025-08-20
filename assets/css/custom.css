@@ -29,11 +29,17 @@ main{ counter-reset:h1; }
 main h1{ counter-increment:h1; counter-reset:h2; }
 
 h1{
-  position:relative; margin:1.25rem 0 .75rem;
-  padding:1.1rem 1rem 1.1rem 8.5rem;
-  border:3px solid var(--brand);
-  font-size:clamp(1.6rem,2.2vw,2.2rem); font-weight:800;
+  position:relative;
+  margin:1.25rem 0 .75rem;
+  padding:1.1rem 1rem 1.1rem 8.5rem;   /* バッジ分の余白は維持 */
+  border:0;                            /* ← 外枠なし */
+  border-top:3px solid var(--brand);   /* 上だけ濃青 */
+  border-right:3px solid var(--brand); /* 右だけ濃青 */
+  border-bottom:2px solid #e5e7eb;     /* 下は薄グレー */
+  font-size:clamp(1.6rem,2.2vw,2.2rem);
+  font-weight:800;
 }
+/* 左の濃紺バッジと斜めカットは現状のまま使う */
 h1::before{
   content:counter(h1, decimal-leading-zero);
   position:absolute; left:.7rem; top:.5rem; bottom:.5rem;
@@ -44,6 +50,10 @@ h1::after{
   content:""; position:absolute; left:6.9rem; top:.5rem; bottom:.5rem; width:2rem;
   background:linear-gradient(75deg, var(--brand) 0 50%, transparent 50% 100%);
 }
+
+/* H1の番号バッジを全消しする場合 */
+h1{ padding-left:1rem; }
+h1::before, h1::after{ display:none !important; }
 
 h2{
   position:relative; margin:1.2rem 0 .6rem; padding:.6rem 1rem;
@@ -107,6 +117,53 @@ pre{ max-width:100%; overflow:auto; }
 .toc-list a{text-decoration:none;color:#0b157a;border-bottom:1px dashed rgba(11,21,122,.35);}
 .toc-list a:hover{border-bottom-color:#0b157a;}
 .toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
+
+
+/* サイトマップ行を淡いグレー背景＋枠 */
+.header{ background:#fff; }
+.header table.fixed-table{ border-collapse:separate; border-spacing:0; }
+.header thead tr{ background:#f5f6f8; border-bottom:1px solid #e5e7eb; }
+.header th{ border-right:1px solid #e5e7eb; }
+.header th:last-child{ border-right:none; }
+
+/* 「記事一覧（目次）」ラベルにアイコン */
+.header .mokuji{ position:relative; padding-left:2rem; font-weight:800; }
+.header .mokuji::before{
+  content:"📚"; position:absolute; left:.5rem; top:50%; transform:translateY(-50%);
+  font-size:1.1rem; opacity:.9;
+}
+
+/* トップレベル summary を “タブっぽく” */
+.header details > summary{
+  display:inline-block;
+  padding:.4rem .75rem;
+  margin:.25rem .35rem;
+  border:1px solid #d9dde5;
+  border-radius:.45rem;
+  background:#fff;
+  color:#204db3;            /* 青すぎたらここを変える */
+  cursor:pointer;
+}
+.header details[open] > summary{
+  background:#eaf0ff;
+  border-color:#c4d2f7;
+  color:#0b157a;
+}
+.header .index a{
+  color:#204db3; text-decoration:none; border-bottom:1px dotted rgba(32,77,179,.4);
+}
+.header .index a:hover{ border-bottom-color:#204db3; }
+
+/* 右サイドの「目次」にアイコン */
+.toc-side-title{
+  position:relative; padding-left:1.75rem;
+}
+.toc-side-title::before{
+  content:"🧭"; position:absolute; left:.25rem; top:50%; transform:translateY(-50%);
+  font-size:1.1rem; opacity:.9;
+}
+
+
 
 /* ===================== MathJax：数式だけ横スクロール ===================== */
 /* ラッパー .math-scroll の箱の中だけ横スクロールを許可（PC/スマホ共通） */
