@@ -149,3 +149,36 @@ pre{ overflow:auto; max-width:100%; }
 /* ===== 既存の見出し/ボックスやMathJax（前回のやつ）と共存OK ===== */
 mjx-container{ overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; max-width:100%; }
 
+/* ==== ページ全体の横スクロール禁止（数式などは個別で許可） ==== */
+html, body { overflow-x: hidden; }
+
+/* ==== MathJax: ブロック数式は“自分だけ”横スクロール ==== */
+mjx-container[display="true"]{
+  display:block;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  padding: .25rem 0;
+}
+
+/* Safari 対策：内側の要素が勝手に幅を押し広げないように */
+mjx-container[display="true"] mjx-math {
+  min-width: 0;
+  white-space: normal;   /* 自動改行を許す（MathJaxのlinebreaksと併用） */
+}
+
+/* インライン数式は行内のまま。はみ出しを抑える保険 */
+mjx-container:not([display="true"]) {
+  max-width:100%;
+}
+
+/* “この式だけ横スクロール優先”にしたい時は .nowrap を使う（任意） */
+.nowrap mjx-container[display="true"] mjx-math { white-space: nowrap; }
+
+/* 画像・表・コードで横はみ出しを作らない */
+img, video { max-width:100%; height:auto; }
+table { display:block; max-width:100%; overflow-x:auto; }
+pre   { max-width:100%; overflow:auto; }
+.content { min-width:0; }
+
