@@ -201,7 +201,8 @@ $$
 
 次に，こいつらをノイズに埋めます．CCAは二つのデータ群の間で行う処理だったので，こいつらをある電極データに含まれる真の脳波成分だったとして (こんな単純だったらなぁ...)，これが２人の被験者 (Sub1, Sub2) で得られたと仮定して次のようなデータ群を生成します．
 
-<details><summary>生成した信号のプログラム (clickで展開)</summary>
+<details markdown="1">
+<summary>生成した信号のプログラム (clickで展開)</summary>
 
 ```Python
 from sklearn.cross_decomposition import CCA
