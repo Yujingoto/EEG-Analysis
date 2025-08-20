@@ -1,8 +1,8 @@
 {%- comment -%}
-  自動サイトマップ（Liquid 3 互換・安全版）
+  自動サイトマップ（Liquid 3 互換）
   前提:
-    - 各ページの front matter に categories: [Top, Sub]
-    - nav_order で並び順（未指定は末尾）
+    - 各ページの front matter に categories: [Top, Sub]（Sub なければ省略可）
+    - nav_order で並び替え（未指定は事実上末尾寄り）
     - hide_in_nav: true で非表示
 {%- endcomment -%}
 
@@ -12,20 +12,15 @@
       <tr>
         <th class="mokuji">目次</th>
 
-        {%- comment -%} 対象ページを絞る {%- endcomment -%}
-        {%- assign pages_all = site.pages
-          | where_exp:"p","p.title"
-          | where_exp:"p","p.url"
-          | where_exp:"p","p.hide_in_nav != true"
-        -%}
+        {%- assign pages_sorted = site.pages | sort:"nav_order" -%}
 
-        {%- comment -%} Topカテゴリ一覧を収集 → uniq → sort {%- endcomment -%}
+        {%- comment -%} Topカテゴリを収集 {%- endcomment -%}
         {%- assign topcats_raw = "" -%}
-        {%- for p in pages_all -%}
-          {%- if p.categories and p.categories.size > 0 -%}
-            {%- assign top = p.categories[0] -%}
-            {%- if top -%}
-              {%- capture topcats_raw -%}{{ topcats_raw }}|||{{ top }}{%- endcapture -%}
+        {%- for p in pages_sorted -%}
+          {%- if p.title and p.url and p.hide_in_nav != true and p.name != "404.html" -%}
+            {%- if p.categories and p.categories.size > 0 -%}
+              {%- assign top = p.categories[0] -%}
+              {%- if top -%}{%- capture topcats_raw -%}{{ topcats_raw }}|||{{ top }}{%- endcapture -%}{%- endif -%}
             {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
@@ -37,19 +32,17 @@
             <details>
               <summary>{{ topcat }}</summary>
 
-              {%- comment -%} この Top の配下ページ {%- endcomment -%}
-              {%- assign top_items = pages_all | where_exp:"p","p.categories and p.categories[0] == topcat" -%}
-
-              {%- comment -%} Subカテゴリ一覧を収集 → uniq → sort {%- endcomment -%}
+              {%- comment -%} Subカテゴリを収集（無いページは「ホーム」扱い） {%- endcomment -%}
               {%- assign subcats_raw = "" -%}
-              {%- for p in top_items -%}
-                {%- assign sub = "" -%}
-                {%- if p.categories and p.categories.size > 1 -%}
-                  {%- assign sub = p.categories[1] -%}
-                {%- else -%}
-                  {%- assign sub = "ホーム" -%}
+              {%- for p in pages_sorted -%}
+                {%- if p.title and p.url and p.hide_in_nav != true and p.categories and p.categories.size > 0 and p.categories[0] == topcat -%}
+                  {%- if p.categories.size > 1 -%}
+                    {%- assign sub = p.categories[1] -%}
+                  {%- else -%}
+                    {%- assign sub = "ホーム" -%}
+                  {%- endif -%}
+                  {%- capture subcats_raw -%}{{ subcats_raw }}|||{{ sub }}{%- endcapture -%}
                 {%- endif -%}
-                {%- capture subcats_raw -%}{{ subcats_raw }}|||{{ sub }}{%- endcapture -%}
               {%- endfor -%}
               {%- assign subcats = subcats_raw | split:"|||" | uniq | sort -%}
 
@@ -59,16 +52,17 @@
                   <details>
                     <summary>{{ subcat }}</summary>
                     <ul class="index">
-                      {%- assign sub_items = top_items | where_exp:"p","p.categories and p.categories.size > 1 and p.categories[1] == subcat" -%}
-                      {%- if sub_items == empty -%}
-                        {%- assign sub_items = top_items | where_exp:"p","!(p.categories and p.categories.size > 1)" -%}
-                      {%- endif -%}
-
-                      {%- assign sorted = sub_items | sort:"nav_order" -%}
-                      {%- for page in sorted -%}
-                        {%- assign title = page.nav_title | default: page.title -%}
-                        {%- if title -%}
-                          <li><a href="{{ page.url | relative_url }}">{{ title }}</a></li>
+                      {%- for page in pages_sorted -%}
+                        {%- if page.title and page.url and page.hide_in_nav != true and page.categories and page.categories.size > 0 and page.categories[0] == topcat -%}
+                          {%- if page.categories.size > 1 -%}
+                            {%- if page.categories[1] == subcat -%}
+                              <li><a href="{{ page.url | relative_url }}">{{ page.nav_title | default: page.title }}</a></li>
+                            {%- endif -%}
+                          {%- else -%}
+                            {%- if subcat == "ホーム" -%}
+                              <li><a href="{{ page.url | relative_url }}">{{ page.nav_title | default: page.title }}</a></li>
+                            {%- endif -%}
+                          {%- endif -%}
                         {%- endif -%}
                       {%- endfor -%}
                     </ul>
