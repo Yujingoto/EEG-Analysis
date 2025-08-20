@@ -15,3 +15,4 @@ markdown: kramdown
 kramdown:
   input: GFM
   math_engine: mathjax
+  auto_ids: true   # 見出しにidを自動付与（JS保険もあるが一応）
