@@ -15,6 +15,8 @@ nav_order: 20
 
 <center><img src="../figures/psi.png"></center>
 
+<center><img src="../figures/abs-angle.png"></center>
+
 > ここに本文。$\mathrm{e}^{i\pi}+1=0$ など。
 {: .box}
 
