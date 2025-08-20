@@ -1,23 +1,22 @@
-// ブロック数式(mjx-container[display=true])を .math-scroll で包んで横スクロールを有効化
+// すべてのブロック数式を .math-scroll で包む（iOSでも確実に横スクロールにする）
 (function () {
-  var blocks = document.querySelectorAll('mjx-container[display="true"]');
-  if (!blocks.length) return;
+  function wrapAll() {
+    var blocks = document.querySelectorAll('mjx-container[display="true"]');
+    blocks.forEach(function (m) {
+      var p = m.parentElement;
+      if (p && p.classList && p.classList.contains('math-scroll')) return; // 既に包んでいる
+      var w = document.createElement('div');
+      w.className = 'math-scroll';
+      m.parentNode.insertBefore(w, m);
+      w.appendChild(m);
+    });
+  }
 
-  blocks.forEach(function (m) {
-    var p = m.parentElement;
-    if (p && p.classList && p.classList.contains('math-scroll')) return;
-
-    var wrap = document.createElement('div');
-    wrap.className = 'math-scroll';
-
-    // p が段落(<p>)で他のテキストを含まないときは置換、それ以外は直ラップ
-    if (p && p.tagName === 'P' && p.textContent.trim() === '') {
-      p.parentNode.insertBefore(wrap, p);
-      wrap.appendChild(m);
-      p.remove();
-    } else {
-      m.parentNode.insertBefore(wrap, m);
-      wrap.appendChild(m);
-    }
-  });
+  // MathJax の typeset 完了後に実行
+  if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+    MathJax.startup.promise.then(wrapAll);
+  } else {
+    // 念のため
+    window.addEventListener('load', wrapAll);
+  }
 })();

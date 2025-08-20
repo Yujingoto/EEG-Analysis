@@ -8,9 +8,19 @@
   {% seo %}
 <script>
   window.MathJax = {
-    tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,packages:{'[+]':['ams']}},
-    chtml:{ linebreaks:{ automatic:false } },   /* ← 自動改行オフ */
-    options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] }
+    tex:{
+      inlineMath:[['$','$'],['\\(','\\)']],
+      displayMath:[['$$','$$'],['\\[','\\]']],
+      processEscapes:true, packages:{'[+]':['ams']}
+    },
+    chtml:{ linebreaks:{ automatic:false } },
+    options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] },
+    startup:{
+      ready: () => {
+        MathJax.startup.defaultReady();
+        // mathwrap.js が typeset 後に走るよう startup.promise を使っているのでOK
+      }
+    }
   };
 </script>
 

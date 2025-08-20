@@ -101,20 +101,23 @@ pre{ max-width:100%; overflow:auto; }
 .toc-list a:hover{border-bottom-color:#0b157a;}
 .toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
 
-/* ===================== MathJax（“数式だけ”横スクロール） ===================== */
-/* 余計な親 overflow を使わず、数式自身にスクロールを付ける。 */
-mjx-container{
-  max-width:100%;
-  -webkit-overflow-scrolling:touch;
+/* ===================== MathJax：数式だけ横スクロール ===================== */
+/* ラッパー .math-scroll を横スクロールの箱にする（iOSでも動く定番） */
+.math-scroll{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
-mjx-container[display="true"]{
-  display:block;
-  overflow-x:auto; overflow-y:hidden;        /* ← これで数式だけ横スクロール */
-  padding:.25rem 0;
+/* 中のブロック数式は“自分の幅のまま”で配置する */
+.math-scroll mjx-container[display="true"]{
+  display: inline-block;
+  min-width: max-content;   /* 中身の幅に合わせる → 箱の方が小さくて横スクロールが出る */
+  padding: .25rem 0;
 }
-/* スクロール前提なので折り返さない。PCで折り返したい式だけ .wrap-math を使う */
-mjx-container[display="true"] mjx-math{ white-space:nowrap; }
-.wrap-math mjx-container[display="true"] mjx-math{ white-space:normal; }
 
-/* インライン数式は幅だけ制限 */
+/* デフォの MathJax は幅制限のみ。インラインは触らない */
+mjx-container{ max-width:100%; }
 mjx-container:not([display="true"]){ max-width:100%; }
+
+/* PCだけ折り返したい長尺式があれば、wrap-math で任意に切替可 */
+.wrap-math mjx-container[display="true"] mjx-math{ white-space:normal; }
