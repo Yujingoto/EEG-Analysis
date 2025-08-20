@@ -106,34 +106,56 @@ mjx-container[display="true"]{
 /* 自動改行で崩れる場合は“スクロール優先”に切替えたい式だけに .nowrap を付ける */
 .nowrap mjx-container[display="true"] mjx-math{ white-space: nowrap; }
 
-/* レイアウト：本文 + 右TOC（PCは2カラム、モバイルは縦並び） */
-.page-wrap{max-width:1200px;margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:1fr;gap:1.25rem;}
-@media (min-width: 960px){ .page-wrap{ grid-template-columns:minmax(0,1fr) 300px; } }
+/* ===== レイアウト（PCは2カラム） ===== */
+.page-wrap{
+  max-width: 1200px; margin: 0 auto; padding: 0 1rem;
+  display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+}
+@media (min-width: 1100px){
+  .page-wrap{ grid-template-columns: 1fr 300px; }
+}
 
-/* 右サイド TOC（デフォは非表示。PCで表示） */
+/* ===== 右サイド目次 ===== */
 .toc-side{
-  display:none;
-  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
-  box-shadow:0 2px 6px rgba(0,0,0,.04); padding:.75rem .75rem 1rem;
-  overflow:auto;
+  position: sticky; top: 64px;  /* ヘッダー分の余白を調整 */
+  height: calc(100vh - 80px);
+  overflow: auto;
+  padding: .75rem .75rem 1rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);
+  display: none;   /* モバイルは非表示 */
 }
-@media (min-width: 960px){ .toc-side{ display:block; } }
+@media (min-width: 1100px){ .toc-side{ display:block; } }
 
-/* 「常時右固定」版：デスクトップは position:fixed で画面右に貼り付ける */
-@media (min-width: 1200px){
-  .toc-side.fixed{
-    position:fixed; top:72px;
-    /* 右端の余白はコンテンツ幅に合わせて可変 */
-    right: max((100vw - 1200px)/2, 12px);
-    width:300px; height: calc(100vh - 88px); overflow:auto;
-  }
+.toc-side-title{
+  font-weight: 800; margin: .25rem 0 .5rem;
+  border-bottom: 1px solid #e5e7eb; padding-bottom: .25rem;
 }
 
-/* TOC 見た目（共通） */
-.toc-side-title{font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
-.toc-box{margin:.75rem 0 1rem;padding:.75rem 1rem;border:1px solid #e5e7eb;border-radius:10px;background:#fafcff;}
-.toc-list{list-style:none;padding-left:.25rem;margin:0;}
-.toc-list>li{margin:.35rem 0;}
-.toc-list a{text-decoration:none;color:#0b157a;border-bottom:1px dashed rgba(11,21,122,.35);}
-.toc-list a:hover{border-bottom-color:#0b157a;}
-.toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
+/* ===== 目次（共通スタイル） ===== */
+.toc-box{
+  margin: .75rem 0 1rem;
+  padding: .75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fafcff;
+}
+.toc-list{ list-style: none; padding-left: .25rem; margin: 0; }
+.toc-list > li{ margin: .35rem 0; }
+.toc-list a{
+  text-decoration: none;
+  color: #0b157a;
+  border-bottom: 1px dashed rgba(11,21,122,.35);
+}
+.toc-list a:hover{ border-bottom-color: #0b157a; }
+.toc-list li ul{
+  list-style: none; margin: .25rem 0 .35rem .9rem; padding-left: 0;
+  border-left: 2px solid rgba(11,21,122,.15);
+  padding-left: .6rem;
+}
+
+/* ===== 既存の見出し/ボックスやMathJax（前回のやつ）と共存OK ===== */
+mjx-container{ overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; max-width:100%; }
+
