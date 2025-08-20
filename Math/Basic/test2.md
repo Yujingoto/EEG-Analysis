@@ -13,7 +13,7 @@ nav_order: 20
 なんかいい感じっぽい気がする
 
 わからん．かわってない
-むずかしい
+むずかしいああああああああ
 
 <center><img src="../figures/psi.png"></center>
 
