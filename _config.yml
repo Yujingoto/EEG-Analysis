@@ -6,6 +6,7 @@ permalink: pretty
 
 # これで GFM 記法維持しつつ kramdown で処理
 markdown: kramdown
+highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
