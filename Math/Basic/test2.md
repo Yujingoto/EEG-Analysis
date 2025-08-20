@@ -5,14 +5,20 @@ categories: [Math, Basic]
 nav_order: 20
 ---
 
-a
+# フーリエ変換
 
-## nannka おしゃれな見た目にしたいよね
+## オイラーの公式
 
-### ne
+> ここに本文。$\mathrm{e}^{i\pi}+1=0$ など。
+{: .box}
 
-$$
-x = a + \int_0^\infty x^w dx
-$$
+> <span class="title">定義</span>
+> 集合 $G$ と二項演算 $\cdot$ について… <span class="em-red">ペア $(G,\cdot)$ を群という。</span>
+> - 箇条書きも普通に書ける
+{: .box}
 
-$\sin\theta$ aaa
+> 注意書きボックス
+{: .box.note}
+
+> ヒントボックス
+{: .box.tip}
