@@ -235,7 +235,7 @@ data2 = np.vstack([sig + noise2,  sig - noise2, noise5]).T
 <details markdown="1">
 <summary>CCAのプログラム (clickで展開)</summary>
 
-```Python
+```python
 
 cca = CCA(n_components=3)  # Set n_components to 2 or less
 cca.fit(data1, data2)
