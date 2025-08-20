@@ -8,10 +8,11 @@
   {% seo %}
 <script>
   window.MathJax = {
+    loader: { load: ['[tex]/bm'] },
     tex:{
       inlineMath:[['$','$'],['\\(','\\)']],
       displayMath:[['$$','$$'],['\\[','\\]']],
-      processEscapes:true, packages:{'[+]':['ams']},
+      processEscapes:true,
       packages:{ '[+]': ['ams','bm'] }
     },
     chtml:{ linebreaks:{ automatic:false } },
