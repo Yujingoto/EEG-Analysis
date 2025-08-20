@@ -44,11 +44,14 @@
   var top = document.getElementById("toc-top");
   var side = document.getElementById("toc-side");
   if (top) top.appendChild(buildToc("toc-list"));
-  if (side) {
+    if (side) {
     var title = document.createElement("div");
     title.className = "toc-side-title";
     title.textContent = "目次";
     side.appendChild(title);
     side.appendChild(buildToc("toc-list"));
+    if (window.matchMedia("(min-width: 1200px)").matches) {
+      side.classList.add("fixed");  // ← これ
+    }
   }
 })();
