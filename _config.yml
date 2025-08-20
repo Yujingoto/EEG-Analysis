@@ -10,6 +10,3 @@ highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    span: true
-    line_numbers: true   # 行番号ほしいなら true
