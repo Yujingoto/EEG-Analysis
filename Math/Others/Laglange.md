@@ -1,5 +1,5 @@
 ---
-title: 独立成分分析 (Independent Component Analysis, ICA)
+title: ラグランジュの未定乗数法
 layout: default
 categories: [Math, Others]
 nav_order: 20

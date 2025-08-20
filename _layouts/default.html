@@ -10,25 +10,19 @@
 
 <script>
   window.MathJax = {
-    loader: { load: ['[tex]/ams','[tex]/bm'] },
-    tex:{
-      packages:{ '[+]': ['ams','bm'] },
-      inlineMath:[['$','$'],['\\(','\\)']],
-      displayMath:[['$$','$$'],['\\[','\\]']],
-      processEscapes:true
+    tex: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      packages: { '[+]': ['ams'] },
+      macros: { bm: ['\\boldsymbol{#1}', 1] }   // ← \bm を \boldsymbol に割り当て
     },
-    chtml:{ linebreaks:{ automatic:false } },
-    options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] },
-    startup:{
-      ready: () => {
-        MathJax.startup.defaultReady();
-        // mathwrap.js が typeset 後に走るよう startup.promise を使っているのでOK
-      }
-    }
+    chtml: { linebreaks: { automatic: false } },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
   };
 </script>
 
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
   {% include header.html %}
