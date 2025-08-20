@@ -1,10 +1,7 @@
 /* ---------- brand ---------- */
 :root{
-  --brand:#0b157a;          /* 濃い青 */
-  --brand-weak:#cfd0e6;     /* 薄い青灰 */
-  --ink:#111;
-  --bg:#fff;
-  --accent:#2bb5a1;
+  --brand:#0b157a; --brand-weak:#cfd0e6;
+  --ink:#111; --bg:#fff; --accent:#2bb5a1;
 }
 
 /* 本文 */
@@ -12,10 +9,8 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 
 /* ---------- グローバルヘッダー（sticky） ---------- */
 .header{
-  position: sticky; top: 0; z-index: 50;
-  background:#fff;
-  border-bottom:2px solid var(--brand);
-  box-shadow:0 2px 6px rgba(0,0,0,.06);
+  position: sticky; top: 0; z-index: 50; background:#fff;
+  border-bottom:2px solid var(--brand); box-shadow:0 2px 6px rgba(0,0,0,.06);
 }
 .fixed-table{width:100%;table-layout:fixed;border-collapse:collapse}
 .fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem}
@@ -31,12 +26,10 @@ main{ counter-reset:h1; }
 main h1{ counter-increment:h1; counter-reset:h2; }
 
 h1{
-  position:relative;
-  margin:1.25rem 0 .75rem;
+  position:relative; margin:1.25rem 0 .75rem;
   padding:1.1rem 1rem 1.1rem 8.5rem;
   border:3px solid var(--brand);
-  font-size:clamp(1.6rem,2.2vw,2.2rem);
-  font-weight:800;
+  font-size:clamp(1.6rem,2.2vw,2.2rem); font-weight:800;
 }
 h1::before{
   content:counter(h1, decimal-leading-zero);
@@ -50,14 +43,9 @@ h1::after{
 }
 
 h2{
-  position:relative;
-  margin:1.2rem 0 .6rem;
-  padding:.6rem 1rem;
-  background:#cfd0e6;
-  border-left:8px solid var(--brand);
-  border-bottom:3px solid var(--brand);
-  font-size:clamp(1.25rem,1.6vw,1.6rem);
-  font-weight:800;
+  position:relative; margin:1.2rem 0 .6rem; padding:.6rem 1rem;
+  background:#cfd0e6; border-left:8px solid var(--brand); border-bottom:3px solid var(--brand);
+  font-size:clamp(1.25rem,1.6vw,1.6rem); font-weight:800;
 }
 
 /* ---------- 情報ボックス ---------- */
@@ -85,8 +73,8 @@ main ul,main ol{margin:.5rem 0 .8rem 1.4rem}
   #layout .page-wrap{ grid-template-columns:minmax(0,1fr) 300px; }
 }
 
-/* 本文側で横あふれを吸収（stickyの祖先に overflow は付けない） */
-#layout .content{ min-width:0; max-width:100%; overflow-x: clip; }
+/* 本文はみ出し抑制：親ツリーには overflow を掛けない（sticky保全） */
+#layout .content{ min-width:0; max-width:100%; }
 
 /* 画像/表/コードは自分だけ横スクロール可。画像はブロック化で版面を壊さない */
 img, video { max-width:100%; height:auto; display:block; }
@@ -113,19 +101,20 @@ pre{ max-width:100%; overflow:auto; }
 .toc-list a:hover{border-bottom-color:#0b157a;}
 .toc-list li ul{list-style:none;margin:.25rem 0 .35rem .9rem;padding-left:0;border-left:2px solid rgba(11,21,122,.15);padding-left:.6rem;}
 
-/* ===================== MathJax（数式だけ横スクロール） ===================== */
-/* まずデフォは幅制限のみ（はみ出しを防ぐ） */
-mjx-container{ max-width:100%; -webkit-overflow-scrolling:touch; }
-
-/* ブロック数式をラッパーで包んだときだけ横スクロールを許可 */
-.math-scroll{
-  overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%;
+/* ===================== MathJax（“数式だけ”横スクロール） ===================== */
+/* 余計な親 overflow を使わず、数式自身にスクロールを付ける。 */
+mjx-container{
+  max-width:100%;
+  -webkit-overflow-scrolling:touch;
 }
-.math-scroll mjx-container[display="true"]{ display:block; max-width:none; padding:.25rem 0; }
-.math-scroll mjx-container[display="true"] mjx-math{ display:block; width:max-content; min-width:0; }
+mjx-container[display="true"]{
+  display:block;
+  overflow-x:auto; overflow-y:hidden;        /* ← これで数式だけ横スクロール */
+  padding:.25rem 0;
+}
+/* スクロール前提なので折り返さない。PCで折り返したい式だけ .wrap-math を使う */
+mjx-container[display="true"] mjx-math{ white-space:nowrap; }
+.wrap-math mjx-container[display="true"] mjx-math{ white-space:normal; }
 
-/* インラインは従来通り。保険で幅制限のみ */
+/* インライン数式は幅だけ制限 */
 mjx-container:not([display="true"]){ max-width:100%; }
-
-/* “この式だけ1行キープ”したい場合は .nowrap をラッパーの外側に */
-.nowrap mjx-container[display="true"] mjx-math{ white-space:nowrap; }
