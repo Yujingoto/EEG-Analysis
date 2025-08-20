@@ -17,12 +17,12 @@ EMアルゴリズム，いろんなとこでよく聞きますよね．統計モ
 
 ということで，最尤推定の問題を解く手法の一つです．
 
-最尤推定は以下の式でいうところの，尤度$p(x|\theta)$を最大にするようなパラメータを推定する手法でした．
+最尤推定は以下の式でいうところの，尤度$p(x\textbar\theta)$を最大にするようなパラメータを推定する手法でした．
 
 
 $$
 \begin{align}
-  p(\mathbf{\theta}|x) \propto p(x|{\theta)p(\theta)}
+  p(\mathbf{\theta}\textbarx) \propto p(x\textbar{\theta)p(\theta)}
 \end{align}
 $$
 
@@ -30,7 +30,7 @@ $$
 
 $$
 \begin{align}
-  L(\theta) = p(x_1, x_2, ... , x_n | \theta)
+  L(\theta) = p(x_1, x_2, ... , x_n \textbar \theta)
 \end{align}
 $$
 
@@ -72,26 +72,26 @@ $$
 
 $$
 \begin{align}
-  p(x|\mu,\sigma,\pi) = \sum_j \pi_j N(x|\mu,\sigma)
+  p(x\textbar\mu,\sigma,\pi) = \sum_j \pi_j N(x\textbar\mu,\sigma)
 \end{align}
 $$
 
 を考えます．$\pi$ はどっちの被験者が採用されるか...?多いか...?のパラメータです．ガウス分布に対する重みですね．というわけで，このパラメータ $\pi$ による被験者の決定結果として隠れた変数 $z$ を定義します．これはどっちの被験者が，つまりどちらのガウス分布からデータが生成されるかです．
 
-するとここで考える尤度は $ p(x\|\theta)$ ではなく $ p(x,z|\theta)$ になります．ここで $\theta$ も $(\mu,\sigma)$ から $(\mu, \sigma, \pi)$ になっています．
+するとここで考える尤度は $ p(x\textbar\theta)$ ではなく $ p(x,z\textbar\theta)$ になります．ここで $\theta$ も $(\mu,\sigma)$ から $(\mu, \sigma, \pi)$ になっています．
 
 では尤度関数を定義して，偏微分して最尤解を求めよう...と思ったところで問題が生じます．$z$ が観測できないことです．観測できているのはあくまで $x$ であって，その背景にあった $z$ の値は不明です．こうなると，普通に最尤法を解くことはできなくなってしまいます．
 
 これが最尤法の穴です．このように，データが生成される確率 $p(x,z)$ があった時にこのうち $z$ の情報が観測できないというようなデータ集合のことを不完全データ集合と言います．**EMアルゴリズムとは，不完全データ集合に対する最尤推定問題を解くための手法**である，ということになりそうです．ではようやく，中身に入っていきます．
 
 ## EMアルゴリズムの概要
-数式を追っていくのはちょっとだけ大変なので，まずはモチベだけ確認します．EMアルゴリズムは，$p(x,z|\theta)$ をどうにかして解き，最尤な $\theta$ を求めるための手法です．ただしこの時，問題になるのは変数 $z$ が観測できないということでしたね．
+数式を追っていくのはちょっとだけ大変なので，まずはモチベだけ確認します．EMアルゴリズムは，$p(x,z\\textbar\theta)$ をどうにかして解き，最尤な $\theta$ を求めるための手法です．ただしこの時，問題になるのは変数 $z$ が観測できないということでしたね．
 
-そのため，まず変数 $z$ も確率変数であると考えて，尤度 $p(x,z|\theta)$ を $z$ 周りで周辺化することで普通の尤度 $p(x|\theta)$ と等しいよねっという風に考えてみます．つまり
+そのため，まず変数 $z$ も確率変数であると考えて，尤度 $p(x,z\textbar\theta)$ を $z$ 周りで周辺化することで普通の尤度 $p(x\textbar\theta)$ と等しいよねっという風に考えてみます．つまり
 
 $$
 \begin{align}
-  p(x|\theta) = \sum_z p(x,z|\theta)
+  p(x\textbar\theta) = \sum_z p(x,z\textbar\theta)
 \end{align}
 $$
 
@@ -103,7 +103,7 @@ $$
 
 $$
 \begin{align}
-  \log p(x|\theta) = \log \sum_z p(x,z|\theta)
+  \log p(x\textbar\theta) = \log \sum_z p(x,z\textbar\theta)
 \end{align}
 $$
 
@@ -113,8 +113,8 @@ $$
 
 $$
 \begin{align}
-  \log p(x|\theta) &= \log \sum_z p(x,z|\theta)\\
-  &= \log \sum_z q(z) \frac{p(x,z|\theta)}{q(z)} 
+  \log p(x\textbar\theta) &= \log \sum_z p(x,z\textbar\theta)\\
+  &= \log \sum_z q(z) \frac{p(x,z\textbar\theta)}{q(z)} 
 \end{align}
 $$
 
@@ -129,8 +129,8 @@ $$
 
 $$
 \begin{align}
-  \log p(x|\theta) &= \log \sum_z p(x,z|\theta)\\
-  &= \log \sum_z q(z) \frac{p(x,z|\theta)}{q(z)} \geq \sum_z q(z) \log \frac{p(x,z|\theta)}{q(z)}
+  \log p(x\textbar\theta) &= \log \sum_z p(x,z\textbar\theta)\\
+  &= \log \sum_z q(z) \frac{p(x,z\textbar\theta)}{q(z)} \geq \sum_z q(z) \log \frac{p(x,z\textbar\theta)}{q(z)}
 \end{align}
 $$
 
@@ -139,7 +139,7 @@ $$
 
 $$
 \begin{align}
-  L(q,\theta) = \sum_z q(z) \log \frac{p(x,z|\theta)}{q(z)}
+  L(q,\theta) = \sum_z q(z) \log \frac{p(x,z\textbar\theta)}{q(z)}
 \end{align}
 $$
 
@@ -147,7 +147,7 @@ $$
 
 $$
 \begin{align}
-  \log p(x|\theta) \geq L(q,\theta)
+  \log p(x\textbar\theta) \geq L(q,\theta)
 \end{align}
 $$
 
@@ -161,18 +161,18 @@ $$
 
 <center><img src="../figures/em2.png"></center>
 
-このようになります．ここで気になるのは，まず尤度と $L$ の間には $0$ 以上の「差」があることです．この差を $0$ に近付けていくことで，$\log p(x|\theta) = L(q,\theta)$ の関係までは $L$ を大きくすることが出来ます．
+このようになります．ここで気になるのは，まず尤度と $L$ の間には $0$ 以上の「差」があることです．この差を $0$ に近付けていくことで，$\log p(x\textbar\theta) = L(q,\theta)$ の関係までは $L$ を大きくすることが出来ます．
 
 まずはこの問題を考えます．とりあえず計算してみます．
 
 $$
 \begin{align}
-  &\log p(x|\theta) - L(q,\theta)\nonumber\\
-  &=\log p(x|\theta) - \sum_z q(z) \log \frac{p(x,z|\theta)}{q(z)}\nonumber\\
-  &=\log p(x|\theta) - \sum_z q(z) \log \frac{p(z|x,\theta)p(x|\theta)}{q(z)}\nonumber\\
-  &=\sum_z q(z) \log p(x|\theta) - \sum_z q(z)(\log p(z|x,\theta)+\log p(x|\theta) -\log q(z))\nonumber\\
-  &=-\sum_z q(z)(\log p(z|x,\theta) - \log q(z))\nonumber\\
-  &=-\sum_z q(z) \log \frac{p(z|x,\theta)}{q(z)}
+  &\log p(x\textbar\theta) - L(q,\theta)\nonumber\\
+  &=\log p(x\textbar\theta) - \sum_z q(z) \log \frac{p(x,z\textbar\theta)}{q(z)}\nonumber\\
+  &=\log p(x\textbar\theta) - \sum_z q(z) \log \frac{p(z\textbarx,\theta)p(x\textbar\theta)}{q(z)}\nonumber\\
+  &=\sum_z q(z) \log p(x\textbar\theta) - \sum_z q(z)(\log p(z\textbarx,\theta)+\log p(x\textbar\theta) -\log q(z))\nonumber\\
+  &=-\sum_z q(z)(\log p(z\textbarx,\theta) - \log q(z))\nonumber\\
+  &=-\sum_z q(z) \log \frac{p(z\textbarx,\theta)}{q(z)}
 \end{align}
 $$
 
@@ -182,8 +182,8 @@ $$
 
 $$
 \begin{align}
-  \log p(x|\theta) - L(q,\theta)&= -\sum_z q(z) \log \frac{p(z|x,\theta)}{q(z)}\nonumber\\
-  &= KL[q(z)||p(z|x,\theta)]\nonumber
+  \log p(x\textbar\theta) - L(q,\theta)&= -\sum_z q(z) \log \frac{p(z\textbarx,\theta)}{q(z)}\nonumber\\
+  &= KL[q(z)\textbar\textbarp(z\textbarx,\theta)]\nonumber
 \end{align}
 $$
 
@@ -191,7 +191,7 @@ $$
 
 さて，ここからついに EM アルゴリズムの中身に入っていきます．
 
-まずもう一度与えられている問題を考えると，最尤推定をするために最大化したいのは尤度 $\log p(x|\theta)$ だが，未知の観測不可な要素も孕まれているために普通に尤度の計算が出来ない，ということで $\log p(x,z|\theta)$ を考えて，これによって出てきた関数 $Ｌ$ の最大化をしていこうという問題にすり替えてきました．
+まずもう一度与えられている問題を考えると，最尤推定をするために最大化したいのは尤度 $\log p(x\textbar\theta)$ だが，未知の観測不可な要素も孕まれているために普通に尤度の計算が出来ない，ということで $\log p(x,z\textbar\theta)$ を考えて，これによって出てきた関数 $Ｌ$ の最大化をしていこうという問題にすり替えてきました．
 
 関数 $Ｌ$ は $L(q,\theta)$ なので，いじれる変数は2つです．これらそれぞれの変数を使って関数の最大化をしていけばいいわけですね．
 
@@ -214,11 +214,11 @@ $$
 <center><img src="../figures/em2.png"></center>
 
 
-を見直して明らかなのは，$p(x|\theta)$ と $L(q,\theta)$ の間にある，$KL(q||p)$ を最小化する必要があるという事です．
+を見直して明らかなのは，$p(x\textbar\theta)$ と $L(q,\theta)$ の間にある，$KL(q\textbar\textbarp)$ を最小化する必要があるという事です．
 
 <center><img src='../figures/em3.png'></center>
 
-$L(q,\theta)$ の $\theta$ を固定して，$q$ をいじって $KL(q||p)$ を最小化するステップが E ステップです．
+$L(q,\theta)$ の $\theta$ を固定して，$q$ をいじって $KL(q\textbar\textbarp)$ を最小化するステップが E ステップです．
 
 $$
 \begin{align}
@@ -230,7 +230,7 @@ Eはexpectation, つまり期待値です．もともと
 
 $$
 \begin{align}
-  \log p(x|\theta) = L(q,\theta) + KL(q||p)\nonumber
+  \log p(x\textbar\theta) = L(q,\theta) + KL(q\textbar\textbarp)\nonumber
 \end{align}
 $$
 
@@ -238,7 +238,7 @@ $$
 
 $$
 \begin{align}
-  q(z) = p(z|x,\theta)\nonumber
+  q(z) = p(z\textbarx,\theta)\nonumber
 \end{align}
 $$
 
@@ -250,9 +250,9 @@ $$
 
 <center><img src='../figures/em4.png'></center>
 
-の状態にまで更新されています．ここから何をやれば良いのかですが，真の最大値はまだまだ上にいます．なので $p(x|\theta)$ と一緒に下界を押し上げる必要があります．
+の状態にまで更新されています．ここから何をやれば良いのかですが，真の最大値はまだまだ上にいます．なので $p(x\textbar\theta)$ と一緒に下界を押し上げる必要があります．
 
-E ステップで KLD が最小化され，固定された $\theta$ の元では $\log p(x|\theta)$ が等しくなりましたが，ここで今度は $\theta$ の方の最適化を考えます．$q$ を固定し，$\theta$ を更新するわけですね．
+E ステップで KLD が最小化され，固定された $\theta$ の元では $\log p(x\textbar\theta)$ が等しくなりましたが，ここで今度は $\theta$ の方の最適化を考えます．$q$ を固定し，$\theta$ を更新するわけですね．
 
 $$
 \begin{align}
@@ -260,15 +260,15 @@ $$
 \end{align}
 $$
 
-$\theta$ は $\log p(x|\theta)$ も KLD も条件に入っている変数なので，Lの $\theta$ を更新すると他も更新されます．
+$\theta$ は $\log p(x\textbar\theta)$ も KLD も条件に入っている変数なので，Lの $\theta$ を更新すると他も更新されます．
 
 まず，Lは $\theta$ について最大化なので当然上に伸びます．
 
-また KLD は 0 以上の値をとるもので，E ステップで 0 になっている状態なので KLD は変わらないか増加するかです．で，元々最大化したい量である $\log p(x|\theta)$ は
+また KLD は 0 以上の値をとるもので，E ステップで 0 になっている状態なので KLD は変わらないか増加するかです．で，元々最大化したい量である $\log p(x\textbar\theta)$ は
 
 $$
 \begin{align}
-  \log p(x|\theta) = L(q,\theta) + KL[q||p]\nonumber
+  \log p(x\textbar\theta) = L(q,\theta) + KL[q\textbar\textbarp]\nonumber
 \end{align}
 $$
 
@@ -284,8 +284,8 @@ L 関数の中身を先ほど求めた E ステップの結果を使って書き
 
 $$
 \begin{align}
-  L(q,\theta) &= \sum q(z) \log \frac{p(x,z|\theta)}{q(z)}\\
-  &= \sum p(z|x,\theta_{old})\log p(x,z|\theta) - \sum p(z|x,\theta_{old})\log p(z|x,\theta_{old})
+  L(q,\theta) &= \sum q(z) \log \frac{p(x,z\textbar\theta)}{q(z)}\\
+  &= \sum p(z\textbarx,\theta_{old})\log p(x,z\textbar\theta) - \sum p(z\textbarx,\theta_{old})\log p(z\textbarx,\theta_{old})
 \end{align}
 $$
 
@@ -295,12 +295,12 @@ $$
 
 $$
 \begin{align}
-  L(q,\theta) &= \sum p(z|x,\theta_{old})\log p(x,z|\theta) + const.\\
+  L(q,\theta) &= \sum p(z\textbarx,\theta_{old})\log p(x,z\textbar\theta) + const.\\
   &= Q(\theta, \theta_{old}) + const.
 \end{align}
 $$
 
-と，Q 関数の最大化問題に置き換えて考えられます．Q 関数は完全データの対数尤度 $\log p(x,z|\theta)$ の，E で求めた事後分布 $p(z|x,\theta_{old})$ による期待値であると考えることができます．こいつの最大化によって全体を押し上げるのが M ステップでした．ちなみに，ここで定数としたやつはエントロピーとよばれる量です．が，EM アルゴリズムでは関係ないのでスルー．
+と，Q 関数の最大化問題に置き換えて考えられます．Q 関数は完全データの対数尤度 $\log p(x,z\textbar\theta)$ の，E で求めた事後分布 $p(z\textbarx,\theta_{old})$ による期待値であると考えることができます．こいつの最大化によって全体を押し上げるのが M ステップでした．ちなみに，ここで定数としたやつはエントロピーとよばれる量です．が，EM アルゴリズムでは関係ないのでスルー．
 
 $$
 \begin{align}
@@ -315,9 +315,10 @@ $$
 
 <div class="box">
 <div class="title">EMアルゴリズム</div>
-  1. Eステップ: 現在推定されている潜在変数の分布に基づいて，モデルの尤度の期待値を計算．
-  2. Mステップ: Eステップの尤度期待値を最大化するパラメータ$\theta$を求める．
-  3. Mステップで求まったパラメータは，次のEステップで使われる潜在変数の分布を決定するために用いられる．
-  4. この2ステップの繰り返しで値が更新されなくなったところで最適化終了
+
+1. Eステップ: 現在推定されている潜在変数の分布に基づいて，モデルの尤度の期待値を計算．
+2. Mステップ: Eステップの尤度期待値を最大化するパラメータ$\theta$を求める．
+3. Mステップで求まったパラメータは，次のEステップで使われる潜在変数の分布を決定するために用いられる．
+4. この2ステップの繰り返しで値が更新されなくなったところで最適化終了
 </div>
 
