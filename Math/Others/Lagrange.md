@@ -18,16 +18,13 @@ nav_order: 20
 
 $\textbf{ラグランジュの未定乗数法}$
 >  制約条件 $g(x,y) = 0$ の元で，$f(x,y)$ を最大化する $(x,y)$ を求める問題を考えるとき，**ラグランジュ乗数** $\lambda$ を用いて**ラグランジュ関数** $L$ を
-
 >$$
 L(x,y,\lambda) = f(x,y) - \lambda g(x,y) \tag{1}
 >$$
-
 >と置くと，ある $(x_0,y_0)$ が題意の条件を満たすなら，ある $\lambda_0$ が存在し，$(x_0, y_0, \lambda_0)$ において
 >$$
 \frac{\partial L}{\partial x} = \frac{\partial L}{\partial y} = \frac{\partial L}{\partial \lambda} = 0 \tag{2}
 >$$
-
 >が成り立つ．
 {: .box}
 
@@ -240,18 +237,14 @@ $$
 >L(x_1, ...,x_d, \lambda_1,...,\lambda_m ) \\
 >= f(x_1,...,x_d) - \sum_{i=1}^m \lambda_i g_i (x_1,...,x_d)
 >$$
-
 >と表され，題意を満たす点 $(x_1,...,x_d)$ は
-
 >$$
 >\sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_1} = ... = \sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_d} = 0
 >$$
-
 >あるいは
 >$$
   \frac{\partial L}{\partial x_1} = ... =\frac{\partial L}{\partial x_d} =\frac{\partial L}{\partial \lambda_1} = ...=\frac{\partial L}{\partial \lambda_m} =0
 >$$
-
 >を満たす．
 {: .box}
 
