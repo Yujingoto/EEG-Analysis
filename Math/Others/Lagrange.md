@@ -235,26 +235,27 @@ $$
 最後に，解説は今回はとりあえず省きます (~~筆者がちゃんと勉強できていない~~)が，2次元ではなくより一般の次元，複数の制約条件におけるラグランジュの未定乗数法の形をまとめます．
 
 ##### 一般のラグランジュの未定乗数法
->$d$ 変数関数 $f$ の，制約条件 $g_1,...,g_m$ の元での極値を考えると，ラグランジュ関数は
->
->$$
->L(x_1, ...,x_d, \lambda_1,...,\lambda_m ) \\
->= f(x_1,...,x_d) - \sum_{i=1}^m \lambda_i g_i (x_1,...,x_d)
->$$
->
->と表され，題意を満たす点 $(x_1,...,x_d)$ は
->
->$$
->\sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_1} = ... = \sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_d} = 0
->$$
->
->あるいは
->$$
+<div class="box">
+$d$ 変数関数 $f$ の，制約条件 $g_1,...,g_m$ の元での極値を考えると，ラグランジュ関数は
+
+$$
+L(x_1, ...,x_d, \lambda_1,...,\lambda_m ) \\
+= f(x_1,...,x_d) - \sum_{i=1}^m \lambda_i g_i (x_1,...,x_d)
+$$
+
+と表され，題意を満たす点 $(x_1,...,x_d)$ は
+
+$$
+\sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_1} = ... = \sum_{i=1}^m \lambda_i \frac{\partial g_i}{\partial x_d} = 0
+$$
+
+あるいは
+$$
   \frac{\partial L}{\partial x_1} = ... =\frac{\partial L}{\partial x_d} =\frac{\partial L}{\partial \lambda_1} = ...=\frac{\partial L}{\partial \lambda_m} =0
->$$
->
->を満たす．
-{: .box}
+$$
+
+を満たす．
+</div>
 
 この時，特に一つ目の条件
 $$
