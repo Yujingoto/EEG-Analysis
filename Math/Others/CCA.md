@@ -204,7 +204,7 @@ $$
 <details markdown="1">
 <summary>生成した信号のプログラム (clickで展開)</summary>
 
-```Python
+```python
 from sklearn.cross_decomposition import CCA
 import numpy as np
 import matplotlib.pyplot as plt
