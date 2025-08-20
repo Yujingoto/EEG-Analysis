@@ -15,7 +15,9 @@
       displayMath: [['$$','$$'], ['\\[','\\]']],
       processEscapes: true,
       packages: { '[+]': ['ams'] },
-      macros: { bm: ['\\boldsymbol{#1}', 1] }   // ← \bm を \boldsymbol に割り当て
+      macros: { bm: ['\\boldsymbol{#1}', 1] },
+      argmax: '\\operatorname*{arg\\,max}',
+      argmin: '\\operatorname*{arg\\,min}'
     },
     chtml: { linebreaks: { automatic: false } },
     options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
