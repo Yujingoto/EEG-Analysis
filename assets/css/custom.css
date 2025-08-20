@@ -164,3 +164,10 @@ pre{ max-width:100%; overflow:auto; }
 .math-scroll mjx-container[display="true"] mjx-math{white-space:nowrap;}
 mjx-container{max-width:100%;}
 mjx-container:not([display="true"]){max-width:100%;}
+
+/* コードブロックの改行を正しく扱う */
+pre, code {
+  white-space: pre;
+  overflow-x: auto;   /* 横スクロール可能に */
+  display: block;
+}
