@@ -368,7 +368,7 @@ t検定は，2つの群の平均の間に差があるかを検定する手法で
 2群の平均を比較するt検定は，
 
 $$
--t_{\alpha/2} < \frac{(\bar{y_A} - \mu) - (\bar{y_B} - \mu)}{\sqrt{{\frac{\sigma^2_A}{n_A}} + \frac{\sigma^2_B}{n_B}}} < t_{\alpha/2}
+-t_{\alpha/2} < \frac{(\bar{y_A} - \mu) - (\bar{y_B} - \mu)}{\sqrt{\frac{\sigma^2_A}{n_A} + \frac{\sigma^2_B}{n_B}}} < t_{\alpha/2}
 $$
 
 のように書けます．帰無仮説では母平均は等しいということになっているので，分子は単純にそれぞれの群の平均である$\bar{y}$同士を比較する形となっています．
