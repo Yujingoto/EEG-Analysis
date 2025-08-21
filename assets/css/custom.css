@@ -193,3 +193,23 @@ details pre{ margin:.5rem 0; }
 .site-search-result .t{ font-weight:700; color:#0b157a; }
 .site-search-result .s{ font-size:.9rem; color:#444; opacity:.9; }
 .nohit{ padding:.5rem .45rem; color:#666; }
+
+.article-tools{
+  display:flex; justify-content:flex-end; align-items:flex-start; gap:.75rem;
+  margin-bottom:.75rem; flex-wrap:wrap;
+}
+.last-updated{ font-size:.85rem; color:#6b7280; margin-top:.2rem; }
+#search-box{ min-width:220px; }
+#search-input{
+  width:220px; padding:.4rem .55rem; font-size:.9rem;
+  border:1px solid #e5e7eb; border-radius:.5rem;
+}
+#search-results{
+  margin-top:.35rem; background:#fff; border:1px solid #e5e7eb; border-radius:.5rem;
+  padding:.35rem .5rem; max-height:40vh; overflow:auto; box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+#search-results .hits{ list-style:none; padding:0; margin:0; }
+#search-results li{ margin:.25rem 0; }
+#search-results a{ text-decoration:none; color:#0b157a; }
+#search-results .s{ font-size:.85rem; color:#444; opacity:.9; }
+#search-results[hidden]{ display:none; }
