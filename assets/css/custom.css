@@ -178,3 +178,18 @@ details pre{ margin:.5rem 0; }
 @media (max-width:768px){
   .last-updated{ position:static; display:block; text-align:right; margin-top:.25rem; }
 }
+
+.site-search{ position:relative; margin:.75rem 0 1rem; }
+.site-search input{
+  width:100%; padding:.55rem .7rem; border:1px solid #e5e7eb; border-radius:.5rem;
+  background:#fff;
+}
+.site-search-result{
+  margin-top:.4rem; border:1px solid #e5e7eb; border-radius:.5rem; padding:.35rem; background:#fff;
+  max-height:40vh; overflow:auto; box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+.site-search-result .hit{ display:block; padding:.35rem .45rem; border-radius:.35rem; text-decoration:none; }
+.site-search-result .hit:hover{ background:#f7f9ff; }
+.site-search-result .t{ font-weight:700; color:#0b157a; }
+.site-search-result .s{ font-size:.9rem; color:#444; opacity:.9; }
+.nohit{ padding:.5rem .45rem; color:#666; }

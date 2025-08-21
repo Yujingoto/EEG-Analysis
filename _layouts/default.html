@@ -34,6 +34,13 @@
   <div id="layout">
     <div class="page-wrap">
       <main class="content">
+        <!-- 🔍 サイト内検索ボックス（記事の上部右寄せ） -->
+        <div id="search-box" style="text-align:right; margin-bottom: 1em;">
+          <input type="text" id="search-input" placeholder="サイト内検索..." 
+                style="width: 220px; padding: 4px; font-size: 0.9em;">
+          <div id="search-results" 
+              style="margin-top: 0.5em; font-size: 0.9em; text-align:left;"></div>
+        </div>
         <!-- 記事右上の最終更新（GitHub APIで取得） -->
         <div class="last-updated" data-path="{{ page.path | escape }}"></div>
 
@@ -70,5 +77,6 @@
 
   <script src="{{ "/assets/js/toc.js" | relative_url }}" defer></script>
   <script src="{{ "/assets/js/mathwrap.js" | relative_url }}" defer></script>
+  <script src="{{ "/assets/js/search.js" | relative_url }}" defer></script>
 </body>
 </html>
