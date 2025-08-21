@@ -1,0 +1,21 @@
+---
+layout: null
+sitemap: false
+---
+
+[
+{% assign docs = site.pages | where_exp:'p','p.search != false' %}
+{% for coll in site.collections %}
+  {% assign docs = docs | concat: coll.docs %}
+{% endfor %}
+{% assign docs = docs | uniq %}
+{% for p in docs %}
+{% if p.title and p.url %}
+  {
+    "title": {{ p.title | jsonify }},
+    "url": {{ p.url | relative_url | jsonify }},
+    "content": {{ p.content | strip_html | normalize_whitespace | replace: "\n"," " | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endif %}
+{% endfor %}
+]
