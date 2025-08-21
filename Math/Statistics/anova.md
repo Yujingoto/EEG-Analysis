@@ -1,5 +1,5 @@
 ---
-title: ANOVA
+title: 分散分析 (ANOVA)
 layout: default
 categories: [Math, Statistics]
 nav_order: 20

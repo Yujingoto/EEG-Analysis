@@ -1,5 +1,5 @@
 ---
-title: logistic regression
+title: ロジスティック回帰
 layout: default
 categories: [Math, Statistics]
 nav_order: 20
@@ -13,7 +13,7 @@ nav_order: 20
 ## 変数の尺度とダミー変数
 データ分析において用いるデータは，必ずしも数量として意味をもつ連続的なものではありません．[統計学の初歩](../Basic/statistics.html#尺度水準)に戻ってみると，Stevens, S.S. による尺度水準の4分類がありました．
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">スティーブンスの尺度水準</div>
 
 - **名義尺度** ... 他と区別し分類するための尺度．カテゴリー．
@@ -182,7 +182,7 @@ y_i =
 \end{cases}
 $$
 
-である場合を考えます．この場合，癌である確率 $P$ を $p(y=1|x)$ とし，$n$ 人のデータが独立である ($p(y_i=1|x_i)=p_i$) と考えると $y_i$ の従う分布は[ベルヌーイ分布](./distribution.html#ベルヌーイ分布) $B(1,p_i)$ に従うため，尤度 $L$ は
+である場合を考えます．この場合，癌である確率 $P$ を $p(y=1\|x)$ とし，$n$ 人のデータが独立である ($p(y_i=1\|x_i)=p_i$) と考えると $y_i$ の従う分布は[ベルヌーイ分布](./distribution.html#ベルヌーイ分布) $B(1,p_i)$ に従うため，尤度 $L$ は
 
 $$
 \begin{align}

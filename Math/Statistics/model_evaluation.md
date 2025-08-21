@@ -1,5 +1,5 @@
 ---
-title: model evaluation
+title: 統計モデルの評価基準
 layout: default
 categories: [Math, Statistics]
 nav_order: 20

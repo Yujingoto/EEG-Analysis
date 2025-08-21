@@ -1,5 +1,5 @@
 ---
-title: linear regression
+title: 線形回帰
 layout: default
 categories: [Math, Statistics]
 nav_order: 20

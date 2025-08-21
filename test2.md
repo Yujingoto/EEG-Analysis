@@ -21,7 +21,7 @@ x = a + \sin \theta
 $$
 </div>
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">定義</div>
 集合 $G$ と二項演算 $\cdot$ について… <span class="em-red">ペア $(G,\cdot)$ を群という。</span>
 - 箇条書きも普通に書ける

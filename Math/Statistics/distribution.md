@@ -94,7 +94,7 @@ $$
 
 連続一様分布については確率密度関数は以下のようになります．
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">連続一様分布</div>
 
 **確率密度関数**
@@ -153,10 +153,10 @@ $$
 
 この図では成功が1，失敗が0として成功率75%の何かをやらせたときの確率分布です．他にも，たとえばサイコロで1が出るか出ないか（2や3は区別しない）とか，そんな問題もこの分布で考えられます．
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">ベルヌーイ分布</div>
 
-確率質量関数
+**確率質量関数**
 
 $$
 f(x)=
@@ -170,12 +170,14 @@ f(x)=
   f(x=k) = p^k(1-p)^{1-k}, \quad (k=0,1)
 $$
 
-期待値
+**期待値**
+
 $$
 \mathbb{E}(X) = p
 $$
 
-分散
+**分散**
+
 $$
 \mathbb{V}(X) = pq
 $$
@@ -186,20 +188,23 @@ $$
 ### 2項分布
 ２項分布は「同じことを何回も繰り返した時, ある事柄が何回おこるか」の確立分布です. こいつは式を見れば早いですね.
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">二項分布</div>
 
 **確率密度関数**
+
 $$
 f(x) = {}_n\mathrm{C}_x p^x(1-p)^{n-x}
 $$
 
 **期待値**
+
 $$
 \mathbb{E}(X) = np
 $$
 
 **分散**
+
 $$
 \mathbb{V}(X) = np(1-p)
 $$
@@ -218,20 +223,23 @@ $$
 
 たとえば, ある月にある地域で起きた交通死亡事故の件数とかです. 愛知県でもない限り, 普通は0か多くて2件とかですよね．多分．
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">ポアソン分布</div>
 
 **確率密度関数**
+
 $$
 f(x) = \frac{\lambda^x}{x!}e^{-\lambda}
 $$
 
 **期待値**
+
 $$
 \mathbb{E}(X) = \lambda
 $$
 
 **分散**
+
 $$
 \mathbb{V}(X) = \lambda
 $$
@@ -422,7 +430,7 @@ $$
 次に，$\chi^2$分布について確認します. こいつも重要です.
 
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">$\chi^2$分布</div>
 
 独立に標準正規分布に従うk個の確率変数${X_1, ..., X_k}$を考えた時，これに対する統計量
@@ -434,16 +442,19 @@ $$
 が従う分布のことを，自由度$k$の$\chi^2$(カイ二乗)分布．
 
 **確率密度関数**
+
 $$
 f(x) = \frac{1}{2^{\frac{k}{2}}\Gamma(\frac{k}{2})}(x^2)^{\frac{k}{2}-1}e^{-\frac{x^2}{2}}
 $$
 
 **期待値**
+
 $$
 \mathbb{E}(X) = k
 $$
 
 **分散**
+
 $$
 \mathbb{V}(X) = 2k
 $$
@@ -496,16 +507,19 @@ $$
 が従う確率分布．
 
 **確率密度関数**
+
 $$
 f(x;k_1, k_2) = \frac{\Gamma(\frac{k_1 + k_2}{2})x^{\frac{k_1-2}{2}}}{\Gamma(\frac{k_1}{2})\Gamma(\frac{k_2}{2})(1+\frac{k_1}{k_2}x)^\frac{k_1+k_2}{2}}(\frac{k_1}{k_2})^{\frac{k_1}{2}}
 $$
 
 **期待値**
+
 $$
 \mathbb{E}(X) = \frac{n}{n-2} \quad (n > 2)
 $$
 
 **分散**
+
 $$
 \mathbb{V}(X) = \frac{2n^2 (m+n-2)}{m(n-2)^2(n-4)} \quad (n>4)
 $$

@@ -1,5 +1,5 @@
 ---
-title: Bayesian
+title: ベイズ統計学
 layout: default
 categories: [Math, Statistics]
 nav_order: 20
