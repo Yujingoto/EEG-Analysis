@@ -98,6 +98,7 @@ $$
 <div class="title">連続一様分布</div>
 
 **確率密度関数**
+
 $$
 f(x) = 
 \left\{
@@ -109,11 +110,13 @@ f(x) =
 $$
 
 **期待値**
+
 $$
 \mathbb{E}(X) = \frac{a+b}{2}\\
 $$
 
 **分散**
+
 $$
 \mathbb{V}(X) = \frac{(b-a)^2}{12}
 $$
@@ -146,15 +149,15 @@ $$
 ### ベルヌーイ分布
 ベルヌーイ分布は, 1か0のどちらかの値を取る分布です. ある事が起きるか起きないか, 成功するかしないかなどの2値分類ですね. 
 
-
-<center><img src="../figures/bernouli.png", width=70%></center>
+<center><img src="../figures/bernouli.png"></center>
 
 この図では成功が1，失敗が0として成功率75%の何かをやらせたときの確率分布です．他にも，たとえばサイコロで1が出るか出ないか（2や3は区別しない）とか，そんな問題もこの分布で考えられます．
 
 <div class="box">
 <div class="title">ベルヌーイ分布</div>
 
-**確率質量関数**
+確率質量関数
+
 $$
 f(x)=
   \left\{
@@ -167,12 +170,12 @@ f(x)=
   f(x=k) = p^k(1-p)^{1-k}, \quad (k=0,1)
 $$
 
-**期待値**
+期待値
 $$
 \mathbb{E}(X) = p
 $$
 
-**分散**
+分散
 $$
 \mathbb{V}(X) = pq
 $$
@@ -207,7 +210,7 @@ $$
 これらを掛け合わせているので, 何回当たって何回外れたかを表す式ですね.
 
 
-<center><img src="../figures/binomial2.png", width=70%></center>
+<center><img src="../figures/binomial2.png"></center>
 
 
 ### ポアソン分布
@@ -237,7 +240,7 @@ $$
 です. こいつの場合, 平均も分散も同じ定数$\lambda$なので, こいつの値だけで形が決まります. $\lambda$がどんな値なのか, どうやって決まるのかといったところまでは勉強できていません. 必要を感じることがあれば足します.
 
 
-<center><img src="../figures/poisson2.png", width=70%></center>
+<center><img src="../figures/poisson2.png"></center>
 
 ## 正規分布
 ### 正規分布とは
@@ -254,7 +257,7 @@ $$
 
 ただまぁ, なんでこんな殺意高めな式になるのかは正規分布のグラフを見れば理解できます. 母集団の平均が50, 標準偏差20の正規分布だとこうなります.
 
-<center><img src="../figures/normal5.png", width=70%></center>
+<center><img src="../figures/normal5.png"></center>
 
 定義通り, 確率変数の平均も50, 分散も400(20の二乗)になっていますね！！これが正規分布です. 綺麗ですね.
 
@@ -266,7 +269,7 @@ $$
 f(x) = e^{-x^2}
 $$
 
-<center><img src="../figures/normal6.png", width=70%></center>
+<center><img src="../figures/normal6.png"></center>
 
 この関数の説明はいりませんね．指数関数の二乗の負版です.
 
@@ -297,7 +300,7 @@ $$
 　ともあれ ... これで, 平均と分散によって形を変える釣り鐘型分布が完成です！！めでたい！！
 
 
-<center><img src="../figures/normal7.png", width=70%></center>
+<center><img src="../figures/normal7.png"></center>
 
 しかし，これでは最初に確認した正規分布の式と違います．
 
@@ -375,11 +378,11 @@ $$
 言葉だとややこしいですが, グラフで見れば一瞬で分かります.
 
 
-<center><img src="../figures/oneside-t.png", width=80%></center>
+<center><img src="../figures/oneside-t.png"></center>
 
 こちらが片側（下側）5%点で，
 
-<center><img src="../figures/two-side.png", width=80%></center>
+<center><img src="../figures/two-side.png"></center>
 
 こちらが両側5%点になります．
 
@@ -462,11 +465,11 @@ $$
 
 大事なのはグラフの見た目です．たとえば，自由度$k=4$の時の$\chi^2$分布は以下のようになります．
 
-<center><img src="../figures/chi2.png", width=70%></center>
+<center><img src="../figures/chi2.png"></center>
  
 上は一例ですが，t分布同様に自由度によって形が変わるので，他の自由度の場合を見比べてみると以下のようになります．
 
-<center><img src='../figures/chi.png', width=70%></center>
+<center><img src='../figures/chi.png'></center>
 
 かなり変わることが分かるかと思います．
 
@@ -477,11 +480,11 @@ F分布は, 少し特殊な形をしていますが非常に重要です. どう
 
 先に見た目を確認します．たとえば，自由度3,5のF分布をプロットしてみると以下のようになります．
 
-<center><img src='../figures/f_dist3.png', width=70%></center>
+<center><img src='../figures/f_dist3.png'></center>
 
 さて，定義を確認します．
 
-<div class="box">
+<div class="box" markdown="1">
 <div class="title">F分布</div>
 
 自由度$k_1, k_2$の[カイ二乗分布](#chi2分布)が互いに独立であるとき，
@@ -518,10 +521,10 @@ $$
 
 重要なのは，2つの自由度をもつ分布の関係性を表す「自由度$k_1, k_2$のF分布」というものがある，ということです．
 
-等分散性の検定，それを使った[分散分析](anova)などに重要になってくる分布です．
+等分散性の検定，それを使った[分散分析](./anova.html)などに重要になってくる分布です．
 
 
-<center><img src="../figures/f_dist2.png", width=90%></center>
+<center><img src="../figures/f_dist2.png"></center>
 
 
 こちらも，やはり自由度によって振る舞いがかわります．
