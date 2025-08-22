@@ -1,11 +1,11 @@
 /* ---------- brand ---------- */
 :root{
-  --brand:#0b157a;          /* 濃い青 */
-  --brand-weak:#cfd0e6;     /* 薄い青灰 */
+  --brand:#0b157a;
+  --brand-weak:#cfd0e6;
   --ink:#111;
   --bg:#fff;
   --accent:#2bb5a1;
-  --sm-line:1.6rem;         /* サイトマップ行高 */
+  --sm-line:1.6rem;
 }
 
 /* 本文 */
@@ -13,14 +13,17 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 
 /* ---------- グローバルヘッダー（sticky） ---------- */
 .header{
-  position: sticky; top: 0; z-index: 60; background:#fff;
+  position: sticky; top: 0; z-index: 100; background:#fff;
   border-bottom:2px solid var(--brand); box-shadow:0 2px 6px rgba(0,0,0,.06);
+  overflow: visible; /* ← 展開が見切れない */
 }
-.fixed-table{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0}
+.fixed-table{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0; padding-right:280px;} /* 検索分の余白 */
+@media (max-width:768px){ .fixed-table{ padding-right:0; } }
+
 .fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem;border-right:1px solid #e5e7eb}
 .fixed-table th:last-child{border-right:none}
 .header thead tr{background:#f5f6f8;border-bottom:1px solid #e5e7eb}
-.header details{margin:.25rem 0; position:relative;}
+.header details{margin:.25rem 0; position:relative; z-index:90;}
 .header a{text-decoration:none;border-bottom:1px dotted rgba(0,0,0,.25);}
 .header a:hover{border-bottom-color:var(--brand);}
 
@@ -77,6 +80,33 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 .header details ul::-webkit-scrollbar-thumb{background:#c8d0e6;border-radius:8px}
 .header details ul{scrollbar-width:thin;scrollbar-color:#c8d0e6 transparent}
 
+/* 右端固定の検索（テーブル外） */
+.header-search-fixed{
+  position:absolute; right:12px; top:8px; z-index:110;
+}
+.header-search-fixed #search-input{
+  width:240px; max-width:38vw;
+  padding:.35rem .55rem; font-size:.9rem;
+  border:1px solid #e5e7eb; border-radius:.45rem; background:#fff;
+}
+.header-search-fixed #search-results{
+  position:absolute; right:0; top:calc(100% + .35rem); z-index:120;
+  min-width:240px; max-width:60vw;
+  margin:0; background:#fff; border:1px solid #e5e7eb; border-radius:.5rem;
+  padding:.35rem .5rem; max-height:40vh; overflow:auto;
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+.header-search-fixed #search-results[hidden]{ display:none; }
+.header-search-fixed #search-results .hits{ list-style:none; margin:0; padding:0; }
+.header-search-fixed #search-results li{ margin:.25rem 0; }
+.header-search-fixed #search-results a{ text-decoration:none; color:#0b157a; }
+.header-search-fixed #search-results .s{ font-size:.85rem; color:#444; opacity:.9; }
+
+@media (max-width:768px){
+  .header-search-fixed{ position:static; padding:.4rem .5rem; }
+  .header-search-fixed #search-results{ position:static; max-width:100%; }
+}
+
 /* 「目次」ラベル（右サイド） */
 .toc-side-title{position:relative;padding-left:1.75rem;font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
 .toc-side-title::before{content:"🧭";position:absolute;left:.25rem;top:50%;transform:translateY(-50%);font-size:1.1rem;opacity:.9}
@@ -91,7 +121,6 @@ h1{
   border:0; border-top:3px solid var(--brand); border-right:3px solid var(--brand); border-bottom:2px solid #e5e7eb;
   font-size:clamp(1.6rem,2.2vw,2.2rem); font-weight:800;
 }
-/* 数字は消すがバッジは残す */
 h1::before{
   content:""; position:absolute; left:.7rem; top:.5rem; bottom:.5rem;
   width:6.2rem; display:flex; align-items:center; justify-content:center;
@@ -169,63 +198,12 @@ details summary{ cursor:pointer; }
 details[open]{ padding-bottom:.25rem; }
 details pre{ margin:.5rem 0; }
 
-
+/* 最終更新 */
 .article-head{ position:relative; }
-
-.last-updated{position:absolute; right:0; top:0; font-size:.85rem; color:#6b7280; margin-top:.2rem; }
+.last-updated{ font-size:.85rem; color:#6b7280; margin-top:.2rem; }
 @media (max-width:768px){
   .last-updated{ position:static; display:block; text-align:right; margin-top:.25rem; }
 }
 
-
+/* 検索なし時のメッセージ */
 .nohit{ padding:.5rem .45rem; color:#666; }
-
-
-/* ===================== ヘッダー右端の検索 ===================== */
-.header-search {
-  text-align: right;
-  vertical-align: middle;
-  min-width: 260px;
-  position: relative; /* 結果を絶対配置するための基準 */
-}
-
-.header-search #search-input {
-  width: 240px;
-  padding: .35rem .55rem;
-  font-size: .9rem;
-  border: 1px solid #e5e7eb;
-  border-radius: .45rem;
-  background:#fff;
-}
-
-.header-search #search-results {
-  margin-top:.35rem;
-  background:#fff;
-  border:1px solid #e5e7eb;
-  border-radius:.5rem;
-  padding:.35rem .5rem;
-  max-height:40vh;
-  overflow:auto;
-  box-shadow:0 8px 20px rgba(0,0,0,.06);
-
-  position:absolute;
-  right:0; top:100%; /* 入力ボックスの真下に出す */
-  z-index:100;
-}
-
-.header-search #search-results[hidden]{ display:none; }
-
-.header-search #search-results .hits{
-  list-style:none;
-  margin:0; padding:0;
-}
-.header-search #search-results li{ margin:.25rem 0; }
-.header-search #search-results a{
-  text-decoration:none;
-  color:#0b157a;
-}
-.header-search #search-results .s{
-  font-size:.85rem;
-  color:#444;
-  opacity:.9;
-}
