@@ -1,7 +1,7 @@
 ---
 title: md2htmlテンプレ
 layout: default
-categories: [0. Home, Home]
+categories: [0. Home, notes]
 nav_order: 20
 ---
 
