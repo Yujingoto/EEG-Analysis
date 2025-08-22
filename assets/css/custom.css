@@ -76,6 +76,12 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 .header details ul::-webkit-scrollbar{width:8px}
 .header details ul::-webkit-scrollbar-thumb{background:#c8d0e6;border-radius:8px}
 .header details ul{scrollbar-width:thin;scrollbar-color:#c8d0e6 transparent}
+.header details{ position:relative; }
+.header details > ul,
+.header details > .index,
+.header details > .gnav{
+  position:absolute; left:0; top:100%;
+}
 
 /* 「目次」ラベル（右サイド） */
 .toc-side-title{position:relative;padding-left:1.75rem;font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
@@ -171,10 +177,7 @@ details pre{ margin:.5rem 0; }
 
 
 .article-head{ position:relative; }
-.last-updated{
-  position:absolute; right:0; top:0;
-  font-size:.85rem; color:#6b7280;
-}
+
 @media (max-width:768px){
   .last-updated{ position:static; display:block; text-align:right; margin-top:.25rem; }
 }
@@ -198,18 +201,12 @@ details pre{ margin:.5rem 0; }
   display:flex; justify-content:flex-end; align-items:flex-start; gap:.75rem;
   margin-bottom:.75rem; flex-wrap:wrap;
 }
-.last-updated{ font-size:.85rem; color:#6b7280; margin-top:.2rem; }
-#search-box{ min-width:220px; }
-#search-input{
-  width:220px; padding:.4rem .55rem; font-size:.9rem;
-  border:1px solid #e5e7eb; border-radius:.5rem;
-}
-#search-results{
-  margin-top:.35rem; background:#fff; border:1px solid #e5e7eb; border-radius:.5rem;
-  padding:.35rem .5rem; max-height:40vh; overflow:auto; box-shadow:0 8px 20px rgba(0,0,0,.06);
-}
-#search-results .hits{ list-style:none; padding:0; margin:0; }
-#search-results li{ margin:.25rem 0; }
-#search-results a{ text-decoration:none; color:#0b157a; }
-#search-results .s{ font-size:.85rem; color:#444; opacity:.9; }
-#search-results[hidden]{ display:none; }
+.last-updated{position:absolute; right:0; top:0; font-size:.85rem; color:#6b7280; margin-top:.2rem; }
+#search-input{width:240px;padding:.4rem .55rem;font-size:.9rem;border:1px solid #e5e7eb;border-radius:.5rem;}
+#search-results{margin-top:.35rem;background:#fff;border:1px solid #e5e7eb;border-radius:.5rem;padding:.35rem .5rem;max-height:40vh;overflow:auto;box-shadow:0 8px 20px rgba(0,0,0,.06);}
+#search-results .hits{list-style:none;margin:0;padding:0;}
+#search-results li{margin:.25rem 0;}
+#search-results a{text-decoration:none;color:#0b157a;}
+#search-results .s{font-size:.85rem;color:#444;opacity:.9;}
+#search-results[hidden]{display:none;}
+#search-results{ z-index: 70; position: relative; }

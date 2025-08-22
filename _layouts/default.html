@@ -26,46 +26,6 @@
     };
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  <script>
-    (() => {
-      const $q = document.getElementById('q');
-      const $out = document.getElementById('q-result');
-      if (!$q || !$out) return;
-
-      let DB = [];
-      fetch('{{ "/search.json" | relative_url }}')
-        .then(r => r.json()).then(j => DB = j).catch(()=>{});
-
-      const norm = s => (s||"").toLowerCase();
-      const makeSnippet = (text, q) => {
-        const i = text.indexOf(q);
-        if (i < 0) return text.slice(0, 120) + '…';
-        const start = Math.max(0, i - 40), end = Math.min(text.length, i + q.length + 40);
-        return (start? '…':'') + text.slice(start, end) + (end<text.length? '…':'');
-      };
-
-      const search = (q) => {
-        if (!q.trim()) { $out.hidden = true; $out.innerHTML = ''; return; }
-        const terms = q.trim().toLowerCase().split(/\s+/);
-        const hits = DB.filter(d => {
-          const hay = (d.title + ' ' + d.content).toLowerCase();
-          return terms.every(t => hay.includes(t));
-        }).slice(0, 20);
-
-        $out.innerHTML = hits.map(h => `
-          <a class="hit" href="${h.url}">
-            <div class="t">${h.title}</div>
-            <div class="s">${makeSnippet(h.content, terms[0])}</div>
-          </a>
-        `).join('') || '<div class="nohit">見つかりませんでした</div>';
-        $out.hidden = false;
-      };
-
-      let tid; $q.addEventListener('input', () => {
-        clearTimeout(tid); tid = setTimeout(() => search($q.value), 120);
-      });
-    })();
-  </script>
 </head>
 
 <body>
@@ -75,12 +35,14 @@
     <div class="page-wrap">
       <main class="content">
         <!-- 🔍 サイト内検索ボックス（記事の上部右寄せ） -->
-        <div id="search-box" style="text-align:right; margin-top: 0.5em; margin-bottom: 1em;">
-          <input type="text" id="search-input" placeholder="サイト内検索..." 
-                style="width: 220px; padding: 4px; font-size: 0.9em;">
-          <div id="search-results" 
-              style="margin-top: 0.5em; font-size: 0.9em; text-align:left;"></div>
+        <div class="article-tools">
+          <span class="last-updated" data-path="{{ page.path | escape }}"></span>
+          <div id="search-box">
+            <input type="search" id="search-input" placeholder="サイト内検索…">
+            <div id="search-results" hidden></div>
+          </div>
         </div>
+
         <!-- 記事右上の最終更新（GitHub APIで取得） -->
         <div class="last-updated" data-path="{{ page.path | escape }}"></div>
 
@@ -116,5 +78,50 @@
   </script>
   <script src="{{ "/assets/js/toc.js" | relative_url }}" defer></script>
   <script src="{{ "/assets/js/mathwrap.js" | relative_url }}" defer></script>
+  <script>
+    (function () {
+      const input = document.getElementById('search-input');
+      const out   = document.getElementById('search-results');
+      if (!input || !out) return;
+
+      let DB = [];
+      // 1) search.json をロード
+      fetch('{{ "/search.json" | relative_url }}')
+        .then(r => { if (!r.ok) throw new Error("fetch failed"); return r.json(); })
+        .then(j => { DB = Array.isArray(j) ? j : []; console.log("search.json loaded:", DB.length); })
+        .catch(e => { console.error(e); out.hidden = false; out.innerHTML = '<div class="nohit">検索データの取得に失敗しました</div>'; });
+
+      const snippet = (text, q) => {
+        const t = (text || '').replace(/\s+/g,' ');
+        if (!q) return t.slice(0, 120) + '…';
+        const k = q.toLowerCase(), i = t.toLowerCase().indexOf(k);
+        if (i < 0) return t.slice(0, 120) + '…';
+        const s = Math.max(0, i - 40), e = Math.min(t.length, i + k.length + 40);
+        return (s ? '…' : '') + t.slice(s, e) + (e < t.length ? '…' : '');
+      };
+
+      const run = (q) => {
+        q = (q || '').trim();
+        if (!q) { out.hidden = true; out.innerHTML = ''; return; }
+        const terms = q.toLowerCase().split(/\s+/);
+        const hits = DB.filter(d => {
+          const hay = (d.title + ' ' + d.content).toLowerCase();
+          return terms.every(t => hay.includes(t));
+        }).slice(0, 20);
+
+        out.innerHTML = hits.length
+          ? '<ul class="hits">' + hits.map(d =>
+              `<li><a href="${d.url}">${d.title}</a><div class="s">${snippet(d.content, terms[0])}</div></li>`
+            ).join('') + '</ul>'
+          : '<div class="nohit">該当なし</div>';
+        out.hidden = false;
+      };
+
+      let tid = null;
+      input.addEventListener('input', () => { clearTimeout(tid); tid = setTimeout(() => run(input.value), 120); });
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); run(input.value); } });
+    })();
+  </script>
+
 </body>
 </html>
