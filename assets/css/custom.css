@@ -13,7 +13,7 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 
 /* ---------- グローバルヘッダー（sticky） ---------- */
 .header{
-  position: sticky; top: 0; z-index: 100; background:#fff;
+  position: sticky; top: 0; z-index: 100; background:#f5f6f8;
   border-bottom:2px solid var(--brand); box-shadow:0 2px 6px rgba(0,0,0,.06);
   overflow: visible; /* ← 展開が見切れない */
 }
@@ -80,10 +80,16 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 .header details ul::-webkit-scrollbar-thumb{background:#c8d0e6;border-radius:8px}
 .header details ul{scrollbar-width:thin;scrollbar-color:#c8d0e6 transparent}
 
-/* 右端固定の検索（テーブル外） */
+/* 右端検索：タイトルも横並びで */
 .header-search-fixed{
   position:absolute; right:12px; top:8px; z-index:110;
+  display:flex; align-items:center; gap:.65rem;
 }
+.header-search-fixed .site-title{
+  font-weight:800; color:#0b157a; white-space:nowrap;
+}
+
+/* 入力と結果 */
 .header-search-fixed #search-input{
   width:240px; max-width:38vw;
   padding:.35rem .55rem; font-size:.9rem;
@@ -93,7 +99,11 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
   position:absolute; right:0; top:calc(100% + .35rem); z-index:120;
   min-width:240px; max-width:60vw;
   margin:0; background:#fff; border:1px solid #e5e7eb; border-radius:.5rem;
-  padding:.35rem .5rem; max-height:40vh; overflow:auto;
+  padding:.35rem .5rem;
+  max-height:min(60vh, 520px);       /* ← PC でも上限高さ */
+  overflow-y:auto;                   /* ← 常に縦スクロール許可 */
+  overflow-x:hidden;
+  overscroll-behavior:contain;
   box-shadow:0 8px 20px rgba(0,0,0,.06);
 }
 .header-search-fixed #search-results[hidden]{ display:none; }
