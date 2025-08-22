@@ -76,12 +76,6 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 .header details ul::-webkit-scrollbar{width:8px}
 .header details ul::-webkit-scrollbar-thumb{background:#c8d0e6;border-radius:8px}
 .header details ul{scrollbar-width:thin;scrollbar-color:#c8d0e6 transparent}
-.header details{ position:relative; }
-.header details > ul,
-.header details > .index,
-.header details > .gnav{
-  position:absolute; left:0; top:100%;
-}
 
 /* 「目次」ラベル（右サイド） */
 .toc-side-title{position:relative;padding-left:1.75rem;font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
