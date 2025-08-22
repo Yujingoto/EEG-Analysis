@@ -112,7 +112,7 @@ $$
 特に，よく使われる窓関数はガウスなので，あえて窓関数を明示的に示す場合の式はこんな感じになります．
 
 $$
-STFT_{f,w}(t, \omega) = X(\omega) = \int_{-\infty}^{\infty} f(\tau) \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{{(\tau-t)}^2}{2\sigma^2}}\mathrm{e}^{-i\omega \tau} d\tau
+STFT_{f,w}(t, \omega) = X(\omega) = \int_{-\infty}^{\infty} f(\tau) \frac{1}{\sqrt{2\pi\sigma^2}}\exp(-\frac{(\tau-t)^2}{2\sigma^2})\mathrm{e}^{-i\omega \tau} d\tau
 $$
 
 整理すると，短時間フーリエ変換は元信号に窓関数をかけて整形したデータをフーリエ変換にかけることでした．
