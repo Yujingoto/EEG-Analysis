@@ -29,19 +29,16 @@ $$
     \displaystyle 0 & 3
   \end{pmatrix}
 $$ 
-
 を考えます．このベクトルを色んなベクトルに掛けてみます．
 
 
 まずは，
-
 $$
 \begin{pmatrix}
     \displaystyle 1\\
     \displaystyle 0
 \end{pmatrix}
 $$
-
 および
 $$
 \begin{pmatrix}
@@ -49,7 +46,6 @@ $$
     \displaystyle 1
 \end{pmatrix}
 $$
-
 を考えてみます．
 
 $$
@@ -64,8 +60,8 @@ $$
 \begin{pmatrix}
     \displaystyle 2\\
     \displaystyle 0
-\end{pmatrix}
-\\[1em]
+\end{pmatrix},
+\qquad
 \begin{pmatrix}
     \displaystyle 2 & 0\\
     \displaystyle 0 & 3
@@ -83,7 +79,6 @@ $$
 これらは，行列 $\bm{A}$ をかけても，それぞれ $2,3$ 倍されるだけです．つまり，行列 $\bm{A}$ の固有ベクトルは $(1,0), (0,1)$ で，対応する固有値は $2,3$ であることが分かります．
 
 では次に，行列
-
 $$
 \bm{B} =
   \begin{pmatrix}
@@ -91,7 +86,6 @@ $$
     \displaystyle 1 & 3
   \end{pmatrix}
 $$
-
 を考えます．
 
 $$
@@ -107,7 +101,7 @@ $$
     \displaystyle 2\\
     \displaystyle 1
 \end{pmatrix}
-\\[1em]
+\qquad
 \begin{pmatrix}
     \displaystyle 2 & 1\\
     \displaystyle 1 & 3
@@ -240,15 +234,13 @@ $$
 
 また， $\begin{pmatrix} a-\lambda \\ c\end{pmatrix}$ と $\begin{pmatrix} b\\ d-\lambda \end{pmatrix}$ が線形独立な場合には先程の自明解以外がありえません．
 
-従って，この問題の解は 
-
+従って，この問題の解は
 $$
 \begin{pmatrix}
 a-\lambda \\
 c
 \end{pmatrix}
 $$ 
-
 と 
 $$
 \begin{pmatrix} 
@@ -449,8 +441,7 @@ t
     1
 \end{pmatrix}
 $$ 
-
-です．
+ です．
 
 $\lambda = -3$ の時，
 
@@ -467,7 +458,6 @@ $$
 $$
 
 なので，固有ベクトルは
-
 $$
 t
 \begin{pmatrix}
@@ -475,7 +465,6 @@ t
     4
 \end{pmatrix}
 $$
-
 となります．
 
 
@@ -493,7 +482,7 @@ $$
 \begin{pmatrix}
     2\\
     2
-\end{pmatrix}
+\end{pmatrix},
 \qquad
 \begin{pmatrix}
 1 & 1 \\

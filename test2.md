@@ -1,25 +1,17 @@
 ---
-title: テスト2
+title: md2htmlテンプレ
 layout: default
-categories: [Math, Basic]
+categories: [0. Notes, Home]
 nav_order: 20
 ---
 
-# フーリエ変換
-あああ???なんだ
+# メインタイトル
+aaaaaaa
+(この後に目次が入る)
 
-## オイラーの公式
+## 目次に入る奴ら
+bbbbbb
 
-なるほど，この > がついた範囲はボックスに入るようになっているって感じかな．
-なんかいい感じっぽい気がす
-
-<div class="box">
-ここに本文。$\mathrm{e}^{i\pi}+1=0$ など。
-
-$$
-x = a + \sin \theta
-$$
-</div>
 
 <div class="box" markdown="1">
 <div class="title">定義</div>
@@ -36,14 +28,16 @@ $$
 > ヒントボックス
 </div>
 
-### hoge
-
+### 数式
+横スクロールが効くようになってる
 $$
+\begin{align}
   PSI(t) = |\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}||\frac{\sum_{k=1}^K exp(i (\phi_{k1}^f(t) -\phi_{k2}^f(t) ) )}{K}|
+\end{align}
 $$
 
 
-## code block
+### code block
 
 <details markdown="1">
 <summary>Preview</summary>
