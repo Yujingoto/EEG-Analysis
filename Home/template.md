@@ -20,11 +20,11 @@ bbbbbb
 - divは改行し，spanは埋め込む
 </div>
 
-<div class="box note">
+<div class="box note" markdown="1">
 > 注意書きボックス
 </div>
 
-<div class="box tip">
+<div class="box tip" markdown="1">
 > ヒントボックス
 </div>
 
