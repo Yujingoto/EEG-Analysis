@@ -19,6 +19,18 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 }
 .fixed-table{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0; padding-right:280px;} /* 検索分の余白 */
 @media (max-width:768px){ .fixed-table{ padding-right:280px; } }
+@media (min-width: 900px){
+  .fixed-table{
+    width: auto;                                  /* 100%をやめる */
+    max-width: calc(100% - 320px);/* 右端の検索ぶんを差し引く */
+    display: block;                                /* max-width を効かせる */
+    overflow-x: auto;                              /* 横スクロールはテーブルに */
+    -webkit-overflow-scrolling: touch;
+    padding-right: 0;                              /* 右パディングは不要 */
+  }
+  .fixed-table thead{ display: table; width: auto; }
+  .fixed-table th{ white-space: nowrap; }          /* ボタンの折返し防止 */
+}
 
 .fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem;border-right:1px solid #e5e7eb}
 .fixed-table th:last-child{border-right:none}
