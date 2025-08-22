@@ -121,7 +121,7 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 
 /* 「目次」ラベル（右サイド） */
 .toc-side-title{position:relative;padding-left:1.75rem;font-weight:800;margin:.25rem 0 .5rem;border-bottom:1px solid #e5e7eb;padding-bottom:.25rem;}
-.toc-side-title::before{content:"🧭";position:absolute;left:.25rem;top:50%;transform:translateY(-50%);font-size:1.1rem;opacity:.9}
+.toc-side-title::before{content:"📑";position:absolute;left:.25rem;top:50%;transform:translateY(-50%);font-size:1.1rem;opacity:.9}
 
 /* ---------- H1 / H2 ---------- */
 main{counter-reset:h1;}
