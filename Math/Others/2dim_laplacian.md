@@ -1,7 +1,7 @@
 ---
 title: 極座標ラプラシアン
 layout: default
-categories: [Notes, 4friends]
+categories: [0. Home, notes]
 nav_order: 20
 ---
 
