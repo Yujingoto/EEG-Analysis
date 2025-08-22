@@ -55,6 +55,8 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 .header details > .index,
 .header details > .gnav{
   max-height: calc(var(--sm-line) * 10);
+  min-width: 200px;
+  max-width: 400px;
   overflow:auto; -webkit-overflow-scrolling:touch;
   background:#fff; border:1px solid #e5e7eb; border-radius:.5rem;
   box-shadow:0 8px 20px rgba(0,0,0,.08);
