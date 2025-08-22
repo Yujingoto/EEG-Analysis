@@ -17,11 +17,21 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
   border-bottom:2px solid var(--brand); box-shadow:0 2px 6px rgba(0,0,0,.06);
   overflow: visible; /* ← 展開が見切れない */
 }
+.fixed-table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .fixed-table{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0; padding-right:280px;} /* 検索分の余白 */
 @media (max-width:768px){ .fixed-table{ padding-right:0; } }
+.fixed-table {
+  display: table;   /* テーブルの見た目は維持 */
+  min-width: max-content; /* コンテンツ幅に合わせて広がる */
+  table-layout: auto;
+}
 
 .fixed-table th{vertical-align:top;text-align:left;padding:.25rem .5rem;border-right:1px solid #e5e7eb}
 .fixed-table th:last-child{border-right:none}
+.fixed-table th {  white-space: nowrap; /* カテゴリが折り返されず横に並ぶ */}
 .header thead tr{background:#f5f6f8;border-bottom:1px solid #e5e7eb}
 .header details{margin:.25rem 0; position:relative; z-index:90;}
 .header a{text-decoration:none;border-bottom:1px dotted rgba(0,0,0,.25);}
