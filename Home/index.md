@@ -1,7 +1,7 @@
 ---
 title: まえがき
 layout: default
-categories: [0. Home]
+categories: [0. Home, notes]
 nav_order: 20
 ---
 
