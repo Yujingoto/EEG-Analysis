@@ -1,8 +1,8 @@
 ---
 title: md2htmlテンプレ
 layout: default
-categories: [0. Home, notes]
-nav_order: 20
+sitemap: false
+search: false
 ---
 
 # メインタイトル
