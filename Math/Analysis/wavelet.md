@@ -358,7 +358,7 @@ $$
 <div class="title">短時間フーリエ変換</div>
 
 $$
-STFT_{f,w}(t, \omega) = X(\omega) = \int_{-\infty}^{\infty} f(\tau) \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{{(\tau-t)}^2}{2\sigma^2}}\mathrm{e}^{-i\omega \tau} d\tau
+STFT_{f,w}(t, \omega) = X(\omega) = \int_{-\infty}^{\infty} f(\tau) \frac{1}{\sqrt{2\pi\sigma^2}}\exp(-\frac{(\tau-t)^2}{2\sigma^2})\mathrm{e}^{-i\omega \tau} d\tau
 $$
 
 <div class="title">Morlet Wavelet変換</div>
