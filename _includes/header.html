@@ -75,7 +75,12 @@
           </th>
           {%- endif -%}
         {%- endfor -%}
-
+        <th class="header-search">
+          <form id="search-box" action="javascript:void(0)">
+            <input type="search" id="search-input" placeholder="検索…" />
+            <div id="search-results" hidden></div>
+          </form>
+        </th>
       </tr>
     </thead>
   </table>
