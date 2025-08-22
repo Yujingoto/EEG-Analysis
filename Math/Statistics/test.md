@@ -146,6 +146,7 @@ $$
 
 
 $$
+\begin{align}
   L(\theta, d=0) = \left\{
     \begin{array}{l}
     0, \quad if \quad \theta \in \Theta_0\\
@@ -153,6 +154,7 @@ $$
     \end{array}
   \right.\nonumber \\
   L(\theta, d=1) = 1-L(\theta, d=0) 
+\end{align}
 $$
 
 損失関数については統計編で触れてないと思いますが，まあ「状況」と「判断」を変数としたときの，間違いによって生じる「損失」についての関数です．判断があってれば損失は生まれないし，間違っていれば生まれます．
