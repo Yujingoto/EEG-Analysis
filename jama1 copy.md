@@ -1,6 +1,6 @@
 ---
-title: jama
+title: just spacing
 layout: default
-categories: [Jawaeeeeeeeema2]
+categories: [Physiology]
 nav_order: 20
 ---

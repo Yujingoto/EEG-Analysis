@@ -22,7 +22,7 @@ body{color:var(--ink);background:var(--bg);line-height:1.85;}
 @media (min-width: 900px){
   .fixed-table{
     width: auto;                                  /* 100%をやめる */
-    max-width: calc(100% - 320px);/* 右端の検索ぶんを差し引く */
+    max-width: calc(100% - 450px);/* 右端の検索ぶんを差し引く */
     display: block;                                /* max-width を効かせる */
     overflow-x: auto;                              /* 横スクロールはテーブルに */
     -webkit-overflow-scrolling: touch;

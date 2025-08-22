@@ -1,6 +1,6 @@
 ---
-title: jama
+title: just spacing
 layout: default
-categories: [Jamajaoeowelkaser3]
+categories: [Experiments]
 nav_order: 20
 ---

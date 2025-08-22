@@ -1,6 +1,6 @@
 ---
-title: jama
+title: just spacing
 layout: default
-categories: [Jama1]
+categories: [Simulation]
 nav_order: 20
 ---
