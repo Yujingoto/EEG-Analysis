@@ -231,3 +231,34 @@ details pre{ margin:.5rem 0; }
   color:#204db3;
   text-decoration:underline;
 }
+
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.contact-form label {
+  font-weight: 600;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: .6rem .8rem;
+  border: 1px solid #d1d5db;
+  border-radius: .45rem;
+  font-size: .95rem;
+  width: 100%;
+}
+.contact-form button {
+  padding: .7rem 1rem;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: .45rem;
+  cursor: pointer;
+}
+.contact-form button:hover {
+  background: #1522b5;
+}

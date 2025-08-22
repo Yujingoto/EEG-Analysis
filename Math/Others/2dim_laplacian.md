@@ -1,7 +1,7 @@
 ---
 title: 極座標ラプラシアン
 layout: default
-categories: [0. Home, notes]
+categories: [Math, Others]
 nav_order: 20
 ---
 

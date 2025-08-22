@@ -8,6 +8,7 @@ sitemap: false
 
 本稿は，筆者が勉強過程で作成したメモのうち，ある程度整形が出来たものを雑多に吐き出す倉庫のようなものです．自分の復習用資料を，どうせなので他の人にも見えるようにしておこう，くらいの距離感で気が向いた時に更新しています．後進の効率的な学習をサポートすることが出来たら最高．
 
+また，たまに誰かに何かを教える際，あるいは勉強会の際に使った資料がそのまま放り込まれていることもあります．文脈が理解できないページがあったらそういうことですのでご容赦ください．
 
 ## 参考になるかもしれない人
 主に，**筆者と同じように文系から入って脳波を用いた神経科学研究者を志す学生**の学習には多少役に立つ...ことを期待しています．脳波研究を始めるために最低限勉強する必要があるであろうアレコレをまとめていますので，ぜひ役立ててもらえると嬉しいです．
@@ -36,3 +37,23 @@ sitemap: false
 - サイト内 word 検索機能実装
 - 各ページに最終更新日時が表示される機能を実装 (これに伴い全記事の更新時が 2025.8.xx に)
 </div>
+
+
+## ご指摘などメッセージ
+
+<form action="https://formsubmit.co/yujin5506@gmail.com" method="POST" class="contact-form">
+  <!-- スパム防止用 -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://yoursite.github.io/EEG-Analysis/Home/thanks.html">
+
+  <label for="name">名前 (任意)</label>
+  <input type="text" id="name" name="name" placeholder="お名前">
+
+  <label for="email">メールアドレス (任意)</label>
+  <input type="email" id="email" name="email" placeholder="example@mail.com">
+
+  <label for="message">メッセージ</label>
+  <textarea id="message" name="message" rows="6" required></textarea>
+
+  <button type="submit">送信</button>
+</form>
