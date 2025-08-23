@@ -91,7 +91,7 @@ STUDY を作成するためのデータセットの用意が出来たら，実�
 
 をクリックして計算の設定を行います．
 
-<center><img src="../figures/a.png"></center>
+<center><img src="../figures/study8.png"></center>
 
 計算には結構時間が係ると思います．ここら辺まで来るとマシンスペックの影響をかなりうけるので，人によっては何時間もかかったりするかもしれません．
 
@@ -218,7 +218,7 @@ pre-compute の際，上記のように 1 から 70 Hz の波を，サイクル 
 
 
 ## ITC
-Inter Trial Coherence，Inter Trial Phase Coherence とか Phase Locking Factor とかいろんな呼び方されますが，試行間位相ロッキングを見る解析です．手法の大まかな説明は[こちら](../Methods/phase_analysis.html)．数学的な説明は[こちら](../../Math/Analysis/phase_analysis.html)．
+Inter Trial Coherence，Inter Trial Phase Coherence とか Phase Locking Factor とかいろんな呼び方されますが，試行間位相ロッキングを見る解析です．手法の大まかな説明は[こちら](../Methods/ITPC.html)．数学的な説明は[こちら](../../Math/Analysis/phase_analysis.html)．
 
 plot の設定は ERSP の時と同様です．
 <center><img src="../figures/itc1.png"></center>

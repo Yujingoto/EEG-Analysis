@@ -15,7 +15,7 @@ nav_order: 20
 ## まずはロード
 まずは，何も前処理が行われていないデータを読み込んできます．データのロードでやった内容通りにすゝめます．
 
-```python {.line-numbers}
+```python
 sample_data_folder = mne.datasets.sample.data_path()
 sample_data_raw_file = os.path.join(
     sample_data_folder, "MEG", "sample", "sample_audvis_raw.fif")
@@ -99,7 +99,7 @@ https://mne.tools/stable/auto_examples/preprocessing/contralateral_referencing.h
 
 さて，早速アーティファクトの検出に移りたいところですが，その前にサンプルデータに対しておまじない的なことをしておきます．
 
-```python {.line-numbers}
+```python
 ssp_projectors = raw.info["projs"]
 raw.del_proj()
 ```
@@ -180,11 +180,10 @@ ecg_epochs.plot_image(combine="mean")
 ecg_epochs = mne.preprocessing.create_ecg_epochs(raw, baseline=(-0.5,-0.2))
 fig = ecg_epochs.plot_image(combine="mean")
 ```
-<div style="display: flex; gap:5px;">
-	<img src="../figures/mne-ecg11.png", width=33%, height=33%>
-	<img src="../figures/mne-ecg21.png", width=33%, height=33%>
-	<img src="../figures/mne-ecg31.png", width=33%, height=33%>
-</div>
+
+<center><img src="../figures/mne-ecg11.png"></center>
+<center><img src="../figures/mne-ecg21.png"></center>
+<center><img src="../figures/mne-ecg31.png"></center>
 
 横縞がなくなり，綺麗なピークが見れるようになりました．
 
@@ -224,17 +223,15 @@ eog_epochs = mne.preprocessing.create_eog_epochs(raw, baseline=(-0.5, -0.2))
 eog_epochs.plot_image(combine="mean")
 eog_epochs.average().plot_joint()
 ```
-<div style="display: flex; gap:5px;">
-	<img src="../figures/mne-ecg13.png", width=33%, height=33%>
-	<img src="../figures/mne-ecg23.png", width=33%, height=33%>
-	<img src="../figures/mne-ecg33.png", width=33%, height=33%>
-</div>
 
-<div style="display: flex; gap:5px;">
-	<img src="../figures/mne-ecg14.png", width=33%, height=33%>
-	<img src="../figures/mne-ecg24.png", width=33%, height=33%>
-	<img src="../figures/mne-ecg34.png", width=33%, height=33%>
-</div>
+<center><img src="../figures/mne-ecg13.png"></center>
+<center><img src="../figures/mne-ecg23.png"></center>
+<center><img src="../figures/mne-ecg33.png"></center>
+
+
+<center><img src="../figures/mne-ecg14.png"></center>
+<center><img src="../figures/mne-ecg24.png"></center>
+<center><img src="../figures/mne-ecg34.png"></center>
 
 たしかに EEG がすんごい．
 
@@ -265,11 +262,8 @@ picks = mne.pick_channels_regexp(raw.ch_names, regexp="MEG 2..3")
 raw.plot(order=picks, n_channels=len(picks))
 ```
 
-<div style="display: flex; gap:5px;">
-	<img src="../figures/mne-bc2.png", width=50%, height=50%>
-	<img src="../figures/mne-bc3.png", width=50%, height=50%>
-</div>
-
+<center><img src="../figures/mne-bc2.png"></center>
+<center><img src="../figures/mne-bc3.png"></center>
 
 なるほど，どちらも明らかに他のチャンネルと異なって死んだデータになっています．
 
@@ -334,7 +328,7 @@ epochs = mne.Epochs(raw2, events=events)["2"].average().plot_joint()
 
 
 
-```python {.line-numbers}
+```python
 raw.crop(tmin=0, tmax=3).load_data()
 
 eeg_data = raw.copy().pick_types(meg=False, eeg=True, exclude=[])
@@ -346,6 +340,7 @@ for title, data in zip(["orig.", "interp."], [eeg_data, eeg_data_interp]):
     fig.subplots_adjust(top=0.9)
     fig.suptitle(title, size="xx-large", weight="bold")
 ```
+
 まず見やすいように，[raw.crop()](https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.crop) で時間幅を切ってきます．その後，2 行目でサンプルから EEG データだけを [pick_types()](https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.pick_types) で抜き出し，3 行目ではそれを interpolate しています．ここでは [interpolate_bads()](https://mne.tools/dev/generated/mne.io.Raw.html#mne.io.Raw.interpolate_bads) 関数を使用しています．これは `bads` リストに入っているセンサーの情報をスプライン補完で埋めてあげ，ついでに `bads` リストを空にします．つまり「もう `bads` なんてない」状態にするものです．
 
 尚，Epocking した後のデータの場合には別の関数で [mne.Epochs.interpolate_bads()](https://mne.tools/dev/generated/mne.Epochs.html#mne.Epochs.interpolate_bads) を使うようです．MNE の Raw, Epochs などのオブジェクトの扱いはまだよく見てないので今度．
@@ -353,10 +348,8 @@ for title, data in zip(["orig.", "interp."], [eeg_data, eeg_data_interp]):
 結果を分けて plot してみると，
 
 
-<div style="display: flex; gap:5px;">
-	<img src="../figures/mne-bc5orig..png", width=50%, height=50%>
-	<img src="../figures/mne-bc5interp..png", width=50%, height=50%>
-</div>
+<center><img src="../figures/mne-bc5orig..png"></center>
+<center><img src="../figures/mne-bc5interp..png"></center>
 
 となっています．赤でハイライトされているのが，bad チャンネルとされていたものですね．比較すると，たしかに Interpolation によってノイジーではなくなっていることが分かります．
 
@@ -385,7 +378,7 @@ plot() すると，
 
 こいつらを消したいので，
 
-```python {.line-numbers}
+```python
 raw_highpass = raw3.copy().filter(l_freq=0.2, h_freq=None)
 with mne.viz.use_browser_backend("matplotlib"):
     fig = raw_highpass.plot(duration=60, proj=False, n_channels=len(raw3.ch_names), remove_dc=False)
@@ -433,7 +426,7 @@ High-pass だけの場合に比べて，少しだけジャギジャギ感がな�
 ### ノッチフィルタ
 次に，ノッチフィルタです．EEGは MEGに比べそこまで影響されませんが，電源ノイズの影響を消すためのものです．[notch_filter()](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.notch_filter) 関数を使います．周波数はリストにして明示的に渡す必要があるようです．また，適用する信号も選択できるようで，ここではMEGにのみかけています．
 
-```python {.line-numbers}
+```python
 meg_picks = mne.pick_types(raw.info, meg=True)
 freqs = (60, 120, 180, 240)
 raw_notch = raw.copy().notch_filter(freqs=freqs, picks=meg_picks)
@@ -446,10 +439,8 @@ for title, data in zip(["Un", "Notch "], [raw, raw_notch]):
 
 実際にノッチフィルタしているのは3行目までです．
 
-<div style="display: flex; gap:5px;">
-	<img src="../figures/mne-filt3Un.png", width=50%, height=50%>
-	<img src="../figures/mne-filt3Notch .png", width=50%, height=50%>
-</div>
+<center><img src="../figures/mne-filt3Un.png"></center>
+<center><img src="../figures/mne-filt3Notch .png"></center>
 
 60 Hz の倍数成分を suppression することで抑えています．
 
@@ -478,7 +469,7 @@ fig.fake_keypress("a")  # Simulates user pressing 'a' on the keyboard.
 ### 自動
 さて，手動でやるのは面倒なので，自動化です．
 
-```python {.line-numbers}
+```python
 eog_events = mne.preprocessing.find_eog_events(raw)
 onsets = eog_events[:, 0] / raw.info["sfreq"] - 0.25
 durations = [0.5] * len(eog_events)
@@ -533,7 +524,7 @@ filt_raw = raw.copy().filter(l_freq=1.0, h_freq=None)
 ### ICA
 準備ができたので，ica をかけていきます．
 
-```python {.line-numbers}
+```python
 ica = ICA(n_components=15, max_iter="auto", method='fastica', random_state=97)
 ica.fit(filt_raw)
 ica
@@ -609,7 +600,7 @@ ica.plot_overlay(raw, exclude=[0], picks="eeg")
 
 さて，そんな感じで，怪しい component のリストを作ってきたら
 
-```python {.line-numbers}
+```python
 ica.exclude = [0, 1, 11, 13]
 reconst_raw = raw.copy()
 ica.apply(reconst_raw)
@@ -640,10 +631,8 @@ reconst_raw.plot(
 
 すると，
 
-<div style="display: flex; gap:5px;">
-	<img src="../figures/mne-ica8.png", width=50%, height=50%>
-	<img src="../figures/mne-ica9.png", width=50%, height=50%>
-</div>
+<center><img src="../figures/mne-ica8.png", width=50%, height=50%></center>
+<center><img src="../figures/mne-ica9.png", width=50%, height=50%></center>
 
 のように，わりと綺麗に撮れているのが分かります．嬉しいですね．心電をいっぱい取ったから，MEG の方が綺麗になっているかも．
 
@@ -653,7 +642,7 @@ reconst_raw.plot(
 ### 自動化
 さて，こんなことを全て手作業でやるのも面倒です．自動化する手段を探します．
 
-```python {.line-numbers}
+```python
 ica.exclude = []
 eog_indices , eog_scores = ica.find_bads_eog(raw)
 ica.plot_scores(eog_scores)
@@ -708,7 +697,7 @@ Volume conduction を低減し，EEG の空間分解能をちょっとあげる�
 
 今回は，別データになりますが筆者の実験で取っていたデータを用いて説明します．
 
-```python {.line-numbers}
+```python
 import mne
 import numpy as np
 import matplotlib.pyplot as plt
@@ -806,7 +795,7 @@ flat_criteria = dict(mag=1e-15, grad=1e-13, eeg=1e-6)  # 1 fT  # 1 fT/cm  # 1 µ
 
 それぞれ見たまんま，閾値を設定しています．これらを使って
 
-```python {.line-numbers}
+```python
 epochs = mne.Epochs(
     raw,
     events,
@@ -841,7 +830,7 @@ epochs.plot_drop_log()
 
 ということで，各種 Bad イベントの検出と Annotation を行います．
 
-```python {.line-numbers}
+```python
 # eog
 eog_events = mne.preprocessing.find_eog_events(raw)
 onsets = eog_events[:, 0] / raw.info["sfreq"] - 0.25
@@ -925,7 +914,7 @@ event_dict = {
 
 だったことを思い出します．これらを取り出すには，
 
-```python {.line-numbers}
+```python
 conds_we_care_about = ["auditory/left", "auditory/right", "visual/left", "visual/right"]
 epochs.equalize_event_counts(conds_we_care_about)  # this operates in-place
 aud_epochs = epochs["auditory"]
