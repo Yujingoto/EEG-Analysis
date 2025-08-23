@@ -1,11 +1,11 @@
 ---
-title: 4. 発展的な前処理
+title: 発展的な前処理
 layout: default
 categories: [Analysis, EEGLAB]
 nav_order: 20
 ---
 
-# 4. 発展的な前処理
+# 発展的な前処理
 必ずしもやる必要はないが，場合によってはやる前処理について．いつか書く．
 
 ## ダイポールの推定

@@ -1,11 +1,11 @@
 ---
-title: 5. 単被験者での解析
+title: 単被験者での解析
 layout: default
 categories: [Analysis, EEGLAB]
 nav_order: 20
 ---
 
-# 5. 単被験者での解析
+# 単被験者での解析
 まずは単一被験者のデータだけでできることからやっていきます．
 
 ## 条件の切り出し
@@ -66,4 +66,4 @@ nav_order: 20
 <center><img src="../figures/erp10.png"></center>
 
 
-[次回](./analysis2.html)は複数の被験者や実験データを用いてデータ群を作り，解析していきます．
+[次回](./6analysis2.html)は複数の被験者や実験データを用いてデータ群を作り，解析していきます．

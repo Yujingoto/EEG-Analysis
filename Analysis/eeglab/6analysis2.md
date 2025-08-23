@@ -1,11 +1,11 @@
 ---
-title: 6. 被験者群での解析
+title: 被験者群での解析
 layout: default
 categories: [Analysis, EEGLAB]
 nav_order: 20
 ---
 
-# 6. 被験者群での解析
+# 被験者群での解析
 
 
 ## STUDYの作成
@@ -112,7 +112,7 @@ STUDY を作成するためのデータセットの用意が出来たら，実�
 とりあえず今は，全電極全被験者を選択して進めます．
 
 ## ERP
-まずは王道，[ERP](../erp.html) から見ていきます．
+まずは王道，[ERP](../Methods/erp.html) から見ていきます．
 <center><img src="../figures/study10.png"></center>
 
 `Plot ERPs` の前に，表示する ERP についてオプションの設定を行います．
@@ -176,7 +176,7 @@ ERP plotting format の 1 つ目 (あるいはデザインによっては2つ目
 
 
 ## ERSP
-次は[時間周波数解析](../time_frequency.html)です．同じ画面の下の方にいます．ERSP と，次にやる ITC は同じ計算というか処理の結果として算出される解析手法なので，パラメータはまとめて調節します．見てみましょう．
+次は[時間周波数解析](../Methods/time_frequency.html)です．同じ画面の下の方にいます．ERSP と，次にやる ITC は同じ計算というか処理の結果として算出される解析手法なので，パラメータはまとめて調節します．見てみましょう．
 
 <center><img src="../figures/itc1.png"></center>
 
@@ -218,7 +218,7 @@ pre-compute の際，上記のように 1 から 70 Hz の波を，サイクル 
 
 
 ## ITC
-Inter Trial Coherence，Inter Trial Phase Coherence とか Phase Locking Factor とかいろんな呼び方されますが，試行間位相ロッキングを見る解析です．手法の大まかな説明は[こちら](../phase_analysis.html)．数学的な説明は[こちら](../../Math/Analysis/phase_analysis.html)．
+Inter Trial Coherence，Inter Trial Phase Coherence とか Phase Locking Factor とかいろんな呼び方されますが，試行間位相ロッキングを見る解析です．手法の大まかな説明は[こちら](../Methods/phase_analysis.html)．数学的な説明は[こちら](../../Math/Analysis/phase_analysis.html)．
 
 plot の設定は ERSP の時と同様です．
 <center><img src="../figures/itc1.png"></center>
