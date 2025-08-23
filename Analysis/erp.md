@@ -1,7 +1,7 @@
 ---
 title: 事象関連電位 (ERP)
 layout: default
-categories: [Analysis]
+categories: [Analysis, Methods]
 nav_order: 20
 ---
 

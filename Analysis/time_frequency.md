@@ -1,7 +1,7 @@
 ---
 title: (時間) 周波数解析
 layout: default
-categories: [Analysis]
+categories: [Analysis, Methods]
 nav_order: 20
 ---
 

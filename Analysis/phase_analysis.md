@@ -1,8 +1,8 @@
 ---
-title: ネットワーク解析
+title: 試行間位相ロック解析
 layout: default
 categories: [Analysis, Methods]
 nav_order: 20
 ---
 
-# ネットワーク解析
+# 試行間位相ロック解析
