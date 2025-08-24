@@ -274,3 +274,13 @@ details pre{ margin:.5rem 0; }
 .contact-form button:hover {
   background: #1522b5;
 }
+
+blockquote {
+  border-left: 4px solid var(--brand);
+  background: #f9f9fb;
+  margin: 1rem 0;
+  padding: .6rem 1rem;
+  color: #444;
+  font-style: italic;
+}
+blockquote p { margin: .3rem 0; }

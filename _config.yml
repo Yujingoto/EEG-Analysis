@@ -1,2 +1,10 @@
 plugins:
   - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    line_numbers: true
+    css_class: 'highlight'
