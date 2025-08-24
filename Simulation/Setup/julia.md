@@ -1,11 +1,11 @@
 ---
-title: Julia
+title: Juliaの導入
 layout: default
 categories: [Simulation, Setup]
 nav_order: 20
 ---
 
-# Julia on Jupyter notebook
+# Julia on Jupyter notebook の導入
 
 Julia を Jupyter notebook で使えるようにする方法
 
@@ -57,8 +57,8 @@ Julia は 2012 年と比較的最近開発されたプログラミング言語�
 ## JuliaをJupyter Notebookに追加
 以上の内容が出来ていれば，とりあえず Julia を利用することは出来るようになったはずです．しかし筆者は Jupyter を開発環境として使いたいので，その連携を進めていきます．
 
-Jupyter Notebook がない場合には先に[こちら](./environment.html)から環境構築をしてください．
-筆者みたいにおしゃれにするのは[こちら](./jupyter.html).
+Jupyter Notebook がない場合には先に[こちら](./0environment.html)から環境構築をしてください．
+筆者みたいにおしゃれにするのは[こちら](./1jupyter.html).
 
 ### 起動とIJuliaのインストール
 インストールが終わったら，julia を起動します．
