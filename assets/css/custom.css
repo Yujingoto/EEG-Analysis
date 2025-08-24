@@ -299,8 +299,6 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 .highlight {
   background: #616161;
   color: #e6e6e6;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
   overflow-x: auto;
   /* フォントとサイズを統一 → 行番号ズレ防止 */
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
@@ -345,6 +343,13 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 .highlight .bp    { color:#e5e7eb; }                         /* builtins */
 .highlight .gd    { background:#7f1d1d; color:#fee2e2; }     /* diff - */
 .highlight .gi    { background:#064e3b; color:#d1fae5; }     /* diff + */
+
+/* モバイルの微調整（行番号と揃えやすく） */
+@media (max-width: 480px){
+  .highlight{ font-size: 0.85rem; line-height: 1.55; }
+  .highlight .gutter{ padding:.55rem .6rem; }
+  .highlight .code{   padding:.55rem .8rem; }
+}
 
 /* 言語プリフィクス（保険） */
 pre.highlight, code.language-python, code.language-javascript, code.language-bash { color: inherit; }
