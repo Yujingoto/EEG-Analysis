@@ -284,3 +284,33 @@ blockquote {
   font-style: italic;
 }
 blockquote p { margin: .3rem 0; }
+
+/* コードブロック全体 */
+.highlight {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: .75rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+/* 行番号テーブル */
+.highlight table {
+  border-spacing: 0;
+  width: 100%;
+}
+.highlight td {
+  padding: 0 .5rem;
+  vertical-align: top;
+}
+.highlight .gutter {
+  color: #9ca3af;
+  text-align: right;
+  user-select: none;
+  border-right: 1px solid #e5e7eb;
+  padding-right: .75rem;
+}
+.highlight .code {
+  padding-left: .75rem;
+}
