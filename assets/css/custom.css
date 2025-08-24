@@ -318,9 +318,7 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   border-right: 1px solid #e5e7eb;
   padding-right: .5rem;
 }
-.highlight .code {
-  padding-left: .75rem;
-}
+
 
 /* ---- Rouge token colors (最小セット) ---- */
 .highlight .c,.highlight .c1, .highlight .cm     { color:#9ca3af; font-style:italic; }      /* コメント */
@@ -339,6 +337,7 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 .highlight .bp    { color:#e5e7eb; }                         /* builtins */
 .highlight .gd    { background:#7f1d1d; color:#fee2e2; }     /* diff - */
 .highlight .gi    { background:#064e3b; color:#d1fae5; }     /* diff + */
+
 /* ==== iOS の自動拡大をコードだけ止める + サイズ固定 ==== */
 .highlight,
 .highlight pre,
@@ -348,6 +347,51 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   font-size: 13px;          /* px で固定（rem だと拡大の影響を受けやすい） */
   line-height: 1.55;
+  padding-left: .75rem;
+}
+
+
+/* コードブロックの全体 */
+pre code.hljs {
+  display: block;
+  padding: 1rem;
+  overflow-x: auto;       /* 横スクロール許可 */
+  white-space: pre;       /* 自然な改行保持 */
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border-radius: 6px;
+  background: #3a3a3a;    /* 背景 */
+  color: #f8f8f2;         /* 文字色 */
+  box-sizing: border-box;
+}
+
+/* 行番号付き */
+pre code.hljs table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+pre code.hljs td {
+  vertical-align: top;
+  padding: 0;
+}
+
+pre code.hljs td.hljs-ln-numbers {
+  text-align: right;
+  color: #aaa;
+  padding-right: 0.75rem;
+  user-select: none;
+}
+
+pre code.hljs td.hljs-ln-code {
+  width: 100%;
+}
+
+/* スクロールバーをコードブロック下端に固定 */
+pre {
+  margin: 0 0 1.2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 
