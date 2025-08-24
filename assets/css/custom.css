@@ -275,113 +275,60 @@ details pre{ margin:.5rem 0; }
   background: #1522b5;
 }
 
-blockquote {
-  background: #f9f9fb;
-  margin: 1rem 0;
-  padding: .6rem 1rem;
-  color: #444;
-  font-style: italic;
+/* ===== blockquote ===== */
+blockquote{
+  background:#f9f9fb; margin:1rem 0; padding:.6rem 1rem;
+  color:#444; font-style:italic;
 }
-blockquote p { margin: .3rem 0; }
+blockquote p{ margin:.3rem 0; }
 
-
-/* インラインは行内のまま */
-p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
-  display: inline;
-  padding: .1em .25em;
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: .25rem;
-  font-size: .95em;
+/* ===== inline code ===== */
+p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, h6 code{
+  display:inline; padding:.1em .25em; background:#f3f4f6;
+  border:1px solid #e5e7eb; border-radius:.25rem; font-size:.95em;
 }
 
-/* コードブロック全体 */
-.highlight {
-  background: #616161;
-  color: #e6e6e6;
-  overflow-x: auto;
+/* ===== code block (Rouge) ===== */
+.highlight{
+  background:#616161; color:#e6e6e6;
+  overflow:auto;               /* 横スクロール */
+  padding:.25rem 0;            /* 上下だけ薄く */
+}
+.highlight pre{ margin:0; }    /* 余白をゼロに */
+.highlight code{
+  -webkit-text-size-adjust:none; text-size-adjust:none; /* iOS拡大停止 */
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  font-size:13px; line-height:1.55;
 }
 
-/* 行番号テーブル */
-.highlight table {
-  border-spacing: 0;
-  width: 100%;
+/* 行番号テーブル（Rougeのデフォ出力） */
+.highlight table{ border-spacing:0; width:100%; }
+.highlight td{ padding:0; vertical-align:top; }
+.highlight .gutter{
+  color:#9ca3af; user-select:none; text-align:right; opacity:.85;
+  border-right:1px solid rgba(255,255,255,.18);
+  padding:0 .6rem 0 .4rem;     /* 数字側の余白 */
 }
-.highlight td {
-  padding: 0;
-  vertical-align: top;
-}
-.highlight .gutter {
-  color: #9ca3af;
-  text-align: right;
-  user-select: none;
-  border-right: 1px solid #e5e7eb;
-  padding-right: .5rem;
+.highlight .code{ padding:0 .6rem; } /* 本文左右の余白 */
+
+/* スマホ時は行番号と本文の余裕を少しだけ広げる */
+@media (max-width:768px){
+  .highlight .gutter{ padding-right:.8rem; }
+  .highlight .code{ padding-left:.7rem; }
 }
 
-
-/* ---- Rouge token colors (最小セット) ---- */
-.highlight .c,.highlight .c1, .highlight .cm     { color:#9ca3af; font-style:italic; }      /* コメント */
-.highlight .k     { color:#93c5fd; }                         /* keyword */
-.highlight .o     { color:#93c5fd; }                         /* 演算子 */
-.highlight .nf    { color:#a7f3d0; }                         /* 関数名 */
-.highlight .nn    { color:#fde68a; }                         /* 名前空間/クラス */
-.highlight .nc    { color:#fde68a; }
-.highlight .na    { color:#fca5a5; }                         /* 属性名 */
-.highlight .nt    { color:#60a5fa; }                         /* タグ名 */
-.highlight .mi,
-.highlight .m     { color:#fcd34d; }                         /* 数値 */
-.highlight .s,
-.highlight .s1,
-.highlight .s2    { color:#86efac; }                         /* 文字列 */
-.highlight .bp    { color:#e5e7eb; }                         /* builtins */
-.highlight .gd    { background:#7f1d1d; color:#fee2e2; }     /* diff - */
-.highlight .gi    { background:#064e3b; color:#d1fae5; }     /* diff + */
-
-/* ==== iOS の自動拡大をコードだけ止める + サイズ固定 ==== */
-.highlight,
-.highlight pre,
-.highlight code {
-  -webkit-text-size-adjust: none; /* iOS の自動拡大OFF */
-  text-size-adjust: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 13px;          /* px で固定（rem だと拡大の影響を受けやすい） */
-  line-height: 1.55;
-  padding-left: .75rem;
-}
-
-/* スマホ時は行番号とコードの間を広げる */
-@media (max-width: 768px){
-  pre code.hljs td.hljs-ln-numbers{
-    padding: 0 .75rem 0 .25rem;        /* →側の余白を増やす */
-    border-right: 1px solid rgba(255,255,255,.18); /* 仕切り線（お好みで） */
-  }
-  pre code.hljs td.hljs-ln-code{
-    padding-left: .65rem;              /* 本文側にも余白を追加 */
-  }
-}
-
-/* コードブロック下の余白を詰める */
-pre code.hljs {
-  line-height: 1.45;      /* 行の高さを少し低めに調整 */
-  margin-bottom: 0;       /* ブロック自体の下余白なし */
-  padding-bottom: 0;      /* 内側の下余白なし */
-  display: block;
-}
-
-pre {
-  margin-bottom: 0;       /* pre自体の下マージンを消す */
-  padding-bottom: 0;
-}
-
-pre table.hljs-ln {
-  margin-bottom: 0;       /* 行番号テーブルの余白も詰める */
-  border-collapse: collapse;
-}
-
-pre code.hljs td {
-  padding-bottom: 0 !important;
-}
+/* ---- Rouge token colors (必要最小限) ---- */
+.highlight .c,.highlight .c1,.highlight .cm{ color:#9ca3af; font-style:italic; } /* コメント */
+.highlight .k,.highlight .o{ color:#93c5fd; }                                   /* keyword, operator */
+.highlight .nf{ color:#a7f3d0; }                                                /* 関数名 */
+.highlight .nn,.highlight .nc{ color:#fde68a; }                                 /* 名前空間/クラス */
+.highlight .na{ color:#fca5a5; }                                                /* 属性名 */
+.highlight .nt{ color:#60a5fa; }                                                /* タグ名 */
+.highlight .m,.highlight .mi{ color:#fcd34d; }                                   /* 数値 */
+.highlight .s,.highlight .s1,.highlight .s2{ color:#86efac; }                   /* 文字列 */
+.highlight .bp{ color:#e5e7eb; }
+.highlight .gd{ background:#7f1d1d; color:#fee2e2; }
+.highlight .gi{ background:#064e3b; color:#d1fae5; }
 
 /* 言語プリフィクス（保険） */
 pre.highlight, code.language-python, code.language-javascript, code.language-bash { color: inherit; }
