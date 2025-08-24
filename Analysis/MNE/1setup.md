@@ -16,7 +16,7 @@ nav_order: 20
 <center><img src="../figures/mne.png"></center>
 
 ## 環境構築
-既に Python3 on Jupyter notebook がある前提で進めます．これらの[環境構築](../../Simulation/Setup/environment.html)を先に終わらせてください．(もちろん，Python が使える人であれば Jupyter 環境である必要は全くありませんが，ノート共有のために指定しています．不必要であればご自由にどうぞ．)
+既に Python3 on Jupyter notebook がある前提で進めます．これらの[環境構築](../../Simulation/Setup/0environment.html)を先に終わらせてください．(もちろん，Python が使える人であれば Jupyter 環境である必要は全くありませんが，ノート共有のために指定しています．不必要であればご自由にどうぞ．)
 
 早速 Anaconda で MNE をダウンロードしていきます．Terminalを開いて
 

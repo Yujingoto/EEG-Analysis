@@ -341,3 +341,36 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 
 /* 言語プリフィクス（保険） */
 pre.highlight, code.language-python, code.language-javascript, code.language-bash { color: inherit; }
+
+/* ================= 行番号とコードの間隔を“必ず”空ける ================= */
+
+/* 1) Rouge が <span class="lineno"> を各行の前に置く（プレフィックス）パターン */
+.highlight .lineno{
+  display: inline-block;     /* 数字を“箱”にする */
+  width: 2.4em;              /* 桁ぶんの横幅を確保（2〜3桁対応） */
+  text-align: right;
+  margin-right: .7rem;       /* ← ここがコードとの“すき間” */
+  padding-right: .45rem;     /* 見切れ防止の余白 */
+  border-right: 1px solid rgba(255,255,255,.18); /* 仕切り（任意） */
+  opacity: .7;
+  user-select: none;
+}
+@media (max-width:768px){
+  .highlight .lineno{ width: 2.8em; margin-right: .8rem; padding-right: .55rem; }
+}
+
+/* 2) Rouge が <table class="rouge-table"> で行番号列を作る（gutter）パターン */
+.highlight td.gutter{
+  width: 2.4em;
+  text-align: right;
+  color: #9ca3af;
+  user-select: none;
+  border-right: 1px solid rgba(255,255,255,.18);
+}
+.highlight td.gutter > pre { padding: 0 .85rem 0 .35rem !important; }
+.highlight td.code   > pre { padding: 0 .9rem  0 .75rem !important; }
+@media (max-width:768px){
+  .highlight td.gutter{ width: 2.8em; }
+  .highlight td.gutter > pre { padding: 0 1rem 0 .4rem !important; }
+  .highlight td.code   > pre { padding: 0 1rem 0 .85rem !important; }
+}
