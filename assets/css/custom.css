@@ -361,5 +361,27 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   }
 }
 
+/* コードブロック下の余白を詰める */
+pre code.hljs {
+  line-height: 1.45;      /* 行の高さを少し低めに調整 */
+  margin-bottom: 0;       /* ブロック自体の下余白なし */
+  padding-bottom: 0;      /* 内側の下余白なし */
+  display: block;
+}
+
+pre {
+  margin-bottom: 0;       /* pre自体の下マージンを消す */
+  padding-bottom: 0;
+}
+
+pre table.hljs-ln {
+  margin-bottom: 0;       /* 行番号テーブルの余白も詰める */
+  border-collapse: collapse;
+}
+
+pre code.hljs td {
+  padding-bottom: 0 !important;
+}
+
 /* 言語プリフィクス（保険） */
 pre.highlight, code.language-python, code.language-javascript, code.language-bash { color: inherit; }
