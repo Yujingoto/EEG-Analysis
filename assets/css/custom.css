@@ -276,7 +276,6 @@ details pre{ margin:.5rem 0; }
 }
 
 blockquote {
-  border-left: 4px solid var(--brand);
   background: #f9f9fb;
   margin: 1rem 0;
   padding: .6rem 1rem;
@@ -285,9 +284,21 @@ blockquote {
 }
 blockquote p { margin: .3rem 0; }
 
+
+/* インラインは行内のまま */
+p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  display: inline;
+  padding: .1em .25em;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: .25rem;
+  font-size: .95em;
+}
+
 /* コードブロック全体 */
 .highlight {
-  background: #f9fafb;
+  background: #616161;
+  color: #e6e6e6;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   padding: .75rem;
@@ -314,3 +325,24 @@ blockquote p { margin: .3rem 0; }
 .highlight .code {
   padding-left: .75rem;
 }
+
+/* ---- Rouge token colors (最小セット) ---- */
+.highlight .c     { color:#9ca3af; font-style:italic; }      /* コメント */
+.highlight .k     { color:#93c5fd; }                         /* keyword */
+.highlight .o     { color:#93c5fd; }                         /* 演算子 */
+.highlight .nf    { color:#a7f3d0; }                         /* 関数名 */
+.highlight .nn    { color:#fde68a; }                         /* 名前空間/クラス */
+.highlight .nc    { color:#fde68a; }
+.highlight .na    { color:#fca5a5; }                         /* 属性名 */
+.highlight .nt    { color:#60a5fa; }                         /* タグ名 */
+.highlight .mi,
+.highlight .m     { color:#fcd34d; }                         /* 数値 */
+.highlight .s,
+.highlight .s1,
+.highlight .s2    { color:#86efac; }                         /* 文字列 */
+.highlight .bp    { color:#e5e7eb; }                         /* builtins */
+.highlight .gd    { background:#7f1d1d; color:#fee2e2; }     /* diff - */
+.highlight .gi    { background:#064e3b; color:#d1fae5; }     /* diff + */
+
+/* 言語プリフィクス（保険） */
+pre.highlight, code.language-python, code.language-javascript, code.language-bash { color: inherit; }

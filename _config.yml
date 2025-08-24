@@ -6,5 +6,8 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
   syntax_highlighter_opts:
-    line_numbers: true
     css_class: 'highlight'
+    span:
+      line_numbers: false   # ← インライン `code` は行番号なし
+    block:
+      line_numbers: true    # ← ``` だけ行番号
