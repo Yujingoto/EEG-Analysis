@@ -300,10 +300,6 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   background: #616161;
   color: #e6e6e6;
   overflow-x: auto;
-  /* フォントとサイズを統一 → 行番号ズレ防止 */
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  line-height: 1.55;
-  font-size: clamp(12px, 0.9rem, 15px);  /* ← モバイルで大きすぎ問題を解消 */
 }
 
 /* 行番号テーブル */
@@ -312,7 +308,7 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   width: 100%;
 }
 .highlight td {
-  padding: 0 .5rem;
+  padding: 0;
   vertical-align: top;
 }
 .highlight .gutter {
@@ -343,13 +339,17 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 .highlight .bp    { color:#e5e7eb; }                         /* builtins */
 .highlight .gd    { background:#7f1d1d; color:#fee2e2; }     /* diff - */
 .highlight .gi    { background:#064e3b; color:#d1fae5; }     /* diff + */
-
-/* モバイルの微調整（行番号と揃えやすく） */
-@media (max-width: 480px){
-  .highlight{ font-size: 0.85rem; line-height: 1.55; }
-  .highlight .gutter{ padding:.55rem .6rem; }
-  .highlight .code{   padding:.55rem .8rem; }
+/* ==== iOS の自動拡大をコードだけ止める + サイズ固定 ==== */
+.highlight,
+.highlight pre,
+.highlight code {
+  -webkit-text-size-adjust: none; /* iOS の自動拡大OFF */
+  text-size-adjust: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;          /* px で固定（rem だと拡大の影響を受けやすい） */
+  line-height: 1.55;
 }
+
 
 /* 言語プリフィクス（保険） */
 pre.highlight, code.language-python, code.language-javascript, code.language-bash { color: inherit; }
