@@ -307,9 +307,9 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 .highlight .gutter{
   color:#9ca3af; user-select:none; text-align:right; opacity:.85;
   border-right:1px solid rgba(255,255,255,.18);
-  padding:0 .6rem 0 .4rem;     /* 数字側の余白 */
+  padding:0 .9rem 0 .4rem;     /* 数字側の余白 */
 }
-.highlight .code{ padding:0 .6rem; } /* 本文左右の余白 */
+.highlight .code{ padding:0 .8rem; } /* 本文左右の余白 */
 
 /* スマホ時は行番号と本文の余裕を少しだけ広げる */
 @media (max-width:768px){
