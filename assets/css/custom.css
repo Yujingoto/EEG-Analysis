@@ -292,7 +292,7 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 .highlight{
   background:#616161; color:#e6e6e6;
   overflow:auto;               /* 横スクロール */
-  padding:.25rem 0;            /* 上下だけ薄く */
+  padding:.25rem;            /* 上下だけ薄く */
 }
 .highlight pre{ margin:0; }    /* 余白をゼロに */
 .highlight code{
