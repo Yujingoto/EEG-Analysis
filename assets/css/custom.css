@@ -350,50 +350,16 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   padding-left: .75rem;
 }
 
-
-/* コードブロックの全体 */
-pre code.hljs {
-  display: block;
-  padding: 1rem;
-  overflow-x: auto;       /* 横スクロール許可 */
-  white-space: pre;       /* 自然な改行保持 */
-  font-size: 0.9rem;
-  line-height: 1.4;
-  border-radius: 6px;
-  background: #3a3a3a;    /* 背景 */
-  color: #f8f8f2;         /* 文字色 */
-  box-sizing: border-box;
+/* スマホ時は行番号とコードの間を広げる */
+@media (max-width: 768px){
+  pre code.hljs td.hljs-ln-numbers{
+    padding: 0 .75rem 0 .25rem;        /* →側の余白を増やす */
+    border-right: 1px solid rgba(255,255,255,.18); /* 仕切り線（お好みで） */
+  }
+  pre code.hljs td.hljs-ln-code{
+    padding-left: .65rem;              /* 本文側にも余白を追加 */
+  }
 }
-
-/* 行番号付き */
-pre code.hljs table {
-  border-spacing: 0;
-  width: 100%;
-}
-
-pre code.hljs td {
-  vertical-align: top;
-  padding: 0;
-}
-
-pre code.hljs td.hljs-ln-numbers {
-  text-align: right;
-  color: #aaa;
-  padding-right: 0.75rem;
-  user-select: none;
-}
-
-pre code.hljs td.hljs-ln-code {
-  width: 100%;
-}
-
-/* スクロールバーをコードブロック下端に固定 */
-pre {
-  margin: 0 0 1.2rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
 
 /* 言語プリフィクス（保険） */
 pre.highlight, code.language-python, code.language-javascript, code.language-bash { color: inherit; }
