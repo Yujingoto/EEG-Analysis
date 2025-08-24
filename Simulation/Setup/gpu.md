@@ -60,7 +60,7 @@ Python でやる時には，基本的にはこの CuPy の使い方をマスタ�
 
 画像のような問題は，C 言語だと以下のようになります．
 
-```C
+```c
 for (i = 0; i < n; i++) { // i行目，
     for (j = 0; j < n; j++) { // 第j列に注目
         for (k = 0; k < n; k++) { // 次元数分，下の計算をやる
@@ -70,7 +70,7 @@ for (i = 0; i < n; i++) { // i行目，
 
 この計算を，CPU に行わせると，次元数に応じてかなり大きな回数の計算を行うことになるため，時間がかかってしまいます．ここで GPU の出番です．GPU は，性能は低いけども計算が可能な演算装置，コアがたくさんいます．こいつらにそれぞれ，自分の担当の $C_{ij}$
 
-```C
+```c
 for (k = 0; k < n; k++) { // 次元数分，下の計算をやる
         c[i][j] += a[i][k]*b[k][j]; // cijはaikとbkjの積
 }
@@ -83,7 +83,7 @@ for (k = 0; k < n; k++) { // 次元数分，下の計算をやる
 <details markdown="1">
 <summary>プログラム全体</summary>
 
-```C
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -139,7 +139,7 @@ CUDA のプログラムは，`xx.cu` という拡張子で，C ベースで書�
 
 の段階に分かれているようです．このうち，GPU が計算する部分が一番最初の記述，
 
-```C
+```c
 __global__ void mm_gpu(double *A, double *B, double *C, int n)
 {
     int i, j, k;
@@ -159,7 +159,7 @@ __global__ void mm_gpu(double *A, double *B, double *C, int n)
 
 このあたりは
 
-```C
+```c
 cudaMemcpy(DA, A, sizeof(double)*n*n, cudaMemcpyHostToDevice);
 cudaMemcpy(DB, B, sizeof(double)*n*n, cudaMemcpyHostToDevice);
 cudaMemcpy(DC, C, sizeof(double)*n*n, cudaMemcpyHostToDevice);
@@ -169,7 +169,7 @@ cudaMemcpy(DC, C, sizeof(double)*n*n, cudaMemcpyHostToDevice);
 
 次に，GPU にどれだけのスレッドを使わせるかを指定する記述です．
 
-```C
+```c
 // GPUカーネル関数を呼び出す!! 約n*n個のスレッドを使う
     mm_gpu<<<dim3((n+BS‐1)/BS, ((n+BS‐1)/BS)), dim3(BS, BS)>>>
         (DA, DB, DC, n);
@@ -179,7 +179,7 @@ cudaMemcpy(DC, C, sizeof(double)*n*n, cudaMemcpyHostToDevice);
 
 ともかく，これで呼び出された関数が
 
-```C
+```c
 __global__ void mm_gpu(double *A, double *B, double *C, int n)
 {
     int i, j, k;
@@ -205,7 +205,7 @@ __global__ void mm_gpu(double *A, double *B, double *C, int n)
 
 ということで
 
-```C
+```c
 for (k = 0; k < n; k++) { // 総和
         C[i*n+j] += A[i*n+k] * B[k*n+j]; // C[i][j] += A[i][k] * B[k][j]に相当
     }
@@ -220,7 +220,7 @@ $$
 
 CPU の場合は，一つの計算機というか単位が計算を担当するため，順番に処理しないといけなくなり，実装としては
 
-```C
+```c
 for (i = 0; i < n; i++) { // i行目，
     for (j = 0; j < n; j++) { // 第j列に注目
         for (k = 0; k < n; k++) { // 次元数分，下の計算をやる
@@ -555,7 +555,7 @@ print('Z = \n', Z)
 ## Oja's hebbian ruleの実装
 以上の勉強内容を踏まえて，冒頭のシナプス可塑性を実装してみたのが以下の記述です．
 
-```C
+```c
 kernel = cp.ElementwiseKernel(
     in_params = 'raw float64 W, raw float64 x, int16 width, float64 learning_rate',
     out_params = 'raw float64 W_new',
