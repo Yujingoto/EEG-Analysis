@@ -238,6 +238,7 @@ io.imshow(np_img)#画像の表示
 
 cp_img = cp.asarray(np_img)#numpy配列をcupy配列に変換
 ```
+
 をセルにいれ，実行しましょう．すると
 
 <center><img src="../figures/astro.png"></center>
@@ -248,12 +249,12 @@ cp_img = cp.asarray(np_img)#numpy配列をcupy配列に変換
 
 ```python
 %%time 
-for i in range(500): # numpy 500セット(フーリエ変換⇒シフト⇒シフト⇒フーリエ逆変換->フーリエ逆変換->フーリエ変換)計算時間
+for i in range(500): # numpy 500セット計算時間
     np_img = np.fft.ifft(np.fft.fft(np_img))
     np_fimg = np.fft.fft(np.fft.ifft(np.fft.fft(np_fimg)))
 
 %%time
-for i in range(500): # cupy 500セット(フーリエ変換->フーリエ逆変換->フーリエ変換->フーリエ逆変換->フーリエ変換)計算時間
+for i in range(500): # cupy 500セット計算時間
     cp_img = cp.fft.ifft(cp.fft.fft(cp_img))
     cp_fimg = cp.fft.fft(cp.fft.ifft(cp.fft.fft(cp_fimg)))
 ```
