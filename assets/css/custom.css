@@ -304,6 +304,15 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 /* 行番号テーブル（Rougeのデフォ出力） */
 .highlight table{ border-spacing:0; width:100%; }
 .highlight td{ padding:0; vertical-align:top; }
+
+/* ← “pre”に余白を入れる（ここに効かせるのがコツ） */
+.highlight td.gutter > pre { 
+  padding: 0 .85rem 0 .35rem !important;  /* 右側にゆとり */
+}
+
+.highlight td.code > pre { 
+  padding: 0 .9rem 0 .75rem !important;   /* 左側にもゆとり */
+}
 .highlight .gutter{
   color:#9ca3af; user-select:none; text-align:right; opacity:.85;
   border-right:1px solid rgba(255,255,255,.18);
@@ -311,10 +320,10 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
 }
 .highlight .code{ padding:0 .8rem; } /* 本文左右の余白 */
 
-/* スマホ時は行番号と本文の余裕を少しだけ広げる */
-@media (max-width:768px){
-  .highlight .gutter{ padding-right:.8rem; }
-  .highlight .code{ padding-left:.7rem; }
+@media (max-width: 768px){
+  .highlight td.gutter { width: 2.6em; }
+  .highlight td.gutter > pre { padding: 0 1rem 0 .4rem !important; }
+  .highlight td.code   > pre { padding: 0 1rem 0 .85rem !important; }
 }
 
 /* ---- Rouge token colors (必要最小限) ---- */
