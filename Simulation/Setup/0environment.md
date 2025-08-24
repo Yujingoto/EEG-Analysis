@@ -38,9 +38,9 @@ Python を使ってプログラミングを始めようとすると，だいた�
 
 [Anacondaのインストール](https://www.anaconda.com/products/distribution)
 
-<center><img src="../figures/anaconda.png" width=80%></center>
+<center><img src="../figures/anaconda.png"></center>
 
-自身の OS にあったバージョンを選択し，Download，Install してください．```Next```,```I agree``` などを押してデフォルトのまま進めます．
+自身の OS にあったバージョンを選択し，Download，Install してください．`Next`,`I agree` などを押してデフォルトのまま進めます．
 
 Anaconda のインストール先を選択する際，基本的にはデフォルトのままで良いのですが，日本語のフォルダが含まれているとエラーを吐くらしいので，その場合は適宜インストール先を変更してください．
 

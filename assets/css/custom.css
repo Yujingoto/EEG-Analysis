@@ -301,9 +301,11 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   color: #e6e6e6;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-  padding: .75rem;
   overflow-x: auto;
-  font-size: 0.9rem;
+  /* フォントとサイズを統一 → 行番号ズレ防止 */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  line-height: 1.55;
+  font-size: clamp(12px, 0.9rem, 15px);  /* ← モバイルで大きすぎ問題を解消 */
 }
 
 /* 行番号テーブル */
@@ -320,14 +322,14 @@ p code, li code, td code, th code, h1 code, h2 code, h3 code, h4 code, h5 code, 
   text-align: right;
   user-select: none;
   border-right: 1px solid #e5e7eb;
-  padding-right: .75rem;
+  padding-right: .5rem;
 }
 .highlight .code {
   padding-left: .75rem;
 }
 
 /* ---- Rouge token colors (最小セット) ---- */
-.highlight .c     { color:#9ca3af; font-style:italic; }      /* コメント */
+.highlight .c,.highlight .c1, .highlight .cm     { color:#9ca3af; font-style:italic; }      /* コメント */
 .highlight .k     { color:#93c5fd; }                         /* keyword */
 .highlight .o     { color:#93c5fd; }                         /* 演算子 */
 .highlight .nf    { color:#a7f3d0; }                         /* 関数名 */
