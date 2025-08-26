@@ -156,20 +156,20 @@ $$
 
 $$
 \begin{align}
-  \mathbb{D}_{KL}(p||q) &= - \int p(x) \log q(x)dx - (-\int p(x) \log p(x)dx) \\
+  D_{\mathrm{KL}}(p||q) &= - \int p(x) \log q(x)dx - (-\int p(x) \log p(x)dx) \\
   &= -\int p(x) \log \frac{q(x)}{p(x)} dx \nonumber
 \end{align}
 $$
 
 すこしややこしく見えますが，基本的には式 (8) を $\log$ について整理しただけです．簡単ですね.
 
-KL 距離の性質ですが，まず $\mathbb{D}_{KL}(p\|\|q) \geq 0$ です．距離だし．
+KL 距離の性質ですが，まず $D_{\mathrm{KL}}(p\|\|q) \geq 0$ です．距離だし．
 等号が成り立つのは分布 $p(x), q(x)$ が等しいときのみです．
 
 
 <center><img src="../figures/kld.png"></center>
 
-上の図は，二つの標準偏差 1 で平均値の異なる正規分布間の $\mathbb{D}_{KL}(p\|\|q)$.
+上の図は，二つの標準偏差 1 で平均値の異なる正規分布間の $D_{\mathrm{KL}}(p\|\|q)$.
 
 
 それから $D_{\mathrm{KL}}(p \|\| q) \neq D_{\mathrm{KL}}(q \|\| p)$ なことにも気を付けてください．分布 $p(x)$ の元で見た $q(x)$ の期待値と, 分布 $q(x)$ の元でみた $p(x)$ の期待値とは別物ですからね．
@@ -178,7 +178,7 @@ KL 距離の性質ですが，まず $\mathbb{D}_{KL}(p\|\|q) \geq 0$ です．�
 
 $$
 \begin{align}
-  \mathbb{D}_{KL}(p||q) =  \int p(x) \log \frac{p(x)}{q(x)} dx
+  D_{\mathrm{KL}}(p||q) =  \int p(x) \log \frac{p(x)}{q(x)} dx
 \end{align}
 $$
 
@@ -200,7 +200,7 @@ $$
 
 このうち，KLD が満たしていないのはなんでしょう？
 
-そう，３つめの対称性ですね！ $\mathbb{D}_{KL} (p\|\|q) \neq \mathbb{D}_{KL} (q\|\|p)$ でした．
+そう，３つめの対称性ですね！ $D_{\mathrm{KL}} (p\|\|q) \neq D_{\mathrm{KL}} (q\|\|p)$ でした．
 
 あと４つ目，三角不等式も怪しいと思うんですよね．呼んでた資料とかでは特に対称性のとこだけネチネチと言われてましたが，三角不等式はどうなんでしょう？
 
@@ -210,9 +210,9 @@ $$
 
 つまり，予測分布を真の分布に近づけたい，だとかですね．この時に最小化する，分布と分布との距離として使われる量です．
 
-あとは，一様分布と得られたデータ分布との距離を測る，なんて使い方もありました. この場合は正規化的なのして，$\mathbb{D}_{KL} (P\|\|U)$ (U は一様分布) を $0-1$ の値にして使ってましたね．
+あとは，一様分布と得られたデータ分布との距離を測る，なんて使い方もありました. この場合は正規化的なのして，$D_{\mathrm{KL}} (P\|\|U)$ (U は一様分布) を $0-1$ の値にして使ってましたね．
 
-いまのとこ個人的に分からないのは，$\mathbb{D}_{KL} (A\|\|B)$ と $\mathbb{D}_{KL} (C\|\|D)$ の値を比較した議論 (たとえば，A-B は C-D の 3 倍離れている！) なんてのは出来るのかなってところです．
+いまのとこ個人的に分からないのは，$D_{\mathrm{KL}} (A\|\|B)$ と $D_{\mathrm{KL}} (C\|\|D)$ の値を比較した議論 (たとえば，A-B は C-D の 3 倍離れている！) なんてのは出来るのかなってところです．
 
 ユークリッドなら自明に出来ると思うんですけど，これだとなんか出来ない気がする．三角不等式も怪しいし．
 どうなんでしょう？今後の課題になってます．
@@ -233,14 +233,14 @@ $$
 
 $$
 \begin{align}
-\mathbb{D}_{KL}(p||q) = H(p,q) - H(p)
+D_{\mathrm{KL}}(p||q) = H(p,q) - H(p)
 \end{align}
 $$
 
 とも捉えられますね．あってるのかな？
 
 ## 他の分布間距離
-確率分布同士の距離を測る指標は $\mathbb{D}_{KL}$ だけでなく，他にも以下のようなのがあるっぽいです．
+確率分布同士の距離を測る指標は $D_{\mathrm{KL}}$ だけでなく，他にも以下のようなのがあるっぽいです．
 
 $$
 \begin{align}
@@ -250,7 +250,7 @@ L_2(Q||P) := \int\{ Q(x) - P(x)\}^2 dx   \qquad \qquad  \text{$L_2$ノルム}\\
 I_K(Q||P) := \int \{ \sqrt{Q(x)} - \sqrt{P(x)} \}^2 dx    \qquad \qquad  \text{ヘリンジャー距離}\\
 \mathbb{D}(Q||P) := \int f(\frac{Q(x)}{P(x)}) Q(x)dx   \qquad \qquad  \text{f-ダイバージェンス}\\
 I_\lambda(Q||P) := \int \{ (\frac{Q(x)}{P(x)})^{\lambda} -1 \}Q(x) dx   \qquad \qquad  \text{一般化情報量}\\
-\mathbb{D}_{KL}(Q||P) := \int \log(\frac{Q(x)}{P(x)})Q(x) dx   \qquad \qquad  \text{KL情報量}
+D_{\mathrm{KL}}(Q||P) := \int \log(\frac{Q(x)}{P(x)})Q(x) dx   \qquad \qquad  \text{KL情報量}
 \end{align}
 $$
 
@@ -293,7 +293,7 @@ $x$ と $y$ が独立であった場合の同時確率の情報量と独立で�
 
 $$
 \begin{align}
-  MI(x,y) &:= \mathbb{D}_{KL}(p(x,y) || p(x)p(y)) \nonumber\\
+  MI(x,y) &:= D_{\mathrm{KL}}(p(x,y) || p(x)p(y)) \nonumber\\
   &= -\iint p(x,y) \log \frac{p(x)p(y)}{p(x,y)} dxdy
 \end{align}
 $$
@@ -347,7 +347,7 @@ $$
 
 $$
 \begin{align}
-  T_{y\rightarrow x} &:= \mathbb{D}_{KL}(p(x_{t+1}| \mathbf{x}_t, \mathbf{y}_t) || p(x_{t+1}| \mathbf{x}_t)) \nonumber \\ &= -\sum p(x_{t+1}| \mathbf{x}_t, \mathbf{y}_t) \log \frac{p(x_{t+1}| \mathbf{x}_t)}{p(x_{t+1}| \mathbf{x}_t, \mathbf{y}_t)} 
+  T_{y\rightarrow x} &:= D_{\mathrm{KL}}(p(x_{t+1}| \mathbf{x}_t, \mathbf{y}_t) || p(x_{t+1}| \mathbf{x}_t)) \nonumber \\ &= -\sum p(x_{t+1}| \mathbf{x}_t, \mathbf{y}_t) \log \frac{p(x_{t+1}| \mathbf{x}_t)}{p(x_{t+1}| \mathbf{x}_t, \mathbf{y}_t)} 
 \end{align}
 $$
 
