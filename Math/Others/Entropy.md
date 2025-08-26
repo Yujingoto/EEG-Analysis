@@ -112,7 +112,7 @@ $$
 - $\int_{-\infty}^\infty xp(x)dx = \mu$
 - $\int_{-\infty}^\infty(x-\mu)^2 p(x)dx = \sigma^2$
 
-を与え，これらの元で微分エントロピーを最大化します．制約条件下での最大化問題なので[ラグランジュ未定乗数法](./lagrange.html)をもってくると
+を与え，これらの元で微分エントロピーを最大化します．制約条件下での最大化問題なので[ラグランジュ未定乗数法](./Lagrange.html)をもってくると
 
 $$
 -\int_{-\infty}^\infty p(x) \log p(x) dx + \lambda_1 (\int_{-\infty}^\infty p(x)dx -1) \\+ \lambda_2 (\int_{-\infty}^\infty x p(x)dx-\mu) + \lambda_3 (\int_{-\infty}^\infty(x-\mu)^2p(x)dx-\sigma^2)
