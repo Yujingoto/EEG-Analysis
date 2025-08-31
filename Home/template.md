@@ -44,6 +44,8 @@ $$
 \end{align}
 $$
 
+### image
+<center><img src="../figures/pendulum2.png"></center>
 
 ### code block
 
