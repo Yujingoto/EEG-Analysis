@@ -149,3 +149,6 @@ $$
 
 画像は別ページ [線形安定性解析](./1stability.html) より．様々なベクトル場の図．詳しくは 5 章．
 <center><img src="../figures/stabili-map.png"></center>
+
+
+<center><img src="../figures/strogatz2-1-1.png"></center>
