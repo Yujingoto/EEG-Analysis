@@ -5,7 +5,7 @@ categories: [Physics, Nonlinear Dynamics]
 nav_order: 20
 ---
 
-# 勉強会資料： Strogatz, Section 2
+# 勉強会資料： Strogatz, Chapter 2
 この資料は身内勉強会で Steven H. Strogatz, [非線形ダイナミクスとカオス](https://amzn.asia/d/a5c49t4), 1994 の第 2 章を担当した際のまとめ用です．いずれ他ページに吸収されて消えます．
 
 ## 用語定義
