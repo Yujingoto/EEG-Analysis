@@ -1,5 +1,5 @@
 ---
-title: 勉強会資料： Strogatz, Section 2
+title: 勉強会資料： Strogatz, Chapter 2
 layout: default
 categories: [Physics, Nonlinear Dynamics]
 nav_order: 20
