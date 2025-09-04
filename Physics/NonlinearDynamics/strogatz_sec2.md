@@ -175,6 +175,54 @@ $$
 
 <center><img src="../figures/strogatz2-1-1.png"></center>
 
+<details markdown="1">
+<summary>Python code</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# x range
+x = np.linspace(-2*np.pi, 2*np.pi, 400)
+dx = np.sin(x)
+
+# figure
+fig, ax = plt.subplots(figsize=(8,2))
+ax.axhline(0, color="k", lw=0.5)
+
+# plot sin(x)
+ax.plot(x, dx, label=r"$\dot{x} = \sin x$")
+
+# fixed points
+fixed_points = np.arange(-2*np.pi, 2.5*np.pi, np.pi)
+for fp in fixed_points:
+    if np.cos(fp) < 0:  # stable
+        ax.plot(fp, 0, 'ko', markersize=8)
+    else:  # unstable
+        ax.plot(fp, 0, 'o', markerfacecolor='dimgray', markeredgecolor='black', markersize=8)
+
+# arrows for vector field on axis, placed midway between fixed points
+intervals = list(zip(fixed_points[:-1], fixed_points[1:]))
+for left, right in intervals:
+    mid = (left + right) / 2
+    direction = np.sign(np.sin(mid))
+    if direction > 0:
+        ax.arrow(mid, 0, 0.4, 0, head_width=0.1, head_length=0.2, fc='k', ec='k')
+    elif direction < 0:
+        ax.arrow(mid, 0, -0.4, 0, head_width=0.1, head_length=0.2, fc='k', ec='k')
+
+# axis settings
+ax.set_xticks(np.arange(-2*np.pi, 2.5*np.pi, np.pi))
+ax.set_xticklabels([r"$-2\pi$", r"$-\pi$", "0", r"$\pi$", r"$2\pi$"])
+ax.set_yticks([0])
+ax.set_xlabel("x")
+ax.set_ylabel(r"$\dot{x}$")
+ax.set_title("Phase line of $\\dot{x} = \\sin x$")
+plt.show()
+```
+
+</details>
+
 ただし，$x$ 軸上の矢印はそれぞれの位置で対応するベクトルの向きを表している．正の速度なら進み，負の速度なら後退する．より実践的には向きだけでなく大きさも区別するべきだが，この場合は明らかなため省略した (縦軸方向に小さい時は速度が低い，つまり矢印も短くなる)．
 
 重要なのは $x \equiv 0\mod \pi$，すなわち $\dot{x}=0$ の各点の区別である．これらの点は微分方程式の平衡解 (そこからスタートするとずっとそこに留まる) に対応しており，力学系，幾何学の言葉では**固定点 (fixed point)**という．
@@ -182,7 +230,7 @@ $$
 固定点の振る舞いを観察するために周辺の矢印を見ると，両側から挟まれる点と離れていく点の 2 種類があることが分かる．黒丸で表したようにその付近の $x$ (微小摂動 $dx$) が吸い寄せられる $\pi$ などの固定点 (ベクトル場での流れが引き込まれる) は，**安定固定点・アトラクター・シンク**などと称される．逆に灰色の流れが離れていくような固定点を**不安定固定点・リペラー・ソース**などと呼ぶ．
 
 以降，固定点はその安定性に関わらず $f(x*)$ と示す．
-$x^*$ を求めるには，$\dot{x}=0$，つまり $f(x*)=0$ を解けば良い．
+$x^\*$ を求めるには，$\dot{x}=0$，つまり $f(x*)=0$ を解けば良い．
 
 ## 2.2-2.4. 線形安定性解析
 
@@ -193,30 +241,30 @@ $x^*$ を求めるには，$\dot{x}=0$，つまり $f(x*)=0$ を解けば良い�
 
 <center><img src="../figures/strogatz2-1-1.png"></center>
 
-を考えると，与えられた微分方程式の形によらず相図においては $\dot{x}$ が正の値を取る時は右に，つまり $x$ の値は時間変化に伴って大きくなっていくのに対し，$\dot{x}$ が負の値を取る間は $x$ の値は時間変化に伴って小さくなっていくことが分かる．つまり **固定点での傾き $f'(x^*)$ が負の場合，固定点は安定である**ことがわかる．**逆に正の傾きであれば固定点は不安定**である．
+を考えると，与えられた微分方程式の形によらず相図においては $\dot{x}$ が正の値を取る時は右に，つまり $x$ の値は時間変化に伴って大きくなっていくのに対し，$\dot{x}$ が負の値を取る間は $x$ の値は時間変化に伴って小さくなっていくことが分かる．つまり **固定点での傾き $f'(x^\*)$ が負の場合，固定点は安定である**ことがわかる．**逆に正の傾きであれば固定点は不安定**である．
 
 #### 数学的説明
-この問題は， $x^*$ に対して小さな摂動 $\eta$ を与えた際，$\eta(t)$ が成長するか減衰するかの議論であり，その従う微分方程式を考えれば良い．$x^*$ が定数であることから，
+この問題は， $x^\*$ に対して小さな摂動 $\eta$ を与えた際，$\eta(t)$ が成長するか減衰するかの議論であり，その従う微分方程式を考えれば良い．$x^\*$ が定数であることから，
 
 $$
-\dot{\eta} = \frac{d(x-x^*)}{dt} = \dot{x} = f(x^* + \eta)
+\dot{\eta} = \frac{d(x-x^\*)}{dt} = \dot{x} = f(x^\* + \eta)
 $$
 
 である．ここで[テイラー展開](../../Math/Analysis/fourier.html)を用いると
 
 $$
-f(x^*+\eta) = f(x^*) + \eta f'(x^*) + \mathcal{O} (\eta^2)
+f(x^\*+\eta) = f(x^\*) + \eta f'(x^\*) + \mathcal{O} (\eta^2)
 $$
 
-が得られる．固定点なので $f(x^*)=0$ で，$f'(x^*)\neq 0$ なら $\mathcal{\eta^2}$ は無視できるので，結局
+が得られる．固定点なので $f(x^\*)=0$ で，$f'(x^\*)\neq 0$ なら $\mathcal{\eta^2}$ は無視できるので，結局
 
 $$
-\dot{\eta} \approx \eta f'(x^*)
+\dot{\eta} \approx \eta f'(x^\*)
 $$
 
-と書ける．$\eta$ についての線型方程式になるので，**$x^*$ のまわりの線形化**と呼ぶ．この式は明らかに，摂動 $\eta(t)$ が$f'(x^*)>0$ なら指数関数的に成長し，逆なら減衰することを意味する．ただし，もし $f'(x^*)=0$ の場合，2次の項が支配項になるのでそちらが安定性を決める．が一般医言えることは無くなる．この例は[例題](#2.4.3)で触れる．より一般の議論は議論が多次元に拡張された際，**ハートマン・グロブマンの定理**で与えられる．
+と書ける．$\eta$ についての線型方程式になるので，**$x^\*$ のまわりの線形化**と呼ぶ．この式は明らかに，摂動 $\eta(t)$ が$f'(x^\*)>0$ なら指数関数的に成長し，逆なら減衰することを意味する．ただし，もし $f'(x^\*)=0$ の場合，2次の項が支配項になるのでそちらが安定性を決める．が一般医言えることは無くなる．この例は[例題](#2.4.3)で触れる．より一般の議論は議論が多次元に拡張された際，**ハートマン・グロブマンの定理**で与えられる．
 
-また同時に，摂動の成長/減衰速度は $f'(x^*)$ の大きさに比例することも分かる．この値が大きい程，摂動は急速な成長や減衰を示す．よってその逆数 $1/\|f'(x^*)\|$ は時間スケールになり，特に傾きが負の場合には安定固定点へ引き込まれる時間を表す．
+また同時に，摂動の成長/減衰速度は $f'(x^\*)$ の大きさに比例することも分かる．この値が大きい程，摂動は急速な成長や減衰を示す．よってその逆数 $1/\|f'(x^\*)\|$ は時間スケールになり，特に傾きが負の場合には安定固定点へ引き込まれる時間を表す．
 
 <div class="box tip" markdown="1">
 <div class="title">(1 実変数) 関数 $f$ のテイラー展開</div>
@@ -242,12 +290,13 @@ $$
 <details markdown="1">
 <summary>解法</summary>
 
-まず，$x^2-1 = 0$ を解き，$x^*=\plusmn 1$ を得る．相図を描くと以下のようになる．従って $x^*=-1$ は局所安定， $x^*=1$ は局所不安定固定点である．一応，微分すると $f'(x) = 2x$ であることからも同様の結論が導ける．つまり $2x^*$ に$\plusmn1$を代入なので符号がそのまま反映される．$\dot{x}$ 軸を挟んで対称なことが図を描かずともわかる．
+まず，$x^2-1 = 0$ を解き，$x^\*=\plusmn 1$ を得る．相図を描くと以下のようになる．従って $x^\*=-1$ は局所安定， $x^\*=1$ は局所不安定固定点である．一応，微分すると $f'(x) = 2x$ であることからも同様の結論が導ける．つまり $2x^\*$ に$\plusmn1$を代入なので符号がそのまま反映される．$\dot{x}$ 軸を挟んで対称なことが図を描かずともわかる．
 
 <center><img src="../figures/fixed_.png"></center>
  
 </details>
 
+固定点は $x^\*=-1$ (安定)，および $x^\*=1$ (不安定) である．
 
 ### 2.2.2
 #### 電気回路の問題．そちらの前提知識が確認できないため省略．
@@ -260,11 +309,64 @@ $$
 
 相図は教科書の通り．$y=x$, $y=\cos x$ をべう別に描く方法が使える．もちろん普通に相図を描くのでも良く，その場合は以下のようになるらしい．
 
-<center><img src="../figures/strogatz223_.png"></center>
+<center><img src="../figures/strogatz223.png"></center>
 
-ともかく，固定点は明らかに $x^\*=cos\x^\*$ であり唯一の解である．また $f'(x) = 1+\sin x$ なので，$f'(x^*)>0$ は大域不安定な固定点である．つまり全ての点はここから離れる．
+ともかく，固定点は明らかに $x^\*=cos\x^\*$ であり唯一の解である．また $f'(x) = 1+\sin x$ なので，$f'(x^\*)>0$ は大域不安定な固定点である．つまり全ての点はここから離れる．
+
+<details markdown="1">
+<summary>Python code</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpmath import findroot, cos, sin
+
+# define f and derivative
+f = lambda x: x - np.cos(x)
+fp = float(findroot(lambda x: x - cos(x), 0.7))  # Dottie number
+
+# x range
+x = np.linspace(-4, 4, 800)
+dx = f(x)
+
+# figure
+fig, ax = plt.subplots(figsize=(8,2.4))
+ax.axhline(0, color="k", lw=0.6)
+ax.plot(x, dx, label=r"$\dot{x}=x-\cos x$")
+
+# fixed point (unstable -> gray fill + black edge)
+ax.plot(fp, 0, 'o', markerfacecolor='dimgray', markeredgecolor='black', markersize=9)
+ax.text(fp, max(dx)*0.12, fr"$x^\ast\approx{fp:.6f}$", ha='center', va='bottom')
+
+# vector field arrows on axis: choose positions in two intervals
+left_positions  = np.linspace(-3.5, fp-0.2, 5)
+right_positions = np.linspace(fp+0.2, 3.5, 5)
+
+for pos in left_positions:
+    ax.arrow(pos, 0, -0.5, 0, head_width=0.12, head_length=0.2, fc='k', ec='k', length_includes_head=True)
+for pos in right_positions:
+    ax.arrow(pos, 0,  0.5, 0, head_width=0.12, head_length=0.2, fc='k', ec='k', length_includes_head=True)
+
+# axes
+ax.set_xlim(-4,4)
+ax.set_xticks(np.arange(-4,5,1))
+ax.set_yticks([0])
+ax.set_xlabel("x")
+ax.set_ylabel(r"$\dot{x}$")
+ax.set_title("Phase line and fixed point for $\\dot{x}=x-\\cos x$")
+ax.legend(loc="upper left")
+plt.show()
+
+print(f"Fixed point x* ≈ {fp:.12f}")
+print(f"Stability derivative f'(x*) = 1 + sin(x*) ≈ {1+float(sin(fp)):.6f}")
+
+```
 
 </details>
+
+</details>
+
+固定点は不安定な $x^\*=cos\x^\*$ のみである．
 
 ### 2.4.1
 #### 線形安定性解析を用いて $\dot{x} = \sin x$ の固定点の安定性を決定せよ
@@ -272,10 +374,10 @@ $$
 <details markdown="1">
 <summary>解法</summary>
 
-まず固定点 $x^*$ は $\sin x=0$，つまり $k\pi, \forall k \in \mathbb{Z}$ である．またその安定性は
+まず固定点 $x^\*$ は $\sin x=0$，つまり $k\pi, \forall k \in \mathbb{Z}$ である．またその安定性は
 
 $$
-f'(x^*) = \cos k \pi = 
+f'(x^\*) = \cos k \pi = 
 \begin{aligned}
 1 \quad if k\equiv 0 \\
 -1 \quad if k\equiv 1
@@ -283,6 +385,91 @@ f'(x^*) = \cos k \pi =
  (\mod 2)
 $$
 
-より，$k$ が偶数なら不安定，奇数なら安定である．
+より，
 
 </details>
+
+固定点は $k\pi, \forall k \in \mathbb{Z}$ であり，$k$ が偶数なら不安定，奇数なら安定である．
+
+### 2.4.2
+#### ロジスティック方程式の固定点を線形安定性解析を用いて分類し，それぞれの場合について特徴的な時間スケールを求めよ
+
+<details markdown="1">
+<summary>解法</summary>
+
+ロジスティック方程式とは個体数 $N$ の時間発展を $r$ (内的自然増加率) と $K$ (環境収容力)のバランスで説明するモデルであり，以下の微分方程式で表される．
+
+$$
+\dot{N} = rN(1-\frac{N}{K})
+$$
+
+まず固定点を求める ($rN(1-\frac{N}{K} = 0$) と，$N^\*=0, K$ である．また $f'(N) = r-\frac{2rN}{K}$ である．$N$ に $N^\*$ を代入して符号を見ることで (r, -r)，安定性が求められる．またどちらについても特徴的な時間スケールは $\frac{1}{\|f'(N^\*)=r,-r\|}$ より
+
+</details>
+
+$N^\*=0$ は不安定， $N^\*=K$ は安定．時間スケールはどちらも $1/r$ である．
+
+### 2.4.3
+#### $f'(x^\*)=0$ の時，固定点の安定性について何が言えるのか？
+
+<details markdown="1">
+<summary>発想</summary>
+
+$f'(x^\*) =0$ ということは, 固定点の左右それぞれについて，$\x{dot}$ が正，負，あるいはゼロのいずれであるかによって振る舞いが変わる．たとえば
+
+<center><img src="../figures/strogatz243.png"></center>
+
+<details markdown="1">
+<summary>Python code</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def plot_phase(ax, f, title, xlim=(-1.5,1.5)):
+    x = np.linspace(xlim[0], xlim[1], 800)
+    dx = f(x)
+    ax.axhline(0, lw=0.6, color='k')
+    ax.plot(x, dx, color='C0')
+    # fixed point at 0
+    ax.plot(0, 0, 'o', markerfacecolor='none', markeredgecolor='black', markersize=6)
+    # arrows along axis
+    if np.any(dx != 0):
+        left_positions = np.linspace(xlim[0]+0.1, -0.2, 4)
+        right_positions = np.linspace(0.2, xlim[1]-0.1, 4)
+        for pos in np.concatenate([left_positions, right_positions]):
+            d = np.sign(f(pos))
+            if d > 0:
+                ax.arrow(pos, 0, 0.3, 0, head_width=0.06, head_length=0.12, length_includes_head=True, color='k')
+            elif d < 0:
+                ax.arrow(pos, 0, -0.3, 0, head_width=0.06, head_length=0.12, length_includes_head=True, color='k')
+    ax.set_xlim(*xlim)
+    ax.set_xticks([-1,0,1])
+    ax.set_yticks([0])
+    ax.set_xlabel("x")
+    ax.set_ylabel(r"$\dot{x}$")
+    ax.set_title(title, fontsize=10)
+
+fig, axes = plt.subplots(2,2, figsize=(10,6))
+
+plot_phase(axes[0,0], lambda x: -x**3, r"$\dot{x}=-x^3$ (stable)")
+plot_phase(axes[0,1], lambda x:  x**3, r"$\dot{x}=x^3$ (unstable)")
+plot_phase(axes[1,0], lambda x:  x**2, r"$\dot{x}=x^2$ (semi-stable)")
+plot_phase(axes[1,1], lambda x: 0*x,   r"$\dot{x}=0$ (neutral)")
+
+plt.tight_layout()
+plt.show()
+
+```
+</details>
+
+のようになる．それぞれ
+- 左上：$\dot{x} = - x^3$ → 安定
+- 右上：$\dot{x} = x^3$ → 不安定
+- 左上：$\dot{x} = - x^3$ → 半安定 (half-stable, 左から安定，右から不安定)
+- 左上：$\dot{x} = - x^3$ → 中立 (すべての点が固定点)
+
+とも呼ばれる．今後分岐などを学ぶ際によく出てくる．なので結局，
+</details>
+
+何も言えない．
