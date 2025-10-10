@@ -225,7 +225,7 @@ Modulation Index は，Phase Amplitude Coupling がどれだけ起きている�
 さて，これまで沢山の位相解析指標を導入してきましたが，多くは余分な変数を除くと，
 
 $$
-  R = |\frac{\sum_{n=1}^N e^{i \phi_n}}{K}|
+  R = |\frac{\sum_{n=1}^N e^{i \phi_n}}{N}|
 $$
 
 の形になっています．複素ベクトルの平均長です．解析ではこの値が 1 に近い程強い同期として解釈するわけですが，ここには一つ重大な落とし穴があります．
@@ -250,13 +250,13 @@ $$
 まず計算式
 
 $$
-  R = |\frac{\sum_{n=1}^N e^{i \phi_n}}{K}|
+  R = |\frac{\sum_{n=1}^N e^{i \phi_n}}{N}|
 $$
 
 について，$\phi_n \sim U(-\pi,\pi)$，つまり $e^{i \phi_n}$ は単位円上のランダムなベクトルと仮定し，この式の期待値を求めていきます．これは純粋に N 依存で生じるバイアスの推定値になります．まず簡単のため
 
 $$
-\mathbb{E}[R] = \mathbb{E}[|\frac{\sum_{n=1}^N e^{i \phi_n}}{K}|] = \mathbb{E}[|\frac{\sum_{n=1}^N \cos\phi_n + i\sum_{n=1}^N \sin\phi_n}{K}|]
+\mathbb{E}[R] = \mathbb{E}[|\frac{\sum_{n=1}^N e^{i \phi_n}}{N}|] = \mathbb{E}[|\frac{\sum_{n=1}^N \cos\phi_n + i\sum_{n=1}^N \sin\phi_n}{N}|]
 $$
 
 とし，$X = \sum\cos\phi_n, Y = \sum\sin\phi_n$ とすると，
