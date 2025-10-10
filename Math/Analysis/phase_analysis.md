@@ -265,7 +265,7 @@ $$
 \mathbb{E}[R]=\mathbb{E}[|X+iY|]/N = \mathbb{E}[\sqrt{X^2+Y^2}]/N
 $$
 
-となります．仮定より $\mathbb{E}[\cos\phi]=\mathbb{E}[\sin\phi]=0$，$\text{Var}(\cos\phi)= \text{Var}(\sin\phi)=1/2$ なので，分散の加法性より $X, Y\sim N(0,\frac{N}{2})$ かつ $X, Y$ は独立です．
+となります．仮定より $\mathbb{E}[\cos\phi]=\mathbb{E}[\sin\phi]=0$，$\text{Var}(\cos\phi)= \text{Var}(\sin\phi)=1/2$ なので，分散の加法性を考えて最後にまとめると，$X, Y\stackrel{\text{iid}}{\sim}  N(0,\frac{N}{2})$ です．
 
 <details markdown="1">
 <summary>期待値と分散の計算</summary>
