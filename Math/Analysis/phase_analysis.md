@@ -282,13 +282,13 @@ $$
 期待値 $\mathbb{E}[\cos\theta]$ は
 
 $$
-\mathbb{E}[\cos\theta] = \frac{1}{2\pi}\int^\pi_\pi \cos \theta d\theta = 0
+\mathbb{E}[\cos\theta] = \frac{1}{2\pi}\int^\pi_{-\pi} \cos \theta d\theta = 0
 $$
 
 で，同様に $\mathbb{E}[\cos^2\theta]$ は倍角の公式を使って
 
 $$
-\mathbb{E}[\cos^2\theta] = \frac{1}{2\pi}\int^\pi_\pi \frac{1+\cos 2\theta}{2} d\theta = \frac{1}{2}.
+\mathbb{E}[\cos^2\theta] = \frac{1}{2\pi}\int^\pi_{-\pi} \frac{1+\cos 2\theta}{2} d\theta = \frac{1}{2}.
 $$
 
 よって， $Var[\cos\theta]$ は
