@@ -17,7 +17,7 @@ Standaloneの [PsychoPy](https://www.psychopy.org/download.html?utm_source=chatg
 
 ダウンロードできたら，`PsychoPy Builder` を起動してみます．
 
-<center><img src="../figures/psychopy.png"></center>
+<center><img src="../figures/psychopy.png" width=70%></center>
 人生に気付きを与えてくれるでしょう．
 
 
@@ -29,81 +29,81 @@ Git については細かく説明しませんが， Pavlovia は Git を使っ�
 
 まずは [Pavlovia](https://pavlovia.org/) でアカウントの登録 (Register) をします．
 
-<center><img src="../figures/pavlovia0.png"></center>
+<center><img src="../figures/pavlovia0.png" width=70%></center>
 
-<center><img src="../figures/pavlovia1.png"></center>
+<center><img src="../figures/pavlovia1.png" width=70%></center>
 
 大学などの研究用アカウントが必要です．ない場合は課金．Corfirmation を終えたら，ログインしてみてください．問題なければこのようにアカウント設定ができます．
 
-<center><img src="../figures/pavlovia2.png"></center>
+<center><img src="../figures/pavlovia2.png" width=70%></center>
 
 
 ### Pavlovia と PsychoPyの連携
 PsychoPy Builderを開き， `Pavlovia,org` メニューの `User`，`Log into Pavlovia` を開き，自分の Pavlovia アカウントでログインします．
 
-<center><img src="../figures/psychopy_pavlovia1.png"></center>
+<center><img src="../figures/psychopy_pavlovia1.png" width=70%></center>
 
 上手くログインできました．
 
-<center><img src="../figures/psychopy_pavlovia2.png"></center>
+<center><img src="../figures/psychopy_pavlovia2.png" width=70%></center>
 
 そしたら一度 Pavlovia windowは閉じ，
-<center><img src="../figures/psychopy_pavlovia3.png"></center>
+<center><img src="../figures/psychopy_pavlovia3.png" width=70%></center>
 
 `Sync` を試します．まだ何も Git のrepository設定をしていない場合，下記メッセージが出ます．そのまま作成しましょう．
 
-<center><img src="../figures/psychopy_pavlovia4.png"></center>
+<center><img src="../figures/psychopy_pavlovia4.png" width=70%></center>
 
 すると下のメニューが表示されるので，任意のProject nameとフォルダの選択をします．フォルダは Git 管理するフォルダなので，この実験プロジェクトの親フォルダにしてください．（実験のメインプログラム(`.psyexp`)，刺激セット，その他ファイルが全て格納されるように．ただし他の関係ないのは含まれないように．たとえば `Desktop` は広すぎ．`Stimuli` は狭すぎです．）
 
-<center><img src="../figures/psychopy_pavlovia5.png"></center>
+<center><img src="../figures/psychopy_pavlovia5.png" width=70%></center>
 
 上手くGit連携ができていれば，次のような `PsychoPy Runner` の画面がでます．
 
-<center><img src="../figures/psychopy_pavlovia6.png"></center>
+<center><img src="../figures/psychopy_pavlovia6.png" width=70%></center>
 
 今回は `MyTest` というフォルダを設定しました．上手くmaster branch が作られたのが分かります．いったん Builder の方に戻り，`Experiment settings` を開きます．
 
-<center><img src="../figures/psychopy_pavlovia7.png"></center>
+<center><img src="../figures/psychopy_pavlovia7.png" width=70%></center>
 
 `Online` タブを見るとこのようになっているはずです．
 
-<center><img src="../figures/psychopy_pavlovia8.png"></center>
+<center><img src="../figures/psychopy_pavlovia8.png" width=70%></center>
 
 ほとんど空欄ですが，`Export HTML` が on Sync なことを確認してください．これは Git の Push 字に自動で HTML/JS を書きだす設定です．実験終了時の `End message` くらいは好きに変えてよいでしょう．
 
 `Additional resources` や `Completed URL` は後ほど重要ですが一旦放置．
 
 実験用に表示するwebページ (HTML) を作成するため，`File -> Export HTML` を実行します．
-<center><img src="../figures/psychopy_pavlovia10.png"></center>
+<center><img src="../figures/psychopy_pavlovia10.png" width=70%></center>
 
 ローカルにhtmlやjsが生成されたことを確認してください．
-<center><img src="../figures/psychopy_pavlovia11.png"></center>
+<center><img src="../figures/psychopy_pavlovia11.png" width=70%></center>
 
 できていれば，`Pavlovia.org-> Sync`をします．PsychoPy 側で何かを変えたら，その都度こうやって同期をしましょう．上手くいけば，ブラウザで Pavlovia プロジェクトを確認しても今追加したファイルが反映されているはずです．Git になれていない人にはややこしいかもしれませんが，とりあえず Sync しまくってください．変なファイルあげちゃって取り消したければ，ローカルでそのファイルを消してからSyncしてしまえば，ひとまずはOKです．
 
-<center><img src="../figures/psychopy_pavlovia12.png"></center>
+<center><img src="../figures/psychopy_pavlovia12.png" width=70%></center>
 
 ## 動作確認
 では，準備が出来たので Online 実験の動作確認をしていきます．まず，今回は`PsychoPy`で特に実験プログラムを作らずデフォルトのままで進めていたので大した実験はできませんが，ちゃんとブラウザで今回作成したプロジェクトの HTML が表示されるのかを確認します．
 
 Runner の方で先程出たメッセージの一番下の url をブラウザに入力しましょう．建てた Project のページが開くはずです．最初は下の写真でいう左下の Status がInactiveなはずですが，左下の Status を`Piloting` にしましょう．すると1時間有効な Pilot のトークン付きURL が発行されます．
 
-<center><img src="../figures/psychopy_pavlovia9.png"></center>
+<center><img src="../figures/psychopy_pavlovia9.png" width=70%></center>
 
 すると右上の赤丸，`Pilot`が押せるようになっているはずなので押します．すると，別タブで `init...` みたいなメッセージが出てこんな画面になるはずです．PsychoPyの実装次第なので若干個人差出るかも．
 
-<center><img src="../figures/psychopy_pavlovia13.png"></center>
+<center><img src="../figures/psychopy_pavlovia13.png" width=70%></center>
 
 ここで，`Participant` には実験案内の時点で被験者に「CrowdWorksのID(あるいはこちら指定のID)を入力してOKを押してください」等と指示すると，後の照合がやりやすくなります．こうした入力を被験者にやらせたくなければ後ほど `Experiment info` から消すこともできます．とりあえずここではてきとうな文字列を入れて `OK`.
 
-<center><img src="../figures/psychopy_pavlovia14.png"></center>
+<center><img src="../figures/psychopy_pavlovia14.png" width=70%></center>
 
 上手くいけば，何やら別ウィンドウが開いて一瞬何かが表示され，感謝されます．これは実験の中身をまだ何も書いていないからで，正常です．
 
 Pavloviaのページ下部で，Resultsのカウントが `submitted:1`になっていることを確認してください．
 
-<center><img src="../figures/psychopy_pavlovia15.png"></center>
+<center><img src="../figures/psychopy_pavlovia15.png" width=70%></center>
 
 なっていれば，被験者のローカル実験->提出->Pavloviaでの結果記録のループが正常に出来たことになります．また，今は Pilot モードなのでデータはここには格納されず，実験終了時にローカルに吐き出される設定になっています．`RUNNING` にするとサーバーに上がりますが，クレジットを消費してしまうので今はやめておきます．
 
@@ -112,7 +112,7 @@ Pavloviaのページ下部で，Resultsのカウントが `submitted:1`になっ
 ### 実装
 多分将来的にはどこかでまとめますが，PsychoPy Builder での実験プログラムのGUI実装について簡単にまとめます．まずは Builder の画面（下記）の見方からです．
 
-<center><img src="../figures/psychopy3.png"></center>
+<center><img src="../figures/psychopy3.png" width=70%></center>
 
 まず，**赤の領域**は「いま編集している Routine」のタブです．PsychoPy Builder では実験は複数の Routine (開始画面，試行，ITIなど) の組み合わせで作ります．ここに並んでいるのはそれぞれの部品の一覧で，クリックするとその Routine の編集画面（オレンジ・青）に切り替わります．どの Routine がどういった順番で実行されるのかはここではなく，後述の黄色領域で設定します．
 
@@ -136,7 +136,7 @@ Pavloviaのページ下部で，Resultsのカウントが `submitted:1`になっ
 
 2. trial
 実験の核．Insert routine で trial を追加し，textとして'Now!', あとキー入力の受付用にkeyboard を追加．
-<center><img src="../figures/psychopy4.png"></center>
+<center><img src="../figures/psychopy4.png" width=70%></center>
 
 text color=whiteとし，それぞれstart=0, duration=''として無限に応答待ちにする．Keyboardの方は別途
 - Allowed keys: space（テストなのでspaceでOK. 2択なら f,j 等）
@@ -144,7 +144,7 @@ text color=whiteとし，それぞれstart=0, duration=''として無限に応�
 - Store RT: ON
 - Force end of Routine: ON
 
-<center><img src="../figures/psychopy5.png"></center>
+<center><img src="../figures/psychopy5.png" width=70%></center>
 としておく．
 
 3. post
@@ -167,13 +167,13 @@ text color=whiteとし，それぞれstart=0, duration=''として無限に応�
 - Stop: 0.5（例：500 ms）
 
 として，最後にFlowを下記に整える．
-<center><img src="../figures/psychopy6.png"></center>
+<center><img src="../figures/psychopy6.png" width=70%></center>
 </details>
 
 
 完成したら Pavlovian と Sync させて，もう一度 Pilot を立てます．すると実装した内容が反映されて，実験ぽい画面がちゃんと表示されるはずです．Syncの際，前回から時間がたっていると Pavlovia との連携が切れているかもなので再ログインが必要なこともあるので注意してください．
 
-<video controls muted playsinline preload="metadata" width="720" style="background:#000">
+<video controls muted playsinline preload="metadata" width=100% style="background:#000">
   <source src="../figures/first_demo.mp4" type="video/mp4">
   このブラウザでは動画を再生できません（MP4のエンコード形式を確認）。
 </video>
@@ -204,7 +204,7 @@ text color=whiteとし，それぞれstart=0, duration=''として無限に応�
 
 実際，pilot 段階でも実験の途中で終了してしまうと下記のように'aborted'になります．これはデータの取得が出来てない状態なので，被験者には強く念押しの必要があります．
 
-<center><img src="../figures/psychopy_pavlovia16.png"></center>
+<center><img src="../figures/psychopy_pavlovia16.png"width=70%></center>
 
 ### 参加者照合のためのID
 CrowdWorksでは，誰の提出かを後で照合できないと支払い処理ができないので，実験冒頭で CrowdWorks のワーカーIDやこちらで指定した実験参加者IDを `participant` に入力させる必要があります．
@@ -233,10 +233,66 @@ CrowdWorks 側での仕事完了の提出のため，完了コードを日付や
 </div>
 となります．
 
+
+ここまで実装した場合の画面は
+<video controls muted playsinline preload="metadata" width=100% style="background:#000">
+  <source src="../figures/second_demo.mp4" type="video/mp4">
+  このブラウザでは動画を再生できません（MP4のエンコード形式を確認）。
+</video>
+
+こんな感じです．作り方は，新しく `end` component を作成して，
+
+<center><img src="../figures/psychopy_pavlovia17.png" width=70%></center>
+
+このようにし，`code` の中身は `Code type` を Both とし，左側(phthon)と右側 (JS) にそれぞれ対応するコードを書いていきます．まず `Before experiment` で変数を初期化し，
+
+<center><img src="../figures/psychopy_pavlovia18.png" width=70%></center>
+
+`Begin Routine` はそれぞれ
+
+```python
+participant = expInfo.get('participant', '')
+
+# 余計な前後空白だけは落とす
+participant = participant.strip()
+
+completion_code = f"CW-{participant}"
+
+end_msg = (
+    f"完了コード: {completion_code}\n\n"
+    "このコードを手元にメモしてください。\n"
+    "メモできたら Enter を押してください。"
+)
+
+ID.text = end_msg
+thisExp.addData('participant_entered', participant)
+thisExp.addData('completion_code', completion_code)
+```
+
+```js
+let participant = (expInfo['participant'] || '');
+
+// 余計な前後空白だけは落とす
+participant = participant.trim();
+
+const completion_code = `CW-${participant}`;
+
+const end_msg =
+`完了コード: ${completion_code}
+
+このコードを手元にメモしてください。
+メモできたら Enter を押してください。`;
+
+ID.setText(end_msg);
+psychoJS.experiment.addData('participant_entered', participant);
+psychoJS.experiment.addData('completion_code', completion_code);
+```
+
+などとしました．あとは `start` component の時点で，`participant` 入力値が有効な文字列か（CrowdWorks IDぽいかや，空白じゃないかなど）を判定してエラーを出すとかも丁寧ですね．
+
 ### 実験データの確認と報酬支払い
-実験が正常に終了された場合， Pavlovia のサーバーにデータがアップロードされます．研究者はこれらを一括ダウンロードし，「提出さｒた完了コード」に対応する行が存在するかを確認します．
+最後に，上記コードが正常に終了された場合， Pavlovia のサーバーにデータがアップロードされます．研究者はこれらを一括ダウンロードし，「提出された完了コード」に対応する行が存在するかを確認します．
 
 対応する行が確かにあり，試行数やデータクオリティが受理条件を満たしていることを確認したら，その参加者からの作業報告を CrowdWorks 上で「承認」します．これにより CrowdWorks 上で決済フローへ進み，報酬が支払われます．却下の場合には支払われません．
 
 この事情により，実験時に入力させる ID は CrowdWorks ID を使わせると照合が楽になります．また完了コードにも participant ID を参照することがおすすめです．
-
