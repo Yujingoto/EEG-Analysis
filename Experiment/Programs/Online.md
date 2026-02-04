@@ -250,6 +250,7 @@ CrowdWorks 側での仕事完了の提出のため，完了コードを日付や
 
 `Begin Routine` はそれぞれ
 
+Python
 ```python
 participant = expInfo.get('participant', '')
 
@@ -269,6 +270,7 @@ thisExp.addData('participant_entered', participant)
 thisExp.addData('completion_code', completion_code)
 ```
 
+JavaScript
 ```js
 let participant = (expInfo['participant'] || '');
 
