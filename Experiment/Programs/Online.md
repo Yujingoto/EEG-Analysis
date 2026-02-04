@@ -173,9 +173,10 @@ text color=whiteとし，それぞれstart=0, duration=''として無限に応�
 
 完成したら Pavlovian と Sync させて，もう一度 Pilot を立てます．すると実装した内容が反映されて，実験ぽい画面がちゃんと表示されるはずです．Syncの際，前回から時間がたっていると Pavlovia との連携が切れているかもなので再ログインが必要なこともあるので注意してください．
 
-
-<video autoplay loop muted playsinline preload="metadata" width="720">
-<source src="../figures/first_demo.mp4" type="video/mp4"></video>
+<video controls muted playsinline preload="metadata" width="720" style="background:#000">
+  <source src="../figures/first_demo.mp4" type="video/mp4">
+  このブラウザでは動画を再生できません（MP4のエンコード形式を確認）。
+</video>
 
 
 うまくいけばこんな感じ．
