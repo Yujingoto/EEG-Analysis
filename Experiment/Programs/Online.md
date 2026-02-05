@@ -304,7 +304,7 @@ psychoJS.experiment.addData('completion_code', completion_code);
 
 
 ## Pavlovia creditの購入と RUUNING モード
-いざ本番の実験を始める際には，Pavlovia を `RUUNING` モードｗにする必要があります．この状態ではURLが固定され，実験データはサーバーに upload されるようになります．ただし，1人あたりで課金が必要です．
+いざ本番の実験を始める際には，Pavlovia を `RUUNING` モードにする必要があります．この状態ではURLが固定され，実験データはサーバーに upload されるようになります．ただし，1人あたりで課金が必要です．
 
 ### RUNNING モード
 Pavloviaのモードを，テスト用の `PILOTING` から `RUNNING` に変更してみましょう．
